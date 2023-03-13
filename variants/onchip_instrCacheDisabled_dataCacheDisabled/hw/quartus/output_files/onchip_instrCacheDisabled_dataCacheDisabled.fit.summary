@@ -1,0 +1,20 @@
+Fitter Status : Successful - Mon Mar 13 09:51:53 2023
+Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
+Revision Name : onchip_instrCacheDisabled_dataCacheDisabled
+Top-level Entity Name : DE1_SoC_top_level
+Family : Cyclone V
+Device : 5CSEMA5F31C6
+Timing Models : Final
+Logic utilization (in ALMs) : 1,556 / 32,070 ( 5 % )
+Total registers : 2445
+Total pins : 51 / 457 ( 11 % )
+Total virtual pins : 0
+Total block memory bits : 1,112,320 / 4,065,280 ( 27 % )
+Total RAM Blocks : 143 / 397 ( 36 % )
+Total DSP Blocks : 3 / 87 ( 3 % )
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 0 / 6 ( 0 % )
+Total DLLs : 0 / 4 ( 0 % )
