@@ -1,0 +1,4 @@
+eclipse.preferences.version=1
+newSoftwareExampleWizardPage.defaultLocation=C\:\\RTES\\variants\\onchip_instrCacheDisabled_dataCacheDisabled\\sw\\nios\\application
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\RTES\\variants\\onchip_instrCacheDisabled_dataCacheDisabled\\hw\\quartus\\soc_system.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\RTES\\variants\\onchip_instrCacheDisabled_dataCacheDisabled\\sw\\nios\\onchip_instrCacheDisabled_dataCacheDisabled_bsp

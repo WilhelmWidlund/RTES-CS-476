@@ -1,5 +1,5 @@
 Flow report for onchip_instrCacheDisabled_dataCacheDisabled
-Mon Mar 13 09:52:23 2023
+Wed Mar 15 13:58:00 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -40,15 +40,15 @@ refer to the applicable agreement for further details.
 +-------------------------------------------------------------------------------+
 ; Flow Summary                                                                  ;
 +---------------------------------+---------------------------------------------+
-; Flow Status                     ; Successful - Mon Mar 13 09:52:07 2023       ;
+; Flow Status                     ; Successful - Wed Mar 15 13:57:41 2023       ;
 ; Quartus Prime Version           ; 18.1.0 Build 625 09/12/2018 SJ Lite Edition ;
 ; Revision Name                   ; onchip_instrCacheDisabled_dataCacheDisabled ;
 ; Top-level Entity Name           ; DE1_SoC_top_level                           ;
 ; Family                          ; Cyclone V                                   ;
 ; Device                          ; 5CSEMA5F31C6                                ;
 ; Timing Models                   ; Final                                       ;
-; Logic utilization (in ALMs)     ; 1,556 / 32,070 ( 5 % )                      ;
-; Total registers                 ; 2445                                        ;
+; Logic utilization (in ALMs)     ; 1,565 / 32,070 ( 5 % )                      ;
+; Total registers                 ; 2467                                        ;
 ; Total pins                      ; 51 / 457 ( 11 % )                           ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 1,112,320 / 4,065,280 ( 27 % )              ;
@@ -67,7 +67,7 @@ refer to the applicable agreement for further details.
 +-------------------+---------------------------------------------+
 ; Option            ; Setting                                     ;
 +-------------------+---------------------------------------------+
-; Start date & time ; 03/13/2023 09:48:28                         ;
+; Start date & time ; 03/15/2023 13:52:40                         ;
 ; Main task         ; Compilation                                 ;
 ; Revision Name     ; onchip_instrCacheDisabled_dataCacheDisabled ;
 +-------------------+---------------------------------------------+
@@ -78,7 +78,7 @@ refer to the applicable agreement for further details.
 +-------------------------------------+----------------------------------------+---------------------------------------------+-------------------+------------+
 ; Assignment Name                     ; Value                                  ; Default Value                               ; Entity Name       ; Section Id ;
 +-------------------------------------+----------------------------------------+---------------------------------------------+-------------------+------------+
-; COMPILER_SIGNATURE_ID               ; 126152054917569.167869730702832        ; --                                          ; --                ; --         ;
+; COMPILER_SIGNATURE_ID               ; 126152054917569.167888475911500        ; --                                          ; --                ; --         ;
 ; MAX_CORE_JUNCTION_TEMP              ; 85                                     ; --                                          ; --                ; --         ;
 ; MIN_CORE_JUNCTION_TEMP              ; 0                                      ; --                                          ; --                ; --         ;
 ; PARTITION_COLOR                     ; -- (Not supported for targeted family) ; --                                          ; DE1_SoC_top_level ; Top        ;
@@ -96,11 +96,11 @@ refer to the applicable agreement for further details.
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name          ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis ; 00:01:53     ; 1.0                     ; 5040 MB             ; 00:02:43                           ;
-; Fitter               ; 00:01:28     ; 1.2                     ; 6746 MB             ; 00:03:35                           ;
-; Assembler            ; 00:00:11     ; 1.0                     ; 4891 MB             ; 00:00:11                           ;
-; Timing Analyzer      ; 00:00:15     ; 2.1                     ; 5238 MB             ; 00:00:26                           ;
-; Total                ; 00:03:47     ; --                      ; --                  ; 00:06:55                           ;
+; Analysis & Synthesis ; 00:02:23     ; 1.0                     ; 5039 MB             ; 00:03:23                           ;
+; Fitter               ; 00:02:11     ; 1.2                     ; 6746 MB             ; 00:04:53                           ;
+; Assembler            ; 00:00:16     ; 1.0                     ; 4887 MB             ; 00:00:15                           ;
+; Timing Analyzer      ; 00:00:18     ; 2.2                     ; 5240 MB             ; 00:00:35                           ;
+; Total                ; 00:05:08     ; --                      ; --                  ; 00:09:06                           ;
 +----------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 

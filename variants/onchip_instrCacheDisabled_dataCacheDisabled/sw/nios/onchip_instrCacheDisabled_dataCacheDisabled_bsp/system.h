@@ -4,7 +4,7 @@
  * Machine generated for CPU 'nios2_gen2_0' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Wed Mar 15 13:35:21 CET 2023
+ * Generated: Wed Mar 15 13:58:22 CET 2023
  */
 
 /*
@@ -143,8 +143,8 @@
 
 #define ALT_MODULE_CLASS_Counter_0 Counter
 #define COUNTER_0_BASE 0x41060
-#define COUNTER_0_IRQ -1
-#define COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define COUNTER_0_IRQ 0
+#define COUNTER_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define COUNTER_0_NAME "/dev/Counter_0"
 #define COUNTER_0_SPAN 32
 #define COUNTER_0_TYPE "Counter"

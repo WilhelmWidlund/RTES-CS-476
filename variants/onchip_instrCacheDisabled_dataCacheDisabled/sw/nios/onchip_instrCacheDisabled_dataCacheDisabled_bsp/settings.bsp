@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Mar 15, 2023 1:37:53 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1678883873661</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Mar 15, 2023 1:58:21 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1678885102017</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\RTES\variants\onchip_instrCacheDisabled_dataCacheDisabled\sw\nios\onchip_instrCacheDisabled_dataCacheDisabled_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\RTES\variants\onchip_instrCacheDisabled_dataCacheDisabled\hw\quartus\soc_system.sopcinfo</SopcDesignFile>
