@@ -14,6 +14,12 @@
 #define COUNT_IntClr	20
 #define COUNT_Target	24
 
+#define PARPORT_Data	0
+#define PARPORT_SetBits	4
+#define PARPORT_ClrBits	8
+#define PARPORT_IRQEN	12
+#define PARPORT_IRQCLR	16
+
 // Configure the timer IP to be in continuous mode, with interrupts enabled, and start it
 #define TIMER_settings_start	7
 
@@ -26,23 +32,9 @@ int snapl;
 int snaph;
 int flag;
 
-void resp_isr(void* context)
-{
-	IOWR_ALTERA_AVALON_TIMER_SNAPL(TIMER_0_BASE, arbval);
-	IOWR_ALTERA_AVALON_TIMER_SNAPH(TIMER_0_BASE, arbval);
-	snapl = IORD_ALTERA_AVALON_TIMER_SNAPL(TIMER_0_BASE);
-	snaph = IORD_ALTERA_AVALON_TIMER_SNAPH(TIMER_0_BASE);
-	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0);
-	IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
-	flag = 1;
-}
 
-void recov_isr(void* context)
-{
-	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0);
-	IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
-	IOWR_32DIRECT(COUNTER_0_BASE, COUNT_Start, arbval);
-}
+
+
 
 void test_parallel_port()
 {
@@ -70,10 +62,27 @@ void test_counter()
 	IOWR_32DIRECT(COUNTER_0_BASE, COUNT_Stop, arbval);
 }
 
+void resp_isr_print(void* context)
+{
+	IOWR_ALTERA_AVALON_TIMER_SNAPL(TIMER_0_BASE, arbval);
+	IOWR_ALTERA_AVALON_TIMER_SNAPH(TIMER_0_BASE, arbval);
+	snapl = IORD_ALTERA_AVALON_TIMER_SNAPL(TIMER_0_BASE);
+	snaph = IORD_ALTERA_AVALON_TIMER_SNAPH(TIMER_0_BASE);
+	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0);
+	IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+	flag = 1;
+}
+
+void resp_isr_parport(void* context)
+{
+	IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_Data, 0x0);
+	IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_IRQCLR, arbval);
+}
+
 void test_resptime_print()
 {
 	// Register isr
-	alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, resp_isr, 0, 0);
+	alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, resp_isr_print, 0, 0);
 	// Initialize flag value
 	flag = 0;
 	// Initialize timer
@@ -104,11 +113,37 @@ void test_resptime_print()
 	avg_val = accum_val/max_iter;
 	printf("Average value for response time is %d", avg_val);
 }
+void test_resptime_parport()
+{
+	// Register isr
+	alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, resp_isr_parport, 0, 0);
+	IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_Data, 0x0);
+	IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_IRQEN, 0x2);
+	int iterations = 1e2;
+	int counter = 0;
+	while(counter < iterations)
+	{
+		IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_Data, 0x2);
+		counter += 1;
+	}
+}
+
+void recov_isr_print(void* context)
+{
+	IOWR_ALTERA_AVALON_TIMER_CONTROL(TIMER_0_BASE, 0);
+	IOWR_ALTERA_AVALON_TIMER_STATUS(TIMER_0_BASE, 0);
+	IOWR_32DIRECT(COUNTER_0_BASE, COUNT_Start, arbval);
+}
+
+void recov_isr_parport(void* context)
+{
+
+}
 
 void test_recovtime_print()
 {
 	// Register interrupt function
-	alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, recov_isr, 0, 0);
+	alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, recov_isr_print, 0, 0);
 	// Initialize counter, with maximum target value
 	IOWR_32DIRECT(COUNTER_0_BASE, COUNT_Target, 0xFFFFFFFF);
 	IOWR_32DIRECT(COUNTER_0_BASE, COUNT_RZ, arbval);
@@ -123,7 +158,7 @@ void test_recovtime_print()
 	int accum_val = 0;
 	int avg_val = 0;
 	int read_val;
-	printf("Testing recovery time using custom counter and\n"
+	printf("\n\nTesting recovery time using custom counter and\n"
 			" counting the average over %d iterations...\n", max_iter);
 	while(counter < max_iter)
 	{
@@ -143,11 +178,17 @@ void test_recovtime_print()
 	printf("Average value for recovery time is %d", avg_val);
 }
 
+void test_recovtime_parport()
+{
+
+}
+
 int main()
 {
 	//test_parallel_port();
 	//test_counter();
 	//test_resptime_print();
-	test_recovtime_print();
+	//test_recovtime_print();
+	test_resptime_parport();
 	return 0;
 }

@@ -16,14 +16,12 @@ module soc_system (
 	wire  [18:0] nios2_gen2_0_data_master_address;                            // nios2_gen2_0:d_address -> mm_interconnect_0:nios2_gen2_0_data_master_address
 	wire   [3:0] nios2_gen2_0_data_master_byteenable;                         // nios2_gen2_0:d_byteenable -> mm_interconnect_0:nios2_gen2_0_data_master_byteenable
 	wire         nios2_gen2_0_data_master_read;                               // nios2_gen2_0:d_read -> mm_interconnect_0:nios2_gen2_0_data_master_read
-	wire         nios2_gen2_0_data_master_readdatavalid;                      // mm_interconnect_0:nios2_gen2_0_data_master_readdatavalid -> nios2_gen2_0:d_readdatavalid
 	wire         nios2_gen2_0_data_master_write;                              // nios2_gen2_0:d_write -> mm_interconnect_0:nios2_gen2_0_data_master_write
 	wire  [31:0] nios2_gen2_0_data_master_writedata;                          // nios2_gen2_0:d_writedata -> mm_interconnect_0:nios2_gen2_0_data_master_writedata
 	wire  [31:0] nios2_gen2_0_instruction_master_readdata;                    // mm_interconnect_0:nios2_gen2_0_instruction_master_readdata -> nios2_gen2_0:i_readdata
 	wire         nios2_gen2_0_instruction_master_waitrequest;                 // mm_interconnect_0:nios2_gen2_0_instruction_master_waitrequest -> nios2_gen2_0:i_waitrequest
 	wire  [18:0] nios2_gen2_0_instruction_master_address;                     // nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
 	wire         nios2_gen2_0_instruction_master_read;                        // nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
-	wire         nios2_gen2_0_instruction_master_readdatavalid;               // mm_interconnect_0:nios2_gen2_0_instruction_master_readdatavalid -> nios2_gen2_0:i_readdatavalid
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect;  // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
 	wire  [31:0] mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata;    // jtag_uart_0:av_readdata -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_readdata
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest; // jtag_uart_0:av_waitrequest -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_waitrequest
@@ -32,7 +30,7 @@ module soc_system (
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write;       // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_write -> jtag_uart_0:av_write_n
 	wire  [31:0] mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata;   // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_writedata -> jtag_uart_0:av_writedata
 	wire  [31:0] mm_interconnect_0_parallelport_0_avalon_slave_0_readdata;    // ParallelPort_0:ReadData -> mm_interconnect_0:ParallelPort_0_avalon_slave_0_readdata
-	wire   [1:0] mm_interconnect_0_parallelport_0_avalon_slave_0_address;     // mm_interconnect_0:ParallelPort_0_avalon_slave_0_address -> ParallelPort_0:Address
+	wire   [2:0] mm_interconnect_0_parallelport_0_avalon_slave_0_address;     // mm_interconnect_0:ParallelPort_0_avalon_slave_0_address -> ParallelPort_0:Address
 	wire         mm_interconnect_0_parallelport_0_avalon_slave_0_read;        // mm_interconnect_0:ParallelPort_0_avalon_slave_0_read -> ParallelPort_0:Read
 	wire         mm_interconnect_0_parallelport_0_avalon_slave_0_write;       // mm_interconnect_0:ParallelPort_0_avalon_slave_0_write -> ParallelPort_0:Write
 	wire  [31:0] mm_interconnect_0_parallelport_0_avalon_slave_0_writedata;   // mm_interconnect_0:ParallelPort_0_avalon_slave_0_writedata -> ParallelPort_0:WriteData
@@ -64,8 +62,9 @@ module soc_system (
 	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_writedata;             // mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
 	wire         mm_interconnect_0_onchip_memory2_0_s1_clken;                 // mm_interconnect_0:onchip_memory2_0_s1_clken -> onchip_memory2_0:clken
 	wire         irq_mapper_receiver0_irq;                                    // Counter_0:IRQ -> irq_mapper:receiver0_irq
-	wire         irq_mapper_receiver1_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver1_irq
-	wire         irq_mapper_receiver2_irq;                                    // timer_0:irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver1_irq;                                    // ParallelPort_0:IRQ -> irq_mapper:receiver1_irq
+	wire         irq_mapper_receiver2_irq;                                    // jtag_uart_0:av_irq -> irq_mapper:receiver2_irq
+	wire         irq_mapper_receiver3_irq;                                    // timer_0:irq -> irq_mapper:receiver3_irq
 	wire  [31:0] nios2_gen2_0_irq_irq;                                        // irq_mapper:sender_irq -> nios2_gen2_0:irq
 	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [Counter_0:nReset, ParallelPort_0:nReset, mm_interconnect_0:ParallelPort_0_reset_sink_reset_bridge_in_reset_reset]
 	wire         rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [irq_mapper:reset, jtag_uart_0:rst_n, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, pio_0:reset_n, rst_translator:in_reset, timer_0:reset_n]
@@ -84,14 +83,15 @@ module soc_system (
 	);
 
 	ParallelPort parallelport_0 (
-		.Clk       (clk_clk),                                                   //          clock.clk
-		.Address   (mm_interconnect_0_parallelport_0_avalon_slave_0_address),   // avalon_slave_0.address
-		.Read      (mm_interconnect_0_parallelport_0_avalon_slave_0_read),      //               .read
-		.ReadData  (mm_interconnect_0_parallelport_0_avalon_slave_0_readdata),  //               .readdata
-		.Write     (mm_interconnect_0_parallelport_0_avalon_slave_0_write),     //               .write
-		.WriteData (mm_interconnect_0_parallelport_0_avalon_slave_0_writedata), //               .writedata
-		.Pout      (pout_custom_readdata),                                      //    conduit_end.readdata
-		.nReset    (~rst_controller_reset_out_reset)                            //     reset_sink.reset_n
+		.Clk       (clk_clk),                                                   //            clock.clk
+		.Address   (mm_interconnect_0_parallelport_0_avalon_slave_0_address),   //   avalon_slave_0.address
+		.Read      (mm_interconnect_0_parallelport_0_avalon_slave_0_read),      //                 .read
+		.ReadData  (mm_interconnect_0_parallelport_0_avalon_slave_0_readdata),  //                 .readdata
+		.Write     (mm_interconnect_0_parallelport_0_avalon_slave_0_write),     //                 .write
+		.WriteData (mm_interconnect_0_parallelport_0_avalon_slave_0_writedata), //                 .writedata
+		.Pout      (pout_custom_readdata),                                      //      conduit_end.readdata
+		.nReset    (~rst_controller_reset_out_reset),                           //       reset_sink.reset_n
+		.IRQ       (irq_mapper_receiver1_irq)                                   // interrupt_sender.irq
 	);
 
 	soc_system_jtag_uart_0 jtag_uart_0 (
@@ -104,7 +104,7 @@ module soc_system (
 		.av_write_n     (~mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),      //                  .write_n
 		.av_writedata   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest), //                  .waitrequest
-		.av_irq         (irq_mapper_receiver1_irq)                                     //               irq.irq
+		.av_irq         (irq_mapper_receiver2_irq)                                     //               irq.irq
 	);
 
 	soc_system_nios2_gen2_0 nios2_gen2_0 (
@@ -118,13 +118,11 @@ module soc_system (
 		.d_waitrequest                       (nios2_gen2_0_data_master_waitrequest),                       //                          .waitrequest
 		.d_write                             (nios2_gen2_0_data_master_write),                             //                          .write
 		.d_writedata                         (nios2_gen2_0_data_master_writedata),                         //                          .writedata
-		.d_readdatavalid                     (nios2_gen2_0_data_master_readdatavalid),                     //                          .readdatavalid
 		.debug_mem_slave_debugaccess_to_roms (nios2_gen2_0_data_master_debugaccess),                       //                          .debugaccess
 		.i_address                           (nios2_gen2_0_instruction_master_address),                    //        instruction_master.address
 		.i_read                              (nios2_gen2_0_instruction_master_read),                       //                          .read
 		.i_readdata                          (nios2_gen2_0_instruction_master_readdata),                   //                          .readdata
 		.i_waitrequest                       (nios2_gen2_0_instruction_master_waitrequest),                //                          .waitrequest
-		.i_readdatavalid                     (nios2_gen2_0_instruction_master_readdatavalid),              //                          .readdatavalid
 		.irq                                 (nios2_gen2_0_irq_irq),                                       //                       irq.irq
 		.debug_reset_request                 (nios2_gen2_0_debug_reset_request_reset),                     //       debug_reset_request.reset
 		.debug_mem_slave_address             (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_address),     //           debug_mem_slave.address
@@ -168,7 +166,7 @@ module soc_system (
 		.readdata   (mm_interconnect_0_timer_0_s1_readdata),   //      .readdata
 		.chipselect (mm_interconnect_0_timer_0_s1_chipselect), //      .chipselect
 		.write_n    (~mm_interconnect_0_timer_0_s1_write),     //      .write_n
-		.irq        (irq_mapper_receiver2_irq)                 //   irq.irq
+		.irq        (irq_mapper_receiver3_irq)                 //   irq.irq
 	);
 
 	soc_system_mm_interconnect_0 mm_interconnect_0 (
@@ -180,7 +178,6 @@ module soc_system (
 		.nios2_gen2_0_data_master_byteenable                   (nios2_gen2_0_data_master_byteenable),                         //                                                .byteenable
 		.nios2_gen2_0_data_master_read                         (nios2_gen2_0_data_master_read),                               //                                                .read
 		.nios2_gen2_0_data_master_readdata                     (nios2_gen2_0_data_master_readdata),                           //                                                .readdata
-		.nios2_gen2_0_data_master_readdatavalid                (nios2_gen2_0_data_master_readdatavalid),                      //                                                .readdatavalid
 		.nios2_gen2_0_data_master_write                        (nios2_gen2_0_data_master_write),                              //                                                .write
 		.nios2_gen2_0_data_master_writedata                    (nios2_gen2_0_data_master_writedata),                          //                                                .writedata
 		.nios2_gen2_0_data_master_debugaccess                  (nios2_gen2_0_data_master_debugaccess),                        //                                                .debugaccess
@@ -188,7 +185,6 @@ module soc_system (
 		.nios2_gen2_0_instruction_master_waitrequest           (nios2_gen2_0_instruction_master_waitrequest),                 //                                                .waitrequest
 		.nios2_gen2_0_instruction_master_read                  (nios2_gen2_0_instruction_master_read),                        //                                                .read
 		.nios2_gen2_0_instruction_master_readdata              (nios2_gen2_0_instruction_master_readdata),                    //                                                .readdata
-		.nios2_gen2_0_instruction_master_readdatavalid         (nios2_gen2_0_instruction_master_readdatavalid),               //                                                .readdatavalid
 		.Counter_0_avalon_slave_0_address                      (mm_interconnect_0_counter_0_avalon_slave_0_address),          //                        Counter_0_avalon_slave_0.address
 		.Counter_0_avalon_slave_0_write                        (mm_interconnect_0_counter_0_avalon_slave_0_write),            //                                                .write
 		.Counter_0_avalon_slave_0_read                         (mm_interconnect_0_counter_0_avalon_slave_0_read),             //                                                .read
@@ -236,6 +232,7 @@ module soc_system (
 		.receiver0_irq (irq_mapper_receiver0_irq),           // receiver0.irq
 		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
 		.receiver2_irq (irq_mapper_receiver2_irq),           // receiver2.irq
+		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
 		.sender_irq    (nios2_gen2_0_irq_irq)                //    sender.irq
 	);
 

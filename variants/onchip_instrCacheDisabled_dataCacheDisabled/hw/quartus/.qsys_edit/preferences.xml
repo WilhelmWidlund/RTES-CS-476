@@ -9,7 +9,7 @@
    <name preferredWidth="395" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library expandedCategories="Library,Project" />
  <window width="2736" height="1744" x="0" y="0" />
  <hdlexample language="VHDL" />
 </preferences>
