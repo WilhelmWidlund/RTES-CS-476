@@ -3,9 +3,9 @@
 # This script creates the hello_world application in this directory.
 
 
-BSP_DIR=C:/a/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/lab1_bsp/
-QUARTUS_PROJECT_DIR=C:/a/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus/
-NIOS2_APP_GEN_ARGS="--elf-name lab1.elf --set OBJDUMP_INCLUDE_SOURCE 1 --src-files hello_world.c"
+BSP_DIR=C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp/
+QUARTUS_PROJECT_DIR=C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus/
+NIOS2_APP_GEN_ARGS="--elf-name onchip_instrCacheDisabled_dataCacheDisabled.elf --set OBJDUMP_INCLUDE_SOURCE 1 --src-files hello_world.c"
 
 
 # First, check to see if $SOPC_KIT_NIOS2 environmental variable is set.
