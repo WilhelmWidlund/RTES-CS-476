@@ -1,0 +1,11 @@
+MEASUREMENTS
+
+clock: 50 MHz
+
+1) onchip memory, instr cache disabled, data cache disabled
+Response time:
+	print: 658 cycles (average over 10 runs)
+	logic analyzer: 
+Recovery time:
+	print: 316 cycles (average over 10 runs)
+	logic analyzer: 
