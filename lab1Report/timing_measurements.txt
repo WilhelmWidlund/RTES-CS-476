@@ -5,7 +5,10 @@ clock: 50 MHz
 1) onchip memory, instr cache disabled, data cache disabled
 Response time:
 	print: 658 cycles (average over 10 runs)
-	logic analyzer: 
+	logic analyzer: 9.76 us
 Recovery time:
 	print: 316 cycles (average over 10 runs)
-	logic analyzer: 
+	logic analyzer: 6.4 us
+Latency time:
+	logic c-level: 4.5 us
+	logic asm-level:
