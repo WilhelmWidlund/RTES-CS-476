@@ -1,32 +1,9 @@
-15:56:03 **** Incremental Build of configuration Nios II for project onchip_instrCacheDisabled_dataCacheDisabled ****
+11:54:04 **** Incremental Build of configuration Nios II for project onchip_instrCacheDisabled_dataCacheDisabled ****
 make all 
 Info: Building C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp/
 [BSP build complete]
-Info: Compiling hello_world.c to obj/default/hello_world.o
-nios2-elf-gcc -xc -MP -MMD -c -IC:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp//HAL/inc -IC:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp/ -IC:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
-hello_world.c: In function 'test_parallel_port':
-hello_world.c:42:2: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
-  alt_printf("ParallelPort0=%x\n", IORD_32DIRECT(PARALLELPORT_0_BASE, 0));
-  ^
-hello_world.c: In function 'test_resptime_print':
-hello_world.c:85:2: warning: implicit declaration of function 'alt_ic_isr_register' [-Wimplicit-function-declaration]
-  alt_ic_isr_register(TIMER_0_IRQ_INTERRUPT_CONTROLLER_ID, TIMER_0_IRQ, resp_isr_print, 0, 0);
-  ^
-hello_world.c:105:25: warning: suggest parentheses around '-' inside '<<' [-Wparentheses]
-    snapval = Count_1secH-snaph<<16|Count_1secL-snapl;
-                         ^
-hello_world.c:105:47: warning: suggest parentheses around arithmetic in operand of '|' [-Wparentheses]
-    snapval = Count_1secH-snaph<<16|Count_1secL-snapl;
-                                               ^
-Info: Linking onchip_instrCacheDisabled_dataCacheDisabled.elf
-nios2-elf-g++  -T'C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp//linker.x' -msys-crt0='C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp/   -Wl,-Map=onchip_instrCacheDisabled_dataCacheDisabled.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o onchip_instrCacheDisabled_dataCacheDisabled.elf obj/default/hello_world.o -lm -msys-lib=m
-nios2-elf-insert onchip_instrCacheDisabled_dataCacheDisabled.elf --thread_model hal --cpu_name nios2_gen2_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name soc_system --quartus_project_dir "c:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus" --jdi C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus//output_files/onchip_instrCacheDisabled_dataCacheDisabled.jdi --sopcinfo C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus/soc_system.sopcinfo
-Info: (onchip_instrCacheDisabled_dataCacheDisabled.elf) 71 KBytes program size (code + initialized data).
-Info:                                                   49 KBytes free for stack + heap.
-Info: Creating onchip_instrCacheDisabled_dataCacheDisabled.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source onchip_instrCacheDisabled_dataCacheDisabled.elf >onchip_instrCacheDisabled_dataCacheDisabled.objdump
 [onchip_instrCacheDisabled_dataCacheDisabled build complete]
 
-15:56:06 Build Finished (took 3s.105ms)
+11:54:06 Build Finished (took 1s.386ms)
 

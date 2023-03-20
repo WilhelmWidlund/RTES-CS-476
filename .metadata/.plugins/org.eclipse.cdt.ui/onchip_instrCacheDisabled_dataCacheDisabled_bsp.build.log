@@ -1,6 +1,6 @@
-15:56:06 **** Incremental Build of configuration Nios II for project onchip_instrCacheDisabled_dataCacheDisabled_bsp ****
+11:54:01 **** Incremental Build of configuration Nios II for project onchip_instrCacheDisabled_dataCacheDisabled_bsp ****
 make all 
 [BSP build complete]
 
-15:56:07 Build Finished (took 985ms)
+11:54:02 Build Finished (took 981ms)
 
