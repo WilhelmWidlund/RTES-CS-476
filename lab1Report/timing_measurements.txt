@@ -11,4 +11,23 @@ Recovery time:
 	logic analyzer: 6.4 us
 Latency time:
 	logic c-level: 4.5 us
-	logic asm-level:
+
+2) onchip memory, instr cache enabled (64 kbytes), data cache disabled
+Response time:
+	print: 284 cycles (average over 10 runs)
+	logic analyzer: 4.16 us
+Recovery time:
+	print: 140 cycles (average over 10 runs)
+	logic analyzer: 2.72 us
+Latency time:
+	logic c-level: 1.76 us
+
+2) onchip memory, instr cache enabled (64 kbytes), data cache enabled (xx kbytes)
+Response time:
+	print: xx cycles (average over 10 runs)
+	logic analyzer: xx us
+Recovery time:
+	print: xx cycles (average over 10 runs)
+	logic analyzer: xx us
+Latency time:
+	logic c-level: xx us
