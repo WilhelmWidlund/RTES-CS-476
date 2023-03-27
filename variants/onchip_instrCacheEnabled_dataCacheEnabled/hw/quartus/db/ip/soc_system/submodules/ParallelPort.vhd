@@ -94,9 +94,6 @@ architecture comp of ParallelPort is
 			if( or_reduce(iPortValues AND iIRQEN) = '1') then
 				IRQ <= '1';
 			end if;
-			--if((iPortValues AND iIRQEN) /= std_logic_vector(to_unsigned(0, 32))) then
-			--	IRQ <= '1';
-			--end if;
 			if(iIRQCLEAR = '1') then
 				IRQ <= '0';
 			end if;

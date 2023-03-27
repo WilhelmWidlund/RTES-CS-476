@@ -139,7 +139,7 @@ ACDS_VERSION := 18.1
 # Define path to the application ELF. 
 # It may be used by the makefile fragments so is defined before including them. 
 # 
-ELF := onchip_instrCacheDisabled_dataCacheDisabled.elf
+ELF := onchip_instrCacheEnabled_dataCacheEnabled.elf
 
 # Paths to C, C++, and assembly source files.
 C_SRCS := hello_world.c
@@ -177,7 +177,7 @@ CRT0 :=
 SYS_LIB :=
 
 # Define path to the root of the BSP.
-BSP_ROOT_DIR := C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/sw/nios/onchip_instrCacheDisabled_dataCacheDisabled_bsp/
+BSP_ROOT_DIR := C:/RTES/variants/onchip_instrCacheEnabled_dataCacheEnabled/sw/nios/onchip_instrCacheEnabled_dataCacheEnabled_bsp/
 
 # List of application specific include directories, library directories and library names
 APP_INCLUDE_DIRS :=
@@ -188,7 +188,7 @@ APP_LIBRARY_NAMES :=
 BUILD_PRE_PROCESS :=
 BUILD_POST_PROCESS :=
 
-QUARTUS_PROJECT_DIR := C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus/
+QUARTUS_PROJECT_DIR := C:/RTES/variants/onchip_instrCacheEnabled_dataCacheEnabled/hw/quartus/
 
 
 #END GENERATED

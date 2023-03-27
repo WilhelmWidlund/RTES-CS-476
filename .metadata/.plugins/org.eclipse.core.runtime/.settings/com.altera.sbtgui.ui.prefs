@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-newSoftwareExampleWizardPage.defaultLocation=C\:\\RTES\\variants\\onchip_instrCacheEnabled_dataCacheDisabled\\sw\\nios\\application
-newSoftwareExampleWizardPage.sopcinfoFile=C\:\\RTES\\variants\\onchip_instrCacheEnabled_dataCacheDisabled\\hw\\quartus\\soc_system.sopcinfo
-newSoftwareExampleWizardPage2.newBspLocation=C\:\\RTES\\variants\\onchip_instrCacheEnabled_dataCacheDisabled\\sw\\nios\\onchip_instrCacheEnabled_dataCacheDisabled_bsp
+newSoftwareExampleWizardPage.defaultLocation=C\:\\RTES\\variants\\sdram_instrCacheEnabled_dataCacheEnabled\\sw\\nios\\application
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\RTES\\variants\\sdram_instrCacheEnabled_dataCacheEnabled\\hw\\quartus\\soc_system.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\RTES\\variants\\sdram_instrCacheEnabled_dataCacheEnabled\\sw\\nios\\sdram_instrCacheEnabled_dataCacheEnabled_bsp

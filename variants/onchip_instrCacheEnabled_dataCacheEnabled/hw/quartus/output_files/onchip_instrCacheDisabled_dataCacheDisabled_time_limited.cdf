@@ -6,7 +6,7 @@ JedecChain;
 	P ActionCode(Ign)
 		Device PartName(SOCVHPS) MfrSpec(OpMask(0));
 	P ActionCode(Cfg)
-		Device PartName(5CSEMA5F31) Path("C:/RTES/variants/onchip_instrCacheDisabled_dataCacheDisabled/hw/quartus/output_files/") File("onchip_instrCacheDisabled_dataCacheDisabled_time_limited.sof") MfrSpec(OpMask(1));
+		Device PartName(5CSEMA5F31) Path("C:/RTES/variants/onchip_instrCacheEnabled_dataCacheEnabled/hw/quartus/output_files/") File("onchip_instrCacheDisabled_dataCacheDisabled_time_limited.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

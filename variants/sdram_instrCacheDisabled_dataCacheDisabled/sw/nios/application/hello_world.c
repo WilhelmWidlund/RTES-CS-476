@@ -117,7 +117,7 @@ void test_resptime_parport()
 	alt_ic_isr_register(PARALLELPORT_0_IRQ_INTERRUPT_CONTROLLER_ID, PARALLELPORT_0_IRQ, resp_isr_parport, 0, 0);
 	IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_Data, 0x0);
 	IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_IRQEN, 0x2);
-	int iterations = 5;
+	int iterations = 10;
 	int counter = 0;
 	while(counter < iterations)
 	{
@@ -188,7 +188,7 @@ void test_recovtime_parport()
 		alt_ic_isr_register(PARALLELPORT_0_IRQ_INTERRUPT_CONTROLLER_ID, PARALLELPORT_0_IRQ, recov_isr_parport, 0, 0);
 		IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_Data, 0x0);
 		IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_IRQEN, 0x2);
-		int iterations = 5;
+		int iterations = 10;
 		int counter = 0;
 		while(counter < iterations)
 		{
@@ -214,7 +214,7 @@ void test_latency_parport()
 	int counter = 0;
 	while(counter < iterations)
 	{
-		// Trigger the interrupt by setting channel 1 high
+		// Trigger the interrupt by setting channel 0 high
 		IOWR_32DIRECT(PARALLELPORT_0_BASE, PARPORT_Data, 0x1);
 
 		counter += 1;
@@ -229,14 +229,14 @@ int main()
 
 	// Latency tests
 	// De-comment line 90 in alt_irq_handler.c to run this test
-	//test_latency_parport();
+	test_latency_parport();
 
 	// Response time tests
-	test_resptime_print();
+	//test_resptime_print();
 	//test_resptime_parport();
 
 	// Recovery time tests
-	test_recovtime_print();
+	//test_recovtime_print();
 	//test_recovtime_parport();
 	return 0;
 }

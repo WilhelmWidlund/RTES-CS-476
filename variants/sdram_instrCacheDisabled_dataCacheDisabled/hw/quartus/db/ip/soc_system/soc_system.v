@@ -4,23 +4,34 @@
 
 `timescale 1 ps / 1 ps
 module soc_system (
-		input  wire        clk_clk,              //         clk.clk
-		input  wire [3:0]  pin_buttons_export,   // pin_buttons.export
-		output wire [31:0] pout_custom_readdata, // pout_custom.readdata
-		input  wire        reset_reset_n         //       reset.reset_n
+		input  wire        clk_clk,                           //                         clk.clk
+		output wire [12:0] new_sdram_controller_0_wire_addr,  // new_sdram_controller_0_wire.addr
+		output wire [1:0]  new_sdram_controller_0_wire_ba,    //                            .ba
+		output wire        new_sdram_controller_0_wire_cas_n, //                            .cas_n
+		output wire        new_sdram_controller_0_wire_cke,   //                            .cke
+		output wire        new_sdram_controller_0_wire_cs_n,  //                            .cs_n
+		inout  wire [15:0] new_sdram_controller_0_wire_dq,    //                            .dq
+		output wire [1:0]  new_sdram_controller_0_wire_dqm,   //                            .dqm
+		output wire        new_sdram_controller_0_wire_ras_n, //                            .ras_n
+		output wire        new_sdram_controller_0_wire_we_n,  //                            .we_n
+		input  wire [3:0]  pin_buttons_export,                //                 pin_buttons.export
+		output wire        pll_0_sdram_clk,                   //                 pll_0_sdram.clk
+		output wire [31:0] pout_custom_readdata,              //                 pout_custom.readdata
+		input  wire        reset_reset_n                      //                       reset.reset_n
 	);
 
+	wire         pll_0_outclk1_clk;                                           // pll_0:outclk_1 -> [mm_interconnect_0:pll_0_outclk1_clk, new_sdram_controller_0:clk, rst_controller_002:clk]
 	wire  [31:0] nios2_gen2_0_data_master_readdata;                           // mm_interconnect_0:nios2_gen2_0_data_master_readdata -> nios2_gen2_0:d_readdata
 	wire         nios2_gen2_0_data_master_waitrequest;                        // mm_interconnect_0:nios2_gen2_0_data_master_waitrequest -> nios2_gen2_0:d_waitrequest
 	wire         nios2_gen2_0_data_master_debugaccess;                        // nios2_gen2_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:nios2_gen2_0_data_master_debugaccess
-	wire  [18:0] nios2_gen2_0_data_master_address;                            // nios2_gen2_0:d_address -> mm_interconnect_0:nios2_gen2_0_data_master_address
+	wire  [26:0] nios2_gen2_0_data_master_address;                            // nios2_gen2_0:d_address -> mm_interconnect_0:nios2_gen2_0_data_master_address
 	wire   [3:0] nios2_gen2_0_data_master_byteenable;                         // nios2_gen2_0:d_byteenable -> mm_interconnect_0:nios2_gen2_0_data_master_byteenable
 	wire         nios2_gen2_0_data_master_read;                               // nios2_gen2_0:d_read -> mm_interconnect_0:nios2_gen2_0_data_master_read
 	wire         nios2_gen2_0_data_master_write;                              // nios2_gen2_0:d_write -> mm_interconnect_0:nios2_gen2_0_data_master_write
 	wire  [31:0] nios2_gen2_0_data_master_writedata;                          // nios2_gen2_0:d_writedata -> mm_interconnect_0:nios2_gen2_0_data_master_writedata
 	wire  [31:0] nios2_gen2_0_instruction_master_readdata;                    // mm_interconnect_0:nios2_gen2_0_instruction_master_readdata -> nios2_gen2_0:i_readdata
 	wire         nios2_gen2_0_instruction_master_waitrequest;                 // mm_interconnect_0:nios2_gen2_0_instruction_master_waitrequest -> nios2_gen2_0:i_waitrequest
-	wire  [18:0] nios2_gen2_0_instruction_master_address;                     // nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
+	wire  [26:0] nios2_gen2_0_instruction_master_address;                     // nios2_gen2_0:i_address -> mm_interconnect_0:nios2_gen2_0_instruction_master_address
 	wire         nios2_gen2_0_instruction_master_read;                        // nios2_gen2_0:i_read -> mm_interconnect_0:nios2_gen2_0_instruction_master_read
 	wire         mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect;  // mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_chipselect -> jtag_uart_0:av_chipselect
 	wire  [31:0] mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata;    // jtag_uart_0:av_readdata -> mm_interconnect_0:jtag_uart_0_avalon_jtag_slave_readdata
@@ -52,6 +63,15 @@ module soc_system (
 	wire   [2:0] mm_interconnect_0_timer_0_s1_address;                        // mm_interconnect_0:timer_0_s1_address -> timer_0:address
 	wire         mm_interconnect_0_timer_0_s1_write;                          // mm_interconnect_0:timer_0_s1_write -> timer_0:write_n
 	wire  [15:0] mm_interconnect_0_timer_0_s1_writedata;                      // mm_interconnect_0:timer_0_s1_writedata -> timer_0:writedata
+	wire         mm_interconnect_0_new_sdram_controller_0_s1_chipselect;      // mm_interconnect_0:new_sdram_controller_0_s1_chipselect -> new_sdram_controller_0:az_cs
+	wire  [15:0] mm_interconnect_0_new_sdram_controller_0_s1_readdata;        // new_sdram_controller_0:za_data -> mm_interconnect_0:new_sdram_controller_0_s1_readdata
+	wire         mm_interconnect_0_new_sdram_controller_0_s1_waitrequest;     // new_sdram_controller_0:za_waitrequest -> mm_interconnect_0:new_sdram_controller_0_s1_waitrequest
+	wire  [24:0] mm_interconnect_0_new_sdram_controller_0_s1_address;         // mm_interconnect_0:new_sdram_controller_0_s1_address -> new_sdram_controller_0:az_addr
+	wire         mm_interconnect_0_new_sdram_controller_0_s1_read;            // mm_interconnect_0:new_sdram_controller_0_s1_read -> new_sdram_controller_0:az_rd_n
+	wire   [1:0] mm_interconnect_0_new_sdram_controller_0_s1_byteenable;      // mm_interconnect_0:new_sdram_controller_0_s1_byteenable -> new_sdram_controller_0:az_be_n
+	wire         mm_interconnect_0_new_sdram_controller_0_s1_readdatavalid;   // new_sdram_controller_0:za_valid -> mm_interconnect_0:new_sdram_controller_0_s1_readdatavalid
+	wire         mm_interconnect_0_new_sdram_controller_0_s1_write;           // mm_interconnect_0:new_sdram_controller_0_s1_write -> new_sdram_controller_0:az_wr_n
+	wire  [15:0] mm_interconnect_0_new_sdram_controller_0_s1_writedata;       // mm_interconnect_0:new_sdram_controller_0_s1_writedata -> new_sdram_controller_0:az_data
 	wire  [31:0] mm_interconnect_0_pio_0_s1_readdata;                         // pio_0:readdata -> mm_interconnect_0:pio_0_s1_readdata
 	wire   [1:0] mm_interconnect_0_pio_0_s1_address;                          // mm_interconnect_0:pio_0_s1_address -> pio_0:address
 	wire         mm_interconnect_0_onchip_memory2_0_s1_chipselect;            // mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
@@ -69,7 +89,8 @@ module soc_system (
 	wire         rst_controller_reset_out_reset;                              // rst_controller:reset_out -> [Counter_0:nReset, ParallelPort_0:nReset, mm_interconnect_0:ParallelPort_0_reset_sink_reset_bridge_in_reset_reset]
 	wire         rst_controller_001_reset_out_reset;                          // rst_controller_001:reset_out -> [irq_mapper:reset, jtag_uart_0:rst_n, mm_interconnect_0:nios2_gen2_0_reset_reset_bridge_in_reset_reset, nios2_gen2_0:reset_n, onchip_memory2_0:reset, pio_0:reset_n, rst_translator:in_reset, timer_0:reset_n]
 	wire         rst_controller_001_reset_out_reset_req;                      // rst_controller_001:reset_req -> [nios2_gen2_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
-	wire         nios2_gen2_0_debug_reset_request_reset;                      // nios2_gen2_0:debug_reset_request -> rst_controller_001:reset_in1
+	wire         nios2_gen2_0_debug_reset_request_reset;                      // nios2_gen2_0:debug_reset_request -> [rst_controller_001:reset_in1, rst_controller_002:reset_in1]
+	wire         rst_controller_002_reset_out_reset;                          // rst_controller_002:reset_out -> [mm_interconnect_0:new_sdram_controller_0_reset_reset_bridge_in_reset_reset, new_sdram_controller_0:reset_n]
 
 	Counter counter_0 (
 		.Clk       (clk_clk),                                              //            clock.clk
@@ -105,6 +126,29 @@ module soc_system (
 		.av_writedata   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),   //                  .writedata
 		.av_waitrequest (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest), //                  .waitrequest
 		.av_irq         (irq_mapper_receiver2_irq)                                     //               irq.irq
+	);
+
+	soc_system_new_sdram_controller_0 new_sdram_controller_0 (
+		.clk            (pll_0_outclk1_clk),                                         //   clk.clk
+		.reset_n        (~rst_controller_002_reset_out_reset),                       // reset.reset_n
+		.az_addr        (mm_interconnect_0_new_sdram_controller_0_s1_address),       //    s1.address
+		.az_be_n        (~mm_interconnect_0_new_sdram_controller_0_s1_byteenable),   //      .byteenable_n
+		.az_cs          (mm_interconnect_0_new_sdram_controller_0_s1_chipselect),    //      .chipselect
+		.az_data        (mm_interconnect_0_new_sdram_controller_0_s1_writedata),     //      .writedata
+		.az_rd_n        (~mm_interconnect_0_new_sdram_controller_0_s1_read),         //      .read_n
+		.az_wr_n        (~mm_interconnect_0_new_sdram_controller_0_s1_write),        //      .write_n
+		.za_data        (mm_interconnect_0_new_sdram_controller_0_s1_readdata),      //      .readdata
+		.za_valid       (mm_interconnect_0_new_sdram_controller_0_s1_readdatavalid), //      .readdatavalid
+		.za_waitrequest (mm_interconnect_0_new_sdram_controller_0_s1_waitrequest),   //      .waitrequest
+		.zs_addr        (new_sdram_controller_0_wire_addr),                          //  wire.export
+		.zs_ba          (new_sdram_controller_0_wire_ba),                            //      .export
+		.zs_cas_n       (new_sdram_controller_0_wire_cas_n),                         //      .export
+		.zs_cke         (new_sdram_controller_0_wire_cke),                           //      .export
+		.zs_cs_n        (new_sdram_controller_0_wire_cs_n),                          //      .export
+		.zs_dq          (new_sdram_controller_0_wire_dq),                            //      .export
+		.zs_dqm         (new_sdram_controller_0_wire_dqm),                           //      .export
+		.zs_ras_n       (new_sdram_controller_0_wire_ras_n),                         //      .export
+		.zs_we_n        (new_sdram_controller_0_wire_we_n)                           //      .export
 	);
 
 	soc_system_nios2_gen2_0 nios2_gen2_0 (
@@ -158,6 +202,15 @@ module soc_system (
 		.in_port  (pin_buttons_export)                   // external_connection.export
 	);
 
+	soc_system_pll_0 pll_0 (
+		.refclk   (clk_clk),           //  refclk.clk
+		.rst      (~reset_reset_n),    //   reset.reset
+		.outclk_0 (),                  // outclk0.clk
+		.outclk_1 (pll_0_outclk1_clk), // outclk1.clk
+		.outclk_2 (pll_0_sdram_clk),   // outclk2.clk
+		.locked   ()                   // (terminated)
+	);
+
 	soc_system_timer_0 timer_0 (
 		.clk        (clk_clk),                                 //   clk.clk
 		.reset_n    (~rst_controller_001_reset_out_reset),     // reset.reset_n
@@ -170,60 +223,71 @@ module soc_system (
 	);
 
 	soc_system_mm_interconnect_0 mm_interconnect_0 (
-		.clk_0_clk_clk                                         (clk_clk),                                                     //                                       clk_0_clk.clk
-		.nios2_gen2_0_reset_reset_bridge_in_reset_reset        (rst_controller_001_reset_out_reset),                          //        nios2_gen2_0_reset_reset_bridge_in_reset.reset
-		.ParallelPort_0_reset_sink_reset_bridge_in_reset_reset (rst_controller_reset_out_reset),                              // ParallelPort_0_reset_sink_reset_bridge_in_reset.reset
-		.nios2_gen2_0_data_master_address                      (nios2_gen2_0_data_master_address),                            //                        nios2_gen2_0_data_master.address
-		.nios2_gen2_0_data_master_waitrequest                  (nios2_gen2_0_data_master_waitrequest),                        //                                                .waitrequest
-		.nios2_gen2_0_data_master_byteenable                   (nios2_gen2_0_data_master_byteenable),                         //                                                .byteenable
-		.nios2_gen2_0_data_master_read                         (nios2_gen2_0_data_master_read),                               //                                                .read
-		.nios2_gen2_0_data_master_readdata                     (nios2_gen2_0_data_master_readdata),                           //                                                .readdata
-		.nios2_gen2_0_data_master_write                        (nios2_gen2_0_data_master_write),                              //                                                .write
-		.nios2_gen2_0_data_master_writedata                    (nios2_gen2_0_data_master_writedata),                          //                                                .writedata
-		.nios2_gen2_0_data_master_debugaccess                  (nios2_gen2_0_data_master_debugaccess),                        //                                                .debugaccess
-		.nios2_gen2_0_instruction_master_address               (nios2_gen2_0_instruction_master_address),                     //                 nios2_gen2_0_instruction_master.address
-		.nios2_gen2_0_instruction_master_waitrequest           (nios2_gen2_0_instruction_master_waitrequest),                 //                                                .waitrequest
-		.nios2_gen2_0_instruction_master_read                  (nios2_gen2_0_instruction_master_read),                        //                                                .read
-		.nios2_gen2_0_instruction_master_readdata              (nios2_gen2_0_instruction_master_readdata),                    //                                                .readdata
-		.Counter_0_avalon_slave_0_address                      (mm_interconnect_0_counter_0_avalon_slave_0_address),          //                        Counter_0_avalon_slave_0.address
-		.Counter_0_avalon_slave_0_write                        (mm_interconnect_0_counter_0_avalon_slave_0_write),            //                                                .write
-		.Counter_0_avalon_slave_0_read                         (mm_interconnect_0_counter_0_avalon_slave_0_read),             //                                                .read
-		.Counter_0_avalon_slave_0_readdata                     (mm_interconnect_0_counter_0_avalon_slave_0_readdata),         //                                                .readdata
-		.Counter_0_avalon_slave_0_writedata                    (mm_interconnect_0_counter_0_avalon_slave_0_writedata),        //                                                .writedata
-		.jtag_uart_0_avalon_jtag_slave_address                 (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address),     //                   jtag_uart_0_avalon_jtag_slave.address
-		.jtag_uart_0_avalon_jtag_slave_write                   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),       //                                                .write
-		.jtag_uart_0_avalon_jtag_slave_read                    (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read),        //                                                .read
-		.jtag_uart_0_avalon_jtag_slave_readdata                (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata),    //                                                .readdata
-		.jtag_uart_0_avalon_jtag_slave_writedata               (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),   //                                                .writedata
-		.jtag_uart_0_avalon_jtag_slave_waitrequest             (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest), //                                                .waitrequest
-		.jtag_uart_0_avalon_jtag_slave_chipselect              (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect),  //                                                .chipselect
-		.nios2_gen2_0_debug_mem_slave_address                  (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_address),      //                    nios2_gen2_0_debug_mem_slave.address
-		.nios2_gen2_0_debug_mem_slave_write                    (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_write),        //                                                .write
-		.nios2_gen2_0_debug_mem_slave_read                     (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_read),         //                                                .read
-		.nios2_gen2_0_debug_mem_slave_readdata                 (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata),     //                                                .readdata
-		.nios2_gen2_0_debug_mem_slave_writedata                (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_writedata),    //                                                .writedata
-		.nios2_gen2_0_debug_mem_slave_byteenable               (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_byteenable),   //                                                .byteenable
-		.nios2_gen2_0_debug_mem_slave_waitrequest              (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_waitrequest),  //                                                .waitrequest
-		.nios2_gen2_0_debug_mem_slave_debugaccess              (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_debugaccess),  //                                                .debugaccess
-		.onchip_memory2_0_s1_address                           (mm_interconnect_0_onchip_memory2_0_s1_address),               //                             onchip_memory2_0_s1.address
-		.onchip_memory2_0_s1_write                             (mm_interconnect_0_onchip_memory2_0_s1_write),                 //                                                .write
-		.onchip_memory2_0_s1_readdata                          (mm_interconnect_0_onchip_memory2_0_s1_readdata),              //                                                .readdata
-		.onchip_memory2_0_s1_writedata                         (mm_interconnect_0_onchip_memory2_0_s1_writedata),             //                                                .writedata
-		.onchip_memory2_0_s1_byteenable                        (mm_interconnect_0_onchip_memory2_0_s1_byteenable),            //                                                .byteenable
-		.onchip_memory2_0_s1_chipselect                        (mm_interconnect_0_onchip_memory2_0_s1_chipselect),            //                                                .chipselect
-		.onchip_memory2_0_s1_clken                             (mm_interconnect_0_onchip_memory2_0_s1_clken),                 //                                                .clken
-		.ParallelPort_0_avalon_slave_0_address                 (mm_interconnect_0_parallelport_0_avalon_slave_0_address),     //                   ParallelPort_0_avalon_slave_0.address
-		.ParallelPort_0_avalon_slave_0_write                   (mm_interconnect_0_parallelport_0_avalon_slave_0_write),       //                                                .write
-		.ParallelPort_0_avalon_slave_0_read                    (mm_interconnect_0_parallelport_0_avalon_slave_0_read),        //                                                .read
-		.ParallelPort_0_avalon_slave_0_readdata                (mm_interconnect_0_parallelport_0_avalon_slave_0_readdata),    //                                                .readdata
-		.ParallelPort_0_avalon_slave_0_writedata               (mm_interconnect_0_parallelport_0_avalon_slave_0_writedata),   //                                                .writedata
-		.pio_0_s1_address                                      (mm_interconnect_0_pio_0_s1_address),                          //                                        pio_0_s1.address
-		.pio_0_s1_readdata                                     (mm_interconnect_0_pio_0_s1_readdata),                         //                                                .readdata
-		.timer_0_s1_address                                    (mm_interconnect_0_timer_0_s1_address),                        //                                      timer_0_s1.address
-		.timer_0_s1_write                                      (mm_interconnect_0_timer_0_s1_write),                          //                                                .write
-		.timer_0_s1_readdata                                   (mm_interconnect_0_timer_0_s1_readdata),                       //                                                .readdata
-		.timer_0_s1_writedata                                  (mm_interconnect_0_timer_0_s1_writedata),                      //                                                .writedata
-		.timer_0_s1_chipselect                                 (mm_interconnect_0_timer_0_s1_chipselect)                      //                                                .chipselect
+		.clk_0_clk_clk                                            (clk_clk),                                                     //                                          clk_0_clk.clk
+		.pll_0_outclk1_clk                                        (pll_0_outclk1_clk),                                           //                                      pll_0_outclk1.clk
+		.new_sdram_controller_0_reset_reset_bridge_in_reset_reset (rst_controller_002_reset_out_reset),                          // new_sdram_controller_0_reset_reset_bridge_in_reset.reset
+		.nios2_gen2_0_reset_reset_bridge_in_reset_reset           (rst_controller_001_reset_out_reset),                          //           nios2_gen2_0_reset_reset_bridge_in_reset.reset
+		.ParallelPort_0_reset_sink_reset_bridge_in_reset_reset    (rst_controller_reset_out_reset),                              //    ParallelPort_0_reset_sink_reset_bridge_in_reset.reset
+		.nios2_gen2_0_data_master_address                         (nios2_gen2_0_data_master_address),                            //                           nios2_gen2_0_data_master.address
+		.nios2_gen2_0_data_master_waitrequest                     (nios2_gen2_0_data_master_waitrequest),                        //                                                   .waitrequest
+		.nios2_gen2_0_data_master_byteenable                      (nios2_gen2_0_data_master_byteenable),                         //                                                   .byteenable
+		.nios2_gen2_0_data_master_read                            (nios2_gen2_0_data_master_read),                               //                                                   .read
+		.nios2_gen2_0_data_master_readdata                        (nios2_gen2_0_data_master_readdata),                           //                                                   .readdata
+		.nios2_gen2_0_data_master_write                           (nios2_gen2_0_data_master_write),                              //                                                   .write
+		.nios2_gen2_0_data_master_writedata                       (nios2_gen2_0_data_master_writedata),                          //                                                   .writedata
+		.nios2_gen2_0_data_master_debugaccess                     (nios2_gen2_0_data_master_debugaccess),                        //                                                   .debugaccess
+		.nios2_gen2_0_instruction_master_address                  (nios2_gen2_0_instruction_master_address),                     //                    nios2_gen2_0_instruction_master.address
+		.nios2_gen2_0_instruction_master_waitrequest              (nios2_gen2_0_instruction_master_waitrequest),                 //                                                   .waitrequest
+		.nios2_gen2_0_instruction_master_read                     (nios2_gen2_0_instruction_master_read),                        //                                                   .read
+		.nios2_gen2_0_instruction_master_readdata                 (nios2_gen2_0_instruction_master_readdata),                    //                                                   .readdata
+		.Counter_0_avalon_slave_0_address                         (mm_interconnect_0_counter_0_avalon_slave_0_address),          //                           Counter_0_avalon_slave_0.address
+		.Counter_0_avalon_slave_0_write                           (mm_interconnect_0_counter_0_avalon_slave_0_write),            //                                                   .write
+		.Counter_0_avalon_slave_0_read                            (mm_interconnect_0_counter_0_avalon_slave_0_read),             //                                                   .read
+		.Counter_0_avalon_slave_0_readdata                        (mm_interconnect_0_counter_0_avalon_slave_0_readdata),         //                                                   .readdata
+		.Counter_0_avalon_slave_0_writedata                       (mm_interconnect_0_counter_0_avalon_slave_0_writedata),        //                                                   .writedata
+		.jtag_uart_0_avalon_jtag_slave_address                    (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address),     //                      jtag_uart_0_avalon_jtag_slave.address
+		.jtag_uart_0_avalon_jtag_slave_write                      (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_write),       //                                                   .write
+		.jtag_uart_0_avalon_jtag_slave_read                       (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read),        //                                                   .read
+		.jtag_uart_0_avalon_jtag_slave_readdata                   (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_readdata),    //                                                   .readdata
+		.jtag_uart_0_avalon_jtag_slave_writedata                  (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_writedata),   //                                                   .writedata
+		.jtag_uart_0_avalon_jtag_slave_waitrequest                (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_waitrequest), //                                                   .waitrequest
+		.jtag_uart_0_avalon_jtag_slave_chipselect                 (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect),  //                                                   .chipselect
+		.new_sdram_controller_0_s1_address                        (mm_interconnect_0_new_sdram_controller_0_s1_address),         //                          new_sdram_controller_0_s1.address
+		.new_sdram_controller_0_s1_write                          (mm_interconnect_0_new_sdram_controller_0_s1_write),           //                                                   .write
+		.new_sdram_controller_0_s1_read                           (mm_interconnect_0_new_sdram_controller_0_s1_read),            //                                                   .read
+		.new_sdram_controller_0_s1_readdata                       (mm_interconnect_0_new_sdram_controller_0_s1_readdata),        //                                                   .readdata
+		.new_sdram_controller_0_s1_writedata                      (mm_interconnect_0_new_sdram_controller_0_s1_writedata),       //                                                   .writedata
+		.new_sdram_controller_0_s1_byteenable                     (mm_interconnect_0_new_sdram_controller_0_s1_byteenable),      //                                                   .byteenable
+		.new_sdram_controller_0_s1_readdatavalid                  (mm_interconnect_0_new_sdram_controller_0_s1_readdatavalid),   //                                                   .readdatavalid
+		.new_sdram_controller_0_s1_waitrequest                    (mm_interconnect_0_new_sdram_controller_0_s1_waitrequest),     //                                                   .waitrequest
+		.new_sdram_controller_0_s1_chipselect                     (mm_interconnect_0_new_sdram_controller_0_s1_chipselect),      //                                                   .chipselect
+		.nios2_gen2_0_debug_mem_slave_address                     (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_address),      //                       nios2_gen2_0_debug_mem_slave.address
+		.nios2_gen2_0_debug_mem_slave_write                       (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_write),        //                                                   .write
+		.nios2_gen2_0_debug_mem_slave_read                        (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_read),         //                                                   .read
+		.nios2_gen2_0_debug_mem_slave_readdata                    (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_readdata),     //                                                   .readdata
+		.nios2_gen2_0_debug_mem_slave_writedata                   (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_writedata),    //                                                   .writedata
+		.nios2_gen2_0_debug_mem_slave_byteenable                  (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_byteenable),   //                                                   .byteenable
+		.nios2_gen2_0_debug_mem_slave_waitrequest                 (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_waitrequest),  //                                                   .waitrequest
+		.nios2_gen2_0_debug_mem_slave_debugaccess                 (mm_interconnect_0_nios2_gen2_0_debug_mem_slave_debugaccess),  //                                                   .debugaccess
+		.onchip_memory2_0_s1_address                              (mm_interconnect_0_onchip_memory2_0_s1_address),               //                                onchip_memory2_0_s1.address
+		.onchip_memory2_0_s1_write                                (mm_interconnect_0_onchip_memory2_0_s1_write),                 //                                                   .write
+		.onchip_memory2_0_s1_readdata                             (mm_interconnect_0_onchip_memory2_0_s1_readdata),              //                                                   .readdata
+		.onchip_memory2_0_s1_writedata                            (mm_interconnect_0_onchip_memory2_0_s1_writedata),             //                                                   .writedata
+		.onchip_memory2_0_s1_byteenable                           (mm_interconnect_0_onchip_memory2_0_s1_byteenable),            //                                                   .byteenable
+		.onchip_memory2_0_s1_chipselect                           (mm_interconnect_0_onchip_memory2_0_s1_chipselect),            //                                                   .chipselect
+		.onchip_memory2_0_s1_clken                                (mm_interconnect_0_onchip_memory2_0_s1_clken),                 //                                                   .clken
+		.ParallelPort_0_avalon_slave_0_address                    (mm_interconnect_0_parallelport_0_avalon_slave_0_address),     //                      ParallelPort_0_avalon_slave_0.address
+		.ParallelPort_0_avalon_slave_0_write                      (mm_interconnect_0_parallelport_0_avalon_slave_0_write),       //                                                   .write
+		.ParallelPort_0_avalon_slave_0_read                       (mm_interconnect_0_parallelport_0_avalon_slave_0_read),        //                                                   .read
+		.ParallelPort_0_avalon_slave_0_readdata                   (mm_interconnect_0_parallelport_0_avalon_slave_0_readdata),    //                                                   .readdata
+		.ParallelPort_0_avalon_slave_0_writedata                  (mm_interconnect_0_parallelport_0_avalon_slave_0_writedata),   //                                                   .writedata
+		.pio_0_s1_address                                         (mm_interconnect_0_pio_0_s1_address),                          //                                           pio_0_s1.address
+		.pio_0_s1_readdata                                        (mm_interconnect_0_pio_0_s1_readdata),                         //                                                   .readdata
+		.timer_0_s1_address                                       (mm_interconnect_0_timer_0_s1_address),                        //                                         timer_0_s1.address
+		.timer_0_s1_write                                         (mm_interconnect_0_timer_0_s1_write),                          //                                                   .write
+		.timer_0_s1_readdata                                      (mm_interconnect_0_timer_0_s1_readdata),                       //                                                   .readdata
+		.timer_0_s1_writedata                                     (mm_interconnect_0_timer_0_s1_writedata),                      //                                                   .writedata
+		.timer_0_s1_chipselect                                    (mm_interconnect_0_timer_0_s1_chipselect)                      //                                                   .chipselect
 	);
 
 	soc_system_irq_mapper irq_mapper (
@@ -330,6 +394,69 @@ module soc_system (
 		.clk            (clk_clk),                                //       clk.clk
 		.reset_out      (rst_controller_001_reset_out_reset),     // reset_out.reset
 		.reset_req      (rst_controller_001_reset_out_reset_req), //          .reset_req
+		.reset_req_in0  (1'b0),                                   // (terminated)
+		.reset_req_in1  (1'b0),                                   // (terminated)
+		.reset_in2      (1'b0),                                   // (terminated)
+		.reset_req_in2  (1'b0),                                   // (terminated)
+		.reset_in3      (1'b0),                                   // (terminated)
+		.reset_req_in3  (1'b0),                                   // (terminated)
+		.reset_in4      (1'b0),                                   // (terminated)
+		.reset_req_in4  (1'b0),                                   // (terminated)
+		.reset_in5      (1'b0),                                   // (terminated)
+		.reset_req_in5  (1'b0),                                   // (terminated)
+		.reset_in6      (1'b0),                                   // (terminated)
+		.reset_req_in6  (1'b0),                                   // (terminated)
+		.reset_in7      (1'b0),                                   // (terminated)
+		.reset_req_in7  (1'b0),                                   // (terminated)
+		.reset_in8      (1'b0),                                   // (terminated)
+		.reset_req_in8  (1'b0),                                   // (terminated)
+		.reset_in9      (1'b0),                                   // (terminated)
+		.reset_req_in9  (1'b0),                                   // (terminated)
+		.reset_in10     (1'b0),                                   // (terminated)
+		.reset_req_in10 (1'b0),                                   // (terminated)
+		.reset_in11     (1'b0),                                   // (terminated)
+		.reset_req_in11 (1'b0),                                   // (terminated)
+		.reset_in12     (1'b0),                                   // (terminated)
+		.reset_req_in12 (1'b0),                                   // (terminated)
+		.reset_in13     (1'b0),                                   // (terminated)
+		.reset_req_in13 (1'b0),                                   // (terminated)
+		.reset_in14     (1'b0),                                   // (terminated)
+		.reset_req_in14 (1'b0),                                   // (terminated)
+		.reset_in15     (1'b0),                                   // (terminated)
+		.reset_req_in15 (1'b0)                                    // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (2),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_002 (
+		.reset_in0      (~reset_reset_n),                         // reset_in0.reset
+		.reset_in1      (nios2_gen2_0_debug_reset_request_reset), // reset_in1.reset
+		.clk            (pll_0_outclk1_clk),                      //       clk.clk
+		.reset_out      (rst_controller_002_reset_out_reset),     // reset_out.reset
+		.reset_req      (),                                       // (terminated)
 		.reset_req_in0  (1'b0),                                   // (terminated)
 		.reset_req_in1  (1'b0),                                   // (terminated)
 		.reset_in2      (1'b0),                                   // (terminated)

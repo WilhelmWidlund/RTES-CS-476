@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>onchip_instrCacheDisabled_dataCacheDisabled</name>
+	<name>sdram_instrCacheDisabled_dataCacheDisabled</name>
 	<comment></comment>
 	<projects>
 	</projects>
