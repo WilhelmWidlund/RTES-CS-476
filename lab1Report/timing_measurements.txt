@@ -22,12 +22,42 @@ Recovery time:
 Latency time:
 	logic c-level: 1.76 us
 
-2) onchip memory, instr cache enabled (64 kbytes), data cache enabled (xx kbytes)
+3) onchip memory, instr cache enabled (64 kbytes), data cache enabled (64 kbytes)
 Response time:
-	print: xx cycles (average over 10 runs)
-	logic analyzer: xx us
+	print: 170 cycles (average over 10 runs)
+	logic analyzer: 2.4 us
 Recovery time:
-	print: xx cycles (average over 10 runs)
-	logic analyzer: xx us
+	print: 79 cycles (average over 10 runs)
+	logic analyzer: 1.44 us
 Latency time:
-	logic c-level: xx us
+	logic c-level: 0.8 us
+
+4) sdram memory, instr cache disabled, data cache disabled
+Response time:
+	print: 932 cycles (average over 10 runs)
+	logic analyzer: 13.28 us
+Recovery time:
+	print: 599 cycles (average over 10 runs)
+	logic analyzer: 11.68 us
+Latency time:
+	logic c-level: 4.32 us
+
+5) sdram memory, instr cache enabled (64 kbytes), data cache disabled
+Response time:
+	print: 537 cycles (average over 10 runs)
+	logic analyzer: 7.36 us
+Recovery time:
+	print: 350 cycles (average over 10 runs)
+	logic analyzer: 6.72 us
+Latency time:
+	logic c-level: 2.56 us
+
+6) sdram memory, instr cache enabled (64 kbytes), data cache enabled (64 kbytes)
+Response time:
+	print: 174 cycles (average over 10 runs)
+	logic analyzer: 2.4 us
+Recovery time:
+	print: 81 cycles (average over 10 runs)
+	logic analyzer: 1.44 us
+Latency time:
+	logic c-level: 0.8 us
