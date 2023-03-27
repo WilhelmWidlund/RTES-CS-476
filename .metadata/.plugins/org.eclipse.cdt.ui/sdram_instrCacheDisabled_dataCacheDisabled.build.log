@@ -1,0 +1,9 @@
+11:22:09 **** Incremental Build of configuration Nios II for project sdram_instrCacheDisabled_dataCacheDisabled ****
+make all 
+Info: Building C:/RTES/variants/sdram_instrCacheDisabled_dataCacheDisabled/sw/nios/sdram_instrCacheDisabled_dataCacheDisabled_bsp/
+C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/RTES/variants/sdram_instrCacheDisabled_dataCacheDisabled/sw/nios/sdram_instrCacheDisabled_dataCacheDisabled_bsp/
+[BSP build complete]
+[sdram_instrCacheDisabled_dataCacheDisabled build complete]
+
+11:22:11 Build Finished (took 1s.549ms)
+

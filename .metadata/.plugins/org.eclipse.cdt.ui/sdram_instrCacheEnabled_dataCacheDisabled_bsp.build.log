@@ -1,0 +1,6 @@
+11:32:35 **** Clean-only build of configuration Nios II for project sdram_instrCacheEnabled_dataCacheDisabled_bsp ****
+make clean 
+[BSP clean complete]
+
+11:32:36 Build Finished (took 899ms)
+
