@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="191" />
+   <irq preferredWidth="34" />
+   <description preferredWidth="408" />
+   <name preferredWidth="314" />
+   <export preferredWidth="194" />
+   <inputclock preferredWidth="179" />
+  </columns>
+ </systemtable>
+ <library expandedCategories="Project,Library" />
+ <window width="2736" height="1744" x="0" y="0" />
+ <hdlexample language="VHDL" />
+</preferences>

@@ -916,3 +916,756 @@ Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING
 
 !ENTRY com.altera.sbtgui.launch 1 0 2023-03-27 11:55:49.956
 !MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/sdram_instrCacheEnabled_dataCacheEnabled/sw/nios/application/sdram_instrCacheEnabled_dataCacheEnabled.elf]
+!SESSION 2023-04-03 08:42:21.383 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-04-03 08:42:40.205
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-04-03 08:44:45.818
+!MESSAGE Indexed 'uCOS_version_bsp' (94 sources, 68 headers) in 2.28 sec: 2,473 declarations; 10,230 references; 117 unresolved inclusions; 6 syntax errors; 195 unresolved names (1.5%)
+
+!ENTRY org.eclipse.cdt.core 1 0 2023-04-03 08:44:48.389
+!MESSAGE Indexed 'uCOS_version' (1 sources, 21 headers) in 0.137 sec: 990 declarations; 1,638 references; 1 unresolved inclusions; 0 syntax errors; 2 unresolved names (0.076%)
+!SESSION 2023-04-03 11:43:32.028 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-04-03 11:43:44.774
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:46:16.475
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:46:19.332
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:46:19.693
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:46:23.024
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:46:23.025
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:46:50.875
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:46:53.200
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:46:53.541
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:46:56.878
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:46:56.880
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:47:53.424
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:47:55.614
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:47:55.941
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:47:59.299
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:47:59.301
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:48:21.156
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:48:23.390
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:48:23.728
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:48:27.060
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:48:27.062
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:49:02.691
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:49:05.112
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:49:05.433
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:49:08.793
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:49:08.794
+!MESSAGE Downloading ELF Process failed
+!SESSION 2023-04-03 11:52:48.656 -----------------------------------------------
+eclipse.buildId=4.5.2.M20160212-1500
+java.version=1.8.0_05
+java.vendor=Oracle Corporation
+BootLoader constants: OS=win32, ARCH=x86_64, WS=win32, NL=en_GB
+Framework arguments:  -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+Command-line arguments:  -os win32 -ws win32 -arch x86_64 -product org.eclipse.epp.package.cpp.product -pluginCustomization C:/intelfpga_lite/18.1/nios2eds/bin/eclipse_nios2/plugin_customization.ini
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-04-03 11:52:50.192
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.epp.logging.aeri.ide 2 16 2023-04-03 11:53:00.146
+!MESSAGE Server ‘org.eclipse.epp.logging.aeri.ide.server’ failed with exception: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1. ; version: 1.100.0.v20160217-0435
+!STACK 0
+com.google.gson.JsonSyntaxException: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:176)
+	at com.google.gson.Gson.fromJson(Gson.java:803)
+	at com.google.gson.Gson.fromJson(Gson.java:768)
+	at com.google.gson.Gson.fromJson(Gson.java:717)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.json.Json.deserialize(Json.java:88)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.IO.refreshConfiguration(IO.java:70)
+	at org.eclipse.epp.internal.logging.aeri.ide.server.mars.ServerConnection.startUp(ServerConnection.java:101)
+	at com.google.common.util.concurrent.AbstractIdleService$2$1.run(AbstractIdleService.java:54)
+	at com.google.common.util.concurrent.Callables$3.run(Callables.java:93)
+	at java.lang.Thread.run(Unknown Source)
+Caused by: java.lang.IllegalStateException: Expected BEGIN_OBJECT but was STRING at line 1 column 1
+	at com.google.gson.stream.JsonReader.beginObject(JsonReader.java:374)
+	at com.google.gson.internal.bind.ReflectiveTypeAdapterFactory$Adapter.read(ReflectiveTypeAdapterFactory.java:165)
+	... 9 more
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:53:15.706
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:53:18.013
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:53:18.361
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:53:21.695
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:53:21.698
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:54:11.403
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:54:13.708
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:54:14.048
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:54:17.418
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --go, --accept-bad-sysid, /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf] return code: 4, 'other error'
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:54:17.420
+!MESSAGE Downloading ELF Process failed
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:57:10.757
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:57:13.076
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:57:13.396
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:58:53.720
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:58:54.476
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:58:57.101
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:58:57.443
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:59:50.889
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:59:51.634
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 11:59:53.900
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 11:59:54.239
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:02:02.936
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:02:03.659
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:02:06.025
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:02:06.353
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:03:00.116
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:03:00.909
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:03:03.247
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:03:03.591
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:03:41.510
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:03:42.313
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:03:44.649
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:03:44.973
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:05:06.363
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:05:07.195
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:05:09.563
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:05:09.892
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:15:21.782
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:15:22.780
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:15:25.201
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:15:25.526
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:21:47.664
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:21:48.416
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:21:50.722
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:21:51.046
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:24:03.062
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:24:03.798
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:24:06.155
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:24:06.487
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:27:32.405
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:27:33.162
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:27:35.584
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:27:35.914
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:30:49.445
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:30:50.167
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:30:52.653
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:30:52.985
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:32:40.210
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:32:40.955
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:32:43.317
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:32:43.656
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:33:51.988
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:33:52.721
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:33:55.005
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:33:55.343
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:38:19.421
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:38:20.141
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:38:22.475
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:38:22.802
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:39:43.558
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:39:44.284
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:39:46.691
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:39:47.031
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:40:11.168
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:40:11.894
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:40:14.191
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:40:14.531
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:44:35.362
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:44:36.081
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:44:38.384
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:44:38.716
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:46:29.153
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:46:29.897
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:46:32.326
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:46:32.670
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:48:01.873
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:48:02.622
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:48:04.953
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:48:05.284
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:50:10.658
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:50:11.429
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:50:13.850
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:50:14.180
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:51:29.027
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:51:29.789
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 12:51:32.107
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 12:51:32.447
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:01:46.281
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:01:46.986
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:01:49.333
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:01:49.676
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:09:56.727
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:09:57.402
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:09:59.831
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:10:00.158
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:10:59.908
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:11:00.616
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:11:02.923
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:11:03.263
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:12:03.531
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:12:04.253
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:12:06.653
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:12:06.992
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:12:44.288
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:12:45.051
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:12:47.357
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:12:47.698
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:14:16.363
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:14:17.123
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:14:19.481
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:14:19.825
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:16:47.892
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:16:48.601
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:16:50.948
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:16:51.286
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:17:21.859
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:17:22.588
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:17:24.868
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:17:25.205
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:18:53.793
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:18:54.519
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:18:56.879
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:18:57.215
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:19:33.560
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:19:34.260
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:19:36.617
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:19:36.946
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:20:44.776
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:20:45.548
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:20:47.893
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:20:48.213
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:21:09.989
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:21:10.714
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:21:13.163
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:21:13.503
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:22:03.503
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:22:04.227
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:22:06.529
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:22:06.857
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:23:41.572
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:23:42.297
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:23:44.664
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:23:44.987
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:28:59.162
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:28:59.894
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:29:02.453
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:29:02.794
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:34:30.886
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:34:31.619
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:34:33.999
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:34:34.340
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:34:45.335
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:34:46.100
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:34:48.400
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:34:48.733
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:36:29.161
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:36:29.887
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:36:32.133
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:36:32.462
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:38:13.873
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:38:14.584
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:38:17.070
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:38:17.391
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:40:17.569
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:40:18.330
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:40:20.799
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:40:21.125
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:41:09.095
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:41:09.834
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:41:12.210
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:41:12.543
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:43:36.597
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:43:37.317
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:43:39.652
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:43:39.993
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:46:29.306
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:46:30.013
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:46:32.280
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:46:32.610
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:47:57.072
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:47:57.836
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:48:00.233
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:48:00.573
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:48:24.123
+!MESSAGE Terminated Launch with connection: 20DE-SoC on localhost [USB-1]
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:48:24.885
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --stop --accept-bad-sysid --sidp=Not Found]
+
+!ENTRY com.altera.sbtgui.launch 4 0 2023-04-03 13:48:27.346
+!MESSAGE Failed Executing: [nios2-download, '--cable=DE-SoC on localhost [USB-1]', --device=2, --instance=0, --stop, --accept-bad-sysid, --sidp=Not Found] return code: 8
+
+!ENTRY com.altera.sbtgui.launch 1 0 2023-04-03 13:48:27.680
+!MESSAGE Executing: [C:/intelfpga_lite/18.1/quartus\bin64\cygwin\bin\bash.exe, -c, nios2-download '--cable=DE-SoC on localhost [USB-1]' --device=2 --instance=0 --go --accept-bad-sysid /cygdrive/c/RTES/variants/uCOS_version/sw/nios/application/uCOS_version.elf]
