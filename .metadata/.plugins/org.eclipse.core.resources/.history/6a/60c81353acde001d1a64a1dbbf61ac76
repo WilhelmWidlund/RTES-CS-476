@@ -1,0 +1,50 @@
+#include <stdio.h>
+#include "sys/alt_stdio.h"
+//#include <altera_avalon_performance_counter.h>
+#include "io.h"
+#include "system.h"
+#include <stdint.h>
+
+
+// Define a test number and it's expected result from the custom instruction
+uint32_t test = 0x12AAAAEF;
+uint32_t truth = 0xEF555512;
+
+uint32_t software_custom_inst(uint32_t input)
+{
+	uint32_t output;
+	output = (input<<24) & 0xff000000;
+	output = output + ((input & 0xff000000)>>24);
+	uint32_t sought_bit;
+	int i;
+	for(i=8; i<24; i++)
+	{
+		sought_bit = (input<<i)&0x80000000;
+		output = output + (sought_bit>>(31 - i));
+	}
+	return output;
+}
+
+int test_software_once(uint32_t input, uint32_t exp_output)
+{
+	uint32_t result;
+	result = software_custom_inst(input);
+	return result == exp_output;
+	/*
+	if (result == exp_output)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+	*/
+}
+
+int main()
+{
+	// Test software implementation once
+	int result = test_software_once(test, truth);
+
+}

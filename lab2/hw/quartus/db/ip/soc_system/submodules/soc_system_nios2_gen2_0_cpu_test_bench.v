@@ -113,7 +113,7 @@ module soc_system_nios2_gen2_0_cpu_test_bench (
   input   [ 18: 0] W_pcb;
   input   [ 31: 0] W_status_reg;
   input            W_valid;
-  input   [ 71: 0] W_vinst;
+  input   [159: 0] W_vinst;
   input            W_wr_dst_reg;
   input            clk;
   input   [ 18: 0] d_address;
@@ -214,6 +214,7 @@ wire             W_op_cmpne;
 wire             W_op_cmpnei;
 wire             W_op_crst;
 wire             W_op_custom;
+wire             W_op_custom_instruction_0;
 wire             W_op_div;
 wire             W_op_divu;
 wire             W_op_eret;
@@ -445,6 +446,7 @@ wire             test_has_ended;
   assign W_op_intr = (W_iw_opx == 61) & W_is_opx_inst;
   assign W_op_crst = (W_iw_opx == 62) & W_is_opx_inst;
   assign W_op_opx_rsv63 = (W_iw_opx == 63) & W_is_opx_inst;
+  assign W_op_custom_instruction_0 = W_op_custom & 1'b1;
   assign W_is_opx_inst = W_iw_op == 58;
   always @(posedge clk or negedge reset_n)
     begin

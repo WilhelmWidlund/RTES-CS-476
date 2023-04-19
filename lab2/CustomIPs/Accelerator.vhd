@@ -20,6 +20,9 @@ entity HwAccelerator is
 		AS_Addr					:			IN		STD_LOGIC_VECTOR(1 downto 0);
 		AS_Wr						:			IN		STD_LOGIC;
 		AS_WData					:			IN		STD_LOGIC_VECTOR(31 downto 0);
+		As_Rd						:			IN		STD_LOGIC;
+		AS_RData					:			OUT	STD_LOGIC_VECTOR(31 downto 0);
+		
 		
 		-- Debug PIO output signal
 		DEBUG						:			OUT	STD_LOGIC_VECTOR(7 downto 0)
@@ -38,6 +41,7 @@ architecture comp of HwAccelerator is
 	SIGNAL	iOutData			:	STD_LOGIC_VECTOR(31 downto 0);
 	SIGNAL	iStart			:	STD_LOGIC_VECTOR(2 downto 0);
 	SIGNAL	iStop				:	STD_LOGIC;
+	SIGNAL 	iWorking			:	STD_LOGIC;
 	
 begin
 		-- Drives Avalon master interface, Next_State, iCountNext, iStop
@@ -50,6 +54,8 @@ begin
 				iCountNext <= iCount;
 				-- Don't stop by default
 				iStop <= '0';
+				-- Don't work by default
+				iWorking <= '0';
 				-- Don't use master interface by default
 				AM_Wr <= '0';
 				AM_Addr <= (others => '0');
@@ -70,11 +76,13 @@ begin
 					case State is
 						when Idle =>
 							DEBUG <= "00000001";
+							iWorking <= '0';
 							-- Start the process when all three arguments have been received
 							if iStart = "111" then
 								Next_State <= DMALoadRequest;
 							end if;
 						when DMALoadRequest =>
+							iWorking <= '1';
 							DEBUG <= "00000010";
 							-- Request to read the next indata word from memory
 							AM_Rd <= '1';
@@ -85,6 +93,7 @@ begin
 								Next_State <= DMALoadReceive;
 							end if;
 						when DMALoadReceive =>
+							iWorking <= '1';
 							DEBUG <= "00000011";
 							-- Wait for the read data to be received, then move on
 							if AM_RDataValid = '1' then
@@ -92,6 +101,7 @@ begin
 								Next_State <= Operation;
 							end if;
 						when Operation =>
+							iWorking <= '1';
 							DEBUG <= "00000100";
 							-- Perform the operation, then move on
 							iOutData(31 downto 24) <= iInData(7 downto 0);
@@ -102,6 +112,7 @@ begin
 							Next_State <= DMAStore;
 						when DMAStore =>
 							DEBUG <= "00000101";
+							iWorking <= '1';
 							-- Request to store the outdata in memory
 							AM_Wr <= '1';
 							AM_Addr <= std_logic_vector(unsigned(iStoreAddr) + iCount*4);
@@ -114,6 +125,7 @@ begin
 							end if;
 						when CheckDone =>
 							DEBUG <= "00000110";
+							iWorking <= '1';
 							-- Check if the process is done
 							if iCountNext = iNum then
 								-- Move to idle
@@ -136,13 +148,13 @@ begin
 					State <= Idle;
 				elsif rising_edge(Clk) then
 					State <= Next_State;
-					iCount <= iCountNext;		
+					iCount <= iCountNext;
 				end if;
 		end process FSMUpdate;
 
 
 		-- Avalon slave write
-		-- Drives Avalon slave interface, iStart
+		-- Drives Avalon slave write interface, iStart
 		AS_WriteProc: process(Clk, Reset_n, iStop) is
 		begin
 			if Reset_n = '0' then
@@ -168,5 +180,20 @@ begin
 				end if;
 			end if;
 		end process AS_WriteProc;
+		
+		-- Avalon slave read
+		-- Drives Avalon slave read interface
+		AS_ReadProc: process(Clk, Reset_n) is
+		begin
+			if Reset_n = '0' then
+				AS_RData <= (others => '0');
+			elsif rising_edge(Clk) then
+				AS_RData <= (others => '0');
+				if(AS_Rd = '1') then
+					AS_RData(0) <= iStop;
+					AS_RData(1) <= iWorking;
+				end if;
+			end if;
+		end process AS_ReadProc;
 		
 end comp;

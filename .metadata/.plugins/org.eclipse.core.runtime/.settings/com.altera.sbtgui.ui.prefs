@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-newSoftwareExampleWizardPage.defaultLocation=C\:\\RTES\\variants\\uCOS_version\\sw\\nios\\application
-newSoftwareExampleWizardPage.sopcinfoFile=C\:\\RTES\\variants\\uCOS_version\\hw\\quartus\\soc_system.sopcinfo
-newSoftwareExampleWizardPage2.newBspLocation=C\:\\RTES\\variants\\uCOS_version\\sw\\nios\\uCOS_version_bsp
+newSoftwareExampleWizardPage.defaultLocation=C\:\\RTES\\lab2\\sw\\nios\\application
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\RTES\\lab2\\hw\\quartus\\soc_system.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\RTES\\lab2\\sw\\nios\\CustomInst_bsp

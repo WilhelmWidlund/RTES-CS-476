@@ -1,0 +1,113 @@
+#include <stdio.h>
+#include "sys/alt_stdio.h"
+#include "sys/alt_cache.h"
+//#include <altera_avalon_performance_counter.h>
+#include "io.h"
+#include "system.h"
+#include <stdint.h>
+
+
+// Declare a test number and it's expected result from the custom instruction
+uint32_t test = 0x12AAAAEF;
+uint32_t truth = 0xEF555512;
+
+// Declare tables for testing 1000 long data
+uint32_t in_1000[1000];
+uint32_t out_1000[1000];
+
+// Define macros for the accelerator
+#define ACC_BUSY			0x00000002
+#define ACC_DONE			0x00000001
+#define ACC_InputStartAddr	0
+#define	ACC_OutputStartAddr	4
+#define ACC_Num				8
+
+void init_tables()
+{
+	int i;
+	for(i=0; i<1000; i++)
+	{
+		in_1000[i] = test;
+	}
+	alt_dcache_flush_all();
+}
+init_tables();
+
+uint32_t software_custom_inst(uint32_t input)
+{
+	uint32_t output;
+	output = (input<<24) & 0xff000000;
+	output = output + ((input & 0xff000000)>>24);
+	uint32_t sought_bit;
+	int i;
+	for(i=8; i<24; i++)
+	{
+		sought_bit = (input<<i)&0x80000000;
+		output = output + (sought_bit>>(31 - i));
+	}
+	return output;
+}
+
+int test_software_once(uint32_t input, uint32_t exp_output)
+{
+	uint32_t result;
+	result = software_custom_inst(input);
+	return result == exp_output;
+}
+
+void software_1000()
+{
+	int i;
+	for(i=0; i<1000; i++)
+	{
+		out_1000[i] = software_custom_inst(in_1000[i]);
+	}
+}
+
+void custom_1000()
+{
+	int i;
+	for(i=0; i<1000; i++)
+	{
+		out_1000[i] = ALT_CI_CUSTOM_INSTRUCTION_0(in_1000[i]);
+	}
+}
+
+void use_accelerator(uint32_t in_addr, uint32_t out_addr, int length)
+{
+	// Check if the device is already working
+	uint32_t status = IORD_32DIRECT(ACCELERATOR_0_BASE, 0x0);
+	if(status = ACC_BUSY)
+	{
+		return;
+	}
+	// Start performance counter
+
+	// Write the three arguments
+	IOWR_32DIRECT(ACCELERATOR_0_BASE, ACC_InputStartAddr, );
+	IOWR_32DIRECT(ACCELERATOR_0_BASE, ACC_OutputStartAddr, );
+	IOWR_32DIRECT(ACCELERATOR_0_BASE, ACC_Num, 0x3E8);
+	// Wait for it to be done
+
+	// Stop performance counter
+}
+
+int main()
+{
+	// Setup stuff
+	init_tables();
+
+	// Test software implementation
+	alt_printf("Software implementation test 1: Expected is 1, it gives %x \n", test_software_once(test, truth));
+	alt_printf("Software implementation test 2: Expected is 0, it gives %x \n", test_software_once(test, 0xffffffff));
+
+	// Run software implementation on 1000 words of indata
+	software_1000();
+
+	// Test custom instruction implementation
+	alt_printf("Custom instruction implementation test 1: Expected is 1, it gives %x \n", ALT_CI_CUSTOM_INSTRUCTION_0(test)==truth);
+	alt_printf("Custom instruction implementation test 2: Expected is 0, it gives %x \n", ALT_CI_CUSTOM_INSTRUCTION_0(test)==0xffffffff);
+
+	// Run custom instruction implementation on 1000 words of indata
+	custom_1000();
+}
