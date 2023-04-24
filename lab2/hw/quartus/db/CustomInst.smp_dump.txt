@@ -1,12 +1,15 @@
 
-State Machine - |DE1_SoC_top_level|soc_system:u0|HwAccelerator:accelerator_0|State
-Name State.CheckDone State.DMAStore State.Operation State.DMALoadReceive State.DMALoadRequest State.Idle 
-State.Idle 0 0 0 0 0 0 
-State.DMALoadRequest 0 0 0 0 1 1 
-State.DMALoadReceive 0 0 0 1 0 1 
-State.Operation 0 0 1 0 0 1 
-State.DMAStore 0 1 0 0 0 1 
-State.CheckDone 1 0 0 0 0 1 
+State Machine - |DE1_SoC_top_level|soc_system:u0|HwAccelerator2:accelerator_v2_0|State
+Name State.Done State.CheckDone State.DMAStoreOngoing State.DMAStoreRequest State.Operation State.DMALoadReceive State.DMALoadOngoing State.DMALoadRequest State.Idle 
+State.Idle 0 0 0 0 0 0 0 0 0 
+State.DMALoadRequest 0 0 0 0 0 0 0 1 1 
+State.DMALoadOngoing 0 0 0 0 0 0 1 0 1 
+State.DMALoadReceive 0 0 0 0 0 1 0 0 1 
+State.Operation 0 0 0 0 1 0 0 0 1 
+State.DMAStoreRequest 0 0 0 1 0 0 0 0 1 
+State.DMAStoreOngoing 0 0 1 0 0 0 0 0 1 
+State.CheckDone 0 1 0 0 0 0 0 0 1 
+State.Done 1 0 0 0 0 0 0 0 1 
 
 State Machine - |DE1_SoC_top_level|soc_system:u0|soc_system_nios2_gen2_0:nios2_gen2_0|soc_system_nios2_gen2_0_cpu:cpu|soc_system_nios2_gen2_0_cpu_nios2_oci:the_soc_system_nios2_gen2_0_cpu_nios2_oci|soc_system_nios2_gen2_0_cpu_debug_slave_wrapper:the_soc_system_nios2_gen2_0_cpu_debug_slave_wrapper|soc_system_nios2_gen2_0_cpu_debug_slave_tck:the_soc_system_nios2_gen2_0_cpu_debug_slave_tck|DRsize
 Name DRsize.101 DRsize.100 DRsize.011 DRsize.010 DRsize.001 DRsize.000 

@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Apr 19, 2023 6:14:19 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1681920859577</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Apr 24, 2023 12:55:03 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1682333703339</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\RTES\lab2\sw\nios\CustomInst_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\RTES\lab2\hw\quartus\soc_system.sopcinfo</SopcDesignFile>
@@ -899,26 +899,26 @@
                 <Group xsi:nil="true" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"/>
         </Setting>
         <MemoryMap>
+                <slaveDescriptor>Accelerator_V2_0</slaveDescriptor>
+                <addressRange>0x00001090 - 0x0000109F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>onchip_memory2_0</slaveDescriptor>
-                <addressRange>0x00000000 - 0x0003FFFF</addressRange>
+                <addressRange>0x00040000 - 0x0007FFFF</addressRange>
                 <addressSpan>262144</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>performance_counter_0</slaveDescriptor>
-                <addressRange>0x00041000 - 0x0004107F</addressRange>
+                <addressRange>0x00081000 - 0x0008107F</addressRange>
                 <addressSpan>128</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>Accelerator_0</slaveDescriptor>
-                <addressRange>0x00041080 - 0x0004108F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>jtag_uart_0</slaveDescriptor>
-                <addressRange>0x00041090 - 0x00041097</addressRange>
+                <addressRange>0x00081090 - 0x00081097</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

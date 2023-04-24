@@ -21,6 +21,14 @@ uint32_t out_1000[1000];
 #define ACC_InputStartAddr	0
 #define	ACC_OutputStartAddr	4
 #define ACC_Num				8
+// Dumbest
+//#define ACC_ADDR_BASE		DUMBESTACCELERATOR_0_BASE
+// Dumb
+//#define ACC_ADDR_BASE		DUMBACCELERATOR_0_BASE
+// Base
+//#define ACC_ADDR_BASE		ACCELERATOR_0_BASE
+// V2
+#define ACC_ADDR_BASE		ACCELERATOR_V2_0_BASE
 
 void init_tables()
 {
@@ -53,7 +61,7 @@ void software_1000()
 	PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 1);
 
 	int i;
-	for(i=0; i<1000; i++)
+	for(i=0; i<240; i++)
 	{
 		out_1000[i] = software_custom_inst(in_1000[i]);
 	}
@@ -68,7 +76,7 @@ void custom_1000()
 	PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 2);
 
 	int i;
-	for(i=0; i<1000; i++)
+	for(i=0; i<240; i++)
 	{
 		out_1000[i] = ALT_CI_CUSTOM_INSTRUCTION_0(in_1000[i]);
 	}
@@ -80,23 +88,29 @@ void custom_1000()
 void use_accelerator(uint32_t in_addr, uint32_t out_addr, uint32_t length)
 {
 	// Check if the device is already working
-	uint32_t status = IORD_32DIRECT(ACCELERATOR_0_BASE, 0x0);
+	uint32_t status = IORD_32DIRECT(ACC_ADDR_BASE, 0x0);
+
 	if(status == ACC_BUSY)
 	{
+		alt_printf("Busy\n");
 		return;
 	}
+	alt_printf("Not busy\n");
 
 	// Start performance counter
 	PERF_BEGIN(PERFORMANCE_COUNTER_0_BASE, 3);
+	alt_printf("Writing arguments\n");
 
 	// Write the three arguments
-	IOWR_32DIRECT(ACCELERATOR_0_BASE, ACC_InputStartAddr, in_addr);
-	IOWR_32DIRECT(ACCELERATOR_0_BASE, ACC_OutputStartAddr, out_addr);
-	IOWR_32DIRECT(ACCELERATOR_0_BASE, ACC_Num, length);
+	IOWR_32DIRECT(ACC_ADDR_BASE, ACC_InputStartAddr, in_addr);
+	IOWR_32DIRECT(ACC_ADDR_BASE, ACC_OutputStartAddr, out_addr);
+	IOWR_32DIRECT(ACC_ADDR_BASE, ACC_Num, length);
 
+	alt_printf("Waiting\n");
 	// Wait for it to be done
-	while(IORD_32DIRECT(ACCELERATOR_0_BASE, 0x0) != ACC_DONE);
+	while(IORD_32DIRECT(ACC_ADDR_BASE, 0x0) != ACC_DONE);
 
+	alt_printf("Done\n");
 	// Stop performance counter
 	PERF_END(PERFORMANCE_COUNTER_0_BASE, 3);
 }
@@ -119,7 +133,8 @@ int test_method_once(uint32_t input, uint32_t exp_output, int method)
 	}
 	else if(method == 3)
 	{
-		use_accelerator((uint32_t)&input, (uint32_t)&out_1000, 0x1);
+		use_accelerator((uint32_t)&input, (uint32_t)&out_1000, 0xff);
+		alt_printf("It's not stuck!\n");
 		result = out_1000[0];
 	}
 	return result == exp_output;
@@ -147,6 +162,7 @@ int main()
 	void* in_addr_1000 = (uint32_t)&in_1000[0];
 	void* out_addr_1000 = (uint32_t)&out_1000[0];
 	uint32_t len_1000 = 0x000003E8;
+	uint32_t len_8000 = 0x00001F40;
 
 	// Test the implementations
 	test_implementations();
@@ -162,9 +178,9 @@ int main()
 	custom_1000();
 
 	// Run accelerator implementation on 1000 words of indata
-	use_accelerator(in_addr_1000, out_addr_1000, len_1000);
+	use_accelerator(in_addr_1000, out_addr_1000, 2*len_1000);
 
 	// Stop overall performance counter and print results
 	PERF_STOP_MEASURING(PERFORMANCE_COUNTER_0_BASE);
-	perf_print_formatted_report(PERFORMANCE_COUNTER_0_BASE, alt_get_cpu_freq(), 3, "C software", "Custom instruction", "Accelerator");
+	perf_print_formatted_report(PERFORMANCE_COUNTER_0_BASE, alt_get_cpu_freq(), 3, "C software", "Custom instr.", "Accelerator");
 }

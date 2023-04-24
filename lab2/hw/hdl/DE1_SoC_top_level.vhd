@@ -168,7 +168,24 @@ component soc_system is
 		port (
 			clk_clk                            : in  std_logic                    := 'X'; -- clk
 			reset_reset_n                      : in  std_logic                    := 'X'; -- reset_n
-			accelerator_0_conduit_end_readdata : out std_logic_vector(7 downto 0)         -- readdata
+			
+			--- Dumbest accelerator
+			--dumbestaccelerator_0_debugcount_readdata : out std_logic_vector(9 downto 0);        -- readdata
+			--dumbestaccelerator_0_debugstate_readdata : out std_logic_vector(7 downto 0)         -- readdata
+			
+			--- Dumb accelerator
+			--dumbaccelerator_0_debug_counter_readdata : out std_logic_vector(9 downto 0);        -- readdata
+			--dumbaccelerator_0_debug_state_readdata   : out std_logic_vector(7 downto 0)        -- readdata
+			
+			--- Base accelerator
+			---accelerator_0_count_out_readdata : out std_logic_vector(9 downto 0);        -- readdata
+			---accelerator_0_state_out_readdata : out std_logic_vector(7 downto 0)        -- readdata
+			
+			
+			-- V2 accelerator
+			accelerator_v2_0_debug_count_readdata : out std_logic_vector(15 downto 0);        -- readdata
+			accelerator_v2_0_debug_state_readdata : out std_logic_vector(7 downto 0)         -- readdata
+			
 		);
 	end component soc_system;
 
@@ -178,7 +195,27 @@ u0 : component soc_system
 		port map (
 			clk_clk                            => CLOCK_50,                            --                       clk.clk
 			reset_reset_n                      => KEY_N(0),                      --                     reset.reset_n
-			accelerator_0_conduit_end_readdata => GPIO_0_D(7 downto 0)  -- accelerator_0_conduit_end.readdata
+			
+			--- Dumbest accelerator debug
+			--dumbestaccelerator_0_debugcount_readdata => GPIO_0_D(17 downto 8), -- dumbestaccelerator_0_debugcount.readdata
+			--dumbestaccelerator_0_debugstate_readdata => GPIO_0_D(7 downto 0)  -- dumbestaccelerator_0_debugstate.readdata
+			
+			
+			--- Dumb accelerator debug
+			--dumbaccelerator_0_debug_counter_readdata => GPIO_0_D(17 downto 8), -- dumbaccelerator_0_debug_counter.readdata
+			--dumbaccelerator_0_debug_state_readdata   => GPIO_0_D(7 downto 0)   --   dumbaccelerator_0_debug_state.readdata
+			
+			------ Base accelerator debug
+			---accelerator_0_count_out_readdata => GPIO_0_D(17 downto 8), -- accelerator_0_count_out.readdata
+			---accelerator_0_state_out_readdata => GPIO_0_D(7 downto 0) -- accelerator_0_state_out.readdata
+			
+			
+			----- Accelerator V2 debug
+			accelerator_v2_0_debug_count_readdata => GPIO_0_D(23 downto 8), -- accelerator_v2_0_debug_count.readdata
+			accelerator_v2_0_debug_state_readdata => GPIO_0_D(7 downto 0)  -- accelerator_v2_0_debug_state.readdata
+			
+			
+			
 		);
 
 end;

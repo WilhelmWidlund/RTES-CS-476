@@ -25,13 +25,14 @@ entity HwAccelerator is
 		
 		
 		-- Debug PIO output signal
-		DEBUG						:			OUT	STD_LOGIC_VECTOR(7 downto 0)
+		DEBUGSTATE				:			OUT	STD_LOGIC_VECTOR(7 downto 0);
+		DEBUGCOUNT				:			OUT	STD_LOGIC_VECTOR(9 downto 0)
 	);
 end HwAccelerator;
 
 architecture comp of HwAccelerator is
 	-- FSM stuff
-	TYPE State_type is (Idle, DMALoadRequest, DMALoadReceive, Operation, DMAStore, CheckDone);
+	TYPE State_type is (Idle, DMALoadRequest, DMALoadOngoing, DMALoadReceive, Operation, DMAStoreRequest, DMAStoreOngoing, CheckDone, Done);
 	SIGNAL	State, Next_State			:		State_type;
 	-- Internal registers
 	SIGNAL	iStartAddr, iStoreAddr	:	STD_LOGIC_VECTOR(31 downto 0);
@@ -46,12 +47,13 @@ architecture comp of HwAccelerator is
 begin
 		-- Drives Avalon master interface, Next_State, iCountNext, iStop
 		-- Drives DEBUG
-		FSMMAIN: process(State, Reset_n, iStart, AM_WaitRq, AM_RDataValid, iCountNext)
+		FSMMAIN: process(State, Reset_n, iStart, AM_WaitRq, AM_RDataValid)
 			begin
 				-- Stay in the current state unless the continue condition is met
 				Next_State <= State;
 				-- Keep the current count as default
-				iCountNext <= iCount;
+				--iCountNext <= iCount;
+				iCount <= iCount;
 				-- Don't stop by default
 				iStop <= '0';
 				-- Don't work by default
@@ -61,11 +63,12 @@ begin
 				AM_Addr <= (others => '0');
 				AM_BE <= (others => '1');
 				AM_WData <= (others => '0');
-				AM_Rd <= '0';
-				
+				AM_Rd <= '0';				
 				if Reset_n = '0' then
+					DEBUGSTATE <= (others => '1');
 					Next_State <= Idle;
-					iCountNext <= (others => '0');
+					--iCountNext <= (others => '0');
+					iCount <= (others => '0');
 					iStop <= '0';
 					AM_Wr <= '0';
 					AM_Addr <= (others => '0');
@@ -75,16 +78,25 @@ begin
 				else
 					case State is
 						when Idle =>
-							DEBUG <= "00000001";
+							DEBUGSTATE <= "00000000";
 							iWorking <= '0';
 							-- Start the process when all three arguments have been received
 							if iStart = "111" then
 								Next_State <= DMALoadRequest;
 							end if;
 						when DMALoadRequest =>
+							DEBUGSTATE <= "00000001";
 							iWorking <= '1';
-							DEBUG <= "00000010";
-							-- Request to read the next indata word from memory
+							-- Initialize request to read the next indata word from memory
+							AM_Rd <= '1';
+							AM_BE <= (others => '1');
+							AM_Addr <= std_logic_vector(unsigned(iStartAddr) + iCount*4);
+							-- Move on if the read request was granted
+							Next_State <= DMALoadOngoing;
+						when DMALoadOngoing =>
+							DEBUGSTATE <= "00000010";
+							iWorking <= '1';
+							-- Continue requesting to read the next indata word from memory
 							AM_Rd <= '1';
 							AM_BE <= (others => '1');
 							AM_Addr <= std_logic_vector(unsigned(iStartAddr) + iCount*4);
@@ -93,48 +105,68 @@ begin
 								Next_State <= DMALoadReceive;
 							end if;
 						when DMALoadReceive =>
+							DEBUGSTATE <= "00000100";
 							iWorking <= '1';
-							DEBUG <= "00000011";
 							-- Wait for the read data to be received, then move on
 							if AM_RDataValid = '1' then
 								iInData <= AM_RData;
 								Next_State <= Operation;
 							end if;
 						when Operation =>
+							DEBUGSTATE <= "00001000";
 							iWorking <= '1';
-							DEBUG <= "00000100";
 							-- Perform the operation, then move on
 							iOutData(31 downto 24) <= iInData(7 downto 0);
 							iOutData(7 downto 0) <= iInData(31 downto 24);
 							for i in 8 to 23 loop
 								iOutData(31 - i) <= iInData(i);
 							end loop;
-							Next_State <= DMAStore;
-						when DMAStore =>
-							DEBUG <= "00000101";
+							Next_State <= DMAStoreRequest;
+						when DMAStoreRequest =>
+							DEBUGSTATE <= "00010000";
 							iWorking <= '1';
 							-- Request to store the outdata in memory
 							AM_Wr <= '1';
 							AM_Addr <= std_logic_vector(unsigned(iStoreAddr) + iCount*4);
 							AM_BE <= (others => '1');
 							AM_WData <= iOutData;
+							Next_State <= DMAStoreOngoing;
+						when DMAStoreOngoing =>
+							DEBUGSTATE <= "00100000";
+							iWorking <= '1';
+							-- Continue requesting to store the outdata in memory
+							AM_Wr <= '1';
+							AM_Addr <= std_logic_vector(unsigned(iStoreAddr) + iCount*4);
+							AM_BE <= (others => '1');
+							AM_WData <= iOutData;
 							-- Move on when the request is granted
 							if AM_WaitRq = '0' then
-								iCountNext <= iCount + 1;
+								--iCountNext <= iCount + 1;
+								iCount <= iCount + 1;
 								Next_State <= CheckDone;
 							end if;
 						when CheckDone =>
-							DEBUG <= "00000110";
+							DEBUGSTATE <= "01000000";
 							iWorking <= '1';
 							-- Check if the process is done
-							if iCountNext = iNum then
-								-- Move to idle
-								Next_State <= Idle;
+							if iCount = iNum then
+								-- Move to Done
+								--iCountNext <= (others => '0');
+								iCount <= (others => '0');
+								Next_State <= Done;
 								iStop <= '1';
 							else
 								-- Proceed with next word
 								Next_State <= DMALoadRequest;
 							end if;
+						when Done =>
+							DEBUGSTATE <= "10000000";
+							-- This state delays 1 clock cycle for the flags to be reset, before returning to Idle
+							-- Also keeps iStop high for one extra clock cycle
+							Next_State <= Idle;
+							iStop <= '1';
+							iWorking <= '0';
+						when others => null;
 					end case;
 				end if;
 		end process FSMMAIN;
@@ -145,10 +177,13 @@ begin
 		FSMUpdate: process(Clk, Reset_n) is
 			Begin
 				if Reset_n = '0' then
+					DEBUGCOUNT <= "1111111111";
 					State <= Idle;
+					--iCount <= (others => '0');
 				elsif rising_edge(Clk) then
+					DEBUGCOUNT <= std_logic_vector(iCount);
 					State <= Next_State;
-					iCount <= iCountNext;
+					--iCount <= iCountNext;
 				end if;
 		end process FSMUpdate;
 
