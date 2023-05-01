@@ -1,9 +1,22 @@
-17:42:18 **** Incremental Build of configuration Nios II for project cpu_0_proj ****
+12:03:38 **** Build of configuration Nios II for project cpu_0_proj ****
 make all 
 Info: Building C:/RTES/lab3/sw/nios/cpu_0_proj_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/RTES/lab3/sw/nios/cpu_0_proj_bsp/
 [BSP build complete]
-[cpu_0_proj build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/RTES/lab3/sw/nios/cpu_0_proj_bsp//HAL/inc -IC:/RTES/lab3/sw/nios/cpu_0_proj_bsp/ -IC:/RTES/lab3/sw/nios/cpu_0_proj_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
+Info: Linking cpu_0_proj.elf
+nios2-elf-g++  -T'C:/RTES/lab3/sw/nios/cpu_0_proj_bsp//linker.x' -msys-crt0='C:/RTES/lab3/sw/nios/cpu_0_proj_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/RTES/lab3/sw/nios/cpu_0_proj_bsp/   -Wl,-Map=cpu_0_proj.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o cpu_0_proj.elf obj/default/hello_world.o -lm -msys-lib=m
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800a568 of cpu_0_proj.elf section `.text' is not within region `onchip_memory2_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800a630 of cpu_0_proj.elf section `.rodata' is not within region `onchip_memory2_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800c198 of cpu_0_proj.elf section `.rwdata' is not within region `onchip_memory2_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800de54 of cpu_0_proj.elf section `.bss' is not within region `onchip_memory2_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800a568 of cpu_0_proj.elf section `.text' is not within region `onchip_memory2_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800a630 of cpu_0_proj.elf section `.rodata' is not within region `onchip_memory2_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800c198 of cpu_0_proj.elf section `.rwdata' is not within region `onchip_memory2_0'
+c:/intelfpga_lite/18.1/nios2eds/bin/gnu/h-x86_64-mingw32/bin/../lib/gcc/nios2-elf/5.3.0/../../../../../H-x86_64-mingw32/nios2-elf/bin/ld.exe: address 0x800de54 of cpu_0_proj.elf section `.bss' is not within region `onchip_memory2_0'
+collect2.exe: error: ld returned 1 exit status
+make: *** [cpu_0_proj.elf] Error 1
 
-17:42:20 Build Finished (took 1s.499ms)
+12:03:40 Build Finished (took 1s.757ms)
 

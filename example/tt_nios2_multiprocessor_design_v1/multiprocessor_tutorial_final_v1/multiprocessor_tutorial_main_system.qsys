@@ -1,0 +1,992 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<system name="$${FILENAME}">
+ <component
+   name="$${FILENAME}"
+   displayName="$${FILENAME}"
+   version="1.0"
+   description=""
+   tags=""
+   categories="System" />
+ <parameter name="bonusData"><![CDATA[bonusData 
+{
+   element $${FILENAME}
+   {
+   }
+   element jtag_uart_top.avalon_jtag_slave
+   {
+      datum baseAddress
+      {
+         value = "395776";
+         type = "long";
+      }
+   }
+   element clk
+   {
+      datum _sortIndex
+      {
+         value = "0";
+         type = "int";
+      }
+   }
+   element sysid_qsys.control_slave
+   {
+      datum baseAddress
+      {
+         value = "396032";
+         type = "long";
+      }
+   }
+   element cpu_top
+   {
+      datum _sortIndex
+      {
+         value = "3";
+         type = "int";
+      }
+   }
+   element philosopher_one.incoming_philo_slave
+   {
+      datum baseAddress
+      {
+         value = "65536";
+         type = "long";
+      }
+   }
+   element philosopher_three.incoming_philo_slave
+   {
+      datum baseAddress
+      {
+         value = "196608";
+         type = "long";
+      }
+   }
+   element philosopher_two.incoming_philo_slave
+   {
+      datum baseAddress
+      {
+         value = "131072";
+         type = "long";
+      }
+   }
+   element philosopher_four.incoming_philo_slave
+   {
+      datum baseAddress
+      {
+         value = "262144";
+         type = "long";
+      }
+   }
+   element cpu_top.jtag_debug_module
+   {
+      datum baseAddress
+      {
+         value = "393216";
+         type = "long";
+      }
+   }
+   element jtag_uart_top
+   {
+      datum _sortIndex
+      {
+         value = "5";
+         type = "int";
+      }
+   }
+   element onchip_memory
+   {
+      datum _sortIndex
+      {
+         value = "2";
+         type = "int";
+      }
+   }
+   element philosopher_four
+   {
+      datum _sortIndex
+      {
+         value = "10";
+         type = "int";
+      }
+   }
+   element philosopher_one
+   {
+      datum _sortIndex
+      {
+         value = "7";
+         type = "int";
+      }
+   }
+   element philosopher_three
+   {
+      datum _sortIndex
+      {
+         value = "9";
+         type = "int";
+      }
+   }
+   element philosopher_two
+   {
+      datum _sortIndex
+      {
+         value = "8";
+         type = "int";
+      }
+   }
+   element philosopher_zero
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element timer_top.s1
+   {
+      datum baseAddress
+      {
+         value = "395520";
+         type = "long";
+      }
+   }
+   element onchip_memory.s1
+   {
+      datum baseAddress
+      {
+         value = "327680";
+         type = "long";
+      }
+   }
+   element sysid_qsys
+   {
+      datum _sortIndex
+      {
+         value = "1";
+         type = "int";
+      }
+   }
+   element timer_top
+   {
+      datum _sortIndex
+      {
+         value = "4";
+         type = "int";
+      }
+   }
+}
+]]></parameter>
+ <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
+ <parameter name="deviceFamily" value="CYCLONEIII" />
+ <parameter name="fabricMode" value="QSYS" />
+ <parameter name="generateLegacySim" value="false" />
+ <parameter name="generationId" value="0" />
+ <parameter name="globalResetBus" value="false" />
+ <parameter name="hdlLanguage" value="VERILOG" />
+ <parameter name="maxAdditionalLatency" value="0" />
+ <parameter name="projectName">multiprocessor_tutorial.qpf</parameter>
+ <parameter name="sopcBorderPoints" value="false" />
+ <parameter name="systemHash" value="1" />
+ <parameter name="timeStamp" value="1305943332448" />
+ <interface name="clk_in" internal="clk.clk_in" type="clock" dir="end" />
+ <interface
+   name="clk_clk_in_reset"
+   internal="clk.clk_in_reset"
+   type="reset"
+   dir="end" />
+ <module kind="clock_source" version="11.0" enabled="1" name="clk">
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="clockFrequencyKnown" value="true" />
+  <parameter name="inputClockFrequency" value="0" />
+  <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module kind="altera_nios2_qsys" version="11.0" enabled="1" name="cpu_top">
+  <parameter name="setting_showUnpublishedSettings" value="false" />
+  <parameter name="setting_showInternalSettings" value="false" />
+  <parameter name="setting_preciseSlaveAccessErrorException" value="false" />
+  <parameter name="setting_preciseIllegalMemAccessException" value="false" />
+  <parameter name="setting_preciseDivisionErrorException" value="false" />
+  <parameter name="setting_performanceCounter" value="false" />
+  <parameter name="setting_illegalMemAccessDetection" value="false" />
+  <parameter name="setting_illegalInstructionsTrap" value="false" />
+  <parameter name="setting_fullWaveformSignals" value="false" />
+  <parameter name="setting_extraExceptionInfo" value="false" />
+  <parameter name="setting_exportPCB" value="false" />
+  <parameter name="setting_debugSimGen" value="false" />
+  <parameter name="setting_clearXBitsLDNonBypass" value="true" />
+  <parameter name="setting_bit31BypassDCache" value="true" />
+  <parameter name="setting_bigEndian" value="false" />
+  <parameter name="setting_bhtIndexPcOnly" value="false" />
+  <parameter name="setting_avalonDebugPortPresent" value="false" />
+  <parameter name="setting_alwaysEncrypt" value="true" />
+  <parameter name="setting_allowFullAddressRange" value="false" />
+  <parameter name="setting_activateTrace" value="true" />
+  <parameter name="setting_activateTestEndChecker" value="false" />
+  <parameter name="setting_activateMonitors" value="true" />
+  <parameter name="setting_activateModelChecker" value="false" />
+  <parameter name="setting_HDLSimCachesCleared" value="true" />
+  <parameter name="setting_HBreakTest" value="false" />
+  <parameter name="muldiv_divider" value="true" />
+  <parameter name="mpu_useLimit" value="false" />
+  <parameter name="mpu_enabled" value="false" />
+  <parameter name="mmu_enabled" value="false" />
+  <parameter name="mmu_autoAssignTlbPtrSz" value="false" />
+  <parameter name="manuallyAssignCpuID" value="true" />
+  <parameter name="debug_triggerArming" value="true" />
+  <parameter name="debug_embeddedPLL" value="true" />
+  <parameter name="debug_debugReqSignals" value="false" />
+  <parameter name="debug_assignJtagInstanceID" value="false" />
+  <parameter name="dcache_omitDataMaster" value="false" />
+  <parameter name="cpuReset" value="false" />
+  <parameter name="is_hardcopy_compatible" value="false" />
+  <parameter name="setting_shadowRegisterSets" value="0" />
+  <parameter name="mpu_numOfInstRegion" value="8" />
+  <parameter name="mpu_numOfDataRegion" value="8" />
+  <parameter name="mmu_TLBMissExcOffset" value="0" />
+  <parameter name="debug_jtagInstanceID" value="0" />
+  <parameter name="resetOffset" value="40960" />
+  <parameter name="exceptionOffset" value="40992" />
+  <parameter name="cpuID" value="5" />
+  <parameter name="breakOffset" value="32" />
+  <parameter name="userDefinedSettings" value="" />
+  <parameter name="resetSlave" value="onchip_memory.s1" />
+  <parameter name="mmu_TLBMissExcSlave" value="" />
+  <parameter name="exceptionSlave" value="onchip_memory.s1" />
+  <parameter name="breakSlave">cpu_top.jtag_debug_module</parameter>
+  <parameter name="setting_perfCounterWidth" value="32" />
+  <parameter name="setting_interruptControllerType" value="Internal" />
+  <parameter name="setting_branchPredictionType" value="Automatic" />
+  <parameter name="setting_bhtPtrSz" value="8" />
+  <parameter name="muldiv_multiplierType" value="EmbeddedMulFast" />
+  <parameter name="mpu_minInstRegionSize" value="12" />
+  <parameter name="mpu_minDataRegionSize" value="12" />
+  <parameter name="mmu_uitlbNumEntries" value="4" />
+  <parameter name="mmu_udtlbNumEntries" value="6" />
+  <parameter name="mmu_tlbPtrSz" value="7" />
+  <parameter name="mmu_tlbNumWays" value="16" />
+  <parameter name="mmu_processIDNumBits" value="8" />
+  <parameter name="impl" value="Fast" />
+  <parameter name="icache_size" value="32768" />
+  <parameter name="icache_ramBlockType" value="Automatic" />
+  <parameter name="icache_numTCIM" value="0" />
+  <parameter name="icache_burstType" value="None" />
+  <parameter name="dcache_bursts" value="false" />
+  <parameter name="debug_level" value="Level1" />
+  <parameter name="debug_OCIOnchipTrace" value="_128" />
+  <parameter name="dcache_size" value="32768" />
+  <parameter name="dcache_ramBlockType" value="Automatic" />
+  <parameter name="dcache_numTCDM" value="0" />
+  <parameter name="dcache_lineSize" value="32" />
+  <parameter name="instAddrWidth" value="19" />
+  <parameter name="dataAddrWidth" value="19" />
+  <parameter name="tightlyCoupledDataMaster0AddrWidth" value="1" />
+  <parameter name="tightlyCoupledDataMaster1AddrWidth" value="1" />
+  <parameter name="tightlyCoupledDataMaster2AddrWidth" value="1" />
+  <parameter name="tightlyCoupledDataMaster3AddrWidth" value="1" />
+  <parameter name="tightlyCoupledInstructionMaster0AddrWidth" value="1" />
+  <parameter name="tightlyCoupledInstructionMaster1AddrWidth" value="1" />
+  <parameter name="tightlyCoupledInstructionMaster2AddrWidth" value="1" />
+  <parameter name="tightlyCoupledInstructionMaster3AddrWidth" value="1" />
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='onchip_memory.s1' start='0x50000' end='0x60000' /><slave name='cpu_top.jtag_debug_module' start='0x60000' end='0x60800' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='chopstick_mutex.s1' start='0x8800' end='0x8808' /><slave name='chopstick_mutex.s1' start='0x18800' end='0x18808' /><slave name='chopstick_mutex.s1' start='0x28800' end='0x28808' /><slave name='chopstick_mutex.s1' start='0x38800' end='0x38808' /><slave name='chopstick_mutex.s1' start='0x48800' end='0x48808' /><slave name='onchip_memory.s1' start='0x50000' end='0x60000' /><slave name='cpu_top.jtag_debug_module' start='0x60000' end='0x60800' /><slave name='timer_top.s1' start='0x60900' end='0x60920' /><slave name='jtag_uart_top.avalon_jtag_slave' start='0x60A00' end='0x60A08' /><slave name='sysid_qsys.control_slave' start='0x60B00' end='0x60B08' /></address-map>]]></parameter>
+  <parameter name="clockFrequency" value="50000000" />
+  <parameter name="deviceFamilyName" value="Cyclone III" />
+  <parameter name="internalIrqMaskSystemInfo" value="3" />
+  <parameter name="customInstSlavesSystemInfo" value="&lt;info/&gt;" />
+  <parameter name="deviceFeaturesSystemInfo">M512_MEMORY 0 M4K_MEMORY 0 M9K_MEMORY 1 M20K_MEMORY 0 M144K_MEMORY 0 MRAM_MEMORY 0 MLAB_MEMORY 0 ESB 0 EPCS 1 DSP 0 EMUL 1 HARDCOPY 0 LVDS_IO 0 ADDRESS_STALL 1 TRANSCEIVER_3G_BLOCK 0 TRANSCEIVER_6G_BLOCK 0 DSP_SHIFTER_BLOCK 0</parameter>
+  <parameter name="tightlyCoupledDataMaster0MapParam" value="" />
+  <parameter name="tightlyCoupledDataMaster1MapParam" value="" />
+  <parameter name="tightlyCoupledDataMaster2MapParam" value="" />
+  <parameter name="tightlyCoupledDataMaster3MapParam" value="" />
+  <parameter name="tightlyCoupledInstructionMaster0MapParam" value="" />
+  <parameter name="tightlyCoupledInstructionMaster1MapParam" value="" />
+  <parameter name="tightlyCoupledInstructionMaster2MapParam" value="" />
+  <parameter name="tightlyCoupledInstructionMaster3MapParam" value="" />
+ </module>
+ <module
+   kind="altera_avalon_sysid_qsys"
+   version="11.0"
+   enabled="1"
+   name="sysid_qsys">
+  <parameter name="id" value="0" />
+  <parameter name="timestamp" value="0" />
+  <parameter name="AUTO_CLK_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone III" />
+ </module>
+ <module
+   kind="altera_avalon_onchip_memory2"
+   version="11.0"
+   enabled="1"
+   name="onchip_memory">
+  <parameter name="allowInSystemMemoryContentEditor" value="false" />
+  <parameter name="autoInitializationFileName" value="onchip_memory" />
+  <parameter name="blockType" value="AUTO" />
+  <parameter name="dataWidth" value="32" />
+  <parameter name="deviceFamily" value="Cyclone III" />
+  <parameter name="dualPort" value="false" />
+  <parameter name="initMemContent" value="true" />
+  <parameter name="initializationFileName" value="onchip_memory" />
+  <parameter name="instanceID" value="NONE" />
+  <parameter name="memorySize" value="65536" />
+  <parameter name="readDuringWriteMode" value="DONT_CARE" />
+  <parameter name="simAllowMRAMContentsFile" value="false" />
+  <parameter name="simMemInitOnlyFilename" value="0" />
+  <parameter name="singleClockOperation" value="false" />
+  <parameter name="slave1Latency" value="1" />
+  <parameter name="slave2Latency" value="1" />
+  <parameter name="useNonDefaultInitFile" value="false" />
+  <parameter name="useShallowMemBlocks" value="false" />
+  <parameter name="writable" value="true" />
+ </module>
+ <module
+   kind="altera_avalon_jtag_uart"
+   version="11.0"
+   enabled="1"
+   name="jtag_uart_top">
+  <parameter name="allowMultipleConnections" value="false" />
+  <parameter name="hubInstanceID" value="0" />
+  <parameter name="readBufferDepth" value="64" />
+  <parameter name="readIRQThreshold" value="8" />
+  <parameter name="simInputCharacterStream" value="" />
+  <parameter name="simInteractiveOptions">INTERACTIVE_ASCII_OUTPUT</parameter>
+  <parameter name="useRegistersForReadBuffer" value="false" />
+  <parameter name="useRegistersForWriteBuffer" value="false" />
+  <parameter name="useRelativePathForSimFile" value="false" />
+  <parameter name="writeBufferDepth" value="64" />
+  <parameter name="writeIRQThreshold" value="8" />
+ </module>
+ <module
+   kind="altera_avalon_timer"
+   version="11.0"
+   enabled="1"
+   name="timer_top">
+  <parameter name="alwaysRun" value="false" />
+  <parameter name="counterSize" value="32" />
+  <parameter name="fixedPeriod" value="false" />
+  <parameter name="period" value="10" />
+  <parameter name="periodUnits" value="MSEC" />
+  <parameter name="resetOutput" value="false" />
+  <parameter name="snapshot" value="true" />
+  <parameter name="systemFrequency" value="50000000" />
+  <parameter name="timeoutPulseOutput" value="false" />
+  <parameter name="timerPreset" value="CUSTOM" />
+ </module>
+ <module
+   kind="philosopher_zero"
+   version="1.0"
+   enabled="1"
+   name="philosopher_zero">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="philosopher_zero" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone III" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_RESET_DOMAIN" value="1" />
+ </module>
+ <module
+   kind="philosopher_one"
+   version="1.0"
+   enabled="1"
+   name="philosopher_one">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="philosopher_one" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone III" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_RESET_DOMAIN" value="1" />
+ </module>
+ <module
+   kind="philosopher_two"
+   version="1.0"
+   enabled="1"
+   name="philosopher_two">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="philosopher_two" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone III" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_RESET_DOMAIN" value="1" />
+ </module>
+ <module
+   kind="philosopher_three"
+   version="1.0"
+   enabled="1"
+   name="philosopher_three">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="philosopher_three" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone III" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_RESET_DOMAIN" value="1" />
+ </module>
+ <module
+   kind="philosopher_four"
+   version="1.0"
+   enabled="1"
+   name="philosopher_four">
+  <parameter name="AUTO_GENERATION_ID" value="0" />
+  <parameter name="AUTO_UNIQUE_ID" value="philosopher_four" />
+  <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone III" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_RATE" value="50000000" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_PHILOSOPHER_CLK_IN_RESET_DOMAIN" value="1" />
+ </module>
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="cpu_top.reset_n" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="sysid_qsys.reset" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060b00" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.instruction_master"
+   end="cpu_top.jtag_debug_module">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="cpu_top.jtag_debug_module">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060000" />
+ </connection>
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="cpu_top.reset_n" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="sysid_qsys.reset" />
+ <connection kind="clock" version="11.0" start="clk.clk" end="sysid_qsys.clk" />
+ <connection kind="clock" version="11.0" start="clk.clk" end="cpu_top.clk" />
+ <connection kind="clock" version="11.0" start="clk.clk" end="onchip_memory.clk1" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="onchip_memory.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00050000" />
+ </connection>
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="onchip_memory.reset1" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="onchip_memory.reset1" />
+ <connection kind="clock" version="11.0" start="clk.clk" end="jtag_uart_top.clk" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="jtag_uart_top.reset" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="jtag_uart_top.reset" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="jtag_uart_top.avalon_jtag_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060a00" />
+ </connection>
+ <connection kind="clock" version="11.0" start="clk.clk" end="timer_top.clk" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="timer_top.reset" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="timer_top.reset" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="timer_top.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060900" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="11.0"
+   start="cpu_top.d_irq"
+   end="timer_top.irq">
+  <parameter name="irqNumber" value="0" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="11.0"
+   start="cpu_top.d_irq"
+   end="jtag_uart_top.irq">
+  <parameter name="irqNumber" value="1" />
+ </connection>
+ <connection
+   kind="clock"
+   version="11.0"
+   start="clk.clk"
+   end="philosopher_zero.philosopher_clk_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="philosopher_zero.philosopher_clk_reset_in" />
+ <connection
+   kind="clock"
+   version="11.0"
+   start="clk.clk"
+   end="philosopher_one.philosopher_clk_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="philosopher_one.philosopher_clk_reset_in" />
+ <connection
+   kind="clock"
+   version="11.0"
+   start="clk.clk"
+   end="philosopher_two.philosopher_clk_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="philosopher_two.philosopher_clk_reset_in" />
+ <connection
+   kind="clock"
+   version="11.0"
+   start="clk.clk"
+   end="philosopher_three.philosopher_clk_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="philosopher_three.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="philosopher_zero.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="philosopher_zero.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="philosopher_zero.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="philosopher_zero.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="philosopher_zero.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="philosopher_one.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="philosopher_one.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="philosopher_one.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="philosopher_one.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="philosopher_one.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="cpu_top.reset_n" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="cpu_top.reset_n" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="cpu_top.reset_n" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="cpu_top.reset_n" />
+ <connection
+   kind="clock"
+   version="11.0"
+   start="clk.clk"
+   end="philosopher_four.philosopher_clk_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="clk.clk_reset"
+   end="philosopher_four.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="philosopher_four.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="philosopher_four.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="philosopher_four.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="philosopher_four.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="philosopher_four.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="philosopher_four.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="philosopher_two.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="philosopher_two.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="philosopher_two.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="philosopher_two.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="philosopher_two.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="philosopher_two.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="philosopher_one.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="philosopher_zero.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="cpu_top.reset_n" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_four.outgoing_master"
+   end="onchip_memory.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00050000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_three.outgoing_master"
+   end="onchip_memory.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00050000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_two.outgoing_master"
+   end="onchip_memory.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00050000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_one.outgoing_master"
+   end="onchip_memory.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00050000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_zero.outgoing_master"
+   end="onchip_memory.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00050000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.instruction_master"
+   end="onchip_memory.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00050000" />
+ </connection>
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="sysid_qsys.reset" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="sysid_qsys.reset" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="sysid_qsys.reset" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="sysid_qsys.reset" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="sysid_qsys.reset" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_zero.outgoing_master"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060b00" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_one.outgoing_master"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060b00" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_two.outgoing_master"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060b00" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_three.outgoing_master"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060b00" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_four.outgoing_master"
+   end="sysid_qsys.control_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00060b00" />
+ </connection>
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="onchip_memory.reset1" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="onchip_memory.reset1" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="onchip_memory.reset1" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="onchip_memory.reset1" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="onchip_memory.reset1" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_four.outgoing_philo_master"
+   end="philosopher_zero.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="philosopher_zero.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="philosopher_one.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00010000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="philosopher_two.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00020000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="philosopher_three.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00030000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="cpu_top.data_master"
+   end="philosopher_four.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00040000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_one.outgoing_philo_master"
+   end="philosopher_two.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00020000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_two.outgoing_philo_master"
+   end="philosopher_three.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00030000" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_three.outgoing_philo_master"
+   end="philosopher_four.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00040000" />
+ </connection>
+ <connection
+   kind="reset"
+   version="11.0"
+   start="cpu_top.jtag_debug_module_reset"
+   end="philosopher_three.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_zero.cpu_jtag_debug_module_reset"
+   end="philosopher_three.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_one.cpu_jtag_debug_module_reset"
+   end="philosopher_three.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_two.cpu_jtag_debug_module_reset"
+   end="philosopher_three.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_three.cpu_jtag_debug_module_reset"
+   end="philosopher_three.philosopher_clk_reset_in" />
+ <connection
+   kind="reset"
+   version="11.0"
+   start="philosopher_four.cpu_jtag_debug_module_reset"
+   end="philosopher_three.philosopher_clk_reset_in" />
+ <connection
+   kind="avalon"
+   version="11.0"
+   start="philosopher_zero.outgoing_philo_master"
+   end="philosopher_one.incoming_philo_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00010000" />
+ </connection>
+</system>

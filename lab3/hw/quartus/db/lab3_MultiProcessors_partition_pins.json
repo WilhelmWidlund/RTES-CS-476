@@ -4,6 +4,10 @@
 			"name" : "Top",
 			"pins" : [
 				{
+					"name" : "LEDR[9]",
+					"strict" : false
+				},
+				{
 					"name" : "DRAM_ADDR[0]",
 					"strict" : false
 				},
@@ -124,7 +128,11 @@
 					"strict" : false
 				},
 				{
-					"name" : "LEDR[9]",
+					"name" : "GPIO_0[30]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[29]",
 					"strict" : false
 				},
 				{
@@ -189,6 +197,14 @@
 				},
 				{
 					"name" : "DRAM_DQ[15]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[31]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[28]",
 					"strict" : false
 				},
 				{
@@ -301,22 +317,6 @@
 				},
 				{
 					"name" : "GPIO_0[27]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[28]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[29]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[30]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[31]",
 					"strict" : false
 				},
 				{

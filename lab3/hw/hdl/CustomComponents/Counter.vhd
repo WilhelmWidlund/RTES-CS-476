@@ -10,6 +10,7 @@ use ieee.numeric_std.all;
 -- 100 = Command[7... 0]		General command (RW access)
 -- 101 = Status[7... 0]			General status (RW access)
 -- 110 = Target[31... 0]		Count target value (RW access)
+-- 111 = IncrVal[31... 0]		Increment by this amount once (write access)
 
 entity Counter is
 	PORT(

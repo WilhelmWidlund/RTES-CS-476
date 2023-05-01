@@ -1,0 +1,26 @@
+# # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
+# 
+preplace inst philosopher_two.jtag_uart -pg 1 -lvl 3 -y 210
+preplace inst philosopher_two.out_system_bridge -pg 1 -lvl 3 -y 110
+preplace inst philosopher_two.cpu_two.reset_bridge -pg 1
+preplace inst philosopher_two.out_philo_bridge -pg 1 -lvl 3 -y 30
+preplace inst philosopher_two.clk -pg 1 -lvl 1 -y 350
+preplace inst philosopher_two.cpu_two.clock_bridge -pg 1
+preplace inst philosopher_two.timer -pg 1 -lvl 3 -y 310
+preplace inst philosopher_two.cpu_two -pg 1 -lvl 2 -y 150
+preplace inst philosopher_two.in_philo_bridge -pg 1 -lvl 2 -y 290
+preplace inst philosopher_two.chopstick_mutex -pg 1 -lvl 3 -y 410
+preplace inst philosopher_two -pg 1 -lvl 1 -y 40 -regy -20
+preplace inst philosopher_two.cpu_two.cpu -pg 1
+preplace netloc INTERCONNECT<net_container>philosopher_two</net_container>(SLAVE)jtag_uart.avalon_jtag_slave,(SLAVE)out_system_bridge.s0,(SLAVE)cpu_two.debug_mem_slave,(SLAVE)chopstick_mutex.s1,(SLAVE)out_philo_bridge.s0,(MASTER)cpu_two.instruction_master,(MASTER)cpu_two.data_master,(SLAVE)timer.s1,(MASTER)in_philo_bridge.m0) 1 1 2 410 110 790
+preplace netloc EXPORT<net_container>philosopher_two</net_container>(MASTER)out_system_bridge.m0,(MASTER)philosopher_two.outgoing_master) 1 3 1 NJ
+preplace netloc EXPORT<net_container>philosopher_two</net_container>(SLAVE)clk.clk_in_reset,(SLAVE)philosopher_two.philosopher_clk_reset_in) 1 0 1 NJ
+preplace netloc FAN_OUT<net_container>philosopher_two</net_container>(SLAVE)chopstick_mutex.reset,(MASTER)clk.clk_reset,(SLAVE)cpu_two.reset,(SLAVE)out_system_bridge.reset,(SLAVE)jtag_uart.reset,(SLAVE)out_philo_bridge.reset,(SLAVE)timer.reset,(SLAVE)in_philo_bridge.reset) 1 1 2 370 400 830
+preplace netloc EXPORT<net_container>philosopher_two</net_container>(SLAVE)in_philo_bridge.s0,(SLAVE)philosopher_two.incoming_philo_slave) 1 0 2 NJ 340 NJ
+preplace netloc FAN_OUT<net_container>philosopher_two</net_container>(MASTER)cpu_two.irq,(SLAVE)timer.irq,(SLAVE)jtag_uart.irq) 1 2 1 770
+preplace netloc FAN_OUT<net_container>philosopher_two</net_container>(SLAVE)out_system_bridge.clk,(MASTER)clk.clk,(SLAVE)cpu_two.clk,(SLAVE)timer.clk,(SLAVE)chopstick_mutex.clk,(SLAVE)out_philo_bridge.clk,(SLAVE)jtag_uart.clk,(SLAVE)in_philo_bridge.clk) 1 1 2 390 380 810
+preplace netloc EXPORT<net_container>philosopher_two</net_container>(MASTER)philosopher_two.cpu_jtag_debug_module_reset,(MASTER)cpu_two.debug_reset_request) 1 2 2 NJ 200 NJ
+preplace netloc EXPORT<net_container>philosopher_two</net_container>(SLAVE)philosopher_two.philosopher_clk_in,(SLAVE)clk.clk_in) 1 0 1 NJ
+preplace netloc EXPORT<net_container>philosopher_two</net_container>(MASTER)out_philo_bridge.m0,(MASTER)philosopher_two.outgoing_philo_master) 1 3 1 NJ
+levelinfo -pg 1 0 160 1230
+levelinfo -hier philosopher_two 170 200 530 890 1030

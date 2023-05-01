@@ -47,8 +47,8 @@ refer to the applicable agreement for further details.
 	(port
 		(pt 448 72)
 		(output)
-		(text "pll_2_sdram_clk" (rect 0 0 66 12)(font "Arial" (font_size 8)))
-		(text "pll_2_sdram_clk" (rect 366 61 456 72)(font "Arial" (font_size 8)))
+		(text "pll_2_outclk2_clk" (rect 0 0 67 12)(font "Arial" (font_size 8)))
+		(text "pll_2_outclk2_clk" (rect 362 61 464 72)(font "Arial" (font_size 8)))
 		(line (pt 448 72)(pt 256 72)(line_width 1))
 	)
 	(port
@@ -140,7 +140,7 @@ refer to the applicable agreement for further details.
 		(text "clk" (rect 197 67 412 144)(font "Arial" (color 0 0 0)))
 		(text "debug" (rect 158 83 346 179)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "export" (rect 197 107 430 224)(font "Arial" (color 0 0 0)))
-		(text "pll_2_sdram" (rect 257 43 580 99)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "pll_2_outclk2" (rect 257 43 592 99)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "clk" (rect 241 67 500 144)(font "Arial" (color 0 0 0)))
 		(text "pp0_out" (rect 146 123 334 259)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "export" (rect 197 147 430 304)(font "Arial" (color 0 0 0)))

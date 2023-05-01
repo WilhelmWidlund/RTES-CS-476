@@ -1,7 +1,7 @@
 	soc_system u0 (
 		.clk_clk                       (<connected-to-clk_clk>),                       //                     clk.clk
 		.debug_export                  (<connected-to-debug_export>),                  //                   debug.export
-		.pll_2_sdram_clk               (<connected-to-pll_2_sdram_clk>),               //             pll_2_sdram.clk
+		.pll_2_outclk2_clk             (<connected-to-pll_2_outclk2_clk>),             //           pll_2_outclk2.clk
 		.pp0_out_export                (<connected-to-pp0_out_export>),                //                 pp0_out.export
 		.pp1_out_export                (<connected-to-pp1_out_export>),                //                 pp1_out.export
 		.pp2_out_export                (<connected-to-pp2_out_export>),                //                 pp2_out.export

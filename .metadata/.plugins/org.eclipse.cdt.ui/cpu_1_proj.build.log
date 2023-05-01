@@ -1,18 +1,9 @@
-16:59:13 **** Incremental Build of configuration Nios II for project cpu_1_proj ****
+11:03:19 **** Incremental Build of configuration Nios II for project cpu_1_proj ****
 make all 
 Info: Building C:/RTES/lab3/sw/nios/cpu_1_proj_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/RTES/lab3/sw/nios/cpu_1_proj_bsp/
 [BSP build complete]
-Info: Compiling hello_world.c to obj/default/hello_world.o
-nios2-elf-gcc -xc -MP -MMD -c -IC:/RTES/lab3/sw/nios/cpu_1_proj_bsp//HAL/inc -IC:/RTES/lab3/sw/nios/cpu_1_proj_bsp/ -IC:/RTES/lab3/sw/nios/cpu_1_proj_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DSMALL_C_LIB -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
-Info: Linking cpu_1_proj.elf
-nios2-elf-g++  -T'C:/RTES/lab3/sw/nios/cpu_1_proj_bsp//linker.x' -msys-crt0='C:/RTES/lab3/sw/nios/cpu_1_proj_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/RTES/lab3/sw/nios/cpu_1_proj_bsp/  -msmallc  -Wl,-Map=cpu_1_proj.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o cpu_1_proj.elf obj/default/hello_world.o -lm -msys-lib=m
-nios2-elf-insert cpu_1_proj.elf --thread_model hal --cpu_name cpu_1 --qsys true --simulation_enabled false --stderr_dev jtag_uart_1 --stdin_dev jtag_uart_1 --stdout_dev jtag_uart_1 --sopc_system_name soc_system --quartus_project_dir "c:/RTES/lab3/hw/quartus" --jdi C:/RTES/lab3/hw/quartus//output_files/lab3_MultiProcessors.jdi --sopcinfo C:/RTES/lab3/hw/quartus/soc_system.sopcinfo
-Info: (cpu_1_proj.elf) 20 KBytes program size (code + initialized data).
-Info:                  65530 KBytes free for stack + heap.
-Info: Creating cpu_1_proj.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source cpu_1_proj.elf >cpu_1_proj.objdump
 [cpu_1_proj build complete]
 
-16:59:15 Build Finished (took 2s.466ms)
+11:03:21 Build Finished (took 1s.517ms)
 

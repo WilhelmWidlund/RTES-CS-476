@@ -6,7 +6,7 @@
 module soc_system (
 		input  wire        clk_clk,                       //                     clk.clk
 		output wire [31:0] debug_export,                  //                   debug.export
-		output wire        pll_2_sdram_clk,               //             pll_2_sdram.clk
+		output wire        pll_2_outclk2_clk,             //           pll_2_outclk2.clk
 		output wire [7:0]  pp0_out_export,                //                 pp0_out.export
 		output wire [7:0]  pp1_out_export,                //                 pp1_out.export
 		output wire [7:0]  pp2_out_export,                //                 pp2_out.export
@@ -22,12 +22,12 @@ module soc_system (
 		output wire        sdram_controller_2_wire_we_n   //                        .we_n
 	);
 
-	wire         pll_2_outclk0_clk;                                                       // pll_2:outclk_0 -> [Debug_PP:clk, cpu_0:clk, cpu_1:clk, custom_counter_0:Clk, custom_counter_1:Clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, jtag_uart_1:clk, mailbox_simple_0:clk, mm_interconnect_0:pll_2_outclk0_clk, mutex_0:clk, mutex_1:clk, onchip_memory2_0:clk, onchip_memory_1:clk, parallel_port_0:clk, parallel_port_1:clk, parallel_port_2:clk, performance_counter_0:clk, performance_counter_1:clk, rst_controller:clk, rst_controller_001:clk, rst_controller_002:clk, rst_controller_003:clk, rst_controller_004:clk, timer_0:clk, timer_1:clk]
-	wire         pll_2_outclk1_clk;                                                       // pll_2:outclk_1 -> [mm_interconnect_0:pll_2_outclk1_clk, rst_controller_005:clk, sdram_controller_2:clk]
+	wire         pll_2_outclk0_clk;                                                       // pll_2:outclk_0 -> [Debug_PP:clk, cpu_0:clk, cpu_1:clk, custom_counter_0:Clk, custom_counter_1:Clk, irq_mapper:clk, irq_mapper_001:clk, jtag_uart_0:clk, jtag_uart_1:clk, mailbox_simple_0:clk, mm_interconnect_0:pll_2_outclk0_clk, mutex_0:clk, mutex_1:clk, onchip_memory2_0:clk, onchip_memory_1:clk, parallel_port_0:clk, parallel_port_1:clk, parallel_port_2:clk, performance_counter_0:clk, performance_counter_1:clk, rst_controller:clk, rst_controller_001:clk, rst_controller_002:clk, timer_0:clk, timer_1:clk]
+	wire         pll_2_outclk1_clk;                                                       // pll_2:outclk_1 -> [mm_interconnect_0:pll_2_outclk1_clk, rst_controller_003:clk, sdram_controller_2:clk]
 	wire  [31:0] cpu_1_data_master_readdata;                                              // mm_interconnect_0:cpu_1_data_master_readdata -> cpu_1:d_readdata
 	wire         cpu_1_data_master_waitrequest;                                           // mm_interconnect_0:cpu_1_data_master_waitrequest -> cpu_1:d_waitrequest
 	wire         cpu_1_data_master_debugaccess;                                           // cpu_1:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_1_data_master_debugaccess
-	wire  [27:0] cpu_1_data_master_address;                                               // cpu_1:d_address -> mm_interconnect_0:cpu_1_data_master_address
+	wire  [26:0] cpu_1_data_master_address;                                               // cpu_1:d_address -> mm_interconnect_0:cpu_1_data_master_address
 	wire   [3:0] cpu_1_data_master_byteenable;                                            // cpu_1:d_byteenable -> mm_interconnect_0:cpu_1_data_master_byteenable
 	wire         cpu_1_data_master_read;                                                  // cpu_1:d_read -> mm_interconnect_0:cpu_1_data_master_read
 	wire         cpu_1_data_master_readdatavalid;                                         // mm_interconnect_0:cpu_1_data_master_readdatavalid -> cpu_1:d_readdatavalid
@@ -36,7 +36,7 @@ module soc_system (
 	wire  [31:0] cpu_0_data_master_readdata;                                              // mm_interconnect_0:cpu_0_data_master_readdata -> cpu_0:d_readdata
 	wire         cpu_0_data_master_waitrequest;                                           // mm_interconnect_0:cpu_0_data_master_waitrequest -> cpu_0:d_waitrequest
 	wire         cpu_0_data_master_debugaccess;                                           // cpu_0:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:cpu_0_data_master_debugaccess
-	wire  [27:0] cpu_0_data_master_address;                                               // cpu_0:d_address -> mm_interconnect_0:cpu_0_data_master_address
+	wire  [26:0] cpu_0_data_master_address;                                               // cpu_0:d_address -> mm_interconnect_0:cpu_0_data_master_address
 	wire   [3:0] cpu_0_data_master_byteenable;                                            // cpu_0:d_byteenable -> mm_interconnect_0:cpu_0_data_master_byteenable
 	wire         cpu_0_data_master_read;                                                  // cpu_0:d_read -> mm_interconnect_0:cpu_0_data_master_read
 	wire         cpu_0_data_master_readdatavalid;                                         // mm_interconnect_0:cpu_0_data_master_readdatavalid -> cpu_0:d_readdatavalid
@@ -44,12 +44,12 @@ module soc_system (
 	wire  [31:0] cpu_0_data_master_writedata;                                             // cpu_0:d_writedata -> mm_interconnect_0:cpu_0_data_master_writedata
 	wire  [31:0] cpu_0_instruction_master_readdata;                                       // mm_interconnect_0:cpu_0_instruction_master_readdata -> cpu_0:i_readdata
 	wire         cpu_0_instruction_master_waitrequest;                                    // mm_interconnect_0:cpu_0_instruction_master_waitrequest -> cpu_0:i_waitrequest
-	wire  [27:0] cpu_0_instruction_master_address;                                        // cpu_0:i_address -> mm_interconnect_0:cpu_0_instruction_master_address
+	wire  [26:0] cpu_0_instruction_master_address;                                        // cpu_0:i_address -> mm_interconnect_0:cpu_0_instruction_master_address
 	wire         cpu_0_instruction_master_read;                                           // cpu_0:i_read -> mm_interconnect_0:cpu_0_instruction_master_read
 	wire         cpu_0_instruction_master_readdatavalid;                                  // mm_interconnect_0:cpu_0_instruction_master_readdatavalid -> cpu_0:i_readdatavalid
 	wire  [31:0] cpu_1_instruction_master_readdata;                                       // mm_interconnect_0:cpu_1_instruction_master_readdata -> cpu_1:i_readdata
 	wire         cpu_1_instruction_master_waitrequest;                                    // mm_interconnect_0:cpu_1_instruction_master_waitrequest -> cpu_1:i_waitrequest
-	wire  [27:0] cpu_1_instruction_master_address;                                        // cpu_1:i_address -> mm_interconnect_0:cpu_1_instruction_master_address
+	wire  [26:0] cpu_1_instruction_master_address;                                        // cpu_1:i_address -> mm_interconnect_0:cpu_1_instruction_master_address
 	wire         cpu_1_instruction_master_read;                                           // cpu_1:i_read -> mm_interconnect_0:cpu_1_instruction_master_read
 	wire         cpu_1_instruction_master_readdatavalid;                                  // mm_interconnect_0:cpu_1_instruction_master_readdatavalid -> cpu_1:i_readdatavalid
 	wire         mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_chipselect;              // mm_interconnect_0:jtag_uart_1_avalon_jtag_slave_chipselect -> jtag_uart_1:av_chipselect
@@ -95,9 +95,17 @@ module soc_system (
 	wire         mm_interconnect_0_performance_counter_1_control_slave_begintransfer;     // mm_interconnect_0:performance_counter_1_control_slave_begintransfer -> performance_counter_1:begintransfer
 	wire         mm_interconnect_0_performance_counter_1_control_slave_write;             // mm_interconnect_0:performance_counter_1_control_slave_write -> performance_counter_1:write
 	wire  [31:0] mm_interconnect_0_performance_counter_1_control_slave_writedata;         // mm_interconnect_0:performance_counter_1_control_slave_writedata -> performance_counter_1:writedata
+	wire  [31:0] mm_interconnect_0_cpu_1_debug_mem_slave_readdata;                        // cpu_1:debug_mem_slave_readdata -> mm_interconnect_0:cpu_1_debug_mem_slave_readdata
+	wire         mm_interconnect_0_cpu_1_debug_mem_slave_waitrequest;                     // cpu_1:debug_mem_slave_waitrequest -> mm_interconnect_0:cpu_1_debug_mem_slave_waitrequest
+	wire         mm_interconnect_0_cpu_1_debug_mem_slave_debugaccess;                     // mm_interconnect_0:cpu_1_debug_mem_slave_debugaccess -> cpu_1:debug_mem_slave_debugaccess
+	wire   [8:0] mm_interconnect_0_cpu_1_debug_mem_slave_address;                         // mm_interconnect_0:cpu_1_debug_mem_slave_address -> cpu_1:debug_mem_slave_address
+	wire         mm_interconnect_0_cpu_1_debug_mem_slave_read;                            // mm_interconnect_0:cpu_1_debug_mem_slave_read -> cpu_1:debug_mem_slave_read
+	wire   [3:0] mm_interconnect_0_cpu_1_debug_mem_slave_byteenable;                      // mm_interconnect_0:cpu_1_debug_mem_slave_byteenable -> cpu_1:debug_mem_slave_byteenable
+	wire         mm_interconnect_0_cpu_1_debug_mem_slave_write;                           // mm_interconnect_0:cpu_1_debug_mem_slave_write -> cpu_1:debug_mem_slave_write
+	wire  [31:0] mm_interconnect_0_cpu_1_debug_mem_slave_writedata;                       // mm_interconnect_0:cpu_1_debug_mem_slave_writedata -> cpu_1:debug_mem_slave_writedata
 	wire         mm_interconnect_0_onchip_memory_1_s1_chipselect;                         // mm_interconnect_0:onchip_memory_1_s1_chipselect -> onchip_memory_1:chipselect
 	wire  [31:0] mm_interconnect_0_onchip_memory_1_s1_readdata;                           // onchip_memory_1:readdata -> mm_interconnect_0:onchip_memory_1_s1_readdata
-	wire  [11:0] mm_interconnect_0_onchip_memory_1_s1_address;                            // mm_interconnect_0:onchip_memory_1_s1_address -> onchip_memory_1:address
+	wire  [14:0] mm_interconnect_0_onchip_memory_1_s1_address;                            // mm_interconnect_0:onchip_memory_1_s1_address -> onchip_memory_1:address
 	wire   [3:0] mm_interconnect_0_onchip_memory_1_s1_byteenable;                         // mm_interconnect_0:onchip_memory_1_s1_byteenable -> onchip_memory_1:byteenable
 	wire         mm_interconnect_0_onchip_memory_1_s1_write;                              // mm_interconnect_0:onchip_memory_1_s1_write -> onchip_memory_1:write
 	wire  [31:0] mm_interconnect_0_onchip_memory_1_s1_writedata;                          // mm_interconnect_0:onchip_memory_1_s1_writedata -> onchip_memory_1:writedata
@@ -158,9 +166,17 @@ module soc_system (
 	wire         mm_interconnect_0_performance_counter_0_control_slave_begintransfer;     // mm_interconnect_0:performance_counter_0_control_slave_begintransfer -> performance_counter_0:begintransfer
 	wire         mm_interconnect_0_performance_counter_0_control_slave_write;             // mm_interconnect_0:performance_counter_0_control_slave_write -> performance_counter_0:write
 	wire  [31:0] mm_interconnect_0_performance_counter_0_control_slave_writedata;         // mm_interconnect_0:performance_counter_0_control_slave_writedata -> performance_counter_0:writedata
+	wire  [31:0] mm_interconnect_0_cpu_0_debug_mem_slave_readdata;                        // cpu_0:debug_mem_slave_readdata -> mm_interconnect_0:cpu_0_debug_mem_slave_readdata
+	wire         mm_interconnect_0_cpu_0_debug_mem_slave_waitrequest;                     // cpu_0:debug_mem_slave_waitrequest -> mm_interconnect_0:cpu_0_debug_mem_slave_waitrequest
+	wire         mm_interconnect_0_cpu_0_debug_mem_slave_debugaccess;                     // mm_interconnect_0:cpu_0_debug_mem_slave_debugaccess -> cpu_0:debug_mem_slave_debugaccess
+	wire   [8:0] mm_interconnect_0_cpu_0_debug_mem_slave_address;                         // mm_interconnect_0:cpu_0_debug_mem_slave_address -> cpu_0:debug_mem_slave_address
+	wire         mm_interconnect_0_cpu_0_debug_mem_slave_read;                            // mm_interconnect_0:cpu_0_debug_mem_slave_read -> cpu_0:debug_mem_slave_read
+	wire   [3:0] mm_interconnect_0_cpu_0_debug_mem_slave_byteenable;                      // mm_interconnect_0:cpu_0_debug_mem_slave_byteenable -> cpu_0:debug_mem_slave_byteenable
+	wire         mm_interconnect_0_cpu_0_debug_mem_slave_write;                           // mm_interconnect_0:cpu_0_debug_mem_slave_write -> cpu_0:debug_mem_slave_write
+	wire  [31:0] mm_interconnect_0_cpu_0_debug_mem_slave_writedata;                       // mm_interconnect_0:cpu_0_debug_mem_slave_writedata -> cpu_0:debug_mem_slave_writedata
 	wire         mm_interconnect_0_onchip_memory2_0_s1_chipselect;                        // mm_interconnect_0:onchip_memory2_0_s1_chipselect -> onchip_memory2_0:chipselect
 	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_readdata;                          // onchip_memory2_0:readdata -> mm_interconnect_0:onchip_memory2_0_s1_readdata
-	wire  [11:0] mm_interconnect_0_onchip_memory2_0_s1_address;                           // mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
+	wire  [14:0] mm_interconnect_0_onchip_memory2_0_s1_address;                           // mm_interconnect_0:onchip_memory2_0_s1_address -> onchip_memory2_0:address
 	wire   [3:0] mm_interconnect_0_onchip_memory2_0_s1_byteenable;                        // mm_interconnect_0:onchip_memory2_0_s1_byteenable -> onchip_memory2_0:byteenable
 	wire         mm_interconnect_0_onchip_memory2_0_s1_write;                             // mm_interconnect_0:onchip_memory2_0_s1_write -> onchip_memory2_0:write
 	wire  [31:0] mm_interconnect_0_onchip_memory2_0_s1_writedata;                         // mm_interconnect_0:onchip_memory2_0_s1_writedata -> onchip_memory2_0:writedata
@@ -170,22 +186,6 @@ module soc_system (
 	wire   [2:0] mm_interconnect_0_timer_0_s1_address;                                    // mm_interconnect_0:timer_0_s1_address -> timer_0:address
 	wire         mm_interconnect_0_timer_0_s1_write;                                      // mm_interconnect_0:timer_0_s1_write -> timer_0:write_n
 	wire  [15:0] mm_interconnect_0_timer_0_s1_writedata;                                  // mm_interconnect_0:timer_0_s1_writedata -> timer_0:writedata
-	wire  [31:0] mm_interconnect_0_cpu_0_debug_mem_slave_readdata;                        // cpu_0:debug_mem_slave_readdata -> mm_interconnect_0:cpu_0_debug_mem_slave_readdata
-	wire         mm_interconnect_0_cpu_0_debug_mem_slave_waitrequest;                     // cpu_0:debug_mem_slave_waitrequest -> mm_interconnect_0:cpu_0_debug_mem_slave_waitrequest
-	wire         mm_interconnect_0_cpu_0_debug_mem_slave_debugaccess;                     // mm_interconnect_0:cpu_0_debug_mem_slave_debugaccess -> cpu_0:debug_mem_slave_debugaccess
-	wire   [8:0] mm_interconnect_0_cpu_0_debug_mem_slave_address;                         // mm_interconnect_0:cpu_0_debug_mem_slave_address -> cpu_0:debug_mem_slave_address
-	wire         mm_interconnect_0_cpu_0_debug_mem_slave_read;                            // mm_interconnect_0:cpu_0_debug_mem_slave_read -> cpu_0:debug_mem_slave_read
-	wire   [3:0] mm_interconnect_0_cpu_0_debug_mem_slave_byteenable;                      // mm_interconnect_0:cpu_0_debug_mem_slave_byteenable -> cpu_0:debug_mem_slave_byteenable
-	wire         mm_interconnect_0_cpu_0_debug_mem_slave_write;                           // mm_interconnect_0:cpu_0_debug_mem_slave_write -> cpu_0:debug_mem_slave_write
-	wire  [31:0] mm_interconnect_0_cpu_0_debug_mem_slave_writedata;                       // mm_interconnect_0:cpu_0_debug_mem_slave_writedata -> cpu_0:debug_mem_slave_writedata
-	wire  [31:0] mm_interconnect_0_cpu_1_debug_mem_slave_readdata;                        // cpu_1:debug_mem_slave_readdata -> mm_interconnect_0:cpu_1_debug_mem_slave_readdata
-	wire         mm_interconnect_0_cpu_1_debug_mem_slave_waitrequest;                     // cpu_1:debug_mem_slave_waitrequest -> mm_interconnect_0:cpu_1_debug_mem_slave_waitrequest
-	wire         mm_interconnect_0_cpu_1_debug_mem_slave_debugaccess;                     // mm_interconnect_0:cpu_1_debug_mem_slave_debugaccess -> cpu_1:debug_mem_slave_debugaccess
-	wire   [8:0] mm_interconnect_0_cpu_1_debug_mem_slave_address;                         // mm_interconnect_0:cpu_1_debug_mem_slave_address -> cpu_1:debug_mem_slave_address
-	wire         mm_interconnect_0_cpu_1_debug_mem_slave_read;                            // mm_interconnect_0:cpu_1_debug_mem_slave_read -> cpu_1:debug_mem_slave_read
-	wire   [3:0] mm_interconnect_0_cpu_1_debug_mem_slave_byteenable;                      // mm_interconnect_0:cpu_1_debug_mem_slave_byteenable -> cpu_1:debug_mem_slave_byteenable
-	wire         mm_interconnect_0_cpu_1_debug_mem_slave_write;                           // mm_interconnect_0:cpu_1_debug_mem_slave_write -> cpu_1:debug_mem_slave_write
-	wire  [31:0] mm_interconnect_0_cpu_1_debug_mem_slave_writedata;                       // mm_interconnect_0:cpu_1_debug_mem_slave_writedata -> cpu_1:debug_mem_slave_writedata
 	wire         irq_mapper_receiver1_irq;                                                // custom_counter_0:IRQ -> irq_mapper:receiver1_irq
 	wire         irq_mapper_receiver2_irq;                                                // timer_0:irq -> irq_mapper:receiver2_irq
 	wire         irq_mapper_receiver3_irq;                                                // jtag_uart_0:av_irq -> irq_mapper:receiver3_irq
@@ -196,17 +196,13 @@ module soc_system (
 	wire  [31:0] cpu_1_irq_irq;                                                           // irq_mapper_001:sender_irq -> cpu_1:irq
 	wire         irq_mapper_receiver0_irq;                                                // mailbox_simple_0:irq_msg -> [irq_mapper:receiver0_irq, irq_mapper_001:receiver0_irq]
 	wire         rst_controller_reset_out_reset;                                          // rst_controller:reset_out -> [Debug_PP:reset, mailbox_simple_0:rst_n, mm_interconnect_0:parallel_port_2_reset_reset_bridge_in_reset_reset, mutex_0:reset_n, mutex_1:reset_n, parallel_port_2:reset]
-	wire         rst_controller_001_reset_out_reset;                                      // rst_controller_001:reset_out -> [cpu_0:reset_n, irq_mapper:reset, mm_interconnect_0:cpu_0_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_001_reset_out_reset_req;                                  // rst_controller_001:reset_req -> [cpu_0:reset_req, rst_translator:reset_req_in]
-	wire         cpu_0_debug_reset_request_reset;                                         // cpu_0:debug_reset_request -> [rst_controller_001:reset_in1, rst_controller_003:reset_in0]
-	wire         rst_controller_002_reset_out_reset;                                      // rst_controller_002:reset_out -> [cpu_1:reset_n, irq_mapper_001:reset, mm_interconnect_0:cpu_1_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_002_reset_out_reset_req;                                  // rst_controller_002:reset_req -> [cpu_1:reset_req, rst_translator_001:reset_req_in]
-	wire         cpu_1_debug_reset_request_reset;                                         // cpu_1:debug_reset_request -> [rst_controller_002:reset_in1, rst_controller_004:reset_in0]
-	wire         rst_controller_003_reset_out_reset;                                      // rst_controller_003:reset_out -> [custom_counter_0:nReset, jtag_uart_0:rst_n, mm_interconnect_0:jtag_uart_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, parallel_port_0:reset, performance_counter_0:reset_n, rst_translator_002:in_reset, timer_0:reset_n]
-	wire         rst_controller_003_reset_out_reset_req;                                  // rst_controller_003:reset_req -> [onchip_memory2_0:reset_req, rst_translator_002:reset_req_in]
-	wire         rst_controller_004_reset_out_reset;                                      // rst_controller_004:reset_out -> [custom_counter_1:nReset, jtag_uart_1:rst_n, mm_interconnect_0:jtag_uart_1_reset_reset_bridge_in_reset_reset, onchip_memory_1:reset, parallel_port_1:reset, performance_counter_1:reset_n, rst_translator_003:in_reset, timer_1:reset_n]
-	wire         rst_controller_004_reset_out_reset_req;                                  // rst_controller_004:reset_req -> [onchip_memory_1:reset_req, rst_translator_003:reset_req_in]
-	wire         rst_controller_005_reset_out_reset;                                      // rst_controller_005:reset_out -> [mm_interconnect_0:sdram_controller_2_reset_reset_bridge_in_reset_reset, sdram_controller_2:reset_n]
+	wire         rst_controller_001_reset_out_reset;                                      // rst_controller_001:reset_out -> [cpu_0:reset_n, custom_counter_0:nReset, irq_mapper:reset, jtag_uart_0:rst_n, mm_interconnect_0:cpu_0_reset_reset_bridge_in_reset_reset, onchip_memory2_0:reset, parallel_port_0:reset, performance_counter_0:reset_n, rst_translator:in_reset, timer_0:reset_n]
+	wire         rst_controller_001_reset_out_reset_req;                                  // rst_controller_001:reset_req -> [cpu_0:reset_req, onchip_memory2_0:reset_req, rst_translator:reset_req_in]
+	wire         cpu_0_debug_reset_request_reset;                                         // cpu_0:debug_reset_request -> rst_controller_001:reset_in1
+	wire         rst_controller_002_reset_out_reset;                                      // rst_controller_002:reset_out -> [cpu_1:reset_n, custom_counter_1:nReset, irq_mapper_001:reset, jtag_uart_1:rst_n, mm_interconnect_0:cpu_1_reset_reset_bridge_in_reset_reset, onchip_memory_1:reset, parallel_port_1:reset, performance_counter_1:reset_n, rst_translator_001:in_reset, timer_1:reset_n]
+	wire         rst_controller_002_reset_out_reset_req;                                  // rst_controller_002:reset_req -> [cpu_1:reset_req, onchip_memory_1:reset_req, rst_translator_001:reset_req_in]
+	wire         cpu_1_debug_reset_request_reset;                                         // cpu_1:debug_reset_request -> rst_controller_002:reset_in1
+	wire         rst_controller_003_reset_out_reset;                                      // rst_controller_003:reset_out -> [mm_interconnect_0:sdram_controller_2_reset_reset_bridge_in_reset_reset, sdram_controller_2:reset_n]
 
 	soc_system_Debug_PP debug_pp (
 		.clk        (pll_2_outclk0_clk),                                                //                        clk.clk
@@ -291,7 +287,7 @@ module soc_system (
 		.Write     (mm_interconnect_0_custom_counter_0_avalon_slave_0_write),     //                 .write
 		.WriteData (mm_interconnect_0_custom_counter_0_avalon_slave_0_writedata), //                 .writedata
 		.IRQ       (irq_mapper_receiver1_irq),                                    // interrupt_sender.irq
-		.nReset    (~rst_controller_003_reset_out_reset)                          //          reset_n.reset_n
+		.nReset    (~rst_controller_001_reset_out_reset)                          //          reset_n.reset_n
 	);
 
 	Counter custom_counter_1 (
@@ -302,12 +298,12 @@ module soc_system (
 		.Write     (mm_interconnect_0_custom_counter_1_avalon_slave_0_write),     //                 .write
 		.WriteData (mm_interconnect_0_custom_counter_1_avalon_slave_0_writedata), //                 .writedata
 		.IRQ       (irq_mapper_001_receiver1_irq),                                // interrupt_sender.irq
-		.nReset    (~rst_controller_004_reset_out_reset)                          //          reset_n.reset_n
+		.nReset    (~rst_controller_002_reset_out_reset)                          //          reset_n.reset_n
 	);
 
 	soc_system_jtag_uart_0 jtag_uart_0 (
 		.clk            (pll_2_outclk0_clk),                                           //               clk.clk
-		.rst_n          (~rst_controller_003_reset_out_reset),                         //             reset.reset_n
+		.rst_n          (~rst_controller_001_reset_out_reset),                         //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_jtag_uart_0_avalon_jtag_slave_read),       //                  .read_n
@@ -320,7 +316,7 @@ module soc_system (
 
 	soc_system_jtag_uart_0 jtag_uart_1 (
 		.clk            (pll_2_outclk0_clk),                                           //               clk.clk
-		.rst_n          (~rst_controller_004_reset_out_reset),                         //             reset.reset_n
+		.rst_n          (~rst_controller_002_reset_out_reset),                         //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_jtag_uart_1_avalon_jtag_slave_read),       //                  .read_n
@@ -383,8 +379,8 @@ module soc_system (
 		.readdata   (mm_interconnect_0_onchip_memory2_0_s1_readdata),   //       .readdata
 		.writedata  (mm_interconnect_0_onchip_memory2_0_s1_writedata),  //       .writedata
 		.byteenable (mm_interconnect_0_onchip_memory2_0_s1_byteenable), //       .byteenable
-		.reset      (rst_controller_003_reset_out_reset),               // reset1.reset
-		.reset_req  (rst_controller_003_reset_out_reset_req),           //       .reset_req
+		.reset      (rst_controller_001_reset_out_reset),               // reset1.reset
+		.reset_req  (rst_controller_001_reset_out_reset_req),           //       .reset_req
 		.freeze     (1'b0)                                              // (terminated)
 	);
 
@@ -397,14 +393,14 @@ module soc_system (
 		.readdata   (mm_interconnect_0_onchip_memory_1_s1_readdata),   //       .readdata
 		.writedata  (mm_interconnect_0_onchip_memory_1_s1_writedata),  //       .writedata
 		.byteenable (mm_interconnect_0_onchip_memory_1_s1_byteenable), //       .byteenable
-		.reset      (rst_controller_004_reset_out_reset),              // reset1.reset
-		.reset_req  (rst_controller_004_reset_out_reset_req),          //       .reset_req
+		.reset      (rst_controller_002_reset_out_reset),              // reset1.reset
+		.reset_req  (rst_controller_002_reset_out_reset_req),          //       .reset_req
 		.freeze     (1'b0)                                             // (terminated)
 	);
 
 	soc_system_parallel_port_0 parallel_port_0 (
 		.clk        (pll_2_outclk0_clk),                                                       //                        clk.clk
-		.reset      (rst_controller_003_reset_out_reset),                                      //                      reset.reset
+		.reset      (rst_controller_001_reset_out_reset),                                      //                      reset.reset
 		.address    (mm_interconnect_0_parallel_port_0_avalon_parallel_port_slave_address),    // avalon_parallel_port_slave.address
 		.byteenable (mm_interconnect_0_parallel_port_0_avalon_parallel_port_slave_byteenable), //                           .byteenable
 		.chipselect (mm_interconnect_0_parallel_port_0_avalon_parallel_port_slave_chipselect), //                           .chipselect
@@ -417,7 +413,7 @@ module soc_system (
 
 	soc_system_parallel_port_0 parallel_port_1 (
 		.clk        (pll_2_outclk0_clk),                                                       //                        clk.clk
-		.reset      (rst_controller_004_reset_out_reset),                                      //                      reset.reset
+		.reset      (rst_controller_002_reset_out_reset),                                      //                      reset.reset
 		.address    (mm_interconnect_0_parallel_port_1_avalon_parallel_port_slave_address),    // avalon_parallel_port_slave.address
 		.byteenable (mm_interconnect_0_parallel_port_1_avalon_parallel_port_slave_byteenable), //                           .byteenable
 		.chipselect (mm_interconnect_0_parallel_port_1_avalon_parallel_port_slave_chipselect), //                           .chipselect
@@ -443,7 +439,7 @@ module soc_system (
 
 	soc_system_performance_counter_0 performance_counter_0 (
 		.clk           (pll_2_outclk0_clk),                                                   //           clk.clk
-		.reset_n       (~rst_controller_003_reset_out_reset),                                 //         reset.reset_n
+		.reset_n       (~rst_controller_001_reset_out_reset),                                 //         reset.reset_n
 		.address       (mm_interconnect_0_performance_counter_0_control_slave_address),       // control_slave.address
 		.begintransfer (mm_interconnect_0_performance_counter_0_control_slave_begintransfer), //              .begintransfer
 		.readdata      (mm_interconnect_0_performance_counter_0_control_slave_readdata),      //              .readdata
@@ -453,7 +449,7 @@ module soc_system (
 
 	soc_system_performance_counter_0 performance_counter_1 (
 		.clk           (pll_2_outclk0_clk),                                                   //           clk.clk
-		.reset_n       (~rst_controller_004_reset_out_reset),                                 //         reset.reset_n
+		.reset_n       (~rst_controller_002_reset_out_reset),                                 //         reset.reset_n
 		.address       (mm_interconnect_0_performance_counter_1_control_slave_address),       // control_slave.address
 		.begintransfer (mm_interconnect_0_performance_counter_1_control_slave_begintransfer), //              .begintransfer
 		.readdata      (mm_interconnect_0_performance_counter_1_control_slave_readdata),      //              .readdata
@@ -466,13 +462,13 @@ module soc_system (
 		.rst      (~reset_reset_n),    //   reset.reset
 		.outclk_0 (pll_2_outclk0_clk), // outclk0.clk
 		.outclk_1 (pll_2_outclk1_clk), // outclk1.clk
-		.outclk_2 (pll_2_sdram_clk),   // outclk2.clk
+		.outclk_2 (pll_2_outclk2_clk), // outclk2.clk
 		.locked   ()                   // (terminated)
 	);
 
 	soc_system_sdram_controller_2 sdram_controller_2 (
 		.clk            (pll_2_outclk1_clk),                                     //   clk.clk
-		.reset_n        (~rst_controller_005_reset_out_reset),                   // reset.reset_n
+		.reset_n        (~rst_controller_003_reset_out_reset),                   // reset.reset_n
 		.az_addr        (mm_interconnect_0_sdram_controller_2_s1_address),       //    s1.address
 		.az_be_n        (~mm_interconnect_0_sdram_controller_2_s1_byteenable),   //      .byteenable_n
 		.az_cs          (mm_interconnect_0_sdram_controller_2_s1_chipselect),    //      .chipselect
@@ -495,7 +491,7 @@ module soc_system (
 
 	soc_system_timer_0 timer_0 (
 		.clk        (pll_2_outclk0_clk),                       //   clk.clk
-		.reset_n    (~rst_controller_003_reset_out_reset),     // reset.reset_n
+		.reset_n    (~rst_controller_001_reset_out_reset),     // reset.reset_n
 		.address    (mm_interconnect_0_timer_0_s1_address),    //    s1.address
 		.writedata  (mm_interconnect_0_timer_0_s1_writedata),  //      .writedata
 		.readdata   (mm_interconnect_0_timer_0_s1_readdata),   //      .readdata
@@ -506,7 +502,7 @@ module soc_system (
 
 	soc_system_timer_0 timer_1 (
 		.clk        (pll_2_outclk0_clk),                       //   clk.clk
-		.reset_n    (~rst_controller_004_reset_out_reset),     // reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),     // reset.reset_n
 		.address    (mm_interconnect_0_timer_1_s1_address),    //    s1.address
 		.writedata  (mm_interconnect_0_timer_1_s1_writedata),  //      .writedata
 		.readdata   (mm_interconnect_0_timer_1_s1_readdata),   //      .readdata
@@ -520,10 +516,8 @@ module soc_system (
 		.pll_2_outclk1_clk                                     (pll_2_outclk1_clk),                                                       //                                  pll_2_outclk1.clk
 		.cpu_0_reset_reset_bridge_in_reset_reset               (rst_controller_001_reset_out_reset),                                      //              cpu_0_reset_reset_bridge_in_reset.reset
 		.cpu_1_reset_reset_bridge_in_reset_reset               (rst_controller_002_reset_out_reset),                                      //              cpu_1_reset_reset_bridge_in_reset.reset
-		.jtag_uart_0_reset_reset_bridge_in_reset_reset         (rst_controller_003_reset_out_reset),                                      //        jtag_uart_0_reset_reset_bridge_in_reset.reset
-		.jtag_uart_1_reset_reset_bridge_in_reset_reset         (rst_controller_004_reset_out_reset),                                      //        jtag_uart_1_reset_reset_bridge_in_reset.reset
 		.parallel_port_2_reset_reset_bridge_in_reset_reset     (rst_controller_reset_out_reset),                                          //    parallel_port_2_reset_reset_bridge_in_reset.reset
-		.sdram_controller_2_reset_reset_bridge_in_reset_reset  (rst_controller_005_reset_out_reset),                                      // sdram_controller_2_reset_reset_bridge_in_reset.reset
+		.sdram_controller_2_reset_reset_bridge_in_reset_reset  (rst_controller_003_reset_out_reset),                                      // sdram_controller_2_reset_reset_bridge_in_reset.reset
 		.cpu_0_data_master_address                             (cpu_0_data_master_address),                                               //                              cpu_0_data_master.address
 		.cpu_0_data_master_waitrequest                         (cpu_0_data_master_waitrequest),                                           //                                               .waitrequest
 		.cpu_0_data_master_byteenable                          (cpu_0_data_master_byteenable),                                            //                                               .byteenable
@@ -901,132 +895,6 @@ module soc_system (
 		.NUM_RESET_INPUTS          (1),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (1),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_003 (
-		.reset_in0      (cpu_0_debug_reset_request_reset),        // reset_in0.reset
-		.clk            (pll_2_outclk0_clk),                      //       clk.clk
-		.reset_out      (rst_controller_003_reset_out_reset),     // reset_out.reset
-		.reset_req      (rst_controller_003_reset_out_reset_req), //          .reset_req
-		.reset_req_in0  (1'b0),                                   // (terminated)
-		.reset_in1      (1'b0),                                   // (terminated)
-		.reset_req_in1  (1'b0),                                   // (terminated)
-		.reset_in2      (1'b0),                                   // (terminated)
-		.reset_req_in2  (1'b0),                                   // (terminated)
-		.reset_in3      (1'b0),                                   // (terminated)
-		.reset_req_in3  (1'b0),                                   // (terminated)
-		.reset_in4      (1'b0),                                   // (terminated)
-		.reset_req_in4  (1'b0),                                   // (terminated)
-		.reset_in5      (1'b0),                                   // (terminated)
-		.reset_req_in5  (1'b0),                                   // (terminated)
-		.reset_in6      (1'b0),                                   // (terminated)
-		.reset_req_in6  (1'b0),                                   // (terminated)
-		.reset_in7      (1'b0),                                   // (terminated)
-		.reset_req_in7  (1'b0),                                   // (terminated)
-		.reset_in8      (1'b0),                                   // (terminated)
-		.reset_req_in8  (1'b0),                                   // (terminated)
-		.reset_in9      (1'b0),                                   // (terminated)
-		.reset_req_in9  (1'b0),                                   // (terminated)
-		.reset_in10     (1'b0),                                   // (terminated)
-		.reset_req_in10 (1'b0),                                   // (terminated)
-		.reset_in11     (1'b0),                                   // (terminated)
-		.reset_req_in11 (1'b0),                                   // (terminated)
-		.reset_in12     (1'b0),                                   // (terminated)
-		.reset_req_in12 (1'b0),                                   // (terminated)
-		.reset_in13     (1'b0),                                   // (terminated)
-		.reset_req_in13 (1'b0),                                   // (terminated)
-		.reset_in14     (1'b0),                                   // (terminated)
-		.reset_req_in14 (1'b0),                                   // (terminated)
-		.reset_in15     (1'b0),                                   // (terminated)
-		.reset_req_in15 (1'b0)                                    // (terminated)
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
-		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (1),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_004 (
-		.reset_in0      (cpu_1_debug_reset_request_reset),        // reset_in0.reset
-		.clk            (pll_2_outclk0_clk),                      //       clk.clk
-		.reset_out      (rst_controller_004_reset_out_reset),     // reset_out.reset
-		.reset_req      (rst_controller_004_reset_out_reset_req), //          .reset_req
-		.reset_req_in0  (1'b0),                                   // (terminated)
-		.reset_in1      (1'b0),                                   // (terminated)
-		.reset_req_in1  (1'b0),                                   // (terminated)
-		.reset_in2      (1'b0),                                   // (terminated)
-		.reset_req_in2  (1'b0),                                   // (terminated)
-		.reset_in3      (1'b0),                                   // (terminated)
-		.reset_req_in3  (1'b0),                                   // (terminated)
-		.reset_in4      (1'b0),                                   // (terminated)
-		.reset_req_in4  (1'b0),                                   // (terminated)
-		.reset_in5      (1'b0),                                   // (terminated)
-		.reset_req_in5  (1'b0),                                   // (terminated)
-		.reset_in6      (1'b0),                                   // (terminated)
-		.reset_req_in6  (1'b0),                                   // (terminated)
-		.reset_in7      (1'b0),                                   // (terminated)
-		.reset_req_in7  (1'b0),                                   // (terminated)
-		.reset_in8      (1'b0),                                   // (terminated)
-		.reset_req_in8  (1'b0),                                   // (terminated)
-		.reset_in9      (1'b0),                                   // (terminated)
-		.reset_req_in9  (1'b0),                                   // (terminated)
-		.reset_in10     (1'b0),                                   // (terminated)
-		.reset_req_in10 (1'b0),                                   // (terminated)
-		.reset_in11     (1'b0),                                   // (terminated)
-		.reset_req_in11 (1'b0),                                   // (terminated)
-		.reset_in12     (1'b0),                                   // (terminated)
-		.reset_req_in12 (1'b0),                                   // (terminated)
-		.reset_in13     (1'b0),                                   // (terminated)
-		.reset_req_in13 (1'b0),                                   // (terminated)
-		.reset_in14     (1'b0),                                   // (terminated)
-		.reset_req_in14 (1'b0),                                   // (terminated)
-		.reset_in15     (1'b0),                                   // (terminated)
-		.reset_req_in15 (1'b0)                                    // (terminated)
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
-		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
 		.MIN_RST_ASSERTION_TIME    (3),
@@ -1048,10 +916,10 @@ module soc_system (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_005 (
+	) rst_controller_003 (
 		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
 		.clk            (pll_2_outclk1_clk),                  //       clk.clk
-		.reset_out      (rst_controller_005_reset_out_reset), // reset_out.reset
+		.reset_out      (rst_controller_003_reset_out_reset), // reset_out.reset
 		.reset_req      (),                                   // (terminated)
 		.reset_req_in0  (1'b0),                               // (terminated)
 		.reset_in1      (1'b0),                               // (terminated)

@@ -1,0 +1,794 @@
+Archive member included because of file (symbol)
+
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+                              obj/hello_world.o (printf)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o) (___vfprintf_internal_r)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o) (__sfvwrite_small_dev)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o) (_impure_ptr)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o) (strlen)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o) (_write_r)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o) (errno)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o) (__udivsi3)
+../bsp_hello_world/libhal_bsp.a(alt_load.o)
+                              ../bsp_hello_world/obj/HAL/src/crt0.o (alt_load)
+../bsp_hello_world/libhal_bsp.a(alt_main.o)
+                              ../bsp_hello_world/obj/HAL/src/crt0.o (alt_main)
+../bsp_hello_world/libhal_bsp.a(alt_write.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o) (write)
+../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_main.o) (alt_irq_init)
+../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_write.o) (altera_avalon_jtag_uart_write)
+../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o) (alt_mutex_list)
+../bsp_hello_world/libhal_bsp.a(alt_close.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_main.o) (close)
+../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_load.o) (alt_dcache_flush_all)
+../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o) (alt_dev_llist_insert)
+../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_write.o) (alt_errno)
+../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+                              ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o) (alt_find_dev)
+../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_load.o) (alt_icache_flush_all)
+../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o) (altera_nios2_qsys_irq_init)
+../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o) (alt_icache_flush)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_main.o) (exit)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+                              ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o) (memcmp)
+/acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o) (__call_exitprocs)
+../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+                              /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o) (_exit)
+
+Allocating common symbols
+Common symbol       size              file
+
+errno               0x4               /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+
+Discarded input sections
+
+ .gnu.warning.close
+                0x00000000        0x0 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+onchip_memory_BEFORE_RESET 0x00050000         0x00002000
+reset            0x0005a000         0x00000020
+onchip_memory    0x0005a020         0x00005fe0
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+LOAD ../bsp_hello_world/obj/HAL/src/crt0.o
+LOAD obj/hello_world.o
+LOAD /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libstdc++.a
+LOAD /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libm.a
+LOAD /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a
+START GROUP
+LOAD /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a
+LOAD /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a
+LOAD ../bsp_hello_world/libhal_bsp.a
+END GROUP
+LOAD /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a
+                0x00050000                __alt_mem_onchip_memory = 0x50000
+
+.entry          0x0005a000       0x20
+ *(.entry)
+ .entry         0x0005a000       0x20 ../bsp_hello_world/obj/HAL/src/crt0.o
+                0x0005a000                __reset
+
+.exceptions     0x0005a020        0x0
+                0x0005a020                PROVIDE (__ram_exceptions_start, ABSOLUTE (.))
+                0x0005a020                . = ALIGN (0x20)
+ *(.irq)
+ *(.exceptions.entry.label)
+ *(.exceptions.entry.user)
+ *(.exceptions.entry)
+ *(.exceptions.irqtest.user)
+ *(.exceptions.irqtest)
+ *(.exceptions.irqhandler.user)
+ *(.exceptions.irqhandler)
+ *(.exceptions.irqreturn.user)
+ *(.exceptions.irqreturn)
+ *(.exceptions.notirq.label)
+ *(.exceptions.notirq.user)
+ *(.exceptions.notirq)
+ *(.exceptions.soft.user)
+ *(.exceptions.soft)
+ *(.exceptions.unknown.user)
+ *(.exceptions.unknown)
+ *(.exceptions.exit.label)
+ *(.exceptions.exit.user)
+ *(.exceptions.exit)
+ *(.exceptions)
+                0x0005a020                PROVIDE (__ram_exceptions_end, ABSOLUTE (.))
+                0x0005a020                PROVIDE (__flash_exceptions_start, LOADADDR (.exceptions))
+
+.text           0x0005a020     0x1158
+                0x0005a020                PROVIDE (stext, ABSOLUTE (.))
+ *(.interp)
+ *(.hash)
+ *(.dynsym)
+ *(.dynstr)
+ *(.gnu.version)
+ *(.gnu.version_d)
+ *(.gnu.version_r)
+ *(.rel.init)
+ *(.rela.init)
+ *(.rel.text .rel.text.* .rel.gnu.linkonce.t.*)
+ *(.rela.text .rela.text.* .rela.gnu.linkonce.t.*)
+ *(.rel.fini)
+ *(.rela.fini)
+ *(.rel.rodata .rel.rodata.* .rel.gnu.linkonce.r.*)
+ *(.rela.rodata .rela.rodata.* .rela.gnu.linkonce.r.*)
+ *(.rel.data .rel.data.* .rel.gnu.linkonce.d.*)
+ *(.rela.data .rela.data.* .rela.gnu.linkonce.d.*)
+ *(.rel.tdata .rel.tdata.* .rel.gnu.linkonce.td.*)
+ *(.rela.tdata .rela.tdata.* .rela.gnu.linkonce.td.*)
+ *(.rel.tbss .rel.tbss.* .rel.gnu.linkonce.tb.*)
+ *(.rela.tbss .rela.tbss.* .rela.gnu.linkonce.tb.*)
+ *(.rel.ctors)
+ *(.rela.ctors)
+ *(.rel.dtors)
+ *(.rela.dtors)
+ *(.rel.got)
+ *(.rela.got)
+ *(.rel.sdata .rel.sdata.* .rel.gnu.linkonce.s.*)
+ *(.rela.sdata .rela.sdata.* .rela.gnu.linkonce.s.*)
+ *(.rel.sbss .rel.sbss.* .rel.gnu.linkonce.sb.*)
+ *(.rela.sbss .rela.sbss.* .rela.gnu.linkonce.sb.*)
+ *(.rel.sdata2 .rel.sdata2.* .rel.gnu.linkonce.s2.*)
+ *(.rela.sdata2 .rela.sdata2.* .rela.gnu.linkonce.s2.*)
+ *(.rel.sbss2 .rel.sbss2.* .rel.gnu.linkonce.sb2.*)
+ *(.rela.sbss2 .rela.sbss2.* .rela.gnu.linkonce.sb2.*)
+ *(.rel.bss .rel.bss.* .rel.gnu.linkonce.b.*)
+ *(.rela.bss .rela.bss.* .rela.gnu.linkonce.b.*)
+ *(.rel.plt)
+ *(.rela.plt)
+ *(.rel.dyn)
+ *(.init)
+ *(.plt)
+ *(.text .stub .text.* .gnu.linkonce.t.*)
+ .text          0x0005a020       0x4c ../bsp_hello_world/obj/HAL/src/crt0.o
+                0x0005a020                _start
+ .text          0x0005a06c       0x10 obj/hello_world.o
+                0x0005a06c                main
+ .text          0x0005a07c       0x98 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+                0x0005a07c                printf
+                0x0005a0d0                _printf_r
+ .text          0x0005a114      0x678 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+                0x0005a194                ___vfprintf_internal_r
+                0x0005a768                __vfprintf_internal
+ .text          0x0005a78c       0xbc /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+                0x0005a78c                __sfvwrite_small_dev
+ .text          0x0005a848        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .text          0x0005a848       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+                0x0005a848                strlen
+ .text          0x0005a868       0x78 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+                0x0005a868                _write_r
+ .text          0x0005a8e0        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .text          0x0005a8e0      0x14c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+                0x0005a95c                __divsi3
+                0x0005a9bc                __modsi3
+                0x0005aa1c                __udivsi3
+                0x0005aa24                __umodsi3
+ .text          0x0005aa2c       0xb4 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+                0x0005aa2c                alt_load
+ .text          0x0005aae0       0x3c ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+                0x0005aae0                alt_main
+ .text          0x0005ab1c       0x78 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+                0x0005ab1c                write
+ .text          0x0005ab94       0x90 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+                0x0005ab94                alt_irq_init
+                0x0005abb4                alt_sys_init
+ .text          0x0005ac24       0x3c ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                0x0005ac24                altera_avalon_jtag_uart_write
+ .text          0x0005ac60      0x130 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+                0x0005ac60                altera_avalon_mutex_close
+                0x0005ac64                altera_avalon_mutex_first_lock
+                0x0005ac74                altera_avalon_mutex_is_mine
+                0x0005ac9c                altera_avalon_mutex_unlock
+                0x0005ace4                altera_avalon_mutex_open
+                0x0005ad50                altera_avalon_mutex_lock
+                0x0005ad8c                altera_avalon_mutex_trylock
+ .text          0x0005ad90       0x40 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+                0x0005ad90                close
+ .text          0x0005add0       0x18 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+                0x0005add0                alt_dcache_flush_all
+ .text          0x0005ade8       0x7c ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+                0x0005ade8                alt_dev_llist_insert
+ .text          0x0005ae64        0x0 ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .text          0x0005ae64       0x94 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+                0x0005ae64                alt_find_dev
+ .text          0x0005aef8        0xc ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+                0x0005aef8                alt_icache_flush_all
+ .text          0x0005af04        0x8 ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+                0x0005af04                altera_nios2_qsys_irq_init
+ .text          0x0005af0c       0x38 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+                0x0005af0c                alt_icache_flush
+ .text          0x0005af44       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+                0x0005af44                exit
+ .text          0x0005af64       0x3c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+                0x0005af64                memcmp
+ .text          0x0005afa0      0x1c0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+                0x0005afa4                __call_exitprocs
+ .text          0x0005b160       0x14 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+                0x0005b160                _exit
+ *(.gnu.warning.*)
+ *(.fini)
+                0x0005b174                PROVIDE (__etext, ABSOLUTE (.))
+                0x0005b174                PROVIDE (_etext, ABSOLUTE (.))
+                0x0005b174                PROVIDE (etext, ABSOLUTE (.))
+ *(.eh_frame_hdr)
+                0x0005b174                . = ALIGN (0x4)
+                0x0005b174                PROVIDE (__preinit_array_start, ABSOLUTE (.))
+ *(.preinit_array)
+                0x0005b174                PROVIDE (__preinit_array_end, ABSOLUTE (.))
+                0x0005b174                PROVIDE (__init_array_start, ABSOLUTE (.))
+ *(.init_array)
+                0x0005b174                PROVIDE (__init_array_end, ABSOLUTE (.))
+                0x0005b174                PROVIDE (__fini_array_start, ABSOLUTE (.))
+ *(.fini_array)
+                0x0005b174                PROVIDE (__fini_array_end, ABSOLUTE (.))
+ *(.eh_frame)
+ *(.gcc_except_table)
+ *(.dynamic)
+                0x0005b174                PROVIDE (__CTOR_LIST__, ABSOLUTE (.))
+ *(.ctors)
+ *(SORT(.ctors.*))
+ .ctors.65535   0x0005b174        0x4 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+                0x0005b178                PROVIDE (__CTOR_END__, ABSOLUTE (.))
+                0x0005b178                PROVIDE (__DTOR_LIST__, ABSOLUTE (.))
+ *(.dtors)
+ *(SORT(.dtors.*))
+                0x0005b178                PROVIDE (__DTOR_END__, ABSOLUTE (.))
+ *(.jcr)
+                0x0005b178                . = ALIGN (0x4)
+
+.rodata         0x0005b178       0xdc
+                0x0005b178                PROVIDE (__ram_rodata_start, ABSOLUTE (.))
+                0x0005b178                . = ALIGN (0x4)
+ *(.rodata .rodata.* .gnu.linkonce.r.*)
+ .rodata.str1.4
+                0x0005b178       0x14 obj/hello_world.o
+ .rodata.str1.4
+                0x0005b18c       0xc8 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ *(.rodata1)
+                0x0005b254                . = ALIGN (0x4)
+                0x0005b254                PROVIDE (__ram_rodata_end, ABSOLUTE (.))
+                0x0005b178                PROVIDE (__flash_rodata_start, LOADADDR (.rodata))
+
+.rwdata         0x0005b254      0x148 load address 0x0005b39c
+                0x0005b254                PROVIDE (__ram_rwdata_start, ABSOLUTE (.))
+                0x0005b254                . = ALIGN (0x4)
+ *(.got.plt)
+ *(.got)
+ *(.data1)
+ *(.data .data.* .gnu.linkonce.d.*)
+ .data          0x0005b254        0x0 ../bsp_hello_world/obj/HAL/src/crt0.o
+ .data          0x0005b254        0x0 obj/hello_world.o
+ .data          0x0005b254        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .data          0x0005b254        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .data          0x0005b254        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .data          0x0005b254       0xe0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .data          0x0005b334        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .data          0x0005b334        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .data          0x0005b334        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .data          0x0005b334        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .data          0x0005b334        0x0 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .data          0x0005b334        0x0 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .data          0x0005b334        0x0 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .data          0x0005b334       0x50 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .data          0x0005b384        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .data          0x0005b384        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .data          0x0005b384        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .data          0x0005b384        0x0 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+                0x00063384                _gp = ABSOLUTE ((. + 0x8000))
+                0x00063384                PROVIDE (gp, _gp)
+ *(.rwdata .rwdata.*)
+ *(.sdata .sdata.* .gnu.linkonce.s.*)
+ .sdata         0x0005b384        0x8 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+                0x0005b384                _impure_ptr
+                0x0005b388                _global_impure_ptr
+ .sdata         0x0005b38c        0x4 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+                0x0005b38c                jtag_uart_top
+ .sdata         0x0005b390        0x8 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+                0x0005b390                alt_mutex_list
+ .sdata         0x0005b398        0x4 ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+                0x0005b398                alt_errno
+ *(.sdata2 .sdata2.* .gnu.linkonce.s2.*)
+                0x0005b39c                . = ALIGN (0x4)
+                0x0005b39c                _edata = ABSOLUTE (.)
+                0x0005b39c                PROVIDE (edata, ABSOLUTE (.))
+                0x0005b39c                PROVIDE (__ram_rwdata_end, ABSOLUTE (.))
+                0x0005b39c                PROVIDE (__flash_rwdata_start, LOADADDR (.rwdata))
+
+.bss            0x0005b4e4       0x10
+                0x0005b4e4                __bss_start = ABSOLUTE (.)
+                0x0005b4e4                PROVIDE (__sbss_start, ABSOLUTE (.))
+                0x0005b4e4                PROVIDE (___sbss_start, ABSOLUTE (.))
+ *(.dynsbss)
+ *(.sbss .sbss.* .gnu.linkonce.sb.*)
+ .sbss          0x0005b4e4        0x4 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+                0x0005b4e4                errno
+ .sbss          0x0005b4e8        0xc ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+                0x0005b4e8                alt_argc
+                0x0005b4ec                alt_argv
+                0x0005b4f0                alt_envp
+ *(.sbss2 .sbss2.* .gnu.linkonce.sb2.*)
+ *(.scommon)
+                0x0005b4f4                PROVIDE (__sbss_end, ABSOLUTE (.))
+                0x0005b4f4                PROVIDE (___sbss_end, ABSOLUTE (.))
+ *(.dynbss)
+ *(.bss .bss.* .gnu.linkonce.b.*)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/obj/HAL/src/crt0.o
+ .bss           0x0005b4f4        0x0 obj/hello_world.o
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .bss           0x0005b4f4        0x0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .bss           0x0005b4f4        0x0 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+ *(COMMON)
+                0x0005b4f4                . = ALIGN (0x4)
+                0x0005b4f4                __bss_end = ABSOLUTE (.)
+
+.onchip_memory  0x0005b4f4        0x0
+                0x0005b4f4                PROVIDE (_alt_partition_onchip_memory_start, ABSOLUTE (.))
+ *(.onchip_memory. onchip_memory.*)
+                0x0005b4f4                . = ALIGN (0x4)
+                0x0005b4f4                PROVIDE (_alt_partition_onchip_memory_end, ABSOLUTE (.))
+                0x0005b4f4                _end = ABSOLUTE (.)
+                0x0005b4f4                end = ABSOLUTE (.)
+                0x0005b4f4                __alt_stack_base = ABSOLUTE (.)
+                0x0005b4f4                PROVIDE (_alt_partition_onchip_memory_load_addr, LOADADDR (.onchip_memory))
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment        0x00000000       0x23
+ *(.comment)
+ .comment       0x00000000       0x23 obj/hello_world.o
+                                 0x24 (size before relaxing)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .comment       0x00000000       0x24 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .comment       0x00000000       0x24 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000      0x328
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x28 ../bsp_hello_world/obj/HAL/src/crt0.o
+ .debug_aranges
+                0x00000028       0x20 obj/hello_world.o
+ .debug_aranges
+                0x00000048       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .debug_aranges
+                0x00000068       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_aranges
+                0x00000088       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_aranges
+                0x000000a8       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .debug_aranges
+                0x000000c8       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .debug_aranges
+                0x000000e8       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .debug_aranges
+                0x00000108       0x20 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_aranges
+                0x00000128       0x20 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .debug_aranges
+                0x00000148       0x20 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .debug_aranges
+                0x00000168       0x20 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_aranges
+                0x00000188       0x20 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_aranges
+                0x000001a8       0x20 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .debug_aranges
+                0x000001c8       0x20 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .debug_aranges
+                0x000001e8       0x20 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_aranges
+                0x00000208       0x20 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_aranges
+                0x00000228       0x20 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .debug_aranges
+                0x00000248       0x20 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_aranges
+                0x00000268       0x20 ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_aranges
+                0x00000288       0x20 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .debug_aranges
+                0x000002a8       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .debug_aranges
+                0x000002c8       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .debug_aranges
+                0x000002e8       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .debug_aranges
+                0x00000308       0x20 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+
+.debug_pubnames
+                0x00000000      0x53c
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000       0x1b obj/hello_world.o
+ .debug_pubnames
+                0x0000001b       0x2b /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .debug_pubnames
+                0x00000046       0x45 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_pubnames
+                0x0000008b       0x2b /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_pubnames
+                0x000000b6       0x39 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .debug_pubnames
+                0x000000ef       0x1d /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .debug_pubnames
+                0x0000010c       0x1f /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .debug_pubnames
+                0x0000012b       0x1c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .debug_pubnames
+                0x00000147       0x48 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .debug_pubnames
+                0x0000018f       0x1f ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_pubnames
+                0x000001ae       0x46 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .debug_pubnames
+                0x000001f4       0x1c ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .debug_pubnames
+                0x00000210       0x46 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_pubnames
+                0x00000256       0x34 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_pubnames
+                0x0000028a       0xff ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .debug_pubnames
+                0x00000389       0x1c ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .debug_pubnames
+                0x000003a5       0x2b ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_pubnames
+                0x000003d0       0x2b ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_pubnames
+                0x000003fb       0x20 ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .debug_pubnames
+                0x0000041b       0x23 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .debug_pubnames
+                0x0000043e       0x2b ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_pubnames
+                0x00000469       0x31 ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_pubnames
+                0x0000049a       0x27 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .debug_pubnames
+                0x000004c1       0x1b /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .debug_pubnames
+                0x000004dc       0x1d /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .debug_pubnames
+                0x000004f9       0x27 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .debug_pubnames
+                0x00000520       0x1c ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+
+.debug_info     0x00000000     0x4701
+ *(.debug_info .gnu.linkonce.wi.*)
+ .debug_info    0x00000000       0x7a ../bsp_hello_world/obj/HAL/src/crt0.o
+ .debug_info    0x0000007a       0x90 obj/hello_world.o
+ .debug_info    0x0000010a      0x6c8 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .debug_info    0x000007d2      0x94c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_info    0x0000111e      0x68e /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_info    0x000017ac      0x636 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .debug_info    0x00001de2       0xc2 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .debug_info    0x00001ea4      0x68c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .debug_info    0x00002530       0x8c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .debug_info    0x000025bc      0x21c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .debug_info    0x000027d8      0x1a1 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_info    0x00002979      0x137 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .debug_info    0x00002ab0      0x179 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .debug_info    0x00002c29      0x335 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_info    0x00002f5e      0x18f ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_info    0x000030ed      0x39d ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .debug_info    0x0000348a      0x136 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .debug_info    0x000035c0       0x9f ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_info    0x0000365f      0x1b7 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_info    0x00003816       0xab ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .debug_info    0x000038c1      0x30c ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .debug_info    0x00003bcd       0x8d ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_info    0x00003c5a       0x8d ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_info    0x00003ce7       0xd5 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .debug_info    0x00003dbc       0x9f /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .debug_info    0x00003e5b       0xef /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .debug_info    0x00003f4a      0x6d5 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .debug_info    0x0000461f       0xe2 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+
+.debug_abbrev   0x00000000     0x17be
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000       0x12 ../bsp_hello_world/obj/HAL/src/crt0.o
+ .debug_abbrev  0x00000012       0x3f obj/hello_world.o
+ .debug_abbrev  0x00000051      0x179 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .debug_abbrev  0x000001ca      0x247 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_abbrev  0x00000411      0x179 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_abbrev  0x0000058a      0x13f /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .debug_abbrev  0x000006c9       0x7a /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .debug_abbrev  0x00000743      0x16c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .debug_abbrev  0x000008af       0x3b /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .debug_abbrev  0x000008ea       0xe0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .debug_abbrev  0x000009ca       0xb6 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_abbrev  0x00000a80       0xb7 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .debug_abbrev  0x00000b37       0xdd ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .debug_abbrev  0x00000c14      0x16b ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_abbrev  0x00000d7f       0xf0 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_abbrev  0x00000e6f      0x1a2 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .debug_abbrev  0x00001011       0xc0 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .debug_abbrev  0x000010d1       0x57 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_abbrev  0x00001128      0x117 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_abbrev  0x0000123f       0x5e ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .debug_abbrev  0x0000129d       0xeb ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .debug_abbrev  0x00001388       0x3f ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_abbrev  0x000013c7       0x3f ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_abbrev  0x00001406       0x89 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .debug_abbrev  0x0000148f       0x4e /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .debug_abbrev  0x000014dd       0x7c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .debug_abbrev  0x00001559      0x1c6 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .debug_abbrev  0x0000171f       0x9f ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+
+.debug_line     0x00000000     0x475b
+ *(.debug_line)
+ .debug_line    0x00000000       0x72 ../bsp_hello_world/obj/HAL/src/crt0.o
+ .debug_line    0x00000072      0x20d obj/hello_world.o
+ .debug_line    0x0000027f      0x2b5 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .debug_line    0x00000534      0x5d2 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_line    0x00000b06      0x2a0 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_line    0x00000da6      0x224 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+ .debug_line    0x00000fca      0x244 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .debug_line    0x0000120e      0x291 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .debug_line    0x0000149f      0x1d9 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+ .debug_line    0x00001678      0x2c3 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .debug_line    0x0000193b      0x2ab ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_line    0x00001be6      0x2f2 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .debug_line    0x00001ed8      0x2db ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .debug_line    0x000021b3      0x33a ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_line    0x000024ed      0x334 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_line    0x00002821      0x3ba ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .debug_line    0x00002bdb      0x27b ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .debug_line    0x00002e56      0x1fd ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_line    0x00003053      0x294 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_line    0x000032e7      0x1da ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+ .debug_line    0x000034c1      0x2ad ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .debug_line    0x0000376e      0x1f5 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_line    0x00003963      0x1fe ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_line    0x00003b61      0x219 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .debug_line    0x00003d7a      0x21a /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .debug_line    0x00003f94      0x264 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .debug_line    0x000041f8      0x357 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .debug_line    0x0000454f      0x20c ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+
+.debug_frame    0x00000000      0x4e8
+ *(.debug_frame)
+ .debug_frame   0x00000000       0x20 obj/hello_world.o
+ .debug_frame   0x00000020       0x40 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .debug_frame   0x00000060       0x64 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_frame   0x000000c4       0x30 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_frame   0x000000f4       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .debug_frame   0x00000114       0x2c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .debug_frame   0x00000140       0x70 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .debug_frame   0x000001b0       0x28 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_frame   0x000001d8       0x28 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .debug_frame   0x00000200       0x28 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .debug_frame   0x00000228       0x44 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_frame   0x0000026c       0x20 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_frame   0x0000028c       0xa4 ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .debug_frame   0x00000330       0x28 ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .debug_frame   0x00000358       0x20 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+ .debug_frame   0x00000378       0x28 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_frame   0x000003a0       0x30 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .debug_frame   0x000003d0       0x20 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+ .debug_frame   0x000003f0       0x20 ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+ .debug_frame   0x00000410       0x20 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .debug_frame   0x00000430       0x2c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .debug_frame   0x0000045c       0x20 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .debug_frame   0x0000047c       0x4c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+ .debug_frame   0x000004c8       0x20 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+
+.debug_str      0x00000000     0x11aa
+ *(.debug_str)
+ .debug_str     0x00000000       0xc6 obj/hello_world.o
+                                0x104 (size before relaxing)
+ .debug_str     0x000000c6      0x390 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+                                0x45a (size before relaxing)
+ .debug_str     0x00000456      0x112 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+                                0x556 (size before relaxing)
+ .debug_str     0x00000568       0x6d /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+                                0x45e (size before relaxing)
+ .debug_str     0x000005d5       0xec /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-impure.o)
+                                0x451 (size before relaxing)
+ .debug_str     0x000006c1       0xd6 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+                                0x178 (size before relaxing)
+ .debug_str     0x00000797       0x4c /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+                                0x445 (size before relaxing)
+ .debug_str     0x000007e3       0x3d /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-int_errno.o)
+                                0x16b (size before relaxing)
+ .debug_str     0x00000820      0x10d /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+                                0x1b6 (size before relaxing)
+ .debug_str     0x0000092d      0x13a ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+                                0x1cf (size before relaxing)
+ .debug_str     0x00000a67       0x70 ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+                                0x15a (size before relaxing)
+ .debug_str     0x00000ad7       0x5a ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+                                0x181 (size before relaxing)
+ .debug_str     0x00000b31      0x1a7 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+                                0x322 (size before relaxing)
+ .debug_str     0x00000cd8       0x4a ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+                                0x1cb (size before relaxing)
+ .debug_str     0x00000d22       0xfe ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+                                0x287 (size before relaxing)
+ .debug_str     0x00000e20       0x1b ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+                                0x14e (size before relaxing)
+ .debug_str     0x00000e3b       0x34 ../bsp_hello_world/libhal_bsp.a(alt_dcache_flush_all.o)
+                                0x112 (size before relaxing)
+ .debug_str     0x00000e6f       0x59 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+                                0x189 (size before relaxing)
+ .debug_str     0x00000ec8       0x14 ../bsp_hello_world/libhal_bsp.a(alt_errno.o)
+                                0x102 (size before relaxing)
+ .debug_str     0x00000edc       0x79 ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+                                0x1a9 (size before relaxing)
+ .debug_str     0x00000f55       0x34 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush_all.o)
+                                0x112 (size before relaxing)
+ .debug_str     0x00000f89       0x3b ../bsp_hello_world/libhal_bsp.a(altera_nios2_qsys_irq.o)
+                                0x119 (size before relaxing)
+ .debug_str     0x00000fc4       0x2c ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+                                0x118 (size before relaxing)
+ .debug_str     0x00000ff0       0xcd /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+                                0x16c (size before relaxing)
+ .debug_str     0x000010bd       0x42 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+                                0x172 (size before relaxing)
+ .debug_str     0x000010ff       0x7b /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+                                0x485 (size before relaxing)
+ .debug_str     0x0000117a       0x30 ../bsp_hello_world/libhal_bsp.a(alt_exit.o)
+                                0x10e (size before relaxing)
+
+.debug_loc      0x00000000     0x10cb
+ *(.debug_loc)
+ .debug_loc     0x00000000       0x8d /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-printf.o)
+ .debug_loc     0x0000008d      0x5a9 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_loc     0x00000636      0x162 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-fvwrite_small_dev.o)
+ .debug_loc     0x00000798       0x1e /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-strlen.o)
+ .debug_loc     0x000007b6       0x97 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-writer.o)
+ .debug_loc     0x0000084d      0x1d2 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/libgcc.a(lib2-divmod.o)
+ .debug_loc     0x00000a1f       0xeb ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_loc     0x00000b0a       0x1f ../bsp_hello_world/libhal_bsp.a(alt_main.o)
+ .debug_loc     0x00000b29       0x84 ../bsp_hello_world/libhal_bsp.a(alt_write.o)
+ .debug_loc     0x00000bad       0x51 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_loc     0x00000bfe       0x26 ../bsp_hello_world/libhal_bsp.a(altera_avalon_jtag_uart_write.o)
+ .debug_loc     0x00000c24       0xff ../bsp_hello_world/libhal_bsp.a(altera_avalon_mutex.o)
+ .debug_loc     0x00000d23       0x3d ../bsp_hello_world/libhal_bsp.a(alt_close.o)
+ .debug_loc     0x00000d60       0x5b ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_loc     0x00000dbb       0x8f ../bsp_hello_world/libhal_bsp.a(alt_find_dev.o)
+ .debug_loc     0x00000e4a       0x13 ../bsp_hello_world/libhal_bsp.a(alt_icache_flush.o)
+ .debug_loc     0x00000e5d       0x3d /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-exit.o)
+ .debug_loc     0x00000e9a       0x70 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-memcmp.o)
+ .debug_loc     0x00000f0a      0x1c1 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)
+
+.debug_macinfo
+ *(.debug_macinfo)
+
+.debug_weaknames
+ *(.debug_weaknames)
+
+.debug_funcnames
+ *(.debug_funcnames)
+
+.debug_typenames
+ *(.debug_typenames)
+
+.debug_varnames
+ *(.debug_varnames)
+
+.debug_alt_sim_info
+                0x00000000       0x30
+ *(.debug_alt_sim_info)
+ .debug_alt_sim_info
+                0x00000000       0x30 ../bsp_hello_world/obj/HAL/src/crt0.o
+                0x00060000                __alt_data_end = 0x60000
+                0x00060000                PROVIDE (__alt_stack_pointer, __alt_data_end)
+                0x0005b4f4                PROVIDE (__alt_stack_limit, __alt_stack_base)
+                0x0005b4f4                PROVIDE (__alt_heap_start, end)
+                0x00060000                PROVIDE (__alt_heap_limit, 0x60000)
+OUTPUT(hello_world.elf elf32-littlenios2)
+
+.debug_ranges   0x00000000      0x170
+ .debug_ranges  0x00000000       0x20 ../bsp_hello_world/obj/HAL/src/crt0.o
+ .debug_ranges  0x00000020       0xa8 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-vfprintf.o)
+ .debug_ranges  0x000000c8       0x48 ../bsp_hello_world/libhal_bsp.a(alt_load.o)
+ .debug_ranges  0x00000110       0x30 ../bsp_hello_world/libhal_bsp.a(alt_sys_init.o)
+ .debug_ranges  0x00000140       0x18 ../bsp_hello_world/libhal_bsp.a(alt_dev_llist_insert.o)
+ .debug_ranges  0x00000158       0x18 /acds_releases/acds/11.0/157/linux32/nios2eds/bin/gnu/H-i686-pc-linux-gnu/bin/../lib/gcc/nios2-elf/4.1.2/../../../../nios2-elf/lib/libsmallc.a(lib_a-__call_atexit.o)

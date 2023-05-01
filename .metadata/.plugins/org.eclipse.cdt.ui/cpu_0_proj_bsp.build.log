@@ -1,6 +1,6 @@
-16:54:09 **** Incremental Build of configuration Nios II for project cpu_0_proj_bsp ****
-make all 
-[BSP build complete]
+11:59:44 **** Clean-only build of configuration Nios II for project cpu_0_proj_bsp ****
+make clean 
+[BSP clean complete]
 
-16:54:10 Build Finished (took 1s.206ms)
+11:59:45 Build Finished (took 536ms)
 

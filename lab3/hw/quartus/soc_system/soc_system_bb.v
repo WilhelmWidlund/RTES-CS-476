@@ -2,7 +2,7 @@
 module soc_system (
 	clk_clk,
 	debug_export,
-	pll_2_sdram_clk,
+	pll_2_outclk2_clk,
 	pp0_out_export,
 	pp1_out_export,
 	pp2_out_export,
@@ -19,7 +19,7 @@ module soc_system (
 
 	input		clk_clk;
 	output	[31:0]	debug_export;
-	output		pll_2_sdram_clk;
+	output		pll_2_outclk2_clk;
 	output	[7:0]	pp0_out_export;
 	output	[7:0]	pp1_out_export;
 	output	[7:0]	pp2_out_export;

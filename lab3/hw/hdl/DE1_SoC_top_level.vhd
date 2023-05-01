@@ -169,7 +169,7 @@ component soc_system is
 		port (
 			clk_clk                       : in    std_logic                     := 'X';             -- clk
 			reset_reset_n                 : in    std_logic                     := 'X';             -- reset_n
-			pll_2_sdram_clk               : out   std_logic;                                        -- clk
+			pll_2_outclk2_clk               : out   std_logic;                                        -- clk
 			sdram_controller_2_wire_addr  : out   std_logic_vector(12 downto 0);                    -- addr
 			sdram_controller_2_wire_ba    : out   std_logic_vector(1 downto 0);                     -- ba
 			sdram_controller_2_wire_cas_n : out   std_logic;                                        -- cas_n
@@ -191,7 +191,7 @@ u0 : component soc_system
 		port map (
 			clk_clk                       => CLOCK_50,                       --                     clk.clk
 			reset_reset_n                 => KEY_N(0),                 --                   reset.reset_n
-			pll_2_sdram_clk               => DRAM_CLK,               --             pll_2_sdram.clk
+			pll_2_outclk2_clk               => DRAM_CLK,               --             pll_2_sdram.clk
 			sdram_controller_2_wire_addr  => DRAM_ADDR,  -- sdram_controller_2_wire.addr
 			sdram_controller_2_wire_ba    => DRAM_BA,    --                        .ba
 			sdram_controller_2_wire_cas_n => DRAM_CAS_N, --                        .cas_n

@@ -2,7 +2,7 @@
 		port (
 			clk_clk                       : in    std_logic                     := 'X';             -- clk
 			debug_export                  : out   std_logic_vector(31 downto 0);                    -- export
-			pll_2_sdram_clk               : out   std_logic;                                        -- clk
+			pll_2_outclk2_clk             : out   std_logic;                                        -- clk
 			pp0_out_export                : out   std_logic_vector(7 downto 0);                     -- export
 			pp1_out_export                : out   std_logic_vector(7 downto 0);                     -- export
 			pp2_out_export                : out   std_logic_vector(7 downto 0);                     -- export
