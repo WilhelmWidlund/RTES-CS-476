@@ -244,17 +244,12 @@ void choose_task(int task)
 {
 	if(task == 1)
 	{
-		// Manipulation 1: print tests
-		part1();
-	}
-	else if(task == 2)
-	{
 		// 3.1 Parallel port test, 100 iterations, 50 ms each
 		uint32_t iters = 0x64;
 		int delaytime = 50;
 		pptest(delaytime, iters);
 	}
-	else if(task == 3)
+	else if(task == 2)
 	{
 		// Manipulation 2: hardware mutex
 		hwmutex(0x0f);
@@ -264,7 +259,7 @@ void choose_task(int task)
 		// Manipulation 3: hardware mailbox
 		send_mail();
 	}
-	else if(task == 5)
+	else if(task == 8)
 	{
 		// Manipulation 4: hardware counter
 		hwcounter();
@@ -273,31 +268,10 @@ void choose_task(int task)
 
 void isr_buttons(void* context)
 {
-	uint32_t pinvals = IORD_8DIRECT(PIO_2_BASE, PIO_IRQFLAG);
-	if(pinvals == 0x1)
-	{
-		choice = 0x2;
-		// Clear the interrupt flag
-		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
-	}
-	else if (pinvals == 0x2)
-	{
-		choice = 0x3;
-		// Clear the interrupt flag
-		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
-	}
-	else if (pinvals == 0x4)
-	{
-		choice = 0x4;
-		// Clear the interrupt flag
-		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
-	}
-	else if (pinvals == 0x8)
-	{
-		choice = 0x5;
-		// Clear the interrupt flag
-		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
-	}
+	uint8_t pinvals = IORD_8DIRECT(PIO_2_BASE, PIO_IRQFLAG);
+	choice = (int)pinvals;
+	// Clear the interrupt flag
+	IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
 }
 
 int main()

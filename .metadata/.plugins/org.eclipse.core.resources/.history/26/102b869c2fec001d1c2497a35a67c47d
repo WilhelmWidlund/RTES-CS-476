@@ -1,5 +1,6 @@
 /*
  *--------------------------------- THIS IS CPU 1 ---------------------------------------------
+ * Main code for the cpu 1 subsystem 
  */
 
 #include <stdio.h>
@@ -10,7 +11,7 @@
 #include <string.h>
 #include <altera_avalon_mutex.h>
 #include "altera_avalon_mailbox_simple.h"
-#include "altera_avalon_mailbox_simple_regs.h"
+#include <altera_avalon_performance_counter.h>
 
 /*
  *--------------------------------- THIS IS CPU 1 ---------------------------------------------
@@ -39,33 +40,39 @@
 
 // PIO definitions
 #define PIO_Data	0
-#define PIO_IRQEN	2
-#define PIO_IRQFLAG	3
+#define PIO_IRQEN	4*2
+#define PIO_IRQFLAG	4*3
+// Variable for recording choices made by interrupt
+volatile int choice;
 
 void part1()
 {
-	printf("Hello from the multicore system, this is CPU %d talking! \n", ALT_CPU_CPU_ID_VALUE);
+	printf("Hello from the multicore system, this is CPU %d talking! \n", NIOS2_CPU_ID_VALUE);
 }
-
-/*
- *--------------------------------- THIS IS CPU 1 ---------------------------------------------
- */
 
 // Access parallel port 1 connected to LEDs 6, 5 & 4
 // and increment counter 1 every mscound milliseconds
 // for iterations amount of times.
 void pptest(int msdelay, uint32_t iterations)
 {
-	part1();
+	// Start overall performance counter
+	PERF_RESET(PERFORMANCE_COUNTER_1_BASE);
+	PERF_START_MEASURING(PERFORMANCE_COUNTER_1_BASE);
+	// Start performance counter, recording the setup portion (1)
+	PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, 1);
+	printf("Starting parallel port test on CPU %d\n", NIOS2_CPU_ID_VALUE);
 	uint32_t itercount = 0x00;
 	uint8_t curr_lamp = 0x00;
 	// Reset custom counter
 	IOWR_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterReset, ArbVal);
 	// Set target value to be larger than iterations to be sure we never reach it (avoid triggering interrupt)
-	IOWR_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterTarget, iterations);
-
+	IOWR_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterTarget, iterations + 1);
+	// Stop performance counter for the setup portion (1)
+	PERF_END(PERFORMANCE_COUNTER_1_BASE, 1);
 	while(itercount < iterations)
 	{
+		// Start performance counter, recording the iterative work (2)
+		PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, 2);
 		// Access parallel port to toggle LED
 		IOWR_8DIRECT(PARALLEL_PORT_1_BASE, 0, curr_lamp);
 		// Increment counter
@@ -79,11 +86,22 @@ void pptest(int msdelay, uint32_t iterations)
 		{
 			curr_lamp = 0x00;
 		}
+		// Stop performance counter for the iterative work (2)
+		PERF_END(PERFORMANCE_COUNTER_1_BASE, 2);
+		// Start performance counter, recording the wait (3)
+		PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, 3);
 		// Wait msdelay ms
 		usleep(1000 * msdelay);
+		// Stop performance counter for the wait (3)
+		PERF_END(PERFORMANCE_COUNTER_1_BASE, 3);
 		// Get count value
 		itercount = IORD_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterValue);
 	}
+	printf("Parallel port test on CPU %d finished\n\n", NIOS2_CPU_ID_VALUE);
+	// Stop overall performance counter and print results
+	PERF_STOP_MEASURING(PERFORMANCE_COUNTER_1_BASE);
+	perf_print_formatted_report(PERFORMANCE_COUNTER_1_BASE, alt_get_cpu_freq(), 3, "Startup", "Iterations", "Sleep");
+	printf("\n");
 }
 
 void hwmutex()
@@ -104,7 +122,8 @@ void hwmutex()
 	printf("Starting decrementation synchronized by Mutex.\n");
 	while(counter > 0x0)
 	{
-		usleep(1000000);
+		// Decrement every 10 ms
+		usleep(10000);
 		timer_start = IORD_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterValue);
 		altera_avalon_mutex_lock(common_mutex, 2);
 		counter = IORD_8DIRECT(PARALLEL_PORT_2_BASE, 0);
@@ -114,7 +133,7 @@ void hwmutex()
 		timer_stop = IORD_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterValue);
 		printf("Decrement time: %ld cycles.\n", (timer_stop - timer_start));
 	}
-	printf("Finished with decrementation synchronized by Mutex.\n");
+	printf("Finished with decrementation synchronized by Mutex.\n\n");
 }
 
 void hwcounter()
@@ -137,8 +156,8 @@ void hwcounter()
 	printf("Starting decrementation of shared hardware counter.\n");
 	while(LED_Counter > 0x0)
 	{
-		// Increment every 10 ms
-		usleep(1000000);
+		// Decrement every 10 ms
+		usleep(10000);
 		// Read start value
 		timer_start = IORD_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterValue);
 
@@ -154,7 +173,7 @@ void hwcounter()
 		printf("Decrement time: %ld cycles.\n", (timer_stop - timer_start));
 
 	}
-	printf("Finished with decrementation of shared hardware counter.\n");
+	printf("Finished with decrementation of shared hardware counter.\n\n");
 }
 
 void receive_callback(void* message)
@@ -185,7 +204,7 @@ void receive_mail()
 		printf("%c", *(msg_ptr + i));
 	}
 	altera_avalon_mailbox_close(mailbox);
-	printf("\nDone using the mailbox, receiver side.\n");
+	printf("\nDone using the mailbox, receiver side.\n\n");
 }
 
 void choose_task(int task)
@@ -199,7 +218,7 @@ void choose_task(int task)
 	{
 		// 3.1 Parallel port test, 100 iterations, 50 ms each
 		uint32_t iters = 0x64;
-		int delaytime = 500;
+		int delaytime = 50;
 		pptest(delaytime, iters);
 	}
 	else if(task == 3)
@@ -221,33 +240,28 @@ void choose_task(int task)
 
 void isr_buttons(void* context)
 {
-	uint32_t pinvals = IORD_32DIRECT(PIO_IRQFLAG, PIO_Data);
-	printf("isr 0: pinvals is %lu\n", pinvals);
+	uint32_t pinvals = IORD_8DIRECT(PIO_2_BASE, PIO_IRQFLAG);
 	if(pinvals == 0x1)
 	{
-		printf("isr 1\n");
-		choose_task(2);
+		choice = 0x2;
 		// Clear the interrupt flag
 		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
 	}
 	else if (pinvals == 0x2)
 	{
-		printf("isr 2\n");
-		choose_task(3);
+		choice = 0x3;
 		// Clear the interrupt flag
 		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
 	}
 	else if (pinvals == 0x4)
 	{
-		printf("isr 3\n");
-		choose_task(4);
+		choice = 0x4;
 		// Clear the interrupt flag
 		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
 	}
 	else if (pinvals == 0x8)
 	{
-		printf("isr 4\n");
-		choose_task(5);
+		choice = 0x5;
 		// Clear the interrupt flag
 		IOWR_8DIRECT(PIO_2_BASE, PIO_IRQFLAG, pinvals);
 	}
@@ -255,12 +269,23 @@ void isr_buttons(void* context)
 
 int main()
 {
-	choose_task(1);
 	// Setup interrupts on input pins
+	IOWR_8DIRECT(PIO_2_BASE, PIO_IRQEN, 0xff);
 	alt_ic_isr_register(PIO_2_IRQ_INTERRUPT_CONTROLLER_ID, PIO_2_IRQ, isr_buttons, NULL, NULL);
-	//choose_task(5);
+	// Print which CPU it is
+	choose_task(1);
+	printf("Use switches for performing tasks:\nSwitch No. |   Task\n   0       |   Parallel Port test\n   1       |   Hardware mutex\n   2       |   Hardware mailbox\n   3       |   Hardware counter\n\n");
 	// Wait for buttons
-	while(1){};
+	while(1)
+	{
+		// Poll choice once every millisecond
+		usleep(1000);
+		if(choice != 0x0)
+		{
+			choose_task(choice);
+			choice = 0x0;
+		}
+	};
 	return 0;
 }
 
