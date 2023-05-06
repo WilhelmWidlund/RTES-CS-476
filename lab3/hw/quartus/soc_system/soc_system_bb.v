@@ -1,7 +1,7 @@
 
 module soc_system (
 	clk_clk,
-	debug_export,
+	pio_2_export,
 	pll_2_outclk2_clk,
 	pp0_out_export,
 	pp1_out_export,
@@ -18,7 +18,7 @@ module soc_system (
 	sdram_controller_2_wire_we_n);	
 
 	input		clk_clk;
-	output	[31:0]	debug_export;
+	input	[7:0]	pio_2_export;
 	output		pll_2_outclk2_clk;
 	output	[7:0]	pp0_out_export;
 	output	[7:0]	pp1_out_export;

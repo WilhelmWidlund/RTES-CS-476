@@ -1,7 +1,7 @@
 	component soc_system is
 		port (
 			clk_clk                       : in    std_logic                     := 'X';             -- clk
-			debug_export                  : out   std_logic_vector(31 downto 0);                    -- export
+			pio_2_export                  : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- export
 			pll_2_outclk2_clk             : out   std_logic;                                        -- clk
 			pp0_out_export                : out   std_logic_vector(7 downto 0);                     -- export
 			pp1_out_export                : out   std_logic_vector(7 downto 0);                     -- export
@@ -22,7 +22,7 @@
 	u0 : component soc_system
 		port map (
 			clk_clk                       => CONNECTED_TO_clk_clk,                       --                     clk.clk
-			debug_export                  => CONNECTED_TO_debug_export,                  --                   debug.export
+			pio_2_export                  => CONNECTED_TO_pio_2_export,                  --                   pio_2.export
 			pll_2_outclk2_clk             => CONNECTED_TO_pll_2_outclk2_clk,             --           pll_2_outclk2.clk
 			pp0_out_export                => CONNECTED_TO_pp0_out_export,                --                 pp0_out.export
 			pp1_out_export                => CONNECTED_TO_pp1_out_export,                --                 pp1_out.export

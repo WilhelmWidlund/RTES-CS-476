@@ -1,5 +1,5 @@
 Assembler report for lab3_MultiProcessors
-Mon May 01 12:38:13 2023
+Sat May 06 15:50:37 2023
 Quartus Prime Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 
 
@@ -38,7 +38,7 @@ refer to the applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Mon May 01 12:38:13 2023 ;
+; Assembler Status      ; Successful - Sat May 06 15:50:37 2023 ;
 ; Revision Name         ; lab3_MultiProcessors                  ;
 ; Top-level Entity Name ; DE1_SoC_top_level                     ;
 ; Family                ; Cyclone V                             ;
@@ -78,8 +78,8 @@ refer to the applicable agreement for further details.
 +----------------+-------------------------------------------------------------------------------------+
 ; Option         ; Setting                                                                             ;
 +----------------+-------------------------------------------------------------------------------------+
-; JTAG usercode  ; 0x070AC338                                                                          ;
-; Checksum       ; 0x070AC338                                                                          ;
+; JTAG usercode  ; 0x070C6211                                                                          ;
+; Checksum       ; 0x070C6211                                                                          ;
 +----------------+-------------------------------------------------------------------------------------+
 
 
@@ -89,16 +89,16 @@ refer to the applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus Prime Assembler
     Info: Version 18.1.0 Build 625 09/12/2018 SJ Lite Edition
-    Info: Processing started: Mon May 01 12:37:56 2023
+    Info: Processing started: Sat May 06 15:50:20 2023
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off lab3_MultiProcessors -c lab3_MultiProcessors
 Warning (18236): Number of processors has not been specified which may cause overloading on shared machines.  Set the global assignment NUM_PARALLEL_PROCESSORS in your QSF to an appropriate value for best performance.
 Info (115030): Assembler is generating device programming files
 Info (115017): Design contains a time-limited core -- only a single, time-limited programming file can be generated
 Warning (210042): Can't convert time-limited SOF into POF, HEX File, TTF, or RBF
 Info: Quartus Prime Assembler was successful. 0 errors, 2 warnings
-    Info: Peak virtual memory: 4957 megabytes
-    Info: Processing ended: Mon May 01 12:38:13 2023
+    Info: Peak virtual memory: 4964 megabytes
+    Info: Processing ended: Sat May 06 15:50:37 2023
     Info: Elapsed time: 00:00:17
-    Info: Total CPU time (on all processors): 00:00:17
+    Info: Total CPU time (on all processors): 00:00:16
 
 

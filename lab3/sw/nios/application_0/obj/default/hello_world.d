@@ -13,7 +13,7 @@ obj/default/hello_world.o: hello_world.c \
  c:\rtes\lab3\sw\nios\cpu_0_project_bsp\hal\inc\priv\alt_no_error.h \
  c:\rtes\lab3\sw\nios\cpu_0_project_bsp\drivers\inc\altera_avalon_mailbox_simple.h \
  c:\rtes\lab3\sw\nios\cpu_0_project_bsp\hal\inc\priv\alt_file.h \
- c:\rtes\lab3\sw\nios\cpu_0_project_bsp\drivers\inc\altera_avalon_mailbox_simple_regs.h
+ c:\rtes\lab3\sw\nios\cpu_0_project_bsp\drivers\inc\altera_avalon_performance_counter.h
 
 C:/RTES/lab3/sw/nios/cpu_0_project_bsp/system.h:
 
@@ -43,4 +43,4 @@ c:\rtes\lab3\sw\nios\cpu_0_project_bsp\drivers\inc\altera_avalon_mailbox_simple.
 
 c:\rtes\lab3\sw\nios\cpu_0_project_bsp\hal\inc\priv\alt_file.h:
 
-c:\rtes\lab3\sw\nios\cpu_0_project_bsp\drivers\inc\altera_avalon_mailbox_simple_regs.h:
+c:\rtes\lab3\sw\nios\cpu_0_project_bsp\drivers\inc\altera_avalon_performance_counter.h:

@@ -81,7 +81,7 @@ entity DE1_SoC_top_level is
 --        PS2_DAT2         : inout std_logic;
 
         -- SW
---        SW               : in    std_logic_vector(9 downto 0);
+        SW               : in    std_logic_vector(9 downto 0);
 
         -- Video-In
 --        TD_CLK27         : inout std_logic;
@@ -182,7 +182,7 @@ component soc_system is
 			pp2_out_export                : out std_logic_vector(7 downto 0)  := (others => 'X'); -- export
 			pp1_out_export                : out   std_logic_vector(7 downto 0);                     -- export
 			pp0_out_export                : out   std_logic_vector(7 downto 0);                      -- export
-			debug_export                  : out std_logic_vector(31 downto 0)  := (others => 'X')  -- export
+			pio_2_export                  : in    std_logic_vector(7 downto 0) := (others => 'X') -- export
 		);
 	end component soc_system;
 
@@ -208,6 +208,6 @@ u0 : component soc_system
 			pp1_out_export(7 downto 3)                => open,
 			pp0_out_export(2 downto 0)                => LEDR(2 downto 0),                 --                 pp0_out.export
 			pp0_out_export(7 downto 3)                => open,
-			debug_export                  => GPIO_0(31 downto 0)                   --                   debug.export
+			pio_2_export(7 downto 0)                  => SW(7 downto 0)                   --                   pio_2.export
 		);
 end;

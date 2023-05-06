@@ -10,6 +10,7 @@ use ieee.numeric_std.all;
 -- 100 = Command[7... 0]		General command (RW access)
 -- 101 = Status[7... 0]			General status (RW access)
 -- 110 = Target[31... 0]		Count target value (RW access)
+-- 111 = IncrVal[31... 0]		Increment by this amount once (write access)
 
 entity Counter is
 	PORT(
@@ -41,8 +42,9 @@ architecture comp of Counter is
 	signal	iIRQEn	:	std_logic;
 	-- Count target value
 	signal	iTarget	:	std_logic_vector(31 downto 0);
-	-- Increment write flag
+	-- Increment/Decrement write flag
 	signal	iIncr		: 	std_logic;
+	signal	iDecr		:	std_logic;
 	signal	iIncrVal	:	std_logic_vector(31 downto 0);
 	
 	begin
@@ -63,6 +65,9 @@ architecture comp of Counter is
 			elsif iIncr = '1' then
 					-- Increment count
 					iCounter <= iCounter + unsigned(iIncrVal);
+			elsif iDecr = '1' then
+					-- Decrement count
+					iCounter <= iCounter - unsigned(iIncrVal);
 			end if;
 		end if;
 	end process Counter_process;
@@ -114,12 +119,15 @@ architecture comp of Counter is
 			iEn <= '0';
 			iRz <= '1';
 			iIncr <= '0';
+			iDecr <= '0';
 			iIRQEn <= '0';
 			iClrEOT <= '1';
 		elsif rising_edge(Clk) then
 			-- Default values: don't reset or clear
 			iRz <= '0';
 			iClrEOT <= '0';
+			iIncr <= '0';
+			iDecr <= '0';
 			-- Write cycle
 			if Write = '1' then
 				case Address(2 downto 0) is
@@ -136,7 +144,6 @@ architecture comp of Counter is
 					when "011" =>
 						-- Stop: disable counting command
 						iEn <= '0';
-						
 					-- Registers: WriteData is considered
 					when "100" =>
 						-- Command register
@@ -151,6 +158,9 @@ architecture comp of Counter is
 					when "111" =>
 						iIncrVal <= WriteData;
 						iIncr <= '1';
+					when "000" =>
+						iIncrVal <= WriteData;
+						iDecr <= '1';
 					when others => null;
 				end case;
 			end if;

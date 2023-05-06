@@ -1,11 +1,11 @@
-Analysis & Synthesis Status : Successful - Mon May 01 12:34:14 2023
+Analysis & Synthesis Status : Successful - Sat May 06 15:46:56 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : lab3_MultiProcessors
 Top-level Entity Name : DE1_SoC_top_level
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A
-Total registers : 7337
-Total pins : 90
+Total registers : 7413
+Total pins : 100
 Total virtual pins : 0
 Total block memory bits : 2,228,224
 Total DSP Blocks : 6

@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_1' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/lab3/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Mon May 01 12:44:58 CEST 2023
+ * Generated: Sat May 06 16:46:16 CEST 2023
  */
 
 /*
@@ -66,7 +66,7 @@
 #define ALT_CPU_CPU_ARCH_NIOS2_R1
 #define ALT_CPU_CPU_FREQ 50000000u
 #define ALT_CPU_CPU_ID_SIZE 1
-#define ALT_CPU_CPU_ID_VALUE 0x00000001
+#define ALT_CPU_CPU_ID_VALUE 0x00000000
 #define ALT_CPU_CPU_IMPLEMENTATION "fast"
 #define ALT_CPU_DATA_ADDR_WIDTH 0x1b
 #define ALT_CPU_DCACHE_BYPASS_MASK 0x80000000
@@ -107,7 +107,7 @@
 #define NIOS2_CPU_ARCH_NIOS2_R1
 #define NIOS2_CPU_FREQ 50000000u
 #define NIOS2_CPU_ID_SIZE 1
-#define NIOS2_CPU_ID_VALUE 0x00000000
+#define NIOS2_CPU_ID_VALUE 0x00000001
 #define NIOS2_CPU_IMPLEMENTATION "fast"
 #define NIOS2_DATA_ADDR_WIDTH 0x1b
 #define NIOS2_DCACHE_BYPASS_MASK 0x80000000
@@ -137,20 +137,6 @@
 
 
 /*
- * Debug_PP configuration
- *
- */
-
-#define ALT_MODULE_CLASS_Debug_PP altera_up_avalon_parallel_port
-#define DEBUG_PP_BASE 0x4041090
-#define DEBUG_PP_IRQ -1
-#define DEBUG_PP_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define DEBUG_PP_NAME "/dev/Debug_PP"
-#define DEBUG_PP_SPAN 16
-#define DEBUG_PP_TYPE "altera_up_avalon_parallel_port"
-
-
-/*
  * Define for each module class mastered by the CPU
  *
  */
@@ -161,6 +147,7 @@
 #define __ALTERA_AVALON_NEW_SDRAM_CONTROLLER
 #define __ALTERA_AVALON_ONCHIP_MEMORY2
 #define __ALTERA_AVALON_PERFORMANCE_COUNTER
+#define __ALTERA_AVALON_PIO
 #define __ALTERA_AVALON_TIMER
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_PARALLEL_PORT
@@ -183,19 +170,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_1"
-#define ALT_STDERR_BASE 0x40410d0
+#define ALT_STDERR_BASE 0x40410e8
 #define ALT_STDERR_DEV jtag_uart_1
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_1"
-#define ALT_STDIN_BASE 0x40410d0
+#define ALT_STDIN_BASE 0x40410e8
 #define ALT_STDIN_DEV jtag_uart_1
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_1"
-#define ALT_STDOUT_BASE 0x40410d0
+#define ALT_STDOUT_BASE 0x40410e8
 #define ALT_STDOUT_DEV jtag_uart_1
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -209,12 +196,26 @@
  */
 
 #define ALT_MODULE_CLASS_custom_counter_1 custom_counter_0
-#define CUSTOM_COUNTER_1_BASE 0x4041060
+#define CUSTOM_COUNTER_1_BASE 0x4041080
 #define CUSTOM_COUNTER_1_IRQ -1
 #define CUSTOM_COUNTER_1_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define CUSTOM_COUNTER_1_NAME "/dev/custom_counter_1"
 #define CUSTOM_COUNTER_1_SPAN 32
 #define CUSTOM_COUNTER_1_TYPE "custom_counter_0"
+
+
+/*
+ * custom_counter_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_custom_counter_2 custom_counter_0
+#define CUSTOM_COUNTER_2_BASE 0x4041040
+#define CUSTOM_COUNTER_2_IRQ -1
+#define CUSTOM_COUNTER_2_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define CUSTOM_COUNTER_2_NAME "/dev/custom_counter_2"
+#define CUSTOM_COUNTER_2_SPAN 32
+#define CUSTOM_COUNTER_2_TYPE "custom_counter_0"
 
 
 /*
@@ -234,7 +235,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_1 altera_avalon_jtag_uart
-#define JTAG_UART_1_BASE 0x40410d0
+#define JTAG_UART_1_BASE 0x40410e8
 #define JTAG_UART_1_IRQ 2
 #define JTAG_UART_1_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_1_NAME "/dev/jtag_uart_1"
@@ -252,7 +253,7 @@
  */
 
 #define ALT_MODULE_CLASS_mailbox_simple_0 altera_avalon_mailbox_simple
-#define MAILBOX_SIMPLE_0_BASE 0x4041080
+#define MAILBOX_SIMPLE_0_BASE 0x40410b0
 #define MAILBOX_SIMPLE_0_IRQ 0
 #define MAILBOX_SIMPLE_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define MAILBOX_SIMPLE_0_NAME "/dev/mailbox_simple_0"
@@ -266,7 +267,7 @@
  */
 
 #define ALT_MODULE_CLASS_mutex_0 altera_avalon_mutex
-#define MUTEX_0_BASE 0x40410c8
+#define MUTEX_0_BASE 0x40410e0
 #define MUTEX_0_IRQ -1
 #define MUTEX_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define MUTEX_0_NAME "/dev/mutex_0"
@@ -276,24 +277,6 @@
 #define MUTEX_0_TYPE "altera_avalon_mutex"
 #define MUTEX_0_VALUE_INIT 0
 #define MUTEX_0_VALUE_WIDTH 16
-
-
-/*
- * mutex_1 configuration
- *
- */
-
-#define ALT_MODULE_CLASS_mutex_1 altera_avalon_mutex
-#define MUTEX_1_BASE 0x40410c0
-#define MUTEX_1_IRQ -1
-#define MUTEX_1_IRQ_INTERRUPT_CONTROLLER_ID -1
-#define MUTEX_1_NAME "/dev/mutex_1"
-#define MUTEX_1_OWNER_INIT 0
-#define MUTEX_1_OWNER_WIDTH 16
-#define MUTEX_1_SPAN 8
-#define MUTEX_1_TYPE "altera_avalon_mutex"
-#define MUTEX_1_VALUE_INIT 0
-#define MUTEX_1_VALUE_WIDTH 16
 
 
 /*
@@ -331,7 +314,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_1 altera_up_avalon_parallel_port
-#define PARALLEL_PORT_1_BASE 0x40410b0
+#define PARALLEL_PORT_1_BASE 0x40410d0
 #define PARALLEL_PORT_1_IRQ -1
 #define PARALLEL_PORT_1_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_1_NAME "/dev/parallel_port_1"
@@ -345,7 +328,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_2 altera_up_avalon_parallel_port
-#define PARALLEL_PORT_2_BASE 0x40410a0
+#define PARALLEL_PORT_2_BASE 0x40410c0
 #define PARALLEL_PORT_2_IRQ -1
 #define PARALLEL_PORT_2_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_2_NAME "/dev/parallel_port_2"
@@ -366,6 +349,33 @@
 #define PERFORMANCE_COUNTER_1_NAME "/dev/performance_counter_1"
 #define PERFORMANCE_COUNTER_1_SPAN 64
 #define PERFORMANCE_COUNTER_1_TYPE "altera_avalon_performance_counter"
+
+
+/*
+ * pio_2 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_pio_2 altera_avalon_pio
+#define PIO_2_BASE 0x40410a0
+#define PIO_2_BIT_CLEARING_EDGE_REGISTER 1
+#define PIO_2_BIT_MODIFYING_OUTPUT_REGISTER 0
+#define PIO_2_CAPTURE 1
+#define PIO_2_DATA_WIDTH 8
+#define PIO_2_DO_TEST_BENCH_WIRING 0
+#define PIO_2_DRIVEN_SIM_VALUE 0
+#define PIO_2_EDGE_TYPE "RISING"
+#define PIO_2_FREQ 50000000
+#define PIO_2_HAS_IN 1
+#define PIO_2_HAS_OUT 0
+#define PIO_2_HAS_TRI 0
+#define PIO_2_IRQ 4
+#define PIO_2_IRQ_INTERRUPT_CONTROLLER_ID 0
+#define PIO_2_IRQ_TYPE "EDGE"
+#define PIO_2_NAME "/dev/pio_2"
+#define PIO_2_RESET_VALUE 0
+#define PIO_2_SPAN 16
+#define PIO_2_TYPE "altera_avalon_pio"
 
 
 /*
@@ -414,7 +424,7 @@
 
 #define ALT_MODULE_CLASS_timer_1 altera_avalon_timer
 #define TIMER_1_ALWAYS_RUN 0
-#define TIMER_1_BASE 0x4041040
+#define TIMER_1_BASE 0x4041060
 #define TIMER_1_COUNTER_SIZE 32
 #define TIMER_1_FIXED_PERIOD 0
 #define TIMER_1_FREQ 50000000

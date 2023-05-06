@@ -31,18 +31,18 @@ refer to the applicable agreement for further details.
 		(line (pt 0 72)(pt 192 72)(line_width 1))
 	)
 	(port
+		(pt 0 112)
+		(input)
+		(text "pio_2_export[7..0]" (rect 0 0 71 12)(font "Arial" (font_size 8)))
+		(text "pio_2_export[7..0]" (rect 4 101 112 112)(font "Arial" (font_size 8)))
+		(line (pt 0 112)(pt 192 112)(line_width 3))
+	)
+	(port
 		(pt 0 272)
 		(input)
 		(text "reset_reset_n" (rect 0 0 56 12)(font "Arial" (font_size 8)))
 		(text "reset_reset_n" (rect 4 261 82 272)(font "Arial" (font_size 8)))
 		(line (pt 0 272)(pt 192 272)(line_width 1))
-	)
-	(port
-		(pt 0 112)
-		(output)
-		(text "debug_export[31..0]" (rect 0 0 77 12)(font "Arial" (font_size 8)))
-		(text "debug_export[31..0]" (rect 4 101 118 112)(font "Arial" (font_size 8)))
-		(line (pt 0 112)(pt 192 112)(line_width 3))
 	)
 	(port
 		(pt 448 72)
@@ -138,7 +138,7 @@ refer to the applicable agreement for further details.
 	(drawing
 		(text "clk" (rect 177 43 372 99)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "clk" (rect 197 67 412 144)(font "Arial" (color 0 0 0)))
-		(text "debug" (rect 158 83 346 179)(font "Arial" (color 128 0 0)(font_size 9)))
+		(text "pio_2" (rect 161 83 352 179)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "export" (rect 197 107 430 224)(font "Arial" (color 0 0 0)))
 		(text "pll_2_outclk2" (rect 257 43 592 99)(font "Arial" (color 128 0 0)(font_size 9)))
 		(text "clk" (rect 241 67 500 144)(font "Arial" (color 0 0 0)))
