@@ -4,13 +4,14 @@ use ieee.numeric_std.all;
 
 -- Register map:
 -- 000 = Counter[31... 0]		Counter value (read access)
+--					Decrement by the amount in WriteData once (write access)
 -- 001 = Rz				Reset the counter (write access)
 -- 010 = Start				Start counting (write access)
 -- 011 = Stop				Stop counting (write access)
 -- 100 = Command[7... 0]		General command (RW access)
 -- 101 = Status[7... 0]			General status (RW access)
 -- 110 = Target[31... 0]		Count target value (RW access)
--- 111 = IncrVal[31... 0]		Increment by this amount once (write access)
+-- 111 = IncrVal[31... 0]		Increment by the amount in WriteData once (write access)
 
 entity Counter is
 	PORT(
