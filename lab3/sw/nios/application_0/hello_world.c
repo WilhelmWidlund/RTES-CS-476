@@ -1,5 +1,6 @@
 /*
  *--------------------------------- THIS IS CPU 0 ---------------------------------------------
+ * Main code for the cpu 0 subsystem 
  */
 
 #include <stdio.h>
@@ -10,10 +11,7 @@
 #include <string.h>
 #include <altera_avalon_mutex.h>
 #include "altera_avalon_mailbox_simple.h"
-//#include "altera_avalon_mailbox_simple_regs.h"
 #include <altera_avalon_performance_counter.h>
-//#include "sys/alt_stdio.h"
-//#include "sys/alt_irq.h"
 
 /*
  *--------------------------------- THIS IS CPU 0 ---------------------------------------------
@@ -52,10 +50,6 @@ void part1()
 {
 	printf("Hello from the multicore system, this is CPU %d talking! \n", NIOS2_CPU_ID_VALUE);
 }
-
-/*
- *--------------------------------- THIS IS CPU 0 ---------------------------------------------
- */
 
 // Access parallel port 0 connected to LEDs 3, 2 & 1
 // and increment counter 0 every mscound milliseconds
