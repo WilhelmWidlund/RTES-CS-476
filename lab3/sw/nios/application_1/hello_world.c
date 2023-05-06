@@ -122,7 +122,8 @@ void hwmutex()
 	printf("Starting decrementation synchronized by Mutex.\n");
 	while(counter > 0x0)
 	{
-		usleep(1000000);
+		// Decrement every 10 ms
+		usleep(10000);
 		timer_start = IORD_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterValue);
 		altera_avalon_mutex_lock(common_mutex, 2);
 		counter = IORD_8DIRECT(PARALLEL_PORT_2_BASE, 0);
@@ -155,8 +156,8 @@ void hwcounter()
 	printf("Starting decrementation of shared hardware counter.\n");
 	while(LED_Counter > 0x0)
 	{
-		// Increment every 10 ms
-		usleep(1000000);
+		// Decrement every 10 ms
+		usleep(10000);
 		// Read start value
 		timer_start = IORD_32DIRECT(CUSTOM_COUNTER_1_BASE, CustomCounterValue);
 
@@ -217,7 +218,7 @@ void choose_task(int task)
 	{
 		// 3.1 Parallel port test, 100 iterations, 50 ms each
 		uint32_t iters = 0x64;
-		int delaytime = 500;
+		int delaytime = 50;
 		pptest(delaytime, iters);
 	}
 	else if(task == 3)

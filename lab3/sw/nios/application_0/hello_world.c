@@ -125,8 +125,8 @@ void hwmutex(uint8_t startvalue)
 	printf("Starting incrementation synchronized by Mutex.\n");
 	while(counter > 0x0)
 	{
-		// Decrement every 20 ms
-		usleep(2000000);
+		// Increment every 20 ms
+		usleep(20000);
 		// Read start value
 		timer_start = IORD_32DIRECT(CUSTOM_COUNTER_0_BASE, CustomCounterValue);
 		altera_avalon_mutex_lock(common_mutex, 1);
@@ -166,7 +166,7 @@ void hwcounter()
 	while(LED_Counter > 0x0)
 	{
 		// Increment every 20 ms
-		usleep(2000000);
+		usleep(20000);
 		// Read start value
 		timer_start = IORD_32DIRECT(CUSTOM_COUNTER_0_BASE, CustomCounterValue);
 
@@ -251,7 +251,7 @@ void choose_task(int task)
 	{
 		// 3.1 Parallel port test, 100 iterations, 50 ms each
 		uint32_t iters = 0x64;
-		int delaytime = 500;
+		int delaytime = 50;
 		pptest(delaytime, iters);
 	}
 	else if(task == 3)
