@@ -3,11 +3,13 @@
  <debug showDebugMenu="0" />
  <systemtable filter="All Interfaces">
   <columns>
-   <connections preferredWidth="127" />
-   <irq preferredWidth="34" />
+   <connections preferredWidth="303" />
+   <irq preferredWidth="47" />
+   <name preferredWidth="350" />
+   <description preferredWidth="362" />
+   <export preferredWidth="661" />
   </columns>
  </systemtable>
- <library
-   expandedCategories="Library,Library/Basic Functions/Simulation; Debug and Verification,Library/Processors and Peripherals,Library/Basic Functions,Library/Basic Functions/Simulation; Debug and Verification/Simulation,Library/Processors and Peripherals/Co-Processors,Library/Processors and Peripherals/Embedded Processors,Library/Processors and Peripherals/Co-Processors/Nios II Custom Instructions,Project" />
- <window width="1390" height="1755" x="1357" y="0" />
+ <library expandedCategories="Library,Project" />
+ <window width="2762" height="1770" x="-13" y="-13" />
 </preferences>

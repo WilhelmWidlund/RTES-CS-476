@@ -10,6 +10,7 @@
    <baseaddress preferredWidth="227" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library
+   expandedCategories="Library/Interface Protocols/PCI Express,Library,Library/Interface Protocols,Library/Processors and Peripherals/Peripherals,Library/Processors and Peripherals,Library/Interface Protocols/PCI Express/QSYS Example Designs,Project" />
  <window width="2762" height="1770" x="-13" y="-13" />
 </preferences>
