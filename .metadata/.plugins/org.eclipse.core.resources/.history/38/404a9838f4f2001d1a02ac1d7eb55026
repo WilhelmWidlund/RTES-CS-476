@@ -1,0 +1,18 @@
+/* Audio system main file
+ */
+
+#include <stdio.h>
+#include "system.h"
+#include "io.h"
+#include <stdint.h>
+#include <unistd.h>
+#include <string.h>
+#include "altera_avalon_mailbox_simple.h"
+#include <altera_avalon_performance_counter.h>
+
+int main()
+{
+  printf("Hello from Nios II!\n");
+
+  return 0;
+}

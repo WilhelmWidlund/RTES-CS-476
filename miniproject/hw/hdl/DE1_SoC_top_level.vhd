@@ -31,7 +31,8 @@ entity DE1_SoC_top_level is
         AUD_BCLK         : inout std_logic;
         AUD_DACDAT       : out   std_logic;
         AUD_DACLRCK      : inout std_logic;
-        AUD_XCK          : out   std_logic;
+		  -- TODO: What is this signal?
+        --AUD_XCK          : out   std_logic;
 
         -- CLOCK
         CLOCK_50         : in    std_logic;
@@ -81,7 +82,7 @@ entity DE1_SoC_top_level is
 --        PS2_DAT2         : inout std_logic;
 
         -- SW
-        SW               : in    std_logic_vector(9 downto 0)
+        SW               : in    std_logic_vector(9 downto 0);
 
         -- Video-In
 --        TD_CLK27         : inout std_logic;
@@ -101,7 +102,7 @@ entity DE1_SoC_top_level is
 --        VGA_VS           : out   std_logic;
 
         -- GPIO_0
---        GPIO_0           : inout std_logic_vector(35 downto 0);
+        GPIO_0           : inout std_logic_vector(35 downto 0)
 
         -- GPIO_1
 --        GPIO_1           : inout std_logic_vector(35 downto 0);
@@ -176,7 +177,7 @@ component soc_system is
 			sdram_controller_shared_wire_cas_n             : out   std_logic;                                        -- cas_n
 			sdram_controller_shared_wire_cke               : out   std_logic;                                        -- cke
 			sdram_controller_shared_wire_cs_n              : out   std_logic;                                        -- cs_n
-			sdram_controller_shared_wire_dq                : inout std_logic_vector(31 downto 0) := (others => 'X'); -- dq
+			sdram_controller_shared_wire_dq                : inout std_logic_vector(15 downto 0) := (others => 'X'); -- dq
 			sdram_controller_shared_wire_dqm               : out   std_logic_vector(3 downto 0);                     -- dqm
 			sdram_controller_shared_wire_ras_n             : out   std_logic;                                        -- ras_n
 			sdram_controller_shared_wire_we_n              : out   std_logic;                                        -- we_n
@@ -189,7 +190,8 @@ component soc_system is
 			sysaudio_av_config_external_interface_SCLK     : out   std_logic;                                        -- SCLK
 			pio_1st_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
 			pio_2nd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
-			pio_3rd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0)                     -- export
+			pio_3rd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);
+			pio_debug_export                               : out   std_logic_vector(31 downto 0)			-- export
 		);
 	end component soc_system;
 
@@ -237,13 +239,13 @@ u0 : component soc_system
 			sysaudio_av_config_external_interface_SDAT     => FPGA_I2C_SDAT,     --  sysaudio_av_config_external_interface.SDAT
 			sysaudio_av_config_external_interface_SCLK     => FPGA_I2C_SCLK,     --                                       .SCLK
 			
-			-- TODO: Which order does this correspond to??? 
-			pio_1st_7seg_external_connection_export(13 downto 7)        => HEX0_N,        --       pio_1st_7seg_external_connection.export
-			pio_1st_7seg_external_connection_export(6 downto 0)        => HEX1_N,
-			pio_2nd_7seg_external_connection_export(13 downto 7)        => HEX2_N,        --       pio_2nd_7seg_external_connection.export
-			pio_2nd_7seg_external_connection_export(6 downto 0)        => HEX3_N,
-			pio_3rd_7seg_external_connection_export(13 downto 7)        => HEX4_N,        --       pio_3rd_7seg_external_connection.export
-			pio_3rd_7seg_external_connection_export(6 downto 0)        => HEX5_N      
+			pio_1st_7seg_external_connection_export(13 downto 7)        => HEX5_N,        --       pio_1st_7seg_external_connection.export
+			pio_1st_7seg_external_connection_export(6 downto 0)        => HEX4_N,
+			pio_2nd_7seg_external_connection_export(13 downto 7)        => HEX3_N,        --       pio_2nd_7seg_external_connection.export
+			pio_2nd_7seg_external_connection_export(6 downto 0)        => HEX2_N,
+			pio_3rd_7seg_external_connection_export(13 downto 7)        => HEX1_N,        --       pio_3rd_7seg_external_connection.export
+			pio_3rd_7seg_external_connection_export(6 downto 0)        => HEX0_N,
+			pio_debug_export                               => GPIO_0(31 downto 0)
 		);
 		
 		

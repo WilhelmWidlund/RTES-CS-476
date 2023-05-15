@@ -10,6 +10,7 @@ module soc_system (
 		output wire [13:0] pio_1st_7seg_external_connection_export,        //       pio_1st_7seg_external_connection.export
 		output wire [13:0] pio_2nd_7seg_external_connection_export,        //       pio_2nd_7seg_external_connection.export
 		output wire [13:0] pio_3rd_7seg_external_connection_export,        //       pio_3rd_7seg_external_connection.export
+		output wire [31:0] pio_debug_export,                               //                              pio_debug.export
 		output wire        pll_shared_outclk2_clk,                         //                     pll_shared_outclk2.clk
 		input  wire        reset_reset_n,                                  //                                  reset.reset_n
 		output wire [12:0] sdram_controller_shared_wire_addr,              //           sdram_controller_shared_wire.addr
@@ -17,8 +18,8 @@ module soc_system (
 		output wire        sdram_controller_shared_wire_cas_n,             //                                       .cas_n
 		output wire        sdram_controller_shared_wire_cke,               //                                       .cke
 		output wire        sdram_controller_shared_wire_cs_n,              //                                       .cs_n
-		inout  wire [31:0] sdram_controller_shared_wire_dq,                //                                       .dq
-		output wire [3:0]  sdram_controller_shared_wire_dqm,               //                                       .dqm
+		inout  wire [15:0] sdram_controller_shared_wire_dq,                //                                       .dq
+		output wire [1:0]  sdram_controller_shared_wire_dqm,               //                                       .dqm
 		output wire        sdram_controller_shared_wire_ras_n,             //                                       .ras_n
 		output wire        sdram_controller_shared_wire_we_n,              //                                       .we_n
 		input  wire        sysaudio_audio_core_external_interface_ADCDAT,  // sysaudio_audio_core_external_interface.ADCDAT
@@ -30,9 +31,9 @@ module soc_system (
 		output wire        sysaudio_av_config_external_interface_SCLK      //                                       .SCLK
 	);
 
-	wire         sysaudio_audio_clock_audio_clk_clk;                                                   // SysAudio_Audio_Clock:audio_clk_clk -> [SysAudio_Audio_Core:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:SysAudio_Audio_Clock_audio_clk_clk, rst_controller_004:clk]
-	wire         pll_shared_outclk0_clk;                                                               // PLL_Shared:outclk_0 -> [Mailbox_AudioToSigProc:clk, Mailbox_SigProcToAudio:clk, PIO_1st_7seg:clk, PIO_2nd_7seg:clk, PIO_3rd_7seg:clk, PIO_LEDs_Shared:clk, PIO_Switches:clk, SysAudio_AV_Config:clk, SysAudio_Audio_Clock:ref_clk_clk, SysAudio_JTAG_UART:clk, SysAudio_NIOS_II:clk, SysAudio_Onchip_Memory:clk, SysAudio_Performance_Counter:clk, SysSigProc_JTAG_UART:clk, SysSigProc_NIOS_II:clk, SysSigProc_Onchip_Memory:clk, SysSigProc_Performance_Counter:clk, irq_mapper:clk, irq_mapper_001:clk, irq_synchronizer:sender_clk, mm_interconnect_0:PLL_Shared_outclk0_clk, rst_controller:clk]
-	wire         pll_shared_outclk1_clk;                                                               // PLL_Shared:outclk_1 -> [SDRAM_Controller_Shared:clk, mm_interconnect_0:PLL_Shared_outclk1_clk, rst_controller_002:clk]
+	wire         sysaudio_audio_clock_audio_clk_clk;                                                   // SysAudio_Audio_Clock:audio_clk_clk -> [SysAudio_Audio_Core:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:SysAudio_Audio_Clock_audio_clk_clk, rst_controller_005:clk]
+	wire         pll_shared_outclk0_clk;                                                               // PLL_Shared:outclk_0 -> [Mailbox_AudioToSigProc:clk, Mailbox_SigProcToAudio:clk, PIO_1st_7seg:clk, PIO_2nd_7seg:clk, PIO_3rd_7seg:clk, PIO_Debug:clk, PIO_LEDs_Shared:clk, PIO_Switches:clk, SysAudio_AV_Config:clk, SysAudio_Audio_Clock:ref_clk_clk, SysAudio_JTAG_UART:clk, SysAudio_NIOS_II:clk, SysAudio_Onchip_Memory:clk, SysAudio_Performance_Counter:clk, SysSigProc_JTAG_UART:clk, SysSigProc_NIOS_II:clk, SysSigProc_Onchip_Memory:clk, SysSigProc_Performance_Counter:clk, irq_mapper:clk, irq_mapper_001:clk, irq_synchronizer:sender_clk, mm_interconnect_0:PLL_Shared_outclk0_clk, rst_controller:clk, rst_controller_001:clk]
+	wire         pll_shared_outclk1_clk;                                                               // PLL_Shared:outclk_1 -> [SDRAM_Controller_Shared:clk, mm_interconnect_0:PLL_Shared_outclk1_clk, rst_controller_003:clk]
 	wire  [31:0] syssigproc_nios_ii_custom_instruction_master_result;                                  // SysSigProc_NIOS_II_custom_instruction_master_translator:ci_slave_result -> SysSigProc_NIOS_II:E_ci_combo_result
 	wire         syssigproc_nios_ii_custom_instruction_master_readra;                                  // SysSigProc_NIOS_II:E_ci_combo_readra -> SysSigProc_NIOS_II_custom_instruction_master_translator:ci_slave_readra
 	wire   [4:0] syssigproc_nios_ii_custom_instruction_master_a;                                       // SysSigProc_NIOS_II:E_ci_combo_a -> SysSigProc_NIOS_II_custom_instruction_master_translator:ci_slave_a
@@ -74,7 +75,7 @@ module soc_system (
 	wire  [31:0] sysaudio_nios_ii_data_master_readdata;                                                // mm_interconnect_0:SysAudio_NIOS_II_data_master_readdata -> SysAudio_NIOS_II:d_readdata
 	wire         sysaudio_nios_ii_data_master_waitrequest;                                             // mm_interconnect_0:SysAudio_NIOS_II_data_master_waitrequest -> SysAudio_NIOS_II:d_waitrequest
 	wire         sysaudio_nios_ii_data_master_debugaccess;                                             // SysAudio_NIOS_II:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:SysAudio_NIOS_II_data_master_debugaccess
-	wire  [27:0] sysaudio_nios_ii_data_master_address;                                                 // SysAudio_NIOS_II:d_address -> mm_interconnect_0:SysAudio_NIOS_II_data_master_address
+	wire  [26:0] sysaudio_nios_ii_data_master_address;                                                 // SysAudio_NIOS_II:d_address -> mm_interconnect_0:SysAudio_NIOS_II_data_master_address
 	wire   [3:0] sysaudio_nios_ii_data_master_byteenable;                                              // SysAudio_NIOS_II:d_byteenable -> mm_interconnect_0:SysAudio_NIOS_II_data_master_byteenable
 	wire         sysaudio_nios_ii_data_master_read;                                                    // SysAudio_NIOS_II:d_read -> mm_interconnect_0:SysAudio_NIOS_II_data_master_read
 	wire         sysaudio_nios_ii_data_master_readdatavalid;                                           // mm_interconnect_0:SysAudio_NIOS_II_data_master_readdatavalid -> SysAudio_NIOS_II:d_readdatavalid
@@ -83,7 +84,7 @@ module soc_system (
 	wire  [31:0] syssigproc_nios_ii_data_master_readdata;                                              // mm_interconnect_0:SysSigProc_NIOS_II_data_master_readdata -> SysSigProc_NIOS_II:d_readdata
 	wire         syssigproc_nios_ii_data_master_waitrequest;                                           // mm_interconnect_0:SysSigProc_NIOS_II_data_master_waitrequest -> SysSigProc_NIOS_II:d_waitrequest
 	wire         syssigproc_nios_ii_data_master_debugaccess;                                           // SysSigProc_NIOS_II:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_debugaccess
-	wire  [27:0] syssigproc_nios_ii_data_master_address;                                               // SysSigProc_NIOS_II:d_address -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_address
+	wire  [26:0] syssigproc_nios_ii_data_master_address;                                               // SysSigProc_NIOS_II:d_address -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_address
 	wire   [3:0] syssigproc_nios_ii_data_master_byteenable;                                            // SysSigProc_NIOS_II:d_byteenable -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_byteenable
 	wire         syssigproc_nios_ii_data_master_read;                                                  // SysSigProc_NIOS_II:d_read -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_read
 	wire         syssigproc_nios_ii_data_master_readdatavalid;                                         // mm_interconnect_0:SysSigProc_NIOS_II_data_master_readdatavalid -> SysSigProc_NIOS_II:d_readdatavalid
@@ -91,12 +92,12 @@ module soc_system (
 	wire  [31:0] syssigproc_nios_ii_data_master_writedata;                                             // SysSigProc_NIOS_II:d_writedata -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_writedata
 	wire  [31:0] syssigproc_nios_ii_instruction_master_readdata;                                       // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_readdata -> SysSigProc_NIOS_II:i_readdata
 	wire         syssigproc_nios_ii_instruction_master_waitrequest;                                    // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_waitrequest -> SysSigProc_NIOS_II:i_waitrequest
-	wire  [27:0] syssigproc_nios_ii_instruction_master_address;                                        // SysSigProc_NIOS_II:i_address -> mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_address
+	wire  [26:0] syssigproc_nios_ii_instruction_master_address;                                        // SysSigProc_NIOS_II:i_address -> mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_address
 	wire         syssigproc_nios_ii_instruction_master_read;                                           // SysSigProc_NIOS_II:i_read -> mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_read
 	wire         syssigproc_nios_ii_instruction_master_readdatavalid;                                  // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_readdatavalid -> SysSigProc_NIOS_II:i_readdatavalid
 	wire  [31:0] sysaudio_nios_ii_instruction_master_readdata;                                         // mm_interconnect_0:SysAudio_NIOS_II_instruction_master_readdata -> SysAudio_NIOS_II:i_readdata
 	wire         sysaudio_nios_ii_instruction_master_waitrequest;                                      // mm_interconnect_0:SysAudio_NIOS_II_instruction_master_waitrequest -> SysAudio_NIOS_II:i_waitrequest
-	wire  [27:0] sysaudio_nios_ii_instruction_master_address;                                          // SysAudio_NIOS_II:i_address -> mm_interconnect_0:SysAudio_NIOS_II_instruction_master_address
+	wire  [26:0] sysaudio_nios_ii_instruction_master_address;                                          // SysAudio_NIOS_II:i_address -> mm_interconnect_0:SysAudio_NIOS_II_instruction_master_address
 	wire         sysaudio_nios_ii_instruction_master_read;                                             // SysAudio_NIOS_II:i_read -> mm_interconnect_0:SysAudio_NIOS_II_instruction_master_read
 	wire         sysaudio_nios_ii_instruction_master_readdatavalid;                                    // mm_interconnect_0:SysAudio_NIOS_II_instruction_master_readdatavalid -> SysAudio_NIOS_II:i_readdatavalid
 	wire         mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_chipselect;                  // mm_interconnect_0:SysAudio_Audio_Core_avalon_audio_slave_chipselect -> SysAudio_Audio_Core:chipselect
@@ -145,20 +146,20 @@ module soc_system (
 	wire  [31:0] mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_writedata;                         // mm_interconnect_0:SysAudio_NIOS_II_debug_mem_slave_writedata -> SysAudio_NIOS_II:debug_mem_slave_writedata
 	wire         mm_interconnect_0_sysaudio_onchip_memory_s1_chipselect;                               // mm_interconnect_0:SysAudio_Onchip_Memory_s1_chipselect -> SysAudio_Onchip_Memory:chipselect
 	wire  [31:0] mm_interconnect_0_sysaudio_onchip_memory_s1_readdata;                                 // SysAudio_Onchip_Memory:readdata -> mm_interconnect_0:SysAudio_Onchip_Memory_s1_readdata
-	wire  [15:0] mm_interconnect_0_sysaudio_onchip_memory_s1_address;                                  // mm_interconnect_0:SysAudio_Onchip_Memory_s1_address -> SysAudio_Onchip_Memory:address
+	wire  [14:0] mm_interconnect_0_sysaudio_onchip_memory_s1_address;                                  // mm_interconnect_0:SysAudio_Onchip_Memory_s1_address -> SysAudio_Onchip_Memory:address
 	wire   [3:0] mm_interconnect_0_sysaudio_onchip_memory_s1_byteenable;                               // mm_interconnect_0:SysAudio_Onchip_Memory_s1_byteenable -> SysAudio_Onchip_Memory:byteenable
 	wire         mm_interconnect_0_sysaudio_onchip_memory_s1_write;                                    // mm_interconnect_0:SysAudio_Onchip_Memory_s1_write -> SysAudio_Onchip_Memory:write
 	wire  [31:0] mm_interconnect_0_sysaudio_onchip_memory_s1_writedata;                                // mm_interconnect_0:SysAudio_Onchip_Memory_s1_writedata -> SysAudio_Onchip_Memory:writedata
 	wire         mm_interconnect_0_sysaudio_onchip_memory_s1_clken;                                    // mm_interconnect_0:SysAudio_Onchip_Memory_s1_clken -> SysAudio_Onchip_Memory:clken
 	wire         mm_interconnect_0_sdram_controller_shared_s1_chipselect;                              // mm_interconnect_0:SDRAM_Controller_Shared_s1_chipselect -> SDRAM_Controller_Shared:az_cs
-	wire  [31:0] mm_interconnect_0_sdram_controller_shared_s1_readdata;                                // SDRAM_Controller_Shared:za_data -> mm_interconnect_0:SDRAM_Controller_Shared_s1_readdata
+	wire  [15:0] mm_interconnect_0_sdram_controller_shared_s1_readdata;                                // SDRAM_Controller_Shared:za_data -> mm_interconnect_0:SDRAM_Controller_Shared_s1_readdata
 	wire         mm_interconnect_0_sdram_controller_shared_s1_waitrequest;                             // SDRAM_Controller_Shared:za_waitrequest -> mm_interconnect_0:SDRAM_Controller_Shared_s1_waitrequest
 	wire  [24:0] mm_interconnect_0_sdram_controller_shared_s1_address;                                 // mm_interconnect_0:SDRAM_Controller_Shared_s1_address -> SDRAM_Controller_Shared:az_addr
 	wire         mm_interconnect_0_sdram_controller_shared_s1_read;                                    // mm_interconnect_0:SDRAM_Controller_Shared_s1_read -> SDRAM_Controller_Shared:az_rd_n
-	wire   [3:0] mm_interconnect_0_sdram_controller_shared_s1_byteenable;                              // mm_interconnect_0:SDRAM_Controller_Shared_s1_byteenable -> SDRAM_Controller_Shared:az_be_n
+	wire   [1:0] mm_interconnect_0_sdram_controller_shared_s1_byteenable;                              // mm_interconnect_0:SDRAM_Controller_Shared_s1_byteenable -> SDRAM_Controller_Shared:az_be_n
 	wire         mm_interconnect_0_sdram_controller_shared_s1_readdatavalid;                           // SDRAM_Controller_Shared:za_valid -> mm_interconnect_0:SDRAM_Controller_Shared_s1_readdatavalid
 	wire         mm_interconnect_0_sdram_controller_shared_s1_write;                                   // mm_interconnect_0:SDRAM_Controller_Shared_s1_write -> SDRAM_Controller_Shared:az_wr_n
-	wire  [31:0] mm_interconnect_0_sdram_controller_shared_s1_writedata;                               // mm_interconnect_0:SDRAM_Controller_Shared_s1_writedata -> SDRAM_Controller_Shared:az_data
+	wire  [15:0] mm_interconnect_0_sdram_controller_shared_s1_writedata;                               // mm_interconnect_0:SDRAM_Controller_Shared_s1_writedata -> SDRAM_Controller_Shared:az_data
 	wire         mm_interconnect_0_pio_leds_shared_s1_chipselect;                                      // mm_interconnect_0:PIO_LEDs_Shared_s1_chipselect -> PIO_LEDs_Shared:chipselect
 	wire  [31:0] mm_interconnect_0_pio_leds_shared_s1_readdata;                                        // PIO_LEDs_Shared:readdata -> mm_interconnect_0:PIO_LEDs_Shared_s1_readdata
 	wire   [1:0] mm_interconnect_0_pio_leds_shared_s1_address;                                         // mm_interconnect_0:PIO_LEDs_Shared_s1_address -> PIO_LEDs_Shared:address
@@ -184,6 +185,11 @@ module soc_system (
 	wire   [1:0] mm_interconnect_0_pio_3rd_7seg_s1_address;                                            // mm_interconnect_0:PIO_3rd_7seg_s1_address -> PIO_3rd_7seg:address
 	wire         mm_interconnect_0_pio_3rd_7seg_s1_write;                                              // mm_interconnect_0:PIO_3rd_7seg_s1_write -> PIO_3rd_7seg:write_n
 	wire  [31:0] mm_interconnect_0_pio_3rd_7seg_s1_writedata;                                          // mm_interconnect_0:PIO_3rd_7seg_s1_writedata -> PIO_3rd_7seg:writedata
+	wire         mm_interconnect_0_pio_debug_s1_chipselect;                                            // mm_interconnect_0:PIO_Debug_s1_chipselect -> PIO_Debug:chipselect
+	wire  [31:0] mm_interconnect_0_pio_debug_s1_readdata;                                              // PIO_Debug:readdata -> mm_interconnect_0:PIO_Debug_s1_readdata
+	wire   [2:0] mm_interconnect_0_pio_debug_s1_address;                                               // mm_interconnect_0:PIO_Debug_s1_address -> PIO_Debug:address
+	wire         mm_interconnect_0_pio_debug_s1_write;                                                 // mm_interconnect_0:PIO_Debug_s1_write -> PIO_Debug:write_n
+	wire  [31:0] mm_interconnect_0_pio_debug_s1_writedata;                                             // mm_interconnect_0:PIO_Debug_s1_writedata -> PIO_Debug:writedata
 	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_chipselect;                  // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_chipselect -> SysSigProc_JTAG_UART:av_chipselect
 	wire  [31:0] mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_readdata;                    // SysSigProc_JTAG_UART:av_readdata -> mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_readdata
 	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_waitrequest;                 // SysSigProc_JTAG_UART:av_waitrequest -> mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_waitrequest
@@ -235,13 +241,14 @@ module soc_system (
 	wire         irq_mapper_receiver5_irq;                                                             // PIO_Switches:irq -> [irq_mapper:receiver5_irq, irq_mapper_001:receiver4_irq]
 	wire         rst_controller_reset_out_reset;                                                       // rst_controller:reset_out -> [Mailbox_AudioToSigProc:rst_n, Mailbox_SigProcToAudio:rst_n, PIO_1st_7seg:reset_n, PIO_2nd_7seg:reset_n, PIO_3rd_7seg:reset_n, PIO_LEDs_Shared:reset_n, PIO_Switches:reset_n, SysAudio_AV_Config:reset, SysAudio_JTAG_UART:rst_n, SysAudio_NIOS_II:reset_n, SysAudio_Onchip_Memory:reset, SysAudio_Performance_Counter:reset_n, SysSigProc_JTAG_UART:rst_n, SysSigProc_NIOS_II:reset_n, SysSigProc_Onchip_Memory:reset, SysSigProc_Performance_Counter:reset_n, irq_mapper:reset, irq_mapper_001:reset, irq_synchronizer:sender_reset, mm_interconnect_0:SysAudio_NIOS_II_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
 	wire         rst_controller_reset_out_reset_req;                                                   // rst_controller:reset_req -> [SysAudio_NIOS_II:reset_req, SysAudio_Onchip_Memory:reset_req, SysSigProc_NIOS_II:reset_req, SysSigProc_Onchip_Memory:reset_req, rst_translator:reset_req_in]
-	wire         sysaudio_nios_ii_debug_reset_request_reset;                                           // SysAudio_NIOS_II:debug_reset_request -> [rst_controller:reset_in1, rst_controller_001:reset_in1, rst_controller_002:reset_in1, rst_controller_003:reset_in1, rst_controller_004:reset_in1]
-	wire         syssigproc_nios_ii_debug_reset_request_reset;                                         // SysSigProc_NIOS_II:debug_reset_request -> [rst_controller:reset_in2, rst_controller_001:reset_in2, rst_controller_002:reset_in2, rst_controller_003:reset_in2, rst_controller_004:reset_in2]
-	wire         sysaudio_audio_clock_reset_source_reset;                                              // SysAudio_Audio_Clock:reset_source_reset -> [rst_controller:reset_in3, rst_controller_001:reset_in3, rst_controller_002:reset_in3, rst_controller_003:reset_in3, rst_controller_004:reset_in3]
-	wire         rst_controller_001_reset_out_reset;                                                   // rst_controller_001:reset_out -> PLL_Shared:rst
-	wire         rst_controller_002_reset_out_reset;                                                   // rst_controller_002:reset_out -> [SDRAM_Controller_Shared:reset_n, mm_interconnect_0:SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_003_reset_out_reset;                                                   // rst_controller_003:reset_out -> SysAudio_Audio_Clock:ref_reset_reset
-	wire         rst_controller_004_reset_out_reset;                                                   // rst_controller_004:reset_out -> [SysAudio_Audio_Core:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset]
+	wire         sysaudio_nios_ii_debug_reset_request_reset;                                           // SysAudio_NIOS_II:debug_reset_request -> [rst_controller:reset_in1, rst_controller_002:reset_in1, rst_controller_003:reset_in1, rst_controller_004:reset_in1, rst_controller_005:reset_in1]
+	wire         syssigproc_nios_ii_debug_reset_request_reset;                                         // SysSigProc_NIOS_II:debug_reset_request -> [rst_controller:reset_in2, rst_controller_002:reset_in2, rst_controller_003:reset_in2, rst_controller_004:reset_in2, rst_controller_005:reset_in2]
+	wire         sysaudio_audio_clock_reset_source_reset;                                              // SysAudio_Audio_Clock:reset_source_reset -> [rst_controller:reset_in3, rst_controller_002:reset_in3, rst_controller_003:reset_in3, rst_controller_004:reset_in3, rst_controller_005:reset_in3]
+	wire         rst_controller_001_reset_out_reset;                                                   // rst_controller_001:reset_out -> [PIO_Debug:reset_n, mm_interconnect_0:PIO_Debug_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_002_reset_out_reset;                                                   // rst_controller_002:reset_out -> PLL_Shared:rst
+	wire         rst_controller_003_reset_out_reset;                                                   // rst_controller_003:reset_out -> [SDRAM_Controller_Shared:reset_n, mm_interconnect_0:SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_004_reset_out_reset;                                                   // rst_controller_004:reset_out -> SysAudio_Audio_Clock:ref_reset_reset
+	wire         rst_controller_005_reset_out_reset;                                                   // rst_controller_005:reset_out -> [SysAudio_Audio_Core:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset]
 
 	altera_avalon_mailbox #(
 		.DWIDTH (32),
@@ -318,6 +325,17 @@ module soc_system (
 		.out_port   (pio_3rd_7seg_external_connection_export)       // external_connection.export
 	);
 
+	soc_system_PIO_Debug pio_debug (
+		.clk        (pll_shared_outclk0_clk),                    //                 clk.clk
+		.reset_n    (~rst_controller_001_reset_out_reset),       //               reset.reset_n
+		.address    (mm_interconnect_0_pio_debug_s1_address),    //                  s1.address
+		.write_n    (~mm_interconnect_0_pio_debug_s1_write),     //                    .write_n
+		.writedata  (mm_interconnect_0_pio_debug_s1_writedata),  //                    .writedata
+		.chipselect (mm_interconnect_0_pio_debug_s1_chipselect), //                    .chipselect
+		.readdata   (mm_interconnect_0_pio_debug_s1_readdata),   //                    .readdata
+		.out_port   (pio_debug_export)                           // external_connection.export
+	);
+
 	soc_system_PIO_LEDs_Shared pio_leds_shared (
 		.clk        (pll_shared_outclk0_clk),                          //                 clk.clk
 		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
@@ -343,7 +361,7 @@ module soc_system (
 
 	soc_system_PLL_Shared pll_shared (
 		.refclk   (clk_clk),                            //  refclk.clk
-		.rst      (rst_controller_001_reset_out_reset), //   reset.reset
+		.rst      (rst_controller_002_reset_out_reset), //   reset.reset
 		.outclk_0 (pll_shared_outclk0_clk),             // outclk0.clk
 		.outclk_1 (pll_shared_outclk1_clk),             // outclk1.clk
 		.outclk_2 (pll_shared_outclk2_clk),             // outclk2.clk
@@ -352,7 +370,7 @@ module soc_system (
 
 	soc_system_SDRAM_Controller_Shared sdram_controller_shared (
 		.clk            (pll_shared_outclk1_clk),                                     //   clk.clk
-		.reset_n        (~rst_controller_002_reset_out_reset),                        // reset.reset_n
+		.reset_n        (~rst_controller_003_reset_out_reset),                        // reset.reset_n
 		.az_addr        (mm_interconnect_0_sdram_controller_shared_s1_address),       //    s1.address
 		.az_be_n        (~mm_interconnect_0_sdram_controller_shared_s1_byteenable),   //      .byteenable_n
 		.az_cs          (mm_interconnect_0_sdram_controller_shared_s1_chipselect),    //      .chipselect
@@ -394,14 +412,14 @@ module soc_system (
 
 	soc_system_SysAudio_Audio_Clock sysaudio_audio_clock (
 		.ref_clk_clk        (pll_shared_outclk0_clk),                  //      ref_clk.clk
-		.ref_reset_reset    (rst_controller_003_reset_out_reset),      //    ref_reset.reset
+		.ref_reset_reset    (rst_controller_004_reset_out_reset),      //    ref_reset.reset
 		.audio_clk_clk      (sysaudio_audio_clock_audio_clk_clk),      //    audio_clk.clk
 		.reset_source_reset (sysaudio_audio_clock_reset_source_reset)  // reset_source.reset
 	);
 
 	soc_system_SysAudio_Audio_Core sysaudio_audio_core (
 		.clk         (sysaudio_audio_clock_audio_clk_clk),                                  //                clk.clk
-		.reset       (rst_controller_004_reset_out_reset),                                  //              reset.reset
+		.reset       (rst_controller_005_reset_out_reset),                                  //              reset.reset
 		.address     (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_address),    // avalon_audio_slave.address
 		.chipselect  (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_chipselect), //                   .chipselect
 		.read        (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_read),       //                   .read
@@ -698,8 +716,9 @@ module soc_system (
 		.PLL_Shared_outclk0_clk                                     (pll_shared_outclk0_clk),                                                       //                                  PLL_Shared_outclk0.clk
 		.PLL_Shared_outclk1_clk                                     (pll_shared_outclk1_clk),                                                       //                                  PLL_Shared_outclk1.clk
 		.SysAudio_Audio_Clock_audio_clk_clk                         (sysaudio_audio_clock_audio_clk_clk),                                           //                      SysAudio_Audio_Clock_audio_clk.clk
-		.SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset  (rst_controller_002_reset_out_reset),                                           // SDRAM_Controller_Shared_reset_reset_bridge_in_reset.reset
-		.SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset      (rst_controller_004_reset_out_reset),                                           //     SysAudio_Audio_Core_reset_reset_bridge_in_reset.reset
+		.PIO_Debug_reset_reset_bridge_in_reset_reset                (rst_controller_001_reset_out_reset),                                           //               PIO_Debug_reset_reset_bridge_in_reset.reset
+		.SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset  (rst_controller_003_reset_out_reset),                                           // SDRAM_Controller_Shared_reset_reset_bridge_in_reset.reset
+		.SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset      (rst_controller_005_reset_out_reset),                                           //     SysAudio_Audio_Core_reset_reset_bridge_in_reset.reset
 		.SysAudio_NIOS_II_reset_reset_bridge_in_reset_reset         (rst_controller_reset_out_reset),                                               //        SysAudio_NIOS_II_reset_reset_bridge_in_reset.reset
 		.SysAudio_NIOS_II_data_master_address                       (sysaudio_nios_ii_data_master_address),                                         //                        SysAudio_NIOS_II_data_master.address
 		.SysAudio_NIOS_II_data_master_waitrequest                   (sysaudio_nios_ii_data_master_waitrequest),                                     //                                                    .waitrequest
@@ -766,6 +785,11 @@ module soc_system (
 		.PIO_3rd_7seg_s1_readdata                                   (mm_interconnect_0_pio_3rd_7seg_s1_readdata),                                   //                                                    .readdata
 		.PIO_3rd_7seg_s1_writedata                                  (mm_interconnect_0_pio_3rd_7seg_s1_writedata),                                  //                                                    .writedata
 		.PIO_3rd_7seg_s1_chipselect                                 (mm_interconnect_0_pio_3rd_7seg_s1_chipselect),                                 //                                                    .chipselect
+		.PIO_Debug_s1_address                                       (mm_interconnect_0_pio_debug_s1_address),                                       //                                        PIO_Debug_s1.address
+		.PIO_Debug_s1_write                                         (mm_interconnect_0_pio_debug_s1_write),                                         //                                                    .write
+		.PIO_Debug_s1_readdata                                      (mm_interconnect_0_pio_debug_s1_readdata),                                      //                                                    .readdata
+		.PIO_Debug_s1_writedata                                     (mm_interconnect_0_pio_debug_s1_writedata),                                     //                                                    .writedata
+		.PIO_Debug_s1_chipselect                                    (mm_interconnect_0_pio_debug_s1_chipselect),                                    //                                                    .chipselect
 		.PIO_LEDs_Shared_s1_address                                 (mm_interconnect_0_pio_leds_shared_s1_address),                                 //                                  PIO_LEDs_Shared_s1.address
 		.PIO_LEDs_Shared_s1_write                                   (mm_interconnect_0_pio_leds_shared_s1_write),                                   //                                                    .write
 		.PIO_LEDs_Shared_s1_readdata                                (mm_interconnect_0_pio_leds_shared_s1_readdata),                                //                                                    .readdata
@@ -884,7 +908,7 @@ module soc_system (
 	) irq_synchronizer (
 		.receiver_clk   (sysaudio_audio_clock_audio_clk_clk), //       receiver_clk.clk
 		.sender_clk     (pll_shared_outclk0_clk),             //         sender_clk.clk
-		.receiver_reset (rst_controller_004_reset_out_reset), // receiver_clk_reset.reset
+		.receiver_reset (rst_controller_005_reset_out_reset), // receiver_clk_reset.reset
 		.sender_reset   (rst_controller_reset_out_reset),     //   sender_clk_reset.reset
 		.receiver_irq   (irq_synchronizer_receiver_irq),      //           receiver.irq
 		.sender_irq     (irq_mapper_receiver0_irq)            //             sender.irq
@@ -954,8 +978,8 @@ module soc_system (
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (4),
-		.OUTPUT_RESET_SYNC_EDGES   ("none"),
+		.NUM_RESET_INPUTS          (1),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
@@ -979,46 +1003,46 @@ module soc_system (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_001 (
-		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
-		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
-		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
-		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
-		.clk            (),                                             //       clk.clk
-		.reset_out      (rst_controller_001_reset_out_reset),           // reset_out.reset
-		.reset_req      (),                                             // (terminated)
-		.reset_req_in0  (1'b0),                                         // (terminated)
-		.reset_req_in1  (1'b0),                                         // (terminated)
-		.reset_req_in2  (1'b0),                                         // (terminated)
-		.reset_req_in3  (1'b0),                                         // (terminated)
-		.reset_in4      (1'b0),                                         // (terminated)
-		.reset_req_in4  (1'b0),                                         // (terminated)
-		.reset_in5      (1'b0),                                         // (terminated)
-		.reset_req_in5  (1'b0),                                         // (terminated)
-		.reset_in6      (1'b0),                                         // (terminated)
-		.reset_req_in6  (1'b0),                                         // (terminated)
-		.reset_in7      (1'b0),                                         // (terminated)
-		.reset_req_in7  (1'b0),                                         // (terminated)
-		.reset_in8      (1'b0),                                         // (terminated)
-		.reset_req_in8  (1'b0),                                         // (terminated)
-		.reset_in9      (1'b0),                                         // (terminated)
-		.reset_req_in9  (1'b0),                                         // (terminated)
-		.reset_in10     (1'b0),                                         // (terminated)
-		.reset_req_in10 (1'b0),                                         // (terminated)
-		.reset_in11     (1'b0),                                         // (terminated)
-		.reset_req_in11 (1'b0),                                         // (terminated)
-		.reset_in12     (1'b0),                                         // (terminated)
-		.reset_req_in12 (1'b0),                                         // (terminated)
-		.reset_in13     (1'b0),                                         // (terminated)
-		.reset_req_in13 (1'b0),                                         // (terminated)
-		.reset_in14     (1'b0),                                         // (terminated)
-		.reset_req_in14 (1'b0),                                         // (terminated)
-		.reset_in15     (1'b0),                                         // (terminated)
-		.reset_req_in15 (1'b0)                                          // (terminated)
+		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
+		.clk            (pll_shared_outclk0_clk),             //       clk.clk
+		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
+		.reset_req      (),                                   // (terminated)
+		.reset_req_in0  (1'b0),                               // (terminated)
+		.reset_in1      (1'b0),                               // (terminated)
+		.reset_req_in1  (1'b0),                               // (terminated)
+		.reset_in2      (1'b0),                               // (terminated)
+		.reset_req_in2  (1'b0),                               // (terminated)
+		.reset_in3      (1'b0),                               // (terminated)
+		.reset_req_in3  (1'b0),                               // (terminated)
+		.reset_in4      (1'b0),                               // (terminated)
+		.reset_req_in4  (1'b0),                               // (terminated)
+		.reset_in5      (1'b0),                               // (terminated)
+		.reset_req_in5  (1'b0),                               // (terminated)
+		.reset_in6      (1'b0),                               // (terminated)
+		.reset_req_in6  (1'b0),                               // (terminated)
+		.reset_in7      (1'b0),                               // (terminated)
+		.reset_req_in7  (1'b0),                               // (terminated)
+		.reset_in8      (1'b0),                               // (terminated)
+		.reset_req_in8  (1'b0),                               // (terminated)
+		.reset_in9      (1'b0),                               // (terminated)
+		.reset_req_in9  (1'b0),                               // (terminated)
+		.reset_in10     (1'b0),                               // (terminated)
+		.reset_req_in10 (1'b0),                               // (terminated)
+		.reset_in11     (1'b0),                               // (terminated)
+		.reset_req_in11 (1'b0),                               // (terminated)
+		.reset_in12     (1'b0),                               // (terminated)
+		.reset_req_in12 (1'b0),                               // (terminated)
+		.reset_in13     (1'b0),                               // (terminated)
+		.reset_req_in13 (1'b0),                               // (terminated)
+		.reset_in14     (1'b0),                               // (terminated)
+		.reset_req_in14 (1'b0),                               // (terminated)
+		.reset_in15     (1'b0),                               // (terminated)
+		.reset_req_in15 (1'b0)                                // (terminated)
 	);
 
 	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (4),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.OUTPUT_RESET_SYNC_EDGES   ("none"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
@@ -1046,7 +1070,7 @@ module soc_system (
 		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
 		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
 		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
-		.clk            (pll_shared_outclk1_clk),                       //       clk.clk
+		.clk            (),                                             //       clk.clk
 		.reset_out      (rst_controller_002_reset_out_reset),           // reset_out.reset
 		.reset_req      (),                                             // (terminated)
 		.reset_req_in0  (1'b0),                                         // (terminated)
@@ -1081,7 +1105,7 @@ module soc_system (
 
 	altera_reset_controller #(
 		.NUM_RESET_INPUTS          (4),
-		.OUTPUT_RESET_SYNC_EDGES   ("none"),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
@@ -1109,8 +1133,71 @@ module soc_system (
 		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
 		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
 		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
-		.clk            (),                                             //       clk.clk
+		.clk            (pll_shared_outclk1_clk),                       //       clk.clk
 		.reset_out      (rst_controller_003_reset_out_reset),           // reset_out.reset
+		.reset_req      (),                                             // (terminated)
+		.reset_req_in0  (1'b0),                                         // (terminated)
+		.reset_req_in1  (1'b0),                                         // (terminated)
+		.reset_req_in2  (1'b0),                                         // (terminated)
+		.reset_req_in3  (1'b0),                                         // (terminated)
+		.reset_in4      (1'b0),                                         // (terminated)
+		.reset_req_in4  (1'b0),                                         // (terminated)
+		.reset_in5      (1'b0),                                         // (terminated)
+		.reset_req_in5  (1'b0),                                         // (terminated)
+		.reset_in6      (1'b0),                                         // (terminated)
+		.reset_req_in6  (1'b0),                                         // (terminated)
+		.reset_in7      (1'b0),                                         // (terminated)
+		.reset_req_in7  (1'b0),                                         // (terminated)
+		.reset_in8      (1'b0),                                         // (terminated)
+		.reset_req_in8  (1'b0),                                         // (terminated)
+		.reset_in9      (1'b0),                                         // (terminated)
+		.reset_req_in9  (1'b0),                                         // (terminated)
+		.reset_in10     (1'b0),                                         // (terminated)
+		.reset_req_in10 (1'b0),                                         // (terminated)
+		.reset_in11     (1'b0),                                         // (terminated)
+		.reset_req_in11 (1'b0),                                         // (terminated)
+		.reset_in12     (1'b0),                                         // (terminated)
+		.reset_req_in12 (1'b0),                                         // (terminated)
+		.reset_in13     (1'b0),                                         // (terminated)
+		.reset_req_in13 (1'b0),                                         // (terminated)
+		.reset_in14     (1'b0),                                         // (terminated)
+		.reset_req_in14 (1'b0),                                         // (terminated)
+		.reset_in15     (1'b0),                                         // (terminated)
+		.reset_req_in15 (1'b0)                                          // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (4),
+		.OUTPUT_RESET_SYNC_EDGES   ("none"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_004 (
+		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
+		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
+		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
+		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
+		.clk            (),                                             //       clk.clk
+		.reset_out      (rst_controller_004_reset_out_reset),           // reset_out.reset
 		.reset_req      (),                                             // (terminated)
 		.reset_req_in0  (1'b0),                                         // (terminated)
 		.reset_req_in1  (1'b0),                                         // (terminated)
@@ -1167,13 +1254,13 @@ module soc_system (
 		.USE_RESET_REQUEST_IN14    (0),
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_004 (
+	) rst_controller_005 (
 		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
 		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
 		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
 		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
 		.clk            (sysaudio_audio_clock_audio_clk_clk),           //       clk.clk
-		.reset_out      (rst_controller_004_reset_out_reset),           // reset_out.reset
+		.reset_out      (rst_controller_005_reset_out_reset),           // reset_out.reset
 		.reset_req      (),                                             // (terminated)
 		.reset_req_in0  (1'b0),                                         // (terminated)
 		.reset_req_in1  (1'b0),                                         // (terminated)

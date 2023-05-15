@@ -6,6 +6,7 @@
 			pio_1st_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
 			pio_2nd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
 			pio_3rd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
+			pio_debug_export                               : out   std_logic_vector(31 downto 0);                    -- export
 			pll_shared_outclk2_clk                         : out   std_logic;                                        -- clk
 			reset_reset_n                                  : in    std_logic                     := 'X';             -- reset_n
 			sdram_controller_shared_wire_addr              : out   std_logic_vector(12 downto 0);                    -- addr
@@ -13,8 +14,8 @@
 			sdram_controller_shared_wire_cas_n             : out   std_logic;                                        -- cas_n
 			sdram_controller_shared_wire_cke               : out   std_logic;                                        -- cke
 			sdram_controller_shared_wire_cs_n              : out   std_logic;                                        -- cs_n
-			sdram_controller_shared_wire_dq                : inout std_logic_vector(31 downto 0) := (others => 'X'); -- dq
-			sdram_controller_shared_wire_dqm               : out   std_logic_vector(3 downto 0);                     -- dqm
+			sdram_controller_shared_wire_dq                : inout std_logic_vector(15 downto 0) := (others => 'X'); -- dq
+			sdram_controller_shared_wire_dqm               : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_controller_shared_wire_ras_n             : out   std_logic;                                        -- ras_n
 			sdram_controller_shared_wire_we_n              : out   std_logic;                                        -- we_n
 			sysaudio_audio_core_external_interface_ADCDAT  : in    std_logic                     := 'X';             -- ADCDAT

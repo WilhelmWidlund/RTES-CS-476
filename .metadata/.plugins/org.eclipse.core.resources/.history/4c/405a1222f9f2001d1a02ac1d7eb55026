@@ -1,0 +1,120 @@
+/* Audio system main file
+ * To monitor terminal in powershell:
+ * nios2-terminal --device 2 --instance 0
+
+ * To download code to board
+ * nios2-download -g SysAudio.elf --device 2 --instance 0
+ */
+
+#include <stdio.h>
+#include "system.h"
+#include "io.h"
+#include <stdint.h>
+#include <unistd.h>
+#include <string.h>
+#include "altera_avalon_mailbox_simple.h"
+#include <altera_avalon_performance_counter.h>
+#include "altera_up_avalon_audio.h"
+
+// PIO definitions for the interrupt handling on the switches
+#define PIO_IntrSwitch_Data	0
+#define PIO_IntrSwitch_IRQEN	4*2
+#define PIO_IntrSwitch_IRQFLAG	4*3
+
+
+// ----------------- Mailbox functions ----------------------------------------
+
+void send_callback(void* report, int status)
+{
+	if(!status)
+	{
+		printf("Sending completed.\n");
+	}
+	else
+	{
+		printf("Sending error.\n");
+	}
+}
+
+void send_mail(alt_u32 start_addr, alt_u32 storage_length)
+{
+	// Load mailbox
+	altera_avalon_mailbox_dev* mailbox_AudioToSigProc = altera_avalon_mailbox_open("/dev/Mailbox_AudioToSigProc", send_callback, NULL);
+	// Create mail "envelope"
+	alt_u32 mail[2] = {start_addr, storage_length};
+	// Send message
+	altera_avalon_mailbox_send(mailbox_AudioToSigProc, mail, 0, POLL);
+	// Close mailbox
+	altera_avalon_mailbox_close(mailbox_AudioToSigProc);
+}
+
+void receive_callback(void* message)
+{
+	if(message != NULL)
+	{
+		printf("Receiving completed.\n");
+	}
+	else
+	{
+		printf("Receiving error.\n");
+	}
+}
+
+void receive_mail()
+{
+	// Load mailbox
+	altera_avalon_mailbox_dev* mailbox_SigProcToAudio = altera_avalon_mailbox_open("/dev/Mailbox_SigProcToAudio", NULL, receive_callback);
+	// Message storage array
+	alt_u32 mail[2];
+	altera_avalon_mailbox_retrieve_poll(mailbox_SigProcToAudio, mail, 0);
+	alt_dcache_flush_all();
+	// TODO: mail now contains the received message, handle it appropriately
+}
+
+
+// ----------------- Interrupt and task choosing functions -------------------------
+
+void choose_task(int task)
+{
+	if(task == 1)
+	{
+		// First switch (SW0)
+	}
+	else if(task == 2)
+	{
+		// Second switch (SW1)
+	}
+	else if(task == 4)
+	{
+		// Third switch (SW2)
+		// Etc. add as needed...
+	}
+}
+
+void isr_switches(void* context)
+{
+	// Read interrupt source
+	uint8_t pinvals = IORD_8DIRECT(PIO_SWITCHES_BASE, PIO__IntrSwitch_IRQFLAG);
+	// Save choice
+	choice = (int)pinvals;
+	// Clear the interrupt flag
+	IOWR_8DIRECT(PIO_SWITCHES_BASE, PIO__IntrSwitch_IRQFLAG, pinvals);
+}
+
+void setup_switch_interrupts(uint8_t chosen_switches)
+{
+	// Setup interrupts on the chosen switches
+	IOWR_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQEN, chosen_switches);
+	alt_ic_isr_register(PIO_SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID, PIO_SWITCHES_IRQ, isr_switches, NULL, NULL);
+	return;
+}
+
+// ----------------------- Main function ----------------------------------
+
+int main()
+{
+	// Setup interrupts on the first 2 switches
+	setup_switch_interrupts(0x3);
+
+  	return 0;
+}

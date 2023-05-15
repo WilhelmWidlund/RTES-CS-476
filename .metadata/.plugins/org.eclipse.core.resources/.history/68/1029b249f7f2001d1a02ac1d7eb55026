@@ -1,0 +1,24 @@
+/* Audio system main file
+ */
+
+#include <stdio.h>
+#include "system.h"
+#include "io.h"
+#include <stdint.h>
+#include <unistd.h>
+#include <string.h>
+#include "altera_avalon_mailbox_simple.h"
+#include <altera_avalon_performance_counter.h>
+
+// To monitor terminal in powershell:
+// nios2-terminal --device 2 --instance 0
+
+// To download code to board
+// nios2-download -g SysAudio.elf --device 2 --instance 0
+
+int main()
+{
+  printf("Hello from Nios II!\n");
+
+  return 0;
+}

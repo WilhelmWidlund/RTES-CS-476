@@ -1,12 +1,17 @@
-Analysis & Synthesis Status : Failed - Fri May 12 16:15:54 2023
+Analysis & Synthesis Status : Successful - Mon May 15 09:22:33 2023
 Quartus Prime Version : 18.1.0 Build 625 09/12/2018 SJ Lite Edition
 Revision Name : miniproject
 Top-level Entity Name : DE1_SoC_top_level
 Family : Cyclone V
-Logic utilization (in ALMs) : N/A until Partition Merge
-Total registers : N/A until Partition Merge
-Total pins : N/A until Partition Merge
-Total virtual pins : N/A until Partition Merge
-Total block memory bits : N/A until Partition Merge
-Total PLLs : N/A until Partition Merge
-Total DLLs : N/A until Partition Merge
+Logic utilization (in ALMs) : N/A
+Total registers : 7956
+Total pins : 149
+Total virtual pins : 0
+Total block memory bits : 2,244,224
+Total DSP Blocks : 6
+Total HSSI RX PCSs : 0
+Total HSSI PMA RX Deserializers : 0
+Total HSSI TX PCSs : 0
+Total HSSI PMA TX Serializers : 0
+Total PLLs : 2
+Total DLLs : 0

@@ -5,6 +5,7 @@
 		.pio_1st_7seg_external_connection_export        (<connected-to-pio_1st_7seg_external_connection_export>),        //       pio_1st_7seg_external_connection.export
 		.pio_2nd_7seg_external_connection_export        (<connected-to-pio_2nd_7seg_external_connection_export>),        //       pio_2nd_7seg_external_connection.export
 		.pio_3rd_7seg_external_connection_export        (<connected-to-pio_3rd_7seg_external_connection_export>),        //       pio_3rd_7seg_external_connection.export
+		.pio_debug_export                               (<connected-to-pio_debug_export>),                               //                              pio_debug.export
 		.pll_shared_outclk2_clk                         (<connected-to-pll_shared_outclk2_clk>),                         //                     pll_shared_outclk2.clk
 		.reset_reset_n                                  (<connected-to-reset_reset_n>),                                  //                                  reset.reset_n
 		.sdram_controller_shared_wire_addr              (<connected-to-sdram_controller_shared_wire_addr>),              //           sdram_controller_shared_wire.addr

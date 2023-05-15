@@ -1,0 +1,6 @@
+09:33:32 **** Clean-only build of configuration Nios II for project SysSigProc ****
+make clean 
+[SysSigProc clean complete]
+
+09:33:34 Build Finished (took 2s.303ms)
+
