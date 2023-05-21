@@ -1,56 +1,57 @@
 # # File gsaved with Nlview version 6.3.8  2013-12-19 bk=1.2992 VDI=34 GEI=35
 # 
-preplace inst soc_system.SysSigProc_JTAG_UART -pg 1 -lvl 1 -y 960
+preplace inst soc_system.SysSigProc_JTAG_UART -pg 1 -lvl 1 -y 1000
 preplace inst soc_system.PIO_3rd_7seg -pg 1 -lvl 4 -y 660
-preplace inst soc_system.Mailbox_AudioToSigProc -pg 1 -lvl 2 -y 100
+preplace inst soc_system.Mailbox_AudioToSigProc -pg 1 -lvl 2 -y 30
 preplace inst soc_system.SysSigProc_Onchip_Memory -pg 1 -lvl 2 -y 1040
-preplace inst soc_system.SysAudio_JTAG_UART -pg 1 -lvl 1 -y 600
+preplace inst soc_system.SysAudio_JTAG_UART -pg 1 -lvl 1 -y 610
 preplace inst soc_system.PIO_2nd_7seg -pg 1 -lvl 4 -y 560
-preplace inst soc_system.PIO_1st_7seg -pg 1 -lvl 4 -y 370
+preplace inst soc_system.PIO_1st_7seg -pg 1 -lvl 4 -y 320
 preplace inst soc_system.SysSigProc_NIOS_II -pg 1 -lvl 1 -y 320
 preplace inst soc_system.SysAudio_Performance_Counter -pg 1 -lvl 2 -y 960
-preplace inst soc_system.SysAudio_Onchip_Memory -pg 1 -lvl 1 -y 860
-preplace inst soc_system.SysAudio_Audio_Clock -pg 1 -lvl 2 -y 630
+preplace inst soc_system.SysAudio_Onchip_Memory -pg 1 -lvl 1 -y 920
+preplace inst soc_system.SysAudio_Audio_Clock -pg 1 -lvl 2 -y 610
 preplace inst soc_system.SysAudio_Audio_Clock.audio_pll -pg 1
 preplace inst soc_system.SysAudio_NIOS_II -pg 1 -lvl 1 -y 120
 preplace inst soc_system.SysAudio_Audio_Clock.reset_from_locked -pg 1
-preplace inst soc_system.SysSigProc_Performance_Counter -pg 1 -lvl 1 -y 1070
+preplace inst soc_system.SysSigProc_Performance_Counter -pg 1 -lvl 1 -y 1100
 preplace inst soc_system.SysSigProc_NIOS_II.cpu -pg 1
-preplace inst soc_system.SigProcOperation_0 -pg 1 -lvl 1 -y 740
-preplace inst soc_system.SDRAM_Controller_Shared -pg 1 -lvl 3 -y 820
-preplace inst soc_system.PIO_Switches -pg 1 -lvl 3 -y 410
+preplace inst soc_system.SigProcOperation_0 -pg 1 -lvl 1 -y 760
+preplace inst soc_system.SDRAM_Controller_Shared -pg 1 -lvl 3 -y 830
+preplace inst soc_system.PIO_Switches -pg 1 -lvl 3 -y 390
 preplace inst soc_system -pg 1 -lvl 1 -y 40 -regy -20
-preplace inst soc_system.PLL_Shared -pg 1 -lvl 3 -y 720
-preplace inst soc_system.PIO_LEDs_Shared -pg 1 -lvl 3 -y 270
-preplace inst soc_system.Mailbox_SigProcToAudio -pg 1 -lvl 2 -y 290
+preplace inst soc_system.PLL_Shared -pg 1 -lvl 3 -y 730
+preplace inst soc_system.PIO_LEDs_Shared -pg 1 -lvl 3 -y 220
+preplace inst soc_system.Mailbox_SigProcToAudio -pg 1 -lvl 2 -y 210
 preplace inst soc_system.SysAudio_NIOS_II.cpu -pg 1
 preplace inst soc_system.SysAudio_NIOS_II.clock_bridge -pg 1
-preplace inst soc_system.PIO_Debug -pg 1 -lvl 4 -y 230
-preplace inst soc_system.clk_0 -pg 1 -lvl 1 -y 500
+preplace inst soc_system.PIO_Debug -pg 1 -lvl 4 -y 180
+preplace inst soc_system.clk_0 -pg 1 -lvl 1 -y 490
+preplace inst soc_system.SysSigProc_HW_accelerator -pg 1 -lvl 4 -y 100
 preplace inst soc_system.SysAudio_NIOS_II.reset_bridge -pg 1
-preplace inst soc_system.SysAudio_Audio_Core -pg 1 -lvl 2 -y 780
+preplace inst soc_system.SysAudio_Audio_Core -pg 1 -lvl 2 -y 760
 preplace inst soc_system.SysSigProc_NIOS_II.reset_bridge -pg 1
-preplace inst soc_system.SysAudio_AV_Config -pg 1 -lvl 2 -y 480
+preplace inst soc_system.SysAudio_AV_Config -pg 1 -lvl 2 -y 430
 preplace inst soc_system.SysSigProc_NIOS_II.clock_bridge -pg 1
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)clk_0.clk_in_reset,(SLAVE)soc_system.reset) 1 0 1 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.out_led,(SLAVE)PIO_LEDs_Shared.external_connection) 1 0 3 NJ 280 NJ 260 NJ
-preplace netloc INTERCONNECT<net_container>soc_system</net_container>(MASTER)SysAudio_Audio_Clock.reset_source,(MASTER)SysAudio_NIOS_II.debug_reset_request,(SLAVE)SDRAM_Controller_Shared.reset,(SLAVE)SysAudio_JTAG_UART.reset,(SLAVE)SysAudio_Audio_Core.reset,(SLAVE)SysAudio_Audio_Clock.ref_reset,(SLAVE)SysAudio_AV_Config.reset,(SLAVE)PIO_3rd_7seg.reset,(SLAVE)PIO_1st_7seg.reset,(SLAVE)PIO_LEDs_Shared.reset,(SLAVE)SysAudio_NIOS_II.reset,(SLAVE)PIO_2nd_7seg.reset,(SLAVE)SysAudio_Onchip_Memory.reset1,(MASTER)SysSigProc_NIOS_II.debug_reset_request,(SLAVE)PIO_Switches.reset,(SLAVE)PLL_Shared.reset,(SLAVE)SysSigProc_JTAG_UART.reset,(MASTER)clk_0.clk_reset,(SLAVE)SysSigProc_Onchip_Memory.reset1,(SLAVE)Mailbox_AudioToSigProc.rst_n,(SLAVE)SysSigProc_Performance_Counter.reset,(SLAVE)SysSigProc_NIOS_II.reset,(SLAVE)PIO_Debug.reset,(SLAVE)SysAudio_Performance_Counter.reset,(SLAVE)Mailbox_SigProcToAudio.rst_n) 1 0 4 270 1180 790 910 1180 240 1540
-preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)PLL_Shared.refclk,(MASTER)clk_0.clk) 1 1 2 730 730 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.sysaudio_av_config_external_interface,(SLAVE)SysAudio_AV_Config.external_interface) 1 0 2 NJ 490 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.pio_1st_7seg_external_connection,(SLAVE)PIO_1st_7seg.external_connection) 1 0 4 NJ 80 NJ 80 NJ 200 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.pio_3rd_7seg_external_connection,(SLAVE)PIO_3rd_7seg.external_connection) 1 0 4 NJ 710 NJ 710 NJ 690 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.out_led,(SLAVE)PIO_LEDs_Shared.external_connection) 1 0 3 NJ 80 NJ 180 NJ
+preplace netloc INTERCONNECT<net_container>soc_system</net_container>(MASTER)clk_0.clk_reset,(SLAVE)PIO_1st_7seg.reset,(SLAVE)SysSigProc_JTAG_UART.reset,(SLAVE)SysSigProc_NIOS_II.reset,(SLAVE)SysAudio_Audio_Clock.ref_reset,(MASTER)SysAudio_Audio_Clock.reset_source,(SLAVE)SysAudio_AV_Config.reset,(MASTER)SysAudio_NIOS_II.debug_reset_request,(SLAVE)PIO_Switches.reset,(SLAVE)SysAudio_Audio_Core.reset,(SLAVE)Mailbox_SigProcToAudio.rst_n,(SLAVE)Mailbox_AudioToSigProc.rst_n,(SLAVE)SysAudio_Onchip_Memory.reset1,(SLAVE)SDRAM_Controller_Shared.reset,(SLAVE)SysSigProc_Performance_Counter.reset,(SLAVE)SysSigProc_HW_accelerator.reset_sink,(SLAVE)SysAudio_Performance_Counter.reset,(SLAVE)SysAudio_NIOS_II.reset,(MASTER)SysSigProc_NIOS_II.debug_reset_request,(SLAVE)PIO_3rd_7seg.reset,(SLAVE)PIO_Debug.reset,(SLAVE)PIO_LEDs_Shared.reset,(SLAVE)SysAudio_JTAG_UART.reset,(SLAVE)SysSigProc_Onchip_Memory.reset1,(SLAVE)PIO_2nd_7seg.reset,(SLAVE)PLL_Shared.reset) 1 0 4 270 870 770 910 1180 520 1580
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)PLL_Shared.refclk,(MASTER)clk_0.clk) 1 1 2 730 740 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.sysaudio_audio_core_external_interface,(SLAVE)SysAudio_Audio_Core.external_interface) 1 0 2 NJ 810 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.pio_3rd_7seg_external_connection,(SLAVE)PIO_3rd_7seg.external_connection) 1 0 4 NJ 720 NJ 720 NJ 690 NJ
 preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.clk,(SLAVE)clk_0.clk_in) 1 0 1 NJ
-preplace netloc INTERCONNECT<net_container>soc_system</net_container>(SLAVE)SysAudio_Audio_Core.interrupt,(SLAVE)Mailbox_SigProcToAudio.interrupt_mb_available,(SLAVE)SysAudio_JTAG_UART.irq,(SLAVE)SysSigProc_JTAG_UART.irq,(MASTER)SysSigProc_NIOS_II.irq,(SLAVE)Mailbox_AudioToSigProc.interrupt_mb_available,(MASTER)SysAudio_NIOS_II.irq,(SLAVE)Mailbox_SigProcToAudio.interrupt_msg_pending,(SLAVE)PIO_Switches.irq,(SLAVE)Mailbox_AudioToSigProc.interrupt_msg_pending) 1 0 3 290 590 830 280 1160
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)PIO_Debug.external_connection,(SLAVE)soc_system.pio_debug) 1 0 4 NJ 40 NJ 40 NJ 180 NJ
-preplace netloc INTERCONNECT<net_container>soc_system</net_container>(SLAVE)SysSigProc_Onchip_Memory.s1,(SLAVE)SysAudio_AV_Config.avalon_av_config_slave,(MASTER)SysSigProc_NIOS_II.data_master,(SLAVE)Mailbox_AudioToSigProc.avmm_msg_sender,(SLAVE)SysAudio_Performance_Counter.control_slave,(SLAVE)SysSigProc_JTAG_UART.avalon_jtag_slave,(SLAVE)PIO_Switches.s1,(SLAVE)PIO_1st_7seg.s1,(SLAVE)PIO_3rd_7seg.s1,(SLAVE)SysAudio_NIOS_II.debug_mem_slave,(MASTER)SysAudio_NIOS_II.instruction_master,(SLAVE)PIO_2nd_7seg.s1,(MASTER)SysAudio_NIOS_II.data_master,(SLAVE)SysAudio_JTAG_UART.avalon_jtag_slave,(MASTER)SysSigProc_NIOS_II.instruction_master,(SLAVE)Mailbox_AudioToSigProc.avmm_msg_receiver,(SLAVE)Mailbox_SigProcToAudio.avmm_msg_sender,(SLAVE)SysSigProc_NIOS_II.debug_mem_slave,(SLAVE)SysSigProc_Performance_Counter.control_slave,(SLAVE)Mailbox_SigProcToAudio.avmm_msg_receiver,(SLAVE)PIO_LEDs_Shared.s1,(SLAVE)SysAudio_Audio_Core.avalon_audio_slave,(SLAVE)SDRAM_Controller_Shared.s1,(SLAVE)SysAudio_Onchip_Memory.s1,(SLAVE)PIO_Debug.s1) 1 0 4 250 1160 710 930 1240 260 1580
-preplace netloc EXPORT<net_container>soc_system</net_container>(MASTER)soc_system.pll_shared_outclk2,(MASTER)PLL_Shared.outclk2) 1 3 2 NJ 770 NJ
-preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)SysSigProc_Performance_Counter.clk,(SLAVE)SysAudio_AV_Config.clk,(SLAVE)SysAudio_Onchip_Memory.clk1,(SLAVE)Mailbox_AudioToSigProc.clk,(SLAVE)Mailbox_SigProcToAudio.clk,(SLAVE)SysAudio_JTAG_UART.clk,(MASTER)PLL_Shared.outclk0,(SLAVE)PIO_3rd_7seg.clk,(SLAVE)SysAudio_Audio_Clock.ref_clk,(SLAVE)SysSigProc_NIOS_II.clk,(SLAVE)PIO_1st_7seg.clk,(SLAVE)PIO_LEDs_Shared.clk,(SLAVE)PIO_Debug.clk,(SLAVE)SysSigProc_Onchip_Memory.clk1,(SLAVE)PIO_Switches.clk,(SLAVE)SysAudio_NIOS_II.clk,(SLAVE)SysSigProc_JTAG_UART.clk,(SLAVE)SysAudio_Performance_Counter.clk,(SLAVE)PIO_2nd_7seg.clk) 1 0 4 230 950 750 60 1220 220 1560
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)SysAudio_Audio_Core.external_interface,(SLAVE)soc_system.sysaudio_audio_core_external_interface) 1 0 2 NJ 830 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.in_switches,(SLAVE)PIO_Switches.external_connection) 1 0 3 NJ 460 NJ 440 NJ
-preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)SDRAM_Controller_Shared.clk,(MASTER)PLL_Shared.outclk1) 1 2 2 1260 810 1580
-preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)SysAudio_Audio_Core.clk,(MASTER)SysAudio_Audio_Clock.audio_clk) 1 1 2 850 770 1160
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)SDRAM_Controller_Shared.wire,(SLAVE)soc_system.sdram_controller_shared_wire) 1 0 3 NJ 850 NJ 950 NJ
-preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)PIO_2nd_7seg.external_connection,(SLAVE)soc_system.pio_2nd_7seg_external_connection) 1 0 4 NJ 570 NJ 590 NJ 590 NJ
-preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)SigProcOperation_0.avalon_slave_0_1,(MASTER)SysSigProc_NIOS_II.custom_instruction_master) 1 0 2 310 790 670
-levelinfo -pg 1 0 200 1940
-levelinfo -hier soc_system 210 430 990 1390 1650 1800
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)PIO_1st_7seg.external_connection,(SLAVE)soc_system.pio_1st_7seg_external_connection) 1 0 4 NJ 280 NJ 360 NJ 350 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.reset,(SLAVE)clk_0.clk_in_reset) 1 0 1 NJ
+preplace netloc INTERCONNECT<net_container>soc_system</net_container>(SLAVE)SysSigProc_JTAG_UART.irq,(SLAVE)Mailbox_SigProcToAudio.interrupt_msg_pending,(MASTER)SysAudio_NIOS_II.irq,(SLAVE)Mailbox_AudioToSigProc.interrupt_msg_pending,(SLAVE)SysAudio_JTAG_UART.irq,(SLAVE)Mailbox_AudioToSigProc.interrupt_mb_available,(MASTER)SysSigProc_NIOS_II.irq,(SLAVE)SysAudio_Audio_Core.interrupt,(SLAVE)PIO_Switches.irq,(SLAVE)Mailbox_SigProcToAudio.interrupt_mb_available) 1 0 3 290 830 690 400 NJ
+preplace netloc FAN_OUT<net_container>soc_system</net_container>(SLAVE)SysAudio_Onchip_Memory.clk1,(SLAVE)SysSigProc_Onchip_Memory.clk1,(SLAVE)PIO_LEDs_Shared.clk,(SLAVE)SysSigProc_Performance_Counter.clk,(SLAVE)PIO_Switches.clk,(SLAVE)SysAudio_AV_Config.clk,(SLAVE)SysSigProc_NIOS_II.clk,(SLAVE)SysAudio_Audio_Clock.ref_clk,(SLAVE)Mailbox_SigProcToAudio.clk,(SLAVE)PIO_1st_7seg.clk,(SLAVE)PIO_3rd_7seg.clk,(SLAVE)SysAudio_Performance_Counter.clk,(SLAVE)SysSigProc_JTAG_UART.clk,(SLAVE)PIO_2nd_7seg.clk,(SLAVE)SysSigProc_HW_accelerator.clock,(SLAVE)Mailbox_AudioToSigProc.clk,(MASTER)PLL_Shared.outclk0,(SLAVE)SysAudio_NIOS_II.clk,(SLAVE)SysAudio_JTAG_UART.clk,(SLAVE)PIO_Debug.clk) 1 0 4 230 850 810 380 1240 330 1540
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)SysAudio_AV_Config.external_interface,(SLAVE)soc_system.sysaudio_av_config_external_interface) 1 0 2 NJ 560 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.in_switches,(SLAVE)PIO_Switches.external_connection) 1 0 3 NJ 460 NJ 420 NJ
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)SDRAM_Controller_Shared.clk,(MASTER)PLL_Shared.outclk1) 1 2 2 1240 820 1560
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)SysAudio_Audio_Core.clk,(MASTER)SysAudio_Audio_Clock.audio_clk) 1 1 2 830 890 1160
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)SDRAM_Controller_Shared.wire,(SLAVE)soc_system.sdram_controller_shared_wire) 1 0 3 NJ 910 NJ 950 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)PIO_2nd_7seg.external_connection,(SLAVE)soc_system.pio_2nd_7seg_external_connection) 1 0 4 NJ 580 NJ 570 NJ 590 NJ
+preplace netloc POINT_TO_POINT<net_container>soc_system</net_container>(SLAVE)SigProcOperation_0.avalon_slave_0_1,(MASTER)SysSigProc_NIOS_II.custom_instruction_master) 1 0 2 310 750 710
+preplace netloc INTERCONNECT<net_container>soc_system</net_container>(SLAVE)Mailbox_SigProcToAudio.avmm_msg_receiver,(SLAVE)SysSigProc_HW_accelerator.as,(SLAVE)SysAudio_NIOS_II.debug_mem_slave,(SLAVE)Mailbox_AudioToSigProc.avmm_msg_sender,(SLAVE)PIO_Debug.s1,(SLAVE)Mailbox_AudioToSigProc.avmm_msg_receiver,(MASTER)SysSigProc_NIOS_II.data_master,(MASTER)SysSigProc_NIOS_II.instruction_master,(SLAVE)SysSigProc_NIOS_II.debug_mem_slave,(MASTER)SysAudio_NIOS_II.data_master,(SLAVE)PIO_LEDs_Shared.s1,(SLAVE)PIO_3rd_7seg.s1,(SLAVE)SysAudio_Audio_Core.avalon_audio_slave,(SLAVE)SysSigProc_JTAG_UART.avalon_jtag_slave,(SLAVE)SysSigProc_Onchip_Memory.s1,(SLAVE)SysAudio_Performance_Counter.control_slave,(SLAVE)SysAudio_Onchip_Memory.s1,(SLAVE)SysAudio_JTAG_UART.avalon_jtag_slave,(MASTER)SysAudio_NIOS_II.instruction_master,(SLAVE)SDRAM_Controller_Shared.s1,(SLAVE)Mailbox_SigProcToAudio.avmm_msg_sender,(SLAVE)PIO_1st_7seg.s1,(SLAVE)PIO_Switches.s1,(SLAVE)SysAudio_AV_Config.avalon_av_config_slave,(SLAVE)PIO_2nd_7seg.s1,(MASTER)SysSigProc_HW_accelerator.avalon_master,(SLAVE)SysSigProc_Performance_Counter.control_slave) 1 0 5 250 890 750 930 1220 540 1560 90 1810
+preplace netloc EXPORT<net_container>soc_system</net_container>(MASTER)PLL_Shared.outclk2,(MASTER)soc_system.pll_shared_outclk2) 1 3 2 NJ 780 NJ
+preplace netloc EXPORT<net_container>soc_system</net_container>(SLAVE)soc_system.pio_debug,(SLAVE)PIO_Debug.external_connection) 1 0 4 NJ 60 NJ 200 NJ 210 NJ
+levelinfo -pg 1 0 200 1970
+levelinfo -hier soc_system 210 430 990 1390 1650 1830

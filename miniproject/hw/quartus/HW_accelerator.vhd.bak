@@ -1,0 +1,54 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.std_logic_unsigned.all;
+use ieee.numeric_std.all;
+
+entity HW_accelerator is
+port (
+	-- Clock & reset interface
+	Clk 		: in std_logic;
+	nReset 	: in std_logic;
+	
+	-- Avalon master interface
+	AM_address 		: out std_logic_vector (31 downto 0);
+	AM_byteenable 	: out std_logic_vector (3 downto 0);
+	AM_write 		: out std_logic;
+	AM_writedata 	: out std_logic_vector (31 downto 0);
+	AM_read 			: out std_logic;
+	AM_readdata 	: in std_logic_vector (31 downto 0);
+	AM_waitrequest : in std_logic;
+	
+	-- Avalon slave interface
+	AS_address		: in std_logic_vector (2 downto 0);
+	AS_read 			: in std_logic;
+	AS_readdata 	: out std_logic_vector (31 downto 0);
+	AS_write 		: in std_logic;
+	AS_writedata 	: in std_logic_vector (31 downto 0)
+);
+end HW_accelerator;
+
+architecture design of HW_accelerator is
+
+-- Define possible states
+type all_states is (Idle, Setup, Init_Read, Finish_Read, Operation, Init_Write, Finish_Write);
+signal state : all_states := Idle;
+
+-- Define AS registers
+signal StartAddrRead_Reg	: std_logic_vector(31 downto 0);
+signal StartAddrWrite_Reg	: std_logic_vector(31 downto 0);
+signal WordCount_Reg			: std_logic_vector(31 downto 0);
+signal Control_Reg			: std_logic;
+
+-- Define flags
+signal Start_Reg				: std_logic;
+signal DOne_Reg				: std_logic;
+
+-- Define internal registers
+signal iCurrentAddrRead		: std_logic_vector(31 downto 0);
+signal iCurrentAddrWrite	: std_logic_vector(31 downto 0);
+signal iWordsLeftCount		: std_logic_vector(31 downto 0);
+signal iInData					: std_logic_vector(31 downto 0);
+signal iOutData				: std_logic_vector(31 downto 0);
+
+
+end design;

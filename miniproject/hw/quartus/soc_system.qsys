@@ -21,7 +21,7 @@
    {
       datum baseAddress
       {
-         value = "67375248";
+         value = "67375392";
          type = "String";
       }
    }
@@ -29,7 +29,7 @@
    {
       datum baseAddress
       {
-         value = "67637488";
+         value = "67375344";
          type = "String";
       }
    }
@@ -45,7 +45,7 @@
    {
       datum baseAddress
       {
-         value = "67637504";
+         value = "67375360";
          type = "String";
       }
    }
@@ -53,7 +53,7 @@
    {
       datum baseAddress
       {
-         value = "67375232";
+         value = "67375344";
          type = "String";
       }
    }
@@ -69,7 +69,7 @@
    {
       datum baseAddress
       {
-         value = "67637440";
+         value = "67375296";
          type = "String";
       }
    }
@@ -85,7 +85,7 @@
    {
       datum baseAddress
       {
-         value = "67637424";
+         value = "67375280";
          type = "String";
       }
    }
@@ -101,7 +101,7 @@
    {
       datum baseAddress
       {
-         value = "67637408";
+         value = "67375264";
          type = "String";
       }
    }
@@ -117,7 +117,7 @@
    {
       datum baseAddress
       {
-         value = "67637376";
+         value = "67375232";
          type = "String";
       }
    }
@@ -133,7 +133,7 @@
    {
       datum baseAddress
       {
-         value = "67637472";
+         value = "67375328";
          type = "String";
       }
    }
@@ -149,7 +149,7 @@
    {
       datum baseAddress
       {
-         value = "67637456";
+         value = "67375312";
          type = "String";
       }
    }
@@ -197,7 +197,7 @@
    {
       datum baseAddress
       {
-         value = "67637520";
+         value = "67375376";
          type = "String";
       }
    }
@@ -221,7 +221,7 @@
    {
       datum baseAddress
       {
-         value = "67637536";
+         value = "67375392";
          type = "String";
       }
    }
@@ -237,7 +237,7 @@
    {
       datum baseAddress
       {
-         value = "67637552";
+         value = "67375408";
          type = "String";
       }
    }
@@ -253,7 +253,7 @@
    {
       datum baseAddress
       {
-         value = "67635200";
+         value = "67373056";
          type = "String";
       }
    }
@@ -269,7 +269,7 @@
    {
       datum baseAddress
       {
-         value = "67371008";
+         value = "67239936";
          type = "String";
       }
    }
@@ -285,7 +285,23 @@
    {
       datum baseAddress
       {
-         value = "67637248";
+         value = "67375104";
+         type = "String";
+      }
+   }
+   element SysSigProc_HW_accelerator
+   {
+      datum _sortIndex
+      {
+         value = "23";
+         type = "int";
+      }
+   }
+   element SysSigProc_HW_accelerator.as
+   {
+      datum baseAddress
+      {
+         value = "67375360";
          type = "String";
       }
    }
@@ -301,7 +317,7 @@
    {
       datum baseAddress
       {
-         value = "67375264";
+         value = "67375408";
          type = "String";
       }
    }
@@ -775,7 +791,7 @@
   <parameter name="casLatency" value="3" />
   <parameter name="clockRate" value="100000000" />
   <parameter name="columnWidth" value="10" />
-  <parameter name="componentName">$${FILENAME}_SDRAM_Controller_Shared</parameter>
+  <parameter name="componentName">soc_system_SDRAM_Controller_Shared</parameter>
   <parameter name="dataWidth" value="16" />
   <parameter name="generateSimulationModel" value="false" />
   <parameter name="initNOPDelay" value="0.0" />
@@ -864,8 +880,8 @@
    kind="altera_nios2_gen2"
    version="18.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="4" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="4" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -883,7 +899,7 @@
   <parameter name="dataAddrWidth" value="27" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='SysAudio_Onchip_Memory.s1' start='0x4040000' end='0x4060000' type='altera_avalon_onchip_memory2.s1' /><slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4080800' end='0x4081000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SysAudio_Performance_Counter.control_slave' start='0x4081000' end='0x4081080' type='altera_avalon_performance_counter.control_slave' /><slave name='PIO_Debug.s1' start='0x4081080' end='0x40810A0' type='altera_avalon_pio.s1' /><slave name='PIO_3rd_7seg.s1' start='0x40810A0' end='0x40810B0' type='altera_avalon_pio.s1' /><slave name='PIO_2nd_7seg.s1' start='0x40810B0' end='0x40810C0' type='altera_avalon_pio.s1' /><slave name='PIO_1st_7seg.s1' start='0x40810C0' end='0x40810D0' type='altera_avalon_pio.s1' /><slave name='PIO_Switches.s1' start='0x40810D0' end='0x40810E0' type='altera_avalon_pio.s1' /><slave name='PIO_LEDs_Shared.s1' start='0x40810E0' end='0x40810F0' type='altera_avalon_pio.s1' /><slave name='Mailbox_AudioToSigProc.avmm_msg_sender' start='0x40810F0' end='0x4081100' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='Mailbox_SigProcToAudio.avmm_msg_receiver' start='0x4081100' end='0x4081110' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='SysAudio_AV_Config.avalon_av_config_slave' start='0x4081110' end='0x4081120' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='SysAudio_Audio_Core.avalon_audio_slave' start='0x4081120' end='0x4081130' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='SysAudio_JTAG_UART.avalon_jtag_slave' start='0x4081130' end='0x4081138' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='SysAudio_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /><slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SysAudio_Performance_Counter.control_slave' start='0x4041000' end='0x4041080' type='altera_avalon_performance_counter.control_slave' /><slave name='PIO_3rd_7seg.s1' start='0x40410A0' end='0x40410B0' type='altera_avalon_pio.s1' /><slave name='PIO_2nd_7seg.s1' start='0x40410B0' end='0x40410C0' type='altera_avalon_pio.s1' /><slave name='PIO_1st_7seg.s1' start='0x40410C0' end='0x40410D0' type='altera_avalon_pio.s1' /><slave name='PIO_Switches.s1' start='0x40410D0' end='0x40410E0' type='altera_avalon_pio.s1' /><slave name='PIO_LEDs_Shared.s1' start='0x40410E0' end='0x40410F0' type='altera_avalon_pio.s1' /><slave name='Mailbox_AudioToSigProc.avmm_msg_sender' start='0x40410F0' end='0x4041100' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='Mailbox_SigProcToAudio.avmm_msg_receiver' start='0x4041100' end='0x4041110' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='SysAudio_AV_Config.avalon_av_config_slave' start='0x4041110' end='0x4041120' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /><slave name='SysAudio_Audio_Core.avalon_audio_slave' start='0x4041120' end='0x4041130' type='altera_up_avalon_audio.avalon_audio_slave' /><slave name='SysAudio_JTAG_UART.avalon_jtag_slave' start='0x4041130' end='0x4041138' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -922,7 +938,7 @@
   <parameter name="icache_tagramBlockType" value="Automatic" />
   <parameter name="impl" value="Fast" />
   <parameter name="instAddrWidth" value="27" />
-  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='SysAudio_Onchip_Memory.s1' start='0x4040000' end='0x4060000' type='altera_avalon_onchip_memory2.s1' /><slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4080800' end='0x4081000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
+  <parameter name="instSlaveMapParam"><![CDATA[<address-map><slave name='SysAudio_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /><slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /></address-map>]]></parameter>
   <parameter name="instructionMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="instructionMasterHighPerformanceMapParam" value="" />
   <parameter name="instruction_master_high_performance_paddr_base" value="0" />
@@ -1047,7 +1063,7 @@
    version="18.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_SysAudio_Onchip_Memory</parameter>
+  <parameter name="autoInitializationFileName">soc_system_SysAudio_Onchip_Memory</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -1081,6 +1097,11 @@
   <parameter name="numberOfSections" value="7" />
  </module>
  <module
+   name="SysSigProc_HW_accelerator"
+   kind="HW_accelerator"
+   version="1.0"
+   enabled="1" />
+ <module
    name="SysSigProc_JTAG_UART"
    kind="altera_avalon_jtag_uart"
    version="18.1"
@@ -1104,8 +1125,8 @@
    kind="altera_nios2_gen2"
    version="18.1"
    enabled="1">
-  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="4" />
-  <parameter name="AUTO_CLK_RESET_DOMAIN" value="4" />
+  <parameter name="AUTO_CLK_CLOCK_DOMAIN" value="1" />
+  <parameter name="AUTO_CLK_RESET_DOMAIN" value="1" />
   <parameter name="AUTO_DEVICE" value="5CSEMA5F31C6" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="6" />
   <parameter name="bht_ramBlockType" value="Automatic" />
@@ -1123,7 +1144,7 @@
   <parameter name="dataAddrWidth" value="27" />
   <parameter name="dataMasterHighPerformanceAddrWidth" value="1" />
   <parameter name="dataMasterHighPerformanceMapParam" value="" />
-  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='SysSigProc_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /><slave name='SysSigProc_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SysSigProc_Performance_Counter.control_slave' start='0x4041000' end='0x4041080' type='altera_avalon_performance_counter.control_slave' /><slave name='Mailbox_SigProcToAudio.avmm_msg_sender' start='0x4041080' end='0x4041090' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='Mailbox_AudioToSigProc.avmm_msg_receiver' start='0x4041090' end='0x40410A0' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='SysSigProc_JTAG_UART.avalon_jtag_slave' start='0x40410A0' end='0x40410A8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /><slave name='PIO_Debug.s1' start='0x4081080' end='0x40810A0' type='altera_avalon_pio.s1' /><slave name='PIO_3rd_7seg.s1' start='0x40810A0' end='0x40810B0' type='altera_avalon_pio.s1' /><slave name='PIO_2nd_7seg.s1' start='0x40810B0' end='0x40810C0' type='altera_avalon_pio.s1' /><slave name='PIO_1st_7seg.s1' start='0x40810C0' end='0x40810D0' type='altera_avalon_pio.s1' /><slave name='PIO_Switches.s1' start='0x40810D0' end='0x40810E0' type='altera_avalon_pio.s1' /><slave name='PIO_LEDs_Shared.s1' start='0x40810E0' end='0x40810F0' type='altera_avalon_pio.s1' /></address-map>]]></parameter>
+  <parameter name="dataSlaveMapParam"><![CDATA[<address-map><slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /><slave name='SysSigProc_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /><slave name='SysSigProc_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /><slave name='SysSigProc_Performance_Counter.control_slave' start='0x4041000' end='0x4041080' type='altera_avalon_performance_counter.control_slave' /><slave name='PIO_Debug.s1' start='0x4041080' end='0x40410A0' type='altera_avalon_pio.s1' /><slave name='PIO_3rd_7seg.s1' start='0x40410A0' end='0x40410B0' type='altera_avalon_pio.s1' /><slave name='PIO_2nd_7seg.s1' start='0x40410B0' end='0x40410C0' type='altera_avalon_pio.s1' /><slave name='PIO_1st_7seg.s1' start='0x40410C0' end='0x40410D0' type='altera_avalon_pio.s1' /><slave name='PIO_Switches.s1' start='0x40410D0' end='0x40410E0' type='altera_avalon_pio.s1' /><slave name='PIO_LEDs_Shared.s1' start='0x40410E0' end='0x40410F0' type='altera_avalon_pio.s1' /><slave name='Mailbox_SigProcToAudio.avmm_msg_sender' start='0x40410F0' end='0x4041100' type='altera_avalon_mailbox_simple.avmm_msg_sender' /><slave name='SysSigProc_HW_accelerator.as' start='0x4041100' end='0x4041120' type='HW_accelerator.as' /><slave name='Mailbox_AudioToSigProc.avmm_msg_receiver' start='0x4041120' end='0x4041130' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /><slave name='SysSigProc_JTAG_UART.avalon_jtag_slave' start='0x4041130' end='0x4041138' type='altera_avalon_jtag_uart.avalon_jtag_slave' /></address-map>]]></parameter>
   <parameter name="data_master_high_performance_paddr_base" value="0" />
   <parameter name="data_master_high_performance_paddr_size" value="0" />
   <parameter name="data_master_paddr_base" value="0" />
@@ -1287,7 +1308,7 @@
    version="18.1"
    enabled="1">
   <parameter name="allowInSystemMemoryContentEditor" value="false" />
-  <parameter name="autoInitializationFileName">$${FILENAME}_SysSigProc_Onchip_Memory</parameter>
+  <parameter name="autoInitializationFileName">soc_system_SysSigProc_Onchip_Memory</parameter>
   <parameter name="blockType" value="AUTO" />
   <parameter name="copyInitFile" value="false" />
   <parameter name="dataWidth" value="32" />
@@ -1329,10 +1350,28 @@
  <connection
    kind="avalon"
    version="18.1"
+   start="SysSigProc_HW_accelerator.avalon_master"
+   end="SDRAM_Controller_Shared.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
+   start="SysSigProc_NIOS_II.data_master"
+   end="SysSigProc_HW_accelerator.as">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x04041100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="18.1"
    start="SysAudio_NIOS_II.data_master"
    end="SysAudio_Audio_Core.avalon_audio_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04081120" />
+  <parameter name="baseAddress" value="0x04041120" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1341,7 +1380,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="SysAudio_AV_Config.avalon_av_config_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04081110" />
+  <parameter name="baseAddress" value="0x04041110" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1350,7 +1389,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="SysAudio_JTAG_UART.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04081130" />
+  <parameter name="baseAddress" value="0x04041130" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1359,7 +1398,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="SysSigProc_JTAG_UART.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040410a0" />
+  <parameter name="baseAddress" value="0x04041130" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1368,7 +1407,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="Mailbox_AudioToSigProc.avmm_msg_receiver">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04041090" />
+  <parameter name="baseAddress" value="0x04041120" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1377,7 +1416,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="Mailbox_SigProcToAudio.avmm_msg_receiver">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04081100" />
+  <parameter name="baseAddress" value="0x04041100" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1386,7 +1425,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="Mailbox_AudioToSigProc.avmm_msg_sender">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810f0" />
+  <parameter name="baseAddress" value="0x040410f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1395,7 +1434,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="Mailbox_SigProcToAudio.avmm_msg_sender">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04041080" />
+  <parameter name="baseAddress" value="0x040410f0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1404,7 +1443,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="SysAudio_Performance_Counter.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04081000" />
+  <parameter name="baseAddress" value="0x04041000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1422,7 +1461,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="SysAudio_NIOS_II.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04080800" />
+  <parameter name="baseAddress" value="0x04040800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1440,7 +1479,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="SysAudio_Onchip_Memory.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04040000" />
+  <parameter name="baseAddress" value="0x04020000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1458,7 +1497,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="PIO_LEDs_Shared.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810e0" />
+  <parameter name="baseAddress" value="0x040410e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1476,7 +1515,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="PIO_LEDs_Shared.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810e0" />
+  <parameter name="baseAddress" value="0x040410e0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1494,7 +1533,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="PIO_Switches.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810d0" />
+  <parameter name="baseAddress" value="0x040410d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1503,7 +1542,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="PIO_Switches.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810d0" />
+  <parameter name="baseAddress" value="0x040410d0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1512,7 +1551,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="PIO_1st_7seg.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810c0" />
+  <parameter name="baseAddress" value="0x040410c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1521,7 +1560,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="PIO_1st_7seg.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810c0" />
+  <parameter name="baseAddress" value="0x040410c0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1530,7 +1569,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="PIO_2nd_7seg.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810b0" />
+  <parameter name="baseAddress" value="0x040410b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1539,7 +1578,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="PIO_2nd_7seg.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810b0" />
+  <parameter name="baseAddress" value="0x040410b0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1548,7 +1587,7 @@
    start="SysAudio_NIOS_II.data_master"
    end="PIO_3rd_7seg.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810a0" />
+  <parameter name="baseAddress" value="0x040410a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1557,16 +1596,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="PIO_3rd_7seg.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x040810a0" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="18.1"
-   start="SysAudio_NIOS_II.data_master"
-   end="PIO_Debug.s1">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04081080" />
+  <parameter name="baseAddress" value="0x040410a0" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1575,7 +1605,7 @@
    start="SysSigProc_NIOS_II.data_master"
    end="PIO_Debug.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04081080" />
+  <parameter name="baseAddress" value="0x04041080" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1584,7 +1614,7 @@
    start="SysAudio_NIOS_II.instruction_master"
    end="SysAudio_NIOS_II.debug_mem_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04080800" />
+  <parameter name="baseAddress" value="0x04040800" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1602,7 +1632,7 @@
    start="SysAudio_NIOS_II.instruction_master"
    end="SysAudio_Onchip_Memory.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x04040000" />
+  <parameter name="baseAddress" value="0x04020000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1705,6 +1735,11 @@
    version="18.1"
    start="PLL_Shared.outclk0"
    end="SysSigProc_Onchip_Memory.clk1" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="PLL_Shared.outclk0"
+   end="SysSigProc_HW_accelerator.clock" />
  <connection
    kind="clock"
    version="18.1"
@@ -1914,6 +1949,11 @@
    kind="reset"
    version="18.1"
    start="clk_0.clk_reset"
+   end="SysSigProc_HW_accelerator.reset_sink" />
+ <connection
+   kind="reset"
+   version="18.1"
+   start="clk_0.clk_reset"
    end="Mailbox_AudioToSigProc.rst_n" />
  <connection
    kind="reset"
@@ -1928,11 +1968,6 @@
  <connection
    kind="reset"
    version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysAudio_Audio_Clock.ref_reset" />
- <connection
-   kind="reset"
-   version="18.1"
    start="SysAudio_NIOS_II.debug_reset_request"
    end="PIO_LEDs_Shared.reset" />
  <connection
@@ -1978,17 +2013,7 @@
  <connection
    kind="reset"
    version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysAudio_AV_Config.reset" />
- <connection
-   kind="reset"
-   version="18.1"
    start="SysAudio_NIOS_II.debug_reset_request"
-   end="SysAudio_Audio_Core.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
    end="SysAudio_Audio_Core.reset" />
  <connection
    kind="reset"
@@ -1998,17 +2023,7 @@
  <connection
    kind="reset"
    version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysAudio_JTAG_UART.reset" />
- <connection
-   kind="reset"
-   version="18.1"
    start="SysAudio_NIOS_II.debug_reset_request"
-   end="SysAudio_NIOS_II.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
    end="SysAudio_NIOS_II.reset" />
  <connection
    kind="reset"
@@ -2019,32 +2034,12 @@
    kind="reset"
    version="18.1"
    start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysAudio_Performance_Counter.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_NIOS_II.debug_reset_request"
    end="SysSigProc_JTAG_UART.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysSigProc_JTAG_UART.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_NIOS_II.debug_reset_request"
    end="SysSigProc_NIOS_II.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysSigProc_NIOS_II.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_NIOS_II.debug_reset_request"
-   end="SysSigProc_Performance_Counter.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -2054,11 +2049,11 @@
    kind="reset"
    version="18.1"
    start="SysAudio_NIOS_II.debug_reset_request"
-   end="PIO_1st_7seg.reset" />
+   end="PIO_3rd_7seg.reset" />
  <connection
    kind="reset"
    version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
+   start="SysAudio_NIOS_II.debug_reset_request"
    end="PIO_1st_7seg.reset" />
  <connection
    kind="reset"
@@ -2069,17 +2064,7 @@
    kind="reset"
    version="18.1"
    start="SysSigProc_NIOS_II.debug_reset_request"
-   end="PIO_2nd_7seg.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_NIOS_II.debug_reset_request"
-   end="PIO_3rd_7seg.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
-   end="PIO_3rd_7seg.reset" />
+   end="PIO_Debug.reset" />
  <connection
    kind="reset"
    version="18.1"
@@ -2089,17 +2074,12 @@
    kind="reset"
    version="18.1"
    start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysAudio_Onchip_Memory.reset1" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_NIOS_II.debug_reset_request"
    end="SysSigProc_Onchip_Memory.reset1" />
  <connection
    kind="reset"
    version="18.1"
    start="SysSigProc_NIOS_II.debug_reset_request"
-   end="SysSigProc_Onchip_Memory.reset1" />
+   end="SysSigProc_HW_accelerator.reset_sink" />
  <connection
    kind="reset"
    version="18.1"
@@ -2109,117 +2089,12 @@
    kind="reset"
    version="18.1"
    start="SysSigProc_NIOS_II.debug_reset_request"
-   end="Mailbox_AudioToSigProc.rst_n" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_NIOS_II.debug_reset_request"
    end="Mailbox_SigProcToAudio.rst_n" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysSigProc_NIOS_II.debug_reset_request"
-   end="Mailbox_SigProcToAudio.rst_n" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysAudio_Audio_Clock.ref_reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="PIO_LEDs_Shared.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="PIO_Switches.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="PLL_Shared.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SDRAM_Controller_Shared.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysAudio_AV_Config.reset" />
  <connection
    kind="reset"
    version="18.1"
    start="SysAudio_Audio_Clock.reset_source"
    end="SysAudio_Audio_Core.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysAudio_JTAG_UART.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysAudio_NIOS_II.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysAudio_Performance_Counter.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysSigProc_JTAG_UART.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysSigProc_NIOS_II.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysSigProc_Performance_Counter.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="PIO_1st_7seg.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="PIO_2nd_7seg.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="PIO_3rd_7seg.reset" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysAudio_Onchip_Memory.reset1" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="SysSigProc_Onchip_Memory.reset1" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="Mailbox_AudioToSigProc.rst_n" />
- <connection
-   kind="reset"
-   version="18.1"
-   start="SysAudio_Audio_Clock.reset_source"
-   end="Mailbox_SigProcToAudio.rst_n" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

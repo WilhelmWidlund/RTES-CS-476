@@ -31,9 +31,9 @@ module soc_system (
 		output wire        sysaudio_av_config_external_interface_SCLK      //                                       .SCLK
 	);
 
-	wire         sysaudio_audio_clock_audio_clk_clk;                                                   // SysAudio_Audio_Clock:audio_clk_clk -> [SysAudio_Audio_Core:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:SysAudio_Audio_Clock_audio_clk_clk, rst_controller_005:clk]
-	wire         pll_shared_outclk0_clk;                                                               // PLL_Shared:outclk_0 -> [Mailbox_AudioToSigProc:clk, Mailbox_SigProcToAudio:clk, PIO_1st_7seg:clk, PIO_2nd_7seg:clk, PIO_3rd_7seg:clk, PIO_Debug:clk, PIO_LEDs_Shared:clk, PIO_Switches:clk, SysAudio_AV_Config:clk, SysAudio_Audio_Clock:ref_clk_clk, SysAudio_JTAG_UART:clk, SysAudio_NIOS_II:clk, SysAudio_Onchip_Memory:clk, SysAudio_Performance_Counter:clk, SysSigProc_JTAG_UART:clk, SysSigProc_NIOS_II:clk, SysSigProc_Onchip_Memory:clk, SysSigProc_Performance_Counter:clk, irq_mapper:clk, irq_mapper_001:clk, irq_synchronizer:sender_clk, mm_interconnect_0:PLL_Shared_outclk0_clk, rst_controller:clk, rst_controller_001:clk]
-	wire         pll_shared_outclk1_clk;                                                               // PLL_Shared:outclk_1 -> [SDRAM_Controller_Shared:clk, mm_interconnect_0:PLL_Shared_outclk1_clk, rst_controller_003:clk]
+	wire         sysaudio_audio_clock_audio_clk_clk;                                                   // SysAudio_Audio_Clock:audio_clk_clk -> [SysAudio_Audio_Core:clk, irq_synchronizer:receiver_clk, mm_interconnect_0:SysAudio_Audio_Clock_audio_clk_clk, rst_controller_006:clk]
+	wire         pll_shared_outclk0_clk;                                                               // PLL_Shared:outclk_0 -> [Mailbox_AudioToSigProc:clk, Mailbox_SigProcToAudio:clk, PIO_1st_7seg:clk, PIO_2nd_7seg:clk, PIO_3rd_7seg:clk, PIO_Debug:clk, PIO_LEDs_Shared:clk, PIO_Switches:clk, SysAudio_AV_Config:clk, SysAudio_Audio_Clock:ref_clk_clk, SysAudio_JTAG_UART:clk, SysAudio_NIOS_II:clk, SysAudio_Onchip_Memory:clk, SysAudio_Performance_Counter:clk, SysSigProc_HW_accelerator:Clk, SysSigProc_JTAG_UART:clk, SysSigProc_NIOS_II:clk, SysSigProc_Onchip_Memory:clk, SysSigProc_Performance_Counter:clk, irq_mapper:clk, irq_mapper_001:clk, irq_synchronizer:sender_clk, mm_interconnect_0:PLL_Shared_outclk0_clk, rst_controller:clk, rst_controller_001:clk, rst_controller_002:clk]
+	wire         pll_shared_outclk1_clk;                                                               // PLL_Shared:outclk_1 -> [SDRAM_Controller_Shared:clk, mm_interconnect_0:PLL_Shared_outclk1_clk, rst_controller_004:clk]
 	wire  [31:0] syssigproc_nios_ii_custom_instruction_master_result;                                  // SysSigProc_NIOS_II_custom_instruction_master_translator:ci_slave_result -> SysSigProc_NIOS_II:E_ci_combo_result
 	wire         syssigproc_nios_ii_custom_instruction_master_readra;                                  // SysSigProc_NIOS_II:E_ci_combo_readra -> SysSigProc_NIOS_II_custom_instruction_master_translator:ci_slave_readra
 	wire   [4:0] syssigproc_nios_ii_custom_instruction_master_a;                                       // SysSigProc_NIOS_II:E_ci_combo_a -> SysSigProc_NIOS_II_custom_instruction_master_translator:ci_slave_a
@@ -71,7 +71,15 @@ module soc_system (
 	wire         syssigproc_nios_ii_custom_instruction_master_comb_xconnect_ci_master0_writerc;        // SysSigProc_NIOS_II_custom_instruction_master_comb_xconnect:ci_master0_writerc -> SysSigProc_NIOS_II_custom_instruction_master_comb_slave_translator0:ci_slave_writerc
 	wire   [7:0] syssigproc_nios_ii_custom_instruction_master_comb_xconnect_ci_master0_n;              // SysSigProc_NIOS_II_custom_instruction_master_comb_xconnect:ci_master0_n -> SysSigProc_NIOS_II_custom_instruction_master_comb_slave_translator0:ci_slave_n
 	wire  [31:0] syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_result; // SigProcOperation_0:OutData -> SysSigProc_NIOS_II_custom_instruction_master_comb_slave_translator0:ci_master_result
+	wire  [31:0] syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_datab;  // SysSigProc_NIOS_II_custom_instruction_master_comb_slave_translator0:ci_master_datab -> SigProcOperation_0:Param
 	wire  [31:0] syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_dataa;  // SysSigProc_NIOS_II_custom_instruction_master_comb_slave_translator0:ci_master_dataa -> SigProcOperation_0:InData
+	wire  [31:0] syssigproc_hw_accelerator_avalon_master_readdata;                                     // mm_interconnect_0:SysSigProc_HW_accelerator_avalon_master_readdata -> SysSigProc_HW_accelerator:AM_readdata
+	wire         syssigproc_hw_accelerator_avalon_master_waitrequest;                                  // mm_interconnect_0:SysSigProc_HW_accelerator_avalon_master_waitrequest -> SysSigProc_HW_accelerator:AM_waitrequest
+	wire  [31:0] syssigproc_hw_accelerator_avalon_master_address;                                      // SysSigProc_HW_accelerator:AM_address -> mm_interconnect_0:SysSigProc_HW_accelerator_avalon_master_address
+	wire   [3:0] syssigproc_hw_accelerator_avalon_master_byteenable;                                   // SysSigProc_HW_accelerator:AM_byteenable -> mm_interconnect_0:SysSigProc_HW_accelerator_avalon_master_byteenable
+	wire         syssigproc_hw_accelerator_avalon_master_read;                                         // SysSigProc_HW_accelerator:AM_read -> mm_interconnect_0:SysSigProc_HW_accelerator_avalon_master_read
+	wire         syssigproc_hw_accelerator_avalon_master_write;                                        // SysSigProc_HW_accelerator:AM_write -> mm_interconnect_0:SysSigProc_HW_accelerator_avalon_master_write
+	wire  [31:0] syssigproc_hw_accelerator_avalon_master_writedata;                                    // SysSigProc_HW_accelerator:AM_writedata -> mm_interconnect_0:SysSigProc_HW_accelerator_avalon_master_writedata
 	wire  [31:0] sysaudio_nios_ii_data_master_readdata;                                                // mm_interconnect_0:SysAudio_NIOS_II_data_master_readdata -> SysAudio_NIOS_II:d_readdata
 	wire         sysaudio_nios_ii_data_master_waitrequest;                                             // mm_interconnect_0:SysAudio_NIOS_II_data_master_waitrequest -> SysAudio_NIOS_II:d_waitrequest
 	wire         sysaudio_nios_ii_data_master_debugaccess;                                             // SysAudio_NIOS_II:debug_mem_slave_debugaccess_to_roms -> mm_interconnect_0:SysAudio_NIOS_II_data_master_debugaccess
@@ -90,16 +98,98 @@ module soc_system (
 	wire         syssigproc_nios_ii_data_master_readdatavalid;                                         // mm_interconnect_0:SysSigProc_NIOS_II_data_master_readdatavalid -> SysSigProc_NIOS_II:d_readdatavalid
 	wire         syssigproc_nios_ii_data_master_write;                                                 // SysSigProc_NIOS_II:d_write -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_write
 	wire  [31:0] syssigproc_nios_ii_data_master_writedata;                                             // SysSigProc_NIOS_II:d_writedata -> mm_interconnect_0:SysSigProc_NIOS_II_data_master_writedata
-	wire  [31:0] syssigproc_nios_ii_instruction_master_readdata;                                       // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_readdata -> SysSigProc_NIOS_II:i_readdata
-	wire         syssigproc_nios_ii_instruction_master_waitrequest;                                    // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_waitrequest -> SysSigProc_NIOS_II:i_waitrequest
-	wire  [26:0] syssigproc_nios_ii_instruction_master_address;                                        // SysSigProc_NIOS_II:i_address -> mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_address
-	wire         syssigproc_nios_ii_instruction_master_read;                                           // SysSigProc_NIOS_II:i_read -> mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_read
-	wire         syssigproc_nios_ii_instruction_master_readdatavalid;                                  // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_readdatavalid -> SysSigProc_NIOS_II:i_readdatavalid
 	wire  [31:0] sysaudio_nios_ii_instruction_master_readdata;                                         // mm_interconnect_0:SysAudio_NIOS_II_instruction_master_readdata -> SysAudio_NIOS_II:i_readdata
 	wire         sysaudio_nios_ii_instruction_master_waitrequest;                                      // mm_interconnect_0:SysAudio_NIOS_II_instruction_master_waitrequest -> SysAudio_NIOS_II:i_waitrequest
 	wire  [26:0] sysaudio_nios_ii_instruction_master_address;                                          // SysAudio_NIOS_II:i_address -> mm_interconnect_0:SysAudio_NIOS_II_instruction_master_address
 	wire         sysaudio_nios_ii_instruction_master_read;                                             // SysAudio_NIOS_II:i_read -> mm_interconnect_0:SysAudio_NIOS_II_instruction_master_read
 	wire         sysaudio_nios_ii_instruction_master_readdatavalid;                                    // mm_interconnect_0:SysAudio_NIOS_II_instruction_master_readdatavalid -> SysAudio_NIOS_II:i_readdatavalid
+	wire  [31:0] syssigproc_nios_ii_instruction_master_readdata;                                       // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_readdata -> SysSigProc_NIOS_II:i_readdata
+	wire         syssigproc_nios_ii_instruction_master_waitrequest;                                    // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_waitrequest -> SysSigProc_NIOS_II:i_waitrequest
+	wire  [26:0] syssigproc_nios_ii_instruction_master_address;                                        // SysSigProc_NIOS_II:i_address -> mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_address
+	wire         syssigproc_nios_ii_instruction_master_read;                                           // SysSigProc_NIOS_II:i_read -> mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_read
+	wire         syssigproc_nios_ii_instruction_master_readdatavalid;                                  // mm_interconnect_0:SysSigProc_NIOS_II_instruction_master_readdatavalid -> SysSigProc_NIOS_II:i_readdatavalid
+	wire         mm_interconnect_0_sdram_controller_shared_s1_chipselect;                              // mm_interconnect_0:SDRAM_Controller_Shared_s1_chipselect -> SDRAM_Controller_Shared:az_cs
+	wire  [15:0] mm_interconnect_0_sdram_controller_shared_s1_readdata;                                // SDRAM_Controller_Shared:za_data -> mm_interconnect_0:SDRAM_Controller_Shared_s1_readdata
+	wire         mm_interconnect_0_sdram_controller_shared_s1_waitrequest;                             // SDRAM_Controller_Shared:za_waitrequest -> mm_interconnect_0:SDRAM_Controller_Shared_s1_waitrequest
+	wire  [24:0] mm_interconnect_0_sdram_controller_shared_s1_address;                                 // mm_interconnect_0:SDRAM_Controller_Shared_s1_address -> SDRAM_Controller_Shared:az_addr
+	wire         mm_interconnect_0_sdram_controller_shared_s1_read;                                    // mm_interconnect_0:SDRAM_Controller_Shared_s1_read -> SDRAM_Controller_Shared:az_rd_n
+	wire   [1:0] mm_interconnect_0_sdram_controller_shared_s1_byteenable;                              // mm_interconnect_0:SDRAM_Controller_Shared_s1_byteenable -> SDRAM_Controller_Shared:az_be_n
+	wire         mm_interconnect_0_sdram_controller_shared_s1_readdatavalid;                           // SDRAM_Controller_Shared:za_valid -> mm_interconnect_0:SDRAM_Controller_Shared_s1_readdatavalid
+	wire         mm_interconnect_0_sdram_controller_shared_s1_write;                                   // mm_interconnect_0:SDRAM_Controller_Shared_s1_write -> SDRAM_Controller_Shared:az_wr_n
+	wire  [15:0] mm_interconnect_0_sdram_controller_shared_s1_writedata;                               // mm_interconnect_0:SDRAM_Controller_Shared_s1_writedata -> SDRAM_Controller_Shared:az_data
+	wire  [31:0] mm_interconnect_0_syssigproc_hw_accelerator_as_readdata;                              // SysSigProc_HW_accelerator:AS_readdata -> mm_interconnect_0:SysSigProc_HW_accelerator_as_readdata
+	wire   [2:0] mm_interconnect_0_syssigproc_hw_accelerator_as_address;                               // mm_interconnect_0:SysSigProc_HW_accelerator_as_address -> SysSigProc_HW_accelerator:AS_address
+	wire         mm_interconnect_0_syssigproc_hw_accelerator_as_read;                                  // mm_interconnect_0:SysSigProc_HW_accelerator_as_read -> SysSigProc_HW_accelerator:AS_read
+	wire         mm_interconnect_0_syssigproc_hw_accelerator_as_write;                                 // mm_interconnect_0:SysSigProc_HW_accelerator_as_write -> SysSigProc_HW_accelerator:AS_write
+	wire  [31:0] mm_interconnect_0_syssigproc_hw_accelerator_as_writedata;                             // mm_interconnect_0:SysSigProc_HW_accelerator_as_writedata -> SysSigProc_HW_accelerator:AS_writedata
+	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_chipselect;                  // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_chipselect -> SysSigProc_JTAG_UART:av_chipselect
+	wire  [31:0] mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_readdata;                    // SysSigProc_JTAG_UART:av_readdata -> mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_readdata
+	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_waitrequest;                 // SysSigProc_JTAG_UART:av_waitrequest -> mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_waitrequest
+	wire   [0:0] mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_address;                     // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_address -> SysSigProc_JTAG_UART:av_address
+	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_read;                        // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_read -> SysSigProc_JTAG_UART:av_read_n
+	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_write;                       // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_write -> SysSigProc_JTAG_UART:av_write_n
+	wire  [31:0] mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_writedata;                   // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_writedata -> SysSigProc_JTAG_UART:av_writedata
+	wire  [31:0] mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_readdata;                  // Mailbox_AudioToSigProc:avmm_rcv_readdata -> mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_readdata
+	wire   [1:0] mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_address;                   // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_address -> Mailbox_AudioToSigProc:avmm_rcv_address
+	wire         mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_read;                      // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_read -> Mailbox_AudioToSigProc:avmm_rcv_read
+	wire         mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_write;                     // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_write -> Mailbox_AudioToSigProc:avmm_rcv_write
+	wire  [31:0] mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_writedata;                 // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_writedata -> Mailbox_AudioToSigProc:avmm_rcv_writedata
+	wire  [31:0] mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_readdata;                    // Mailbox_SigProcToAudio:avmm_snd_readdata -> mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_readdata
+	wire         mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_waitrequest;                 // Mailbox_SigProcToAudio:avmm_snd_waitrequest -> mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_waitrequest
+	wire   [1:0] mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_address;                     // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_address -> Mailbox_SigProcToAudio:avmm_snd_address
+	wire         mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_read;                        // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_read -> Mailbox_SigProcToAudio:avmm_snd_read
+	wire         mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_write;                       // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_write -> Mailbox_SigProcToAudio:avmm_snd_write
+	wire  [31:0] mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_writedata;                   // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_writedata -> Mailbox_SigProcToAudio:avmm_snd_writedata
+	wire  [31:0] mm_interconnect_0_syssigproc_performance_counter_control_slave_readdata;              // SysSigProc_Performance_Counter:readdata -> mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_readdata
+	wire   [4:0] mm_interconnect_0_syssigproc_performance_counter_control_slave_address;               // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_address -> SysSigProc_Performance_Counter:address
+	wire         mm_interconnect_0_syssigproc_performance_counter_control_slave_begintransfer;         // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_begintransfer -> SysSigProc_Performance_Counter:begintransfer
+	wire         mm_interconnect_0_syssigproc_performance_counter_control_slave_write;                 // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_write -> SysSigProc_Performance_Counter:write
+	wire  [31:0] mm_interconnect_0_syssigproc_performance_counter_control_slave_writedata;             // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_writedata -> SysSigProc_Performance_Counter:writedata
+	wire  [31:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_readdata;                        // SysSigProc_NIOS_II:debug_mem_slave_readdata -> mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_readdata
+	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_waitrequest;                     // SysSigProc_NIOS_II:debug_mem_slave_waitrequest -> mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_waitrequest
+	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_debugaccess;                     // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_debugaccess -> SysSigProc_NIOS_II:debug_mem_slave_debugaccess
+	wire   [8:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_address;                         // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_address -> SysSigProc_NIOS_II:debug_mem_slave_address
+	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_read;                            // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_read -> SysSigProc_NIOS_II:debug_mem_slave_read
+	wire   [3:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_byteenable;                      // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_byteenable -> SysSigProc_NIOS_II:debug_mem_slave_byteenable
+	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_write;                           // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_write -> SysSigProc_NIOS_II:debug_mem_slave_write
+	wire  [31:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_writedata;                       // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_writedata -> SysSigProc_NIOS_II:debug_mem_slave_writedata
+	wire         mm_interconnect_0_syssigproc_onchip_memory_s1_chipselect;                             // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_chipselect -> SysSigProc_Onchip_Memory:chipselect
+	wire  [31:0] mm_interconnect_0_syssigproc_onchip_memory_s1_readdata;                               // SysSigProc_Onchip_Memory:readdata -> mm_interconnect_0:SysSigProc_Onchip_Memory_s1_readdata
+	wire  [14:0] mm_interconnect_0_syssigproc_onchip_memory_s1_address;                                // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_address -> SysSigProc_Onchip_Memory:address
+	wire   [3:0] mm_interconnect_0_syssigproc_onchip_memory_s1_byteenable;                             // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_byteenable -> SysSigProc_Onchip_Memory:byteenable
+	wire         mm_interconnect_0_syssigproc_onchip_memory_s1_write;                                  // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_write -> SysSigProc_Onchip_Memory:write
+	wire  [31:0] mm_interconnect_0_syssigproc_onchip_memory_s1_writedata;                              // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_writedata -> SysSigProc_Onchip_Memory:writedata
+	wire         mm_interconnect_0_syssigproc_onchip_memory_s1_clken;                                  // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_clken -> SysSigProc_Onchip_Memory:clken
+	wire         mm_interconnect_0_pio_leds_shared_s1_chipselect;                                      // mm_interconnect_0:PIO_LEDs_Shared_s1_chipselect -> PIO_LEDs_Shared:chipselect
+	wire  [31:0] mm_interconnect_0_pio_leds_shared_s1_readdata;                                        // PIO_LEDs_Shared:readdata -> mm_interconnect_0:PIO_LEDs_Shared_s1_readdata
+	wire   [1:0] mm_interconnect_0_pio_leds_shared_s1_address;                                         // mm_interconnect_0:PIO_LEDs_Shared_s1_address -> PIO_LEDs_Shared:address
+	wire         mm_interconnect_0_pio_leds_shared_s1_write;                                           // mm_interconnect_0:PIO_LEDs_Shared_s1_write -> PIO_LEDs_Shared:write_n
+	wire  [31:0] mm_interconnect_0_pio_leds_shared_s1_writedata;                                       // mm_interconnect_0:PIO_LEDs_Shared_s1_writedata -> PIO_LEDs_Shared:writedata
+	wire         mm_interconnect_0_pio_switches_s1_chipselect;                                         // mm_interconnect_0:PIO_Switches_s1_chipselect -> PIO_Switches:chipselect
+	wire  [31:0] mm_interconnect_0_pio_switches_s1_readdata;                                           // PIO_Switches:readdata -> mm_interconnect_0:PIO_Switches_s1_readdata
+	wire   [1:0] mm_interconnect_0_pio_switches_s1_address;                                            // mm_interconnect_0:PIO_Switches_s1_address -> PIO_Switches:address
+	wire         mm_interconnect_0_pio_switches_s1_write;                                              // mm_interconnect_0:PIO_Switches_s1_write -> PIO_Switches:write_n
+	wire  [31:0] mm_interconnect_0_pio_switches_s1_writedata;                                          // mm_interconnect_0:PIO_Switches_s1_writedata -> PIO_Switches:writedata
+	wire         mm_interconnect_0_pio_1st_7seg_s1_chipselect;                                         // mm_interconnect_0:PIO_1st_7seg_s1_chipselect -> PIO_1st_7seg:chipselect
+	wire  [31:0] mm_interconnect_0_pio_1st_7seg_s1_readdata;                                           // PIO_1st_7seg:readdata -> mm_interconnect_0:PIO_1st_7seg_s1_readdata
+	wire   [1:0] mm_interconnect_0_pio_1st_7seg_s1_address;                                            // mm_interconnect_0:PIO_1st_7seg_s1_address -> PIO_1st_7seg:address
+	wire         mm_interconnect_0_pio_1st_7seg_s1_write;                                              // mm_interconnect_0:PIO_1st_7seg_s1_write -> PIO_1st_7seg:write_n
+	wire  [31:0] mm_interconnect_0_pio_1st_7seg_s1_writedata;                                          // mm_interconnect_0:PIO_1st_7seg_s1_writedata -> PIO_1st_7seg:writedata
+	wire         mm_interconnect_0_pio_2nd_7seg_s1_chipselect;                                         // mm_interconnect_0:PIO_2nd_7seg_s1_chipselect -> PIO_2nd_7seg:chipselect
+	wire  [31:0] mm_interconnect_0_pio_2nd_7seg_s1_readdata;                                           // PIO_2nd_7seg:readdata -> mm_interconnect_0:PIO_2nd_7seg_s1_readdata
+	wire   [1:0] mm_interconnect_0_pio_2nd_7seg_s1_address;                                            // mm_interconnect_0:PIO_2nd_7seg_s1_address -> PIO_2nd_7seg:address
+	wire         mm_interconnect_0_pio_2nd_7seg_s1_write;                                              // mm_interconnect_0:PIO_2nd_7seg_s1_write -> PIO_2nd_7seg:write_n
+	wire  [31:0] mm_interconnect_0_pio_2nd_7seg_s1_writedata;                                          // mm_interconnect_0:PIO_2nd_7seg_s1_writedata -> PIO_2nd_7seg:writedata
+	wire         mm_interconnect_0_pio_3rd_7seg_s1_chipselect;                                         // mm_interconnect_0:PIO_3rd_7seg_s1_chipselect -> PIO_3rd_7seg:chipselect
+	wire  [31:0] mm_interconnect_0_pio_3rd_7seg_s1_readdata;                                           // PIO_3rd_7seg:readdata -> mm_interconnect_0:PIO_3rd_7seg_s1_readdata
+	wire   [1:0] mm_interconnect_0_pio_3rd_7seg_s1_address;                                            // mm_interconnect_0:PIO_3rd_7seg_s1_address -> PIO_3rd_7seg:address
+	wire         mm_interconnect_0_pio_3rd_7seg_s1_write;                                              // mm_interconnect_0:PIO_3rd_7seg_s1_write -> PIO_3rd_7seg:write_n
+	wire  [31:0] mm_interconnect_0_pio_3rd_7seg_s1_writedata;                                          // mm_interconnect_0:PIO_3rd_7seg_s1_writedata -> PIO_3rd_7seg:writedata
+	wire         mm_interconnect_0_pio_debug_s1_chipselect;                                            // mm_interconnect_0:PIO_Debug_s1_chipselect -> PIO_Debug:chipselect
+	wire  [31:0] mm_interconnect_0_pio_debug_s1_readdata;                                              // PIO_Debug:readdata -> mm_interconnect_0:PIO_Debug_s1_readdata
+	wire   [2:0] mm_interconnect_0_pio_debug_s1_address;                                               // mm_interconnect_0:PIO_Debug_s1_address -> PIO_Debug:address
+	wire         mm_interconnect_0_pio_debug_s1_write;                                                 // mm_interconnect_0:PIO_Debug_s1_write -> PIO_Debug:write_n
+	wire  [31:0] mm_interconnect_0_pio_debug_s1_writedata;                                             // mm_interconnect_0:PIO_Debug_s1_writedata -> PIO_Debug:writedata
 	wire         mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_chipselect;                  // mm_interconnect_0:SysAudio_Audio_Core_avalon_audio_slave_chipselect -> SysAudio_Audio_Core:chipselect
 	wire  [31:0] mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_readdata;                    // SysAudio_Audio_Core:readdata -> mm_interconnect_0:SysAudio_Audio_Core_avalon_audio_slave_readdata
 	wire   [1:0] mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_address;                     // mm_interconnect_0:SysAudio_Audio_Core_avalon_audio_slave_address -> SysAudio_Audio_Core:address
@@ -151,83 +241,6 @@ module soc_system (
 	wire         mm_interconnect_0_sysaudio_onchip_memory_s1_write;                                    // mm_interconnect_0:SysAudio_Onchip_Memory_s1_write -> SysAudio_Onchip_Memory:write
 	wire  [31:0] mm_interconnect_0_sysaudio_onchip_memory_s1_writedata;                                // mm_interconnect_0:SysAudio_Onchip_Memory_s1_writedata -> SysAudio_Onchip_Memory:writedata
 	wire         mm_interconnect_0_sysaudio_onchip_memory_s1_clken;                                    // mm_interconnect_0:SysAudio_Onchip_Memory_s1_clken -> SysAudio_Onchip_Memory:clken
-	wire         mm_interconnect_0_sdram_controller_shared_s1_chipselect;                              // mm_interconnect_0:SDRAM_Controller_Shared_s1_chipselect -> SDRAM_Controller_Shared:az_cs
-	wire  [15:0] mm_interconnect_0_sdram_controller_shared_s1_readdata;                                // SDRAM_Controller_Shared:za_data -> mm_interconnect_0:SDRAM_Controller_Shared_s1_readdata
-	wire         mm_interconnect_0_sdram_controller_shared_s1_waitrequest;                             // SDRAM_Controller_Shared:za_waitrequest -> mm_interconnect_0:SDRAM_Controller_Shared_s1_waitrequest
-	wire  [24:0] mm_interconnect_0_sdram_controller_shared_s1_address;                                 // mm_interconnect_0:SDRAM_Controller_Shared_s1_address -> SDRAM_Controller_Shared:az_addr
-	wire         mm_interconnect_0_sdram_controller_shared_s1_read;                                    // mm_interconnect_0:SDRAM_Controller_Shared_s1_read -> SDRAM_Controller_Shared:az_rd_n
-	wire   [1:0] mm_interconnect_0_sdram_controller_shared_s1_byteenable;                              // mm_interconnect_0:SDRAM_Controller_Shared_s1_byteenable -> SDRAM_Controller_Shared:az_be_n
-	wire         mm_interconnect_0_sdram_controller_shared_s1_readdatavalid;                           // SDRAM_Controller_Shared:za_valid -> mm_interconnect_0:SDRAM_Controller_Shared_s1_readdatavalid
-	wire         mm_interconnect_0_sdram_controller_shared_s1_write;                                   // mm_interconnect_0:SDRAM_Controller_Shared_s1_write -> SDRAM_Controller_Shared:az_wr_n
-	wire  [15:0] mm_interconnect_0_sdram_controller_shared_s1_writedata;                               // mm_interconnect_0:SDRAM_Controller_Shared_s1_writedata -> SDRAM_Controller_Shared:az_data
-	wire         mm_interconnect_0_pio_leds_shared_s1_chipselect;                                      // mm_interconnect_0:PIO_LEDs_Shared_s1_chipselect -> PIO_LEDs_Shared:chipselect
-	wire  [31:0] mm_interconnect_0_pio_leds_shared_s1_readdata;                                        // PIO_LEDs_Shared:readdata -> mm_interconnect_0:PIO_LEDs_Shared_s1_readdata
-	wire   [1:0] mm_interconnect_0_pio_leds_shared_s1_address;                                         // mm_interconnect_0:PIO_LEDs_Shared_s1_address -> PIO_LEDs_Shared:address
-	wire         mm_interconnect_0_pio_leds_shared_s1_write;                                           // mm_interconnect_0:PIO_LEDs_Shared_s1_write -> PIO_LEDs_Shared:write_n
-	wire  [31:0] mm_interconnect_0_pio_leds_shared_s1_writedata;                                       // mm_interconnect_0:PIO_LEDs_Shared_s1_writedata -> PIO_LEDs_Shared:writedata
-	wire         mm_interconnect_0_pio_switches_s1_chipselect;                                         // mm_interconnect_0:PIO_Switches_s1_chipselect -> PIO_Switches:chipselect
-	wire  [31:0] mm_interconnect_0_pio_switches_s1_readdata;                                           // PIO_Switches:readdata -> mm_interconnect_0:PIO_Switches_s1_readdata
-	wire   [1:0] mm_interconnect_0_pio_switches_s1_address;                                            // mm_interconnect_0:PIO_Switches_s1_address -> PIO_Switches:address
-	wire         mm_interconnect_0_pio_switches_s1_write;                                              // mm_interconnect_0:PIO_Switches_s1_write -> PIO_Switches:write_n
-	wire  [31:0] mm_interconnect_0_pio_switches_s1_writedata;                                          // mm_interconnect_0:PIO_Switches_s1_writedata -> PIO_Switches:writedata
-	wire         mm_interconnect_0_pio_1st_7seg_s1_chipselect;                                         // mm_interconnect_0:PIO_1st_7seg_s1_chipselect -> PIO_1st_7seg:chipselect
-	wire  [31:0] mm_interconnect_0_pio_1st_7seg_s1_readdata;                                           // PIO_1st_7seg:readdata -> mm_interconnect_0:PIO_1st_7seg_s1_readdata
-	wire   [1:0] mm_interconnect_0_pio_1st_7seg_s1_address;                                            // mm_interconnect_0:PIO_1st_7seg_s1_address -> PIO_1st_7seg:address
-	wire         mm_interconnect_0_pio_1st_7seg_s1_write;                                              // mm_interconnect_0:PIO_1st_7seg_s1_write -> PIO_1st_7seg:write_n
-	wire  [31:0] mm_interconnect_0_pio_1st_7seg_s1_writedata;                                          // mm_interconnect_0:PIO_1st_7seg_s1_writedata -> PIO_1st_7seg:writedata
-	wire         mm_interconnect_0_pio_2nd_7seg_s1_chipselect;                                         // mm_interconnect_0:PIO_2nd_7seg_s1_chipselect -> PIO_2nd_7seg:chipselect
-	wire  [31:0] mm_interconnect_0_pio_2nd_7seg_s1_readdata;                                           // PIO_2nd_7seg:readdata -> mm_interconnect_0:PIO_2nd_7seg_s1_readdata
-	wire   [1:0] mm_interconnect_0_pio_2nd_7seg_s1_address;                                            // mm_interconnect_0:PIO_2nd_7seg_s1_address -> PIO_2nd_7seg:address
-	wire         mm_interconnect_0_pio_2nd_7seg_s1_write;                                              // mm_interconnect_0:PIO_2nd_7seg_s1_write -> PIO_2nd_7seg:write_n
-	wire  [31:0] mm_interconnect_0_pio_2nd_7seg_s1_writedata;                                          // mm_interconnect_0:PIO_2nd_7seg_s1_writedata -> PIO_2nd_7seg:writedata
-	wire         mm_interconnect_0_pio_3rd_7seg_s1_chipselect;                                         // mm_interconnect_0:PIO_3rd_7seg_s1_chipselect -> PIO_3rd_7seg:chipselect
-	wire  [31:0] mm_interconnect_0_pio_3rd_7seg_s1_readdata;                                           // PIO_3rd_7seg:readdata -> mm_interconnect_0:PIO_3rd_7seg_s1_readdata
-	wire   [1:0] mm_interconnect_0_pio_3rd_7seg_s1_address;                                            // mm_interconnect_0:PIO_3rd_7seg_s1_address -> PIO_3rd_7seg:address
-	wire         mm_interconnect_0_pio_3rd_7seg_s1_write;                                              // mm_interconnect_0:PIO_3rd_7seg_s1_write -> PIO_3rd_7seg:write_n
-	wire  [31:0] mm_interconnect_0_pio_3rd_7seg_s1_writedata;                                          // mm_interconnect_0:PIO_3rd_7seg_s1_writedata -> PIO_3rd_7seg:writedata
-	wire         mm_interconnect_0_pio_debug_s1_chipselect;                                            // mm_interconnect_0:PIO_Debug_s1_chipselect -> PIO_Debug:chipselect
-	wire  [31:0] mm_interconnect_0_pio_debug_s1_readdata;                                              // PIO_Debug:readdata -> mm_interconnect_0:PIO_Debug_s1_readdata
-	wire   [2:0] mm_interconnect_0_pio_debug_s1_address;                                               // mm_interconnect_0:PIO_Debug_s1_address -> PIO_Debug:address
-	wire         mm_interconnect_0_pio_debug_s1_write;                                                 // mm_interconnect_0:PIO_Debug_s1_write -> PIO_Debug:write_n
-	wire  [31:0] mm_interconnect_0_pio_debug_s1_writedata;                                             // mm_interconnect_0:PIO_Debug_s1_writedata -> PIO_Debug:writedata
-	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_chipselect;                  // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_chipselect -> SysSigProc_JTAG_UART:av_chipselect
-	wire  [31:0] mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_readdata;                    // SysSigProc_JTAG_UART:av_readdata -> mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_readdata
-	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_waitrequest;                 // SysSigProc_JTAG_UART:av_waitrequest -> mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_waitrequest
-	wire   [0:0] mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_address;                     // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_address -> SysSigProc_JTAG_UART:av_address
-	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_read;                        // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_read -> SysSigProc_JTAG_UART:av_read_n
-	wire         mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_write;                       // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_write -> SysSigProc_JTAG_UART:av_write_n
-	wire  [31:0] mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_writedata;                   // mm_interconnect_0:SysSigProc_JTAG_UART_avalon_jtag_slave_writedata -> SysSigProc_JTAG_UART:av_writedata
-	wire  [31:0] mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_readdata;                  // Mailbox_AudioToSigProc:avmm_rcv_readdata -> mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_readdata
-	wire   [1:0] mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_address;                   // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_address -> Mailbox_AudioToSigProc:avmm_rcv_address
-	wire         mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_read;                      // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_read -> Mailbox_AudioToSigProc:avmm_rcv_read
-	wire         mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_write;                     // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_write -> Mailbox_AudioToSigProc:avmm_rcv_write
-	wire  [31:0] mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_writedata;                 // mm_interconnect_0:Mailbox_AudioToSigProc_avmm_msg_receiver_writedata -> Mailbox_AudioToSigProc:avmm_rcv_writedata
-	wire  [31:0] mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_readdata;                    // Mailbox_SigProcToAudio:avmm_snd_readdata -> mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_readdata
-	wire         mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_waitrequest;                 // Mailbox_SigProcToAudio:avmm_snd_waitrequest -> mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_waitrequest
-	wire   [1:0] mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_address;                     // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_address -> Mailbox_SigProcToAudio:avmm_snd_address
-	wire         mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_read;                        // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_read -> Mailbox_SigProcToAudio:avmm_snd_read
-	wire         mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_write;                       // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_write -> Mailbox_SigProcToAudio:avmm_snd_write
-	wire  [31:0] mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_writedata;                   // mm_interconnect_0:Mailbox_SigProcToAudio_avmm_msg_sender_writedata -> Mailbox_SigProcToAudio:avmm_snd_writedata
-	wire  [31:0] mm_interconnect_0_syssigproc_performance_counter_control_slave_readdata;              // SysSigProc_Performance_Counter:readdata -> mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_readdata
-	wire   [4:0] mm_interconnect_0_syssigproc_performance_counter_control_slave_address;               // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_address -> SysSigProc_Performance_Counter:address
-	wire         mm_interconnect_0_syssigproc_performance_counter_control_slave_begintransfer;         // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_begintransfer -> SysSigProc_Performance_Counter:begintransfer
-	wire         mm_interconnect_0_syssigproc_performance_counter_control_slave_write;                 // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_write -> SysSigProc_Performance_Counter:write
-	wire  [31:0] mm_interconnect_0_syssigproc_performance_counter_control_slave_writedata;             // mm_interconnect_0:SysSigProc_Performance_Counter_control_slave_writedata -> SysSigProc_Performance_Counter:writedata
-	wire  [31:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_readdata;                        // SysSigProc_NIOS_II:debug_mem_slave_readdata -> mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_readdata
-	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_waitrequest;                     // SysSigProc_NIOS_II:debug_mem_slave_waitrequest -> mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_waitrequest
-	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_debugaccess;                     // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_debugaccess -> SysSigProc_NIOS_II:debug_mem_slave_debugaccess
-	wire   [8:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_address;                         // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_address -> SysSigProc_NIOS_II:debug_mem_slave_address
-	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_read;                            // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_read -> SysSigProc_NIOS_II:debug_mem_slave_read
-	wire   [3:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_byteenable;                      // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_byteenable -> SysSigProc_NIOS_II:debug_mem_slave_byteenable
-	wire         mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_write;                           // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_write -> SysSigProc_NIOS_II:debug_mem_slave_write
-	wire  [31:0] mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_writedata;                       // mm_interconnect_0:SysSigProc_NIOS_II_debug_mem_slave_writedata -> SysSigProc_NIOS_II:debug_mem_slave_writedata
-	wire         mm_interconnect_0_syssigproc_onchip_memory_s1_chipselect;                             // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_chipselect -> SysSigProc_Onchip_Memory:chipselect
-	wire  [31:0] mm_interconnect_0_syssigproc_onchip_memory_s1_readdata;                               // SysSigProc_Onchip_Memory:readdata -> mm_interconnect_0:SysSigProc_Onchip_Memory_s1_readdata
-	wire  [14:0] mm_interconnect_0_syssigproc_onchip_memory_s1_address;                                // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_address -> SysSigProc_Onchip_Memory:address
-	wire   [3:0] mm_interconnect_0_syssigproc_onchip_memory_s1_byteenable;                             // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_byteenable -> SysSigProc_Onchip_Memory:byteenable
-	wire         mm_interconnect_0_syssigproc_onchip_memory_s1_write;                                  // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_write -> SysSigProc_Onchip_Memory:write
-	wire  [31:0] mm_interconnect_0_syssigproc_onchip_memory_s1_writedata;                              // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_writedata -> SysSigProc_Onchip_Memory:writedata
-	wire         mm_interconnect_0_syssigproc_onchip_memory_s1_clken;                                  // mm_interconnect_0:SysSigProc_Onchip_Memory_s1_clken -> SysSigProc_Onchip_Memory:clken
 	wire         irq_mapper_receiver6_irq;                                                             // SysAudio_JTAG_UART:av_irq -> irq_mapper:receiver6_irq
 	wire  [31:0] sysaudio_nios_ii_irq_irq;                                                             // irq_mapper:sender_irq -> SysAudio_NIOS_II:irq
 	wire         irq_mapper_001_receiver5_irq;                                                         // SysSigProc_JTAG_UART:av_irq -> irq_mapper_001:receiver5_irq
@@ -239,16 +252,18 @@ module soc_system (
 	wire         irq_mapper_receiver1_irq;                                                             // Mailbox_SigProcToAudio:irq_space -> [irq_mapper:receiver1_irq, irq_mapper_001:receiver1_irq]
 	wire         irq_mapper_receiver3_irq;                                                             // Mailbox_SigProcToAudio:irq_msg -> [irq_mapper:receiver3_irq, irq_mapper_001:receiver3_irq]
 	wire         irq_mapper_receiver5_irq;                                                             // PIO_Switches:irq -> [irq_mapper:receiver5_irq, irq_mapper_001:receiver4_irq]
-	wire         rst_controller_reset_out_reset;                                                       // rst_controller:reset_out -> [Mailbox_AudioToSigProc:rst_n, Mailbox_SigProcToAudio:rst_n, PIO_1st_7seg:reset_n, PIO_2nd_7seg:reset_n, PIO_3rd_7seg:reset_n, PIO_LEDs_Shared:reset_n, PIO_Switches:reset_n, SysAudio_AV_Config:reset, SysAudio_JTAG_UART:rst_n, SysAudio_NIOS_II:reset_n, SysAudio_Onchip_Memory:reset, SysAudio_Performance_Counter:reset_n, SysSigProc_JTAG_UART:rst_n, SysSigProc_NIOS_II:reset_n, SysSigProc_Onchip_Memory:reset, SysSigProc_Performance_Counter:reset_n, irq_mapper:reset, irq_mapper_001:reset, irq_synchronizer:sender_reset, mm_interconnect_0:SysAudio_NIOS_II_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
-	wire         rst_controller_reset_out_reset_req;                                                   // rst_controller:reset_req -> [SysAudio_NIOS_II:reset_req, SysAudio_Onchip_Memory:reset_req, SysSigProc_NIOS_II:reset_req, SysSigProc_Onchip_Memory:reset_req, rst_translator:reset_req_in]
-	wire         sysaudio_nios_ii_debug_reset_request_reset;                                           // SysAudio_NIOS_II:debug_reset_request -> [rst_controller:reset_in1, rst_controller_002:reset_in1, rst_controller_003:reset_in1, rst_controller_004:reset_in1, rst_controller_005:reset_in1]
-	wire         syssigproc_nios_ii_debug_reset_request_reset;                                         // SysSigProc_NIOS_II:debug_reset_request -> [rst_controller:reset_in2, rst_controller_002:reset_in2, rst_controller_003:reset_in2, rst_controller_004:reset_in2, rst_controller_005:reset_in2]
-	wire         sysaudio_audio_clock_reset_source_reset;                                              // SysAudio_Audio_Clock:reset_source_reset -> [rst_controller:reset_in3, rst_controller_002:reset_in3, rst_controller_003:reset_in3, rst_controller_004:reset_in3, rst_controller_005:reset_in3]
-	wire         rst_controller_001_reset_out_reset;                                                   // rst_controller_001:reset_out -> [PIO_Debug:reset_n, mm_interconnect_0:PIO_Debug_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_002_reset_out_reset;                                                   // rst_controller_002:reset_out -> PLL_Shared:rst
-	wire         rst_controller_003_reset_out_reset;                                                   // rst_controller_003:reset_out -> [SDRAM_Controller_Shared:reset_n, mm_interconnect_0:SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset]
-	wire         rst_controller_004_reset_out_reset;                                                   // rst_controller_004:reset_out -> SysAudio_Audio_Clock:ref_reset_reset
-	wire         rst_controller_005_reset_out_reset;                                                   // rst_controller_005:reset_out -> [SysAudio_Audio_Core:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_reset_out_reset;                                                       // rst_controller:reset_out -> [Mailbox_AudioToSigProc:rst_n, PIO_1st_7seg:reset_n, PIO_2nd_7seg:reset_n, PIO_3rd_7seg:reset_n, SysAudio_AV_Config:reset, SysAudio_JTAG_UART:rst_n, SysAudio_NIOS_II:reset_n, SysAudio_Onchip_Memory:reset, SysAudio_Performance_Counter:reset_n, irq_mapper:reset, irq_synchronizer:sender_reset, mm_interconnect_0:SysAudio_NIOS_II_reset_reset_bridge_in_reset_reset, rst_translator:in_reset]
+	wire         rst_controller_reset_out_reset_req;                                                   // rst_controller:reset_req -> [SysAudio_NIOS_II:reset_req, SysAudio_Onchip_Memory:reset_req, rst_translator:reset_req_in]
+	wire         sysaudio_nios_ii_debug_reset_request_reset;                                           // SysAudio_NIOS_II:debug_reset_request -> [rst_controller:reset_in1, rst_controller_002:reset_in1, rst_controller_003:reset_in1, rst_controller_004:reset_in1, rst_controller_005:reset_in1, rst_controller_006:reset_in1]
+	wire         rst_controller_001_reset_out_reset;                                                   // rst_controller_001:reset_out -> [Mailbox_SigProcToAudio:rst_n, PIO_Debug:reset_n, SysSigProc_HW_accelerator:nReset, SysSigProc_JTAG_UART:rst_n, SysSigProc_NIOS_II:reset_n, SysSigProc_Onchip_Memory:reset, SysSigProc_Performance_Counter:reset_n, irq_mapper_001:reset, mm_interconnect_0:SysSigProc_HW_accelerator_reset_sink_reset_bridge_in_reset_reset, rst_translator_001:in_reset]
+	wire         rst_controller_001_reset_out_reset_req;                                               // rst_controller_001:reset_req -> [SysSigProc_NIOS_II:reset_req, SysSigProc_Onchip_Memory:reset_req, rst_translator_001:reset_req_in]
+	wire         syssigproc_nios_ii_debug_reset_request_reset;                                         // SysSigProc_NIOS_II:debug_reset_request -> [rst_controller_001:reset_in1, rst_controller_002:reset_in2, rst_controller_003:reset_in2, rst_controller_004:reset_in2]
+	wire         rst_controller_002_reset_out_reset;                                                   // rst_controller_002:reset_out -> [PIO_LEDs_Shared:reset_n, PIO_Switches:reset_n, mm_interconnect_0:PIO_LEDs_Shared_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_003_reset_out_reset;                                                   // rst_controller_003:reset_out -> PLL_Shared:rst
+	wire         rst_controller_004_reset_out_reset;                                                   // rst_controller_004:reset_out -> [SDRAM_Controller_Shared:reset_n, mm_interconnect_0:SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset]
+	wire         rst_controller_005_reset_out_reset;                                                   // rst_controller_005:reset_out -> SysAudio_Audio_Clock:ref_reset_reset
+	wire         rst_controller_006_reset_out_reset;                                                   // rst_controller_006:reset_out -> [SysAudio_Audio_Core:reset, irq_synchronizer:receiver_reset, mm_interconnect_0:SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset]
+	wire         sysaudio_audio_clock_reset_source_reset;                                              // SysAudio_Audio_Clock:reset_source_reset -> rst_controller_006:reset_in2
 
 	altera_avalon_mailbox #(
 		.DWIDTH (32),
@@ -276,7 +291,7 @@ module soc_system (
 		.AWIDTH (2)
 	) mailbox_sigproctoaudio (
 		.clk                  (pll_shared_outclk0_clk),                                               //                    clk.clk
-		.rst_n                (~rst_controller_reset_out_reset),                                      //                  rst_n.reset_n
+		.rst_n                (~rst_controller_001_reset_out_reset),                                  //                  rst_n.reset_n
 		.avmm_snd_address     (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_address),     //        avmm_msg_sender.address
 		.avmm_snd_writedata   (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_writedata),   //                       .writedata
 		.avmm_snd_write       (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_write),       //                       .write
@@ -338,7 +353,7 @@ module soc_system (
 
 	soc_system_PIO_LEDs_Shared pio_leds_shared (
 		.clk        (pll_shared_outclk0_clk),                          //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),                 //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),             //               reset.reset_n
 		.address    (mm_interconnect_0_pio_leds_shared_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_pio_leds_shared_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_pio_leds_shared_s1_writedata),  //                    .writedata
@@ -349,7 +364,7 @@ module soc_system (
 
 	soc_system_PIO_Switches pio_switches (
 		.clk        (pll_shared_outclk0_clk),                       //                 clk.clk
-		.reset_n    (~rst_controller_reset_out_reset),              //               reset.reset_n
+		.reset_n    (~rst_controller_002_reset_out_reset),          //               reset.reset_n
 		.address    (mm_interconnect_0_pio_switches_s1_address),    //                  s1.address
 		.write_n    (~mm_interconnect_0_pio_switches_s1_write),     //                    .write_n
 		.writedata  (mm_interconnect_0_pio_switches_s1_writedata),  //                    .writedata
@@ -361,7 +376,7 @@ module soc_system (
 
 	soc_system_PLL_Shared pll_shared (
 		.refclk   (clk_clk),                            //  refclk.clk
-		.rst      (rst_controller_002_reset_out_reset), //   reset.reset
+		.rst      (rst_controller_003_reset_out_reset), //   reset.reset
 		.outclk_0 (pll_shared_outclk0_clk),             // outclk0.clk
 		.outclk_1 (pll_shared_outclk1_clk),             // outclk1.clk
 		.outclk_2 (pll_shared_outclk2_clk),             // outclk2.clk
@@ -370,7 +385,7 @@ module soc_system (
 
 	soc_system_SDRAM_Controller_Shared sdram_controller_shared (
 		.clk            (pll_shared_outclk1_clk),                                     //   clk.clk
-		.reset_n        (~rst_controller_003_reset_out_reset),                        // reset.reset_n
+		.reset_n        (~rst_controller_004_reset_out_reset),                        // reset.reset_n
 		.az_addr        (mm_interconnect_0_sdram_controller_shared_s1_address),       //    s1.address
 		.az_be_n        (~mm_interconnect_0_sdram_controller_shared_s1_byteenable),   //      .byteenable_n
 		.az_cs          (mm_interconnect_0_sdram_controller_shared_s1_chipselect),    //      .chipselect
@@ -393,7 +408,8 @@ module soc_system (
 
 	SigProcOperation sigprocoperation_0 (
 		.InData  (syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_dataa),  // avalon_slave_0_1.dataa
-		.OutData (syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_result)  //                 .result
+		.OutData (syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_result), //                 .result
+		.Param   (syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_datab)   //                 .datab
 	);
 
 	soc_system_SysAudio_AV_Config sysaudio_av_config (
@@ -412,14 +428,14 @@ module soc_system (
 
 	soc_system_SysAudio_Audio_Clock sysaudio_audio_clock (
 		.ref_clk_clk        (pll_shared_outclk0_clk),                  //      ref_clk.clk
-		.ref_reset_reset    (rst_controller_004_reset_out_reset),      //    ref_reset.reset
+		.ref_reset_reset    (rst_controller_005_reset_out_reset),      //    ref_reset.reset
 		.audio_clk_clk      (sysaudio_audio_clock_audio_clk_clk),      //    audio_clk.clk
 		.reset_source_reset (sysaudio_audio_clock_reset_source_reset)  // reset_source.reset
 	);
 
 	soc_system_SysAudio_Audio_Core sysaudio_audio_core (
 		.clk         (sysaudio_audio_clock_audio_clk_clk),                                  //                clk.clk
-		.reset       (rst_controller_005_reset_out_reset),                                  //              reset.reset
+		.reset       (rst_controller_006_reset_out_reset),                                  //              reset.reset
 		.address     (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_address),    // avalon_audio_slave.address
 		.chipselect  (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_chipselect), //                   .chipselect
 		.read        (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_read),       //                   .read
@@ -502,9 +518,26 @@ module soc_system (
 		.writedata     (mm_interconnect_0_sysaudio_performance_counter_control_slave_writedata)      //              .writedata
 	);
 
+	HW_accelerator syssigproc_hw_accelerator (
+		.Clk            (pll_shared_outclk0_clk),                                   //         clock.clk
+		.AS_address     (mm_interconnect_0_syssigproc_hw_accelerator_as_address),   //            as.address
+		.AS_read        (mm_interconnect_0_syssigproc_hw_accelerator_as_read),      //              .read
+		.AS_readdata    (mm_interconnect_0_syssigproc_hw_accelerator_as_readdata),  //              .readdata
+		.AS_write       (mm_interconnect_0_syssigproc_hw_accelerator_as_write),     //              .write
+		.AS_writedata   (mm_interconnect_0_syssigproc_hw_accelerator_as_writedata), //              .writedata
+		.nReset         (~rst_controller_001_reset_out_reset),                      //    reset_sink.reset_n
+		.AM_address     (syssigproc_hw_accelerator_avalon_master_address),          // avalon_master.address
+		.AM_byteenable  (syssigproc_hw_accelerator_avalon_master_byteenable),       //              .byteenable
+		.AM_write       (syssigproc_hw_accelerator_avalon_master_write),            //              .write
+		.AM_writedata   (syssigproc_hw_accelerator_avalon_master_writedata),        //              .writedata
+		.AM_read        (syssigproc_hw_accelerator_avalon_master_read),             //              .read
+		.AM_readdata    (syssigproc_hw_accelerator_avalon_master_readdata),         //              .readdata
+		.AM_waitrequest (syssigproc_hw_accelerator_avalon_master_waitrequest)       //              .waitrequest
+	);
+
 	soc_system_SysAudio_JTAG_UART syssigproc_jtag_uart (
 		.clk            (pll_shared_outclk0_clk),                                               //               clk.clk
-		.rst_n          (~rst_controller_reset_out_reset),                                      //             reset.reset_n
+		.rst_n          (~rst_controller_001_reset_out_reset),                                  //             reset.reset_n
 		.av_chipselect  (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_chipselect),  // avalon_jtag_slave.chipselect
 		.av_address     (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_address),     //                  .address
 		.av_read_n      (~mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_read),       //                  .read_n
@@ -517,8 +550,8 @@ module soc_system (
 
 	soc_system_SysSigProc_NIOS_II syssigproc_nios_ii (
 		.clk                                 (pll_shared_outclk0_clk),                                           //                       clk.clk
-		.reset_n                             (~rst_controller_reset_out_reset),                                  //                     reset.reset_n
-		.reset_req                           (rst_controller_reset_out_reset_req),                               //                          .reset_req
+		.reset_n                             (~rst_controller_001_reset_out_reset),                              //                     reset.reset_n
+		.reset_req                           (rst_controller_001_reset_out_reset_req),                           //                          .reset_req
 		.d_address                           (syssigproc_nios_ii_data_master_address),                           //               data_master.address
 		.d_byteenable                        (syssigproc_nios_ii_data_master_byteenable),                        //                          .byteenable
 		.d_read                              (syssigproc_nios_ii_data_master_read),                              //                          .read
@@ -566,14 +599,14 @@ module soc_system (
 		.readdata   (mm_interconnect_0_syssigproc_onchip_memory_s1_readdata),   //       .readdata
 		.writedata  (mm_interconnect_0_syssigproc_onchip_memory_s1_writedata),  //       .writedata
 		.byteenable (mm_interconnect_0_syssigproc_onchip_memory_s1_byteenable), //       .byteenable
-		.reset      (rst_controller_reset_out_reset),                           // reset1.reset
-		.reset_req  (rst_controller_reset_out_reset_req),                       //       .reset_req
+		.reset      (rst_controller_001_reset_out_reset),                       // reset1.reset
+		.reset_req  (rst_controller_001_reset_out_reset_req),                   //       .reset_req
 		.freeze     (1'b0)                                                      // (terminated)
 	);
 
 	soc_system_SysAudio_Performance_Counter syssigproc_performance_counter (
 		.clk           (pll_shared_outclk0_clk),                                                       //           clk.clk
-		.reset_n       (~rst_controller_reset_out_reset),                                              //         reset.reset_n
+		.reset_n       (~rst_controller_001_reset_out_reset),                                          //         reset.reset_n
 		.address       (mm_interconnect_0_syssigproc_performance_counter_control_slave_address),       // control_slave.address
 		.begintransfer (mm_interconnect_0_syssigproc_performance_counter_control_slave_begintransfer), //              .begintransfer
 		.readdata      (mm_interconnect_0_syssigproc_performance_counter_control_slave_readdata),      //              .readdata
@@ -687,8 +720,8 @@ module soc_system (
 		.ci_slave_ipending   (syssigproc_nios_ii_custom_instruction_master_comb_xconnect_ci_master0_ipending),       //          .ipending
 		.ci_slave_estatus    (syssigproc_nios_ii_custom_instruction_master_comb_xconnect_ci_master0_estatus),        //          .estatus
 		.ci_master_dataa     (syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_dataa),  // ci_master.dataa
+		.ci_master_datab     (syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_datab),  //          .datab
 		.ci_master_result    (syssigproc_nios_ii_custom_instruction_master_comb_slave_translator0_ci_master_result), //          .result
-		.ci_master_datab     (),                                                                                     // (terminated)
 		.ci_master_n         (),                                                                                     // (terminated)
 		.ci_master_readra    (),                                                                                     // (terminated)
 		.ci_master_readrb    (),                                                                                     // (terminated)
@@ -713,169 +746,182 @@ module soc_system (
 	);
 
 	soc_system_mm_interconnect_0 mm_interconnect_0 (
-		.PLL_Shared_outclk0_clk                                     (pll_shared_outclk0_clk),                                                       //                                  PLL_Shared_outclk0.clk
-		.PLL_Shared_outclk1_clk                                     (pll_shared_outclk1_clk),                                                       //                                  PLL_Shared_outclk1.clk
-		.SysAudio_Audio_Clock_audio_clk_clk                         (sysaudio_audio_clock_audio_clk_clk),                                           //                      SysAudio_Audio_Clock_audio_clk.clk
-		.PIO_Debug_reset_reset_bridge_in_reset_reset                (rst_controller_001_reset_out_reset),                                           //               PIO_Debug_reset_reset_bridge_in_reset.reset
-		.SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset  (rst_controller_003_reset_out_reset),                                           // SDRAM_Controller_Shared_reset_reset_bridge_in_reset.reset
-		.SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset      (rst_controller_005_reset_out_reset),                                           //     SysAudio_Audio_Core_reset_reset_bridge_in_reset.reset
-		.SysAudio_NIOS_II_reset_reset_bridge_in_reset_reset         (rst_controller_reset_out_reset),                                               //        SysAudio_NIOS_II_reset_reset_bridge_in_reset.reset
-		.SysAudio_NIOS_II_data_master_address                       (sysaudio_nios_ii_data_master_address),                                         //                        SysAudio_NIOS_II_data_master.address
-		.SysAudio_NIOS_II_data_master_waitrequest                   (sysaudio_nios_ii_data_master_waitrequest),                                     //                                                    .waitrequest
-		.SysAudio_NIOS_II_data_master_byteenable                    (sysaudio_nios_ii_data_master_byteenable),                                      //                                                    .byteenable
-		.SysAudio_NIOS_II_data_master_read                          (sysaudio_nios_ii_data_master_read),                                            //                                                    .read
-		.SysAudio_NIOS_II_data_master_readdata                      (sysaudio_nios_ii_data_master_readdata),                                        //                                                    .readdata
-		.SysAudio_NIOS_II_data_master_readdatavalid                 (sysaudio_nios_ii_data_master_readdatavalid),                                   //                                                    .readdatavalid
-		.SysAudio_NIOS_II_data_master_write                         (sysaudio_nios_ii_data_master_write),                                           //                                                    .write
-		.SysAudio_NIOS_II_data_master_writedata                     (sysaudio_nios_ii_data_master_writedata),                                       //                                                    .writedata
-		.SysAudio_NIOS_II_data_master_debugaccess                   (sysaudio_nios_ii_data_master_debugaccess),                                     //                                                    .debugaccess
-		.SysAudio_NIOS_II_instruction_master_address                (sysaudio_nios_ii_instruction_master_address),                                  //                 SysAudio_NIOS_II_instruction_master.address
-		.SysAudio_NIOS_II_instruction_master_waitrequest            (sysaudio_nios_ii_instruction_master_waitrequest),                              //                                                    .waitrequest
-		.SysAudio_NIOS_II_instruction_master_read                   (sysaudio_nios_ii_instruction_master_read),                                     //                                                    .read
-		.SysAudio_NIOS_II_instruction_master_readdata               (sysaudio_nios_ii_instruction_master_readdata),                                 //                                                    .readdata
-		.SysAudio_NIOS_II_instruction_master_readdatavalid          (sysaudio_nios_ii_instruction_master_readdatavalid),                            //                                                    .readdatavalid
-		.SysSigProc_NIOS_II_data_master_address                     (syssigproc_nios_ii_data_master_address),                                       //                      SysSigProc_NIOS_II_data_master.address
-		.SysSigProc_NIOS_II_data_master_waitrequest                 (syssigproc_nios_ii_data_master_waitrequest),                                   //                                                    .waitrequest
-		.SysSigProc_NIOS_II_data_master_byteenable                  (syssigproc_nios_ii_data_master_byteenable),                                    //                                                    .byteenable
-		.SysSigProc_NIOS_II_data_master_read                        (syssigproc_nios_ii_data_master_read),                                          //                                                    .read
-		.SysSigProc_NIOS_II_data_master_readdata                    (syssigproc_nios_ii_data_master_readdata),                                      //                                                    .readdata
-		.SysSigProc_NIOS_II_data_master_readdatavalid               (syssigproc_nios_ii_data_master_readdatavalid),                                 //                                                    .readdatavalid
-		.SysSigProc_NIOS_II_data_master_write                       (syssigproc_nios_ii_data_master_write),                                         //                                                    .write
-		.SysSigProc_NIOS_II_data_master_writedata                   (syssigproc_nios_ii_data_master_writedata),                                     //                                                    .writedata
-		.SysSigProc_NIOS_II_data_master_debugaccess                 (syssigproc_nios_ii_data_master_debugaccess),                                   //                                                    .debugaccess
-		.SysSigProc_NIOS_II_instruction_master_address              (syssigproc_nios_ii_instruction_master_address),                                //               SysSigProc_NIOS_II_instruction_master.address
-		.SysSigProc_NIOS_II_instruction_master_waitrequest          (syssigproc_nios_ii_instruction_master_waitrequest),                            //                                                    .waitrequest
-		.SysSigProc_NIOS_II_instruction_master_read                 (syssigproc_nios_ii_instruction_master_read),                                   //                                                    .read
-		.SysSigProc_NIOS_II_instruction_master_readdata             (syssigproc_nios_ii_instruction_master_readdata),                               //                                                    .readdata
-		.SysSigProc_NIOS_II_instruction_master_readdatavalid        (syssigproc_nios_ii_instruction_master_readdatavalid),                          //                                                    .readdatavalid
-		.Mailbox_AudioToSigProc_avmm_msg_receiver_address           (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_address),           //            Mailbox_AudioToSigProc_avmm_msg_receiver.address
-		.Mailbox_AudioToSigProc_avmm_msg_receiver_write             (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_write),             //                                                    .write
-		.Mailbox_AudioToSigProc_avmm_msg_receiver_read              (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_read),              //                                                    .read
-		.Mailbox_AudioToSigProc_avmm_msg_receiver_readdata          (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_readdata),          //                                                    .readdata
-		.Mailbox_AudioToSigProc_avmm_msg_receiver_writedata         (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_writedata),         //                                                    .writedata
-		.Mailbox_AudioToSigProc_avmm_msg_sender_address             (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_address),             //              Mailbox_AudioToSigProc_avmm_msg_sender.address
-		.Mailbox_AudioToSigProc_avmm_msg_sender_write               (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_write),               //                                                    .write
-		.Mailbox_AudioToSigProc_avmm_msg_sender_read                (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_read),                //                                                    .read
-		.Mailbox_AudioToSigProc_avmm_msg_sender_readdata            (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_readdata),            //                                                    .readdata
-		.Mailbox_AudioToSigProc_avmm_msg_sender_writedata           (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_writedata),           //                                                    .writedata
-		.Mailbox_AudioToSigProc_avmm_msg_sender_waitrequest         (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_waitrequest),         //                                                    .waitrequest
-		.Mailbox_SigProcToAudio_avmm_msg_receiver_address           (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_address),           //            Mailbox_SigProcToAudio_avmm_msg_receiver.address
-		.Mailbox_SigProcToAudio_avmm_msg_receiver_write             (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_write),             //                                                    .write
-		.Mailbox_SigProcToAudio_avmm_msg_receiver_read              (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_read),              //                                                    .read
-		.Mailbox_SigProcToAudio_avmm_msg_receiver_readdata          (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_readdata),          //                                                    .readdata
-		.Mailbox_SigProcToAudio_avmm_msg_receiver_writedata         (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_writedata),         //                                                    .writedata
-		.Mailbox_SigProcToAudio_avmm_msg_sender_address             (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_address),             //              Mailbox_SigProcToAudio_avmm_msg_sender.address
-		.Mailbox_SigProcToAudio_avmm_msg_sender_write               (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_write),               //                                                    .write
-		.Mailbox_SigProcToAudio_avmm_msg_sender_read                (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_read),                //                                                    .read
-		.Mailbox_SigProcToAudio_avmm_msg_sender_readdata            (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_readdata),            //                                                    .readdata
-		.Mailbox_SigProcToAudio_avmm_msg_sender_writedata           (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_writedata),           //                                                    .writedata
-		.Mailbox_SigProcToAudio_avmm_msg_sender_waitrequest         (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_waitrequest),         //                                                    .waitrequest
-		.PIO_1st_7seg_s1_address                                    (mm_interconnect_0_pio_1st_7seg_s1_address),                                    //                                     PIO_1st_7seg_s1.address
-		.PIO_1st_7seg_s1_write                                      (mm_interconnect_0_pio_1st_7seg_s1_write),                                      //                                                    .write
-		.PIO_1st_7seg_s1_readdata                                   (mm_interconnect_0_pio_1st_7seg_s1_readdata),                                   //                                                    .readdata
-		.PIO_1st_7seg_s1_writedata                                  (mm_interconnect_0_pio_1st_7seg_s1_writedata),                                  //                                                    .writedata
-		.PIO_1st_7seg_s1_chipselect                                 (mm_interconnect_0_pio_1st_7seg_s1_chipselect),                                 //                                                    .chipselect
-		.PIO_2nd_7seg_s1_address                                    (mm_interconnect_0_pio_2nd_7seg_s1_address),                                    //                                     PIO_2nd_7seg_s1.address
-		.PIO_2nd_7seg_s1_write                                      (mm_interconnect_0_pio_2nd_7seg_s1_write),                                      //                                                    .write
-		.PIO_2nd_7seg_s1_readdata                                   (mm_interconnect_0_pio_2nd_7seg_s1_readdata),                                   //                                                    .readdata
-		.PIO_2nd_7seg_s1_writedata                                  (mm_interconnect_0_pio_2nd_7seg_s1_writedata),                                  //                                                    .writedata
-		.PIO_2nd_7seg_s1_chipselect                                 (mm_interconnect_0_pio_2nd_7seg_s1_chipselect),                                 //                                                    .chipselect
-		.PIO_3rd_7seg_s1_address                                    (mm_interconnect_0_pio_3rd_7seg_s1_address),                                    //                                     PIO_3rd_7seg_s1.address
-		.PIO_3rd_7seg_s1_write                                      (mm_interconnect_0_pio_3rd_7seg_s1_write),                                      //                                                    .write
-		.PIO_3rd_7seg_s1_readdata                                   (mm_interconnect_0_pio_3rd_7seg_s1_readdata),                                   //                                                    .readdata
-		.PIO_3rd_7seg_s1_writedata                                  (mm_interconnect_0_pio_3rd_7seg_s1_writedata),                                  //                                                    .writedata
-		.PIO_3rd_7seg_s1_chipselect                                 (mm_interconnect_0_pio_3rd_7seg_s1_chipselect),                                 //                                                    .chipselect
-		.PIO_Debug_s1_address                                       (mm_interconnect_0_pio_debug_s1_address),                                       //                                        PIO_Debug_s1.address
-		.PIO_Debug_s1_write                                         (mm_interconnect_0_pio_debug_s1_write),                                         //                                                    .write
-		.PIO_Debug_s1_readdata                                      (mm_interconnect_0_pio_debug_s1_readdata),                                      //                                                    .readdata
-		.PIO_Debug_s1_writedata                                     (mm_interconnect_0_pio_debug_s1_writedata),                                     //                                                    .writedata
-		.PIO_Debug_s1_chipselect                                    (mm_interconnect_0_pio_debug_s1_chipselect),                                    //                                                    .chipselect
-		.PIO_LEDs_Shared_s1_address                                 (mm_interconnect_0_pio_leds_shared_s1_address),                                 //                                  PIO_LEDs_Shared_s1.address
-		.PIO_LEDs_Shared_s1_write                                   (mm_interconnect_0_pio_leds_shared_s1_write),                                   //                                                    .write
-		.PIO_LEDs_Shared_s1_readdata                                (mm_interconnect_0_pio_leds_shared_s1_readdata),                                //                                                    .readdata
-		.PIO_LEDs_Shared_s1_writedata                               (mm_interconnect_0_pio_leds_shared_s1_writedata),                               //                                                    .writedata
-		.PIO_LEDs_Shared_s1_chipselect                              (mm_interconnect_0_pio_leds_shared_s1_chipselect),                              //                                                    .chipselect
-		.PIO_Switches_s1_address                                    (mm_interconnect_0_pio_switches_s1_address),                                    //                                     PIO_Switches_s1.address
-		.PIO_Switches_s1_write                                      (mm_interconnect_0_pio_switches_s1_write),                                      //                                                    .write
-		.PIO_Switches_s1_readdata                                   (mm_interconnect_0_pio_switches_s1_readdata),                                   //                                                    .readdata
-		.PIO_Switches_s1_writedata                                  (mm_interconnect_0_pio_switches_s1_writedata),                                  //                                                    .writedata
-		.PIO_Switches_s1_chipselect                                 (mm_interconnect_0_pio_switches_s1_chipselect),                                 //                                                    .chipselect
-		.SDRAM_Controller_Shared_s1_address                         (mm_interconnect_0_sdram_controller_shared_s1_address),                         //                          SDRAM_Controller_Shared_s1.address
-		.SDRAM_Controller_Shared_s1_write                           (mm_interconnect_0_sdram_controller_shared_s1_write),                           //                                                    .write
-		.SDRAM_Controller_Shared_s1_read                            (mm_interconnect_0_sdram_controller_shared_s1_read),                            //                                                    .read
-		.SDRAM_Controller_Shared_s1_readdata                        (mm_interconnect_0_sdram_controller_shared_s1_readdata),                        //                                                    .readdata
-		.SDRAM_Controller_Shared_s1_writedata                       (mm_interconnect_0_sdram_controller_shared_s1_writedata),                       //                                                    .writedata
-		.SDRAM_Controller_Shared_s1_byteenable                      (mm_interconnect_0_sdram_controller_shared_s1_byteenable),                      //                                                    .byteenable
-		.SDRAM_Controller_Shared_s1_readdatavalid                   (mm_interconnect_0_sdram_controller_shared_s1_readdatavalid),                   //                                                    .readdatavalid
-		.SDRAM_Controller_Shared_s1_waitrequest                     (mm_interconnect_0_sdram_controller_shared_s1_waitrequest),                     //                                                    .waitrequest
-		.SDRAM_Controller_Shared_s1_chipselect                      (mm_interconnect_0_sdram_controller_shared_s1_chipselect),                      //                                                    .chipselect
-		.SysAudio_Audio_Core_avalon_audio_slave_address             (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_address),             //              SysAudio_Audio_Core_avalon_audio_slave.address
-		.SysAudio_Audio_Core_avalon_audio_slave_write               (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_write),               //                                                    .write
-		.SysAudio_Audio_Core_avalon_audio_slave_read                (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_read),                //                                                    .read
-		.SysAudio_Audio_Core_avalon_audio_slave_readdata            (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_readdata),            //                                                    .readdata
-		.SysAudio_Audio_Core_avalon_audio_slave_writedata           (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_writedata),           //                                                    .writedata
-		.SysAudio_Audio_Core_avalon_audio_slave_chipselect          (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_chipselect),          //                                                    .chipselect
-		.SysAudio_AV_Config_avalon_av_config_slave_address          (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_address),          //           SysAudio_AV_Config_avalon_av_config_slave.address
-		.SysAudio_AV_Config_avalon_av_config_slave_write            (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_write),            //                                                    .write
-		.SysAudio_AV_Config_avalon_av_config_slave_read             (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_read),             //                                                    .read
-		.SysAudio_AV_Config_avalon_av_config_slave_readdata         (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_readdata),         //                                                    .readdata
-		.SysAudio_AV_Config_avalon_av_config_slave_writedata        (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_writedata),        //                                                    .writedata
-		.SysAudio_AV_Config_avalon_av_config_slave_byteenable       (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_byteenable),       //                                                    .byteenable
-		.SysAudio_AV_Config_avalon_av_config_slave_waitrequest      (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_waitrequest),      //                                                    .waitrequest
-		.SysAudio_JTAG_UART_avalon_jtag_slave_address               (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_address),               //                SysAudio_JTAG_UART_avalon_jtag_slave.address
-		.SysAudio_JTAG_UART_avalon_jtag_slave_write                 (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_write),                 //                                                    .write
-		.SysAudio_JTAG_UART_avalon_jtag_slave_read                  (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_read),                  //                                                    .read
-		.SysAudio_JTAG_UART_avalon_jtag_slave_readdata              (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_readdata),              //                                                    .readdata
-		.SysAudio_JTAG_UART_avalon_jtag_slave_writedata             (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_writedata),             //                                                    .writedata
-		.SysAudio_JTAG_UART_avalon_jtag_slave_waitrequest           (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_waitrequest),           //                                                    .waitrequest
-		.SysAudio_JTAG_UART_avalon_jtag_slave_chipselect            (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_chipselect),            //                                                    .chipselect
-		.SysAudio_NIOS_II_debug_mem_slave_address                   (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_address),                   //                    SysAudio_NIOS_II_debug_mem_slave.address
-		.SysAudio_NIOS_II_debug_mem_slave_write                     (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_write),                     //                                                    .write
-		.SysAudio_NIOS_II_debug_mem_slave_read                      (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_read),                      //                                                    .read
-		.SysAudio_NIOS_II_debug_mem_slave_readdata                  (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_readdata),                  //                                                    .readdata
-		.SysAudio_NIOS_II_debug_mem_slave_writedata                 (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_writedata),                 //                                                    .writedata
-		.SysAudio_NIOS_II_debug_mem_slave_byteenable                (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_byteenable),                //                                                    .byteenable
-		.SysAudio_NIOS_II_debug_mem_slave_waitrequest               (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_waitrequest),               //                                                    .waitrequest
-		.SysAudio_NIOS_II_debug_mem_slave_debugaccess               (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_debugaccess),               //                                                    .debugaccess
-		.SysAudio_Onchip_Memory_s1_address                          (mm_interconnect_0_sysaudio_onchip_memory_s1_address),                          //                           SysAudio_Onchip_Memory_s1.address
-		.SysAudio_Onchip_Memory_s1_write                            (mm_interconnect_0_sysaudio_onchip_memory_s1_write),                            //                                                    .write
-		.SysAudio_Onchip_Memory_s1_readdata                         (mm_interconnect_0_sysaudio_onchip_memory_s1_readdata),                         //                                                    .readdata
-		.SysAudio_Onchip_Memory_s1_writedata                        (mm_interconnect_0_sysaudio_onchip_memory_s1_writedata),                        //                                                    .writedata
-		.SysAudio_Onchip_Memory_s1_byteenable                       (mm_interconnect_0_sysaudio_onchip_memory_s1_byteenable),                       //                                                    .byteenable
-		.SysAudio_Onchip_Memory_s1_chipselect                       (mm_interconnect_0_sysaudio_onchip_memory_s1_chipselect),                       //                                                    .chipselect
-		.SysAudio_Onchip_Memory_s1_clken                            (mm_interconnect_0_sysaudio_onchip_memory_s1_clken),                            //                                                    .clken
-		.SysAudio_Performance_Counter_control_slave_address         (mm_interconnect_0_sysaudio_performance_counter_control_slave_address),         //          SysAudio_Performance_Counter_control_slave.address
-		.SysAudio_Performance_Counter_control_slave_write           (mm_interconnect_0_sysaudio_performance_counter_control_slave_write),           //                                                    .write
-		.SysAudio_Performance_Counter_control_slave_readdata        (mm_interconnect_0_sysaudio_performance_counter_control_slave_readdata),        //                                                    .readdata
-		.SysAudio_Performance_Counter_control_slave_writedata       (mm_interconnect_0_sysaudio_performance_counter_control_slave_writedata),       //                                                    .writedata
-		.SysAudio_Performance_Counter_control_slave_begintransfer   (mm_interconnect_0_sysaudio_performance_counter_control_slave_begintransfer),   //                                                    .begintransfer
-		.SysSigProc_JTAG_UART_avalon_jtag_slave_address             (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_address),             //              SysSigProc_JTAG_UART_avalon_jtag_slave.address
-		.SysSigProc_JTAG_UART_avalon_jtag_slave_write               (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_write),               //                                                    .write
-		.SysSigProc_JTAG_UART_avalon_jtag_slave_read                (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_read),                //                                                    .read
-		.SysSigProc_JTAG_UART_avalon_jtag_slave_readdata            (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_readdata),            //                                                    .readdata
-		.SysSigProc_JTAG_UART_avalon_jtag_slave_writedata           (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_writedata),           //                                                    .writedata
-		.SysSigProc_JTAG_UART_avalon_jtag_slave_waitrequest         (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_waitrequest),         //                                                    .waitrequest
-		.SysSigProc_JTAG_UART_avalon_jtag_slave_chipselect          (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_chipselect),          //                                                    .chipselect
-		.SysSigProc_NIOS_II_debug_mem_slave_address                 (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_address),                 //                  SysSigProc_NIOS_II_debug_mem_slave.address
-		.SysSigProc_NIOS_II_debug_mem_slave_write                   (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_write),                   //                                                    .write
-		.SysSigProc_NIOS_II_debug_mem_slave_read                    (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_read),                    //                                                    .read
-		.SysSigProc_NIOS_II_debug_mem_slave_readdata                (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_readdata),                //                                                    .readdata
-		.SysSigProc_NIOS_II_debug_mem_slave_writedata               (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_writedata),               //                                                    .writedata
-		.SysSigProc_NIOS_II_debug_mem_slave_byteenable              (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_byteenable),              //                                                    .byteenable
-		.SysSigProc_NIOS_II_debug_mem_slave_waitrequest             (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_waitrequest),             //                                                    .waitrequest
-		.SysSigProc_NIOS_II_debug_mem_slave_debugaccess             (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_debugaccess),             //                                                    .debugaccess
-		.SysSigProc_Onchip_Memory_s1_address                        (mm_interconnect_0_syssigproc_onchip_memory_s1_address),                        //                         SysSigProc_Onchip_Memory_s1.address
-		.SysSigProc_Onchip_Memory_s1_write                          (mm_interconnect_0_syssigproc_onchip_memory_s1_write),                          //                                                    .write
-		.SysSigProc_Onchip_Memory_s1_readdata                       (mm_interconnect_0_syssigproc_onchip_memory_s1_readdata),                       //                                                    .readdata
-		.SysSigProc_Onchip_Memory_s1_writedata                      (mm_interconnect_0_syssigproc_onchip_memory_s1_writedata),                      //                                                    .writedata
-		.SysSigProc_Onchip_Memory_s1_byteenable                     (mm_interconnect_0_syssigproc_onchip_memory_s1_byteenable),                     //                                                    .byteenable
-		.SysSigProc_Onchip_Memory_s1_chipselect                     (mm_interconnect_0_syssigproc_onchip_memory_s1_chipselect),                     //                                                    .chipselect
-		.SysSigProc_Onchip_Memory_s1_clken                          (mm_interconnect_0_syssigproc_onchip_memory_s1_clken),                          //                                                    .clken
-		.SysSigProc_Performance_Counter_control_slave_address       (mm_interconnect_0_syssigproc_performance_counter_control_slave_address),       //        SysSigProc_Performance_Counter_control_slave.address
-		.SysSigProc_Performance_Counter_control_slave_write         (mm_interconnect_0_syssigproc_performance_counter_control_slave_write),         //                                                    .write
-		.SysSigProc_Performance_Counter_control_slave_readdata      (mm_interconnect_0_syssigproc_performance_counter_control_slave_readdata),      //                                                    .readdata
-		.SysSigProc_Performance_Counter_control_slave_writedata     (mm_interconnect_0_syssigproc_performance_counter_control_slave_writedata),     //                                                    .writedata
-		.SysSigProc_Performance_Counter_control_slave_begintransfer (mm_interconnect_0_syssigproc_performance_counter_control_slave_begintransfer)  //                                                    .begintransfer
+		.PLL_Shared_outclk0_clk                                           (pll_shared_outclk0_clk),                                                       //                                         PLL_Shared_outclk0.clk
+		.PLL_Shared_outclk1_clk                                           (pll_shared_outclk1_clk),                                                       //                                         PLL_Shared_outclk1.clk
+		.SysAudio_Audio_Clock_audio_clk_clk                               (sysaudio_audio_clock_audio_clk_clk),                                           //                             SysAudio_Audio_Clock_audio_clk.clk
+		.PIO_LEDs_Shared_reset_reset_bridge_in_reset_reset                (rst_controller_002_reset_out_reset),                                           //                PIO_LEDs_Shared_reset_reset_bridge_in_reset.reset
+		.SDRAM_Controller_Shared_reset_reset_bridge_in_reset_reset        (rst_controller_004_reset_out_reset),                                           //        SDRAM_Controller_Shared_reset_reset_bridge_in_reset.reset
+		.SysAudio_Audio_Core_reset_reset_bridge_in_reset_reset            (rst_controller_006_reset_out_reset),                                           //            SysAudio_Audio_Core_reset_reset_bridge_in_reset.reset
+		.SysAudio_NIOS_II_reset_reset_bridge_in_reset_reset               (rst_controller_reset_out_reset),                                               //               SysAudio_NIOS_II_reset_reset_bridge_in_reset.reset
+		.SysSigProc_HW_accelerator_reset_sink_reset_bridge_in_reset_reset (rst_controller_001_reset_out_reset),                                           // SysSigProc_HW_accelerator_reset_sink_reset_bridge_in_reset.reset
+		.SysAudio_NIOS_II_data_master_address                             (sysaudio_nios_ii_data_master_address),                                         //                               SysAudio_NIOS_II_data_master.address
+		.SysAudio_NIOS_II_data_master_waitrequest                         (sysaudio_nios_ii_data_master_waitrequest),                                     //                                                           .waitrequest
+		.SysAudio_NIOS_II_data_master_byteenable                          (sysaudio_nios_ii_data_master_byteenable),                                      //                                                           .byteenable
+		.SysAudio_NIOS_II_data_master_read                                (sysaudio_nios_ii_data_master_read),                                            //                                                           .read
+		.SysAudio_NIOS_II_data_master_readdata                            (sysaudio_nios_ii_data_master_readdata),                                        //                                                           .readdata
+		.SysAudio_NIOS_II_data_master_readdatavalid                       (sysaudio_nios_ii_data_master_readdatavalid),                                   //                                                           .readdatavalid
+		.SysAudio_NIOS_II_data_master_write                               (sysaudio_nios_ii_data_master_write),                                           //                                                           .write
+		.SysAudio_NIOS_II_data_master_writedata                           (sysaudio_nios_ii_data_master_writedata),                                       //                                                           .writedata
+		.SysAudio_NIOS_II_data_master_debugaccess                         (sysaudio_nios_ii_data_master_debugaccess),                                     //                                                           .debugaccess
+		.SysAudio_NIOS_II_instruction_master_address                      (sysaudio_nios_ii_instruction_master_address),                                  //                        SysAudio_NIOS_II_instruction_master.address
+		.SysAudio_NIOS_II_instruction_master_waitrequest                  (sysaudio_nios_ii_instruction_master_waitrequest),                              //                                                           .waitrequest
+		.SysAudio_NIOS_II_instruction_master_read                         (sysaudio_nios_ii_instruction_master_read),                                     //                                                           .read
+		.SysAudio_NIOS_II_instruction_master_readdata                     (sysaudio_nios_ii_instruction_master_readdata),                                 //                                                           .readdata
+		.SysAudio_NIOS_II_instruction_master_readdatavalid                (sysaudio_nios_ii_instruction_master_readdatavalid),                            //                                                           .readdatavalid
+		.SysSigProc_HW_accelerator_avalon_master_address                  (syssigproc_hw_accelerator_avalon_master_address),                              //                    SysSigProc_HW_accelerator_avalon_master.address
+		.SysSigProc_HW_accelerator_avalon_master_waitrequest              (syssigproc_hw_accelerator_avalon_master_waitrequest),                          //                                                           .waitrequest
+		.SysSigProc_HW_accelerator_avalon_master_byteenable               (syssigproc_hw_accelerator_avalon_master_byteenable),                           //                                                           .byteenable
+		.SysSigProc_HW_accelerator_avalon_master_read                     (syssigproc_hw_accelerator_avalon_master_read),                                 //                                                           .read
+		.SysSigProc_HW_accelerator_avalon_master_readdata                 (syssigproc_hw_accelerator_avalon_master_readdata),                             //                                                           .readdata
+		.SysSigProc_HW_accelerator_avalon_master_write                    (syssigproc_hw_accelerator_avalon_master_write),                                //                                                           .write
+		.SysSigProc_HW_accelerator_avalon_master_writedata                (syssigproc_hw_accelerator_avalon_master_writedata),                            //                                                           .writedata
+		.SysSigProc_NIOS_II_data_master_address                           (syssigproc_nios_ii_data_master_address),                                       //                             SysSigProc_NIOS_II_data_master.address
+		.SysSigProc_NIOS_II_data_master_waitrequest                       (syssigproc_nios_ii_data_master_waitrequest),                                   //                                                           .waitrequest
+		.SysSigProc_NIOS_II_data_master_byteenable                        (syssigproc_nios_ii_data_master_byteenable),                                    //                                                           .byteenable
+		.SysSigProc_NIOS_II_data_master_read                              (syssigproc_nios_ii_data_master_read),                                          //                                                           .read
+		.SysSigProc_NIOS_II_data_master_readdata                          (syssigproc_nios_ii_data_master_readdata),                                      //                                                           .readdata
+		.SysSigProc_NIOS_II_data_master_readdatavalid                     (syssigproc_nios_ii_data_master_readdatavalid),                                 //                                                           .readdatavalid
+		.SysSigProc_NIOS_II_data_master_write                             (syssigproc_nios_ii_data_master_write),                                         //                                                           .write
+		.SysSigProc_NIOS_II_data_master_writedata                         (syssigproc_nios_ii_data_master_writedata),                                     //                                                           .writedata
+		.SysSigProc_NIOS_II_data_master_debugaccess                       (syssigproc_nios_ii_data_master_debugaccess),                                   //                                                           .debugaccess
+		.SysSigProc_NIOS_II_instruction_master_address                    (syssigproc_nios_ii_instruction_master_address),                                //                      SysSigProc_NIOS_II_instruction_master.address
+		.SysSigProc_NIOS_II_instruction_master_waitrequest                (syssigproc_nios_ii_instruction_master_waitrequest),                            //                                                           .waitrequest
+		.SysSigProc_NIOS_II_instruction_master_read                       (syssigproc_nios_ii_instruction_master_read),                                   //                                                           .read
+		.SysSigProc_NIOS_II_instruction_master_readdata                   (syssigproc_nios_ii_instruction_master_readdata),                               //                                                           .readdata
+		.SysSigProc_NIOS_II_instruction_master_readdatavalid              (syssigproc_nios_ii_instruction_master_readdatavalid),                          //                                                           .readdatavalid
+		.Mailbox_AudioToSigProc_avmm_msg_receiver_address                 (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_address),           //                   Mailbox_AudioToSigProc_avmm_msg_receiver.address
+		.Mailbox_AudioToSigProc_avmm_msg_receiver_write                   (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_write),             //                                                           .write
+		.Mailbox_AudioToSigProc_avmm_msg_receiver_read                    (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_read),              //                                                           .read
+		.Mailbox_AudioToSigProc_avmm_msg_receiver_readdata                (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_readdata),          //                                                           .readdata
+		.Mailbox_AudioToSigProc_avmm_msg_receiver_writedata               (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_receiver_writedata),         //                                                           .writedata
+		.Mailbox_AudioToSigProc_avmm_msg_sender_address                   (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_address),             //                     Mailbox_AudioToSigProc_avmm_msg_sender.address
+		.Mailbox_AudioToSigProc_avmm_msg_sender_write                     (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_write),               //                                                           .write
+		.Mailbox_AudioToSigProc_avmm_msg_sender_read                      (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_read),                //                                                           .read
+		.Mailbox_AudioToSigProc_avmm_msg_sender_readdata                  (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_readdata),            //                                                           .readdata
+		.Mailbox_AudioToSigProc_avmm_msg_sender_writedata                 (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_writedata),           //                                                           .writedata
+		.Mailbox_AudioToSigProc_avmm_msg_sender_waitrequest               (mm_interconnect_0_mailbox_audiotosigproc_avmm_msg_sender_waitrequest),         //                                                           .waitrequest
+		.Mailbox_SigProcToAudio_avmm_msg_receiver_address                 (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_address),           //                   Mailbox_SigProcToAudio_avmm_msg_receiver.address
+		.Mailbox_SigProcToAudio_avmm_msg_receiver_write                   (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_write),             //                                                           .write
+		.Mailbox_SigProcToAudio_avmm_msg_receiver_read                    (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_read),              //                                                           .read
+		.Mailbox_SigProcToAudio_avmm_msg_receiver_readdata                (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_readdata),          //                                                           .readdata
+		.Mailbox_SigProcToAudio_avmm_msg_receiver_writedata               (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_receiver_writedata),         //                                                           .writedata
+		.Mailbox_SigProcToAudio_avmm_msg_sender_address                   (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_address),             //                     Mailbox_SigProcToAudio_avmm_msg_sender.address
+		.Mailbox_SigProcToAudio_avmm_msg_sender_write                     (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_write),               //                                                           .write
+		.Mailbox_SigProcToAudio_avmm_msg_sender_read                      (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_read),                //                                                           .read
+		.Mailbox_SigProcToAudio_avmm_msg_sender_readdata                  (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_readdata),            //                                                           .readdata
+		.Mailbox_SigProcToAudio_avmm_msg_sender_writedata                 (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_writedata),           //                                                           .writedata
+		.Mailbox_SigProcToAudio_avmm_msg_sender_waitrequest               (mm_interconnect_0_mailbox_sigproctoaudio_avmm_msg_sender_waitrequest),         //                                                           .waitrequest
+		.PIO_1st_7seg_s1_address                                          (mm_interconnect_0_pio_1st_7seg_s1_address),                                    //                                            PIO_1st_7seg_s1.address
+		.PIO_1st_7seg_s1_write                                            (mm_interconnect_0_pio_1st_7seg_s1_write),                                      //                                                           .write
+		.PIO_1st_7seg_s1_readdata                                         (mm_interconnect_0_pio_1st_7seg_s1_readdata),                                   //                                                           .readdata
+		.PIO_1st_7seg_s1_writedata                                        (mm_interconnect_0_pio_1st_7seg_s1_writedata),                                  //                                                           .writedata
+		.PIO_1st_7seg_s1_chipselect                                       (mm_interconnect_0_pio_1st_7seg_s1_chipselect),                                 //                                                           .chipselect
+		.PIO_2nd_7seg_s1_address                                          (mm_interconnect_0_pio_2nd_7seg_s1_address),                                    //                                            PIO_2nd_7seg_s1.address
+		.PIO_2nd_7seg_s1_write                                            (mm_interconnect_0_pio_2nd_7seg_s1_write),                                      //                                                           .write
+		.PIO_2nd_7seg_s1_readdata                                         (mm_interconnect_0_pio_2nd_7seg_s1_readdata),                                   //                                                           .readdata
+		.PIO_2nd_7seg_s1_writedata                                        (mm_interconnect_0_pio_2nd_7seg_s1_writedata),                                  //                                                           .writedata
+		.PIO_2nd_7seg_s1_chipselect                                       (mm_interconnect_0_pio_2nd_7seg_s1_chipselect),                                 //                                                           .chipselect
+		.PIO_3rd_7seg_s1_address                                          (mm_interconnect_0_pio_3rd_7seg_s1_address),                                    //                                            PIO_3rd_7seg_s1.address
+		.PIO_3rd_7seg_s1_write                                            (mm_interconnect_0_pio_3rd_7seg_s1_write),                                      //                                                           .write
+		.PIO_3rd_7seg_s1_readdata                                         (mm_interconnect_0_pio_3rd_7seg_s1_readdata),                                   //                                                           .readdata
+		.PIO_3rd_7seg_s1_writedata                                        (mm_interconnect_0_pio_3rd_7seg_s1_writedata),                                  //                                                           .writedata
+		.PIO_3rd_7seg_s1_chipselect                                       (mm_interconnect_0_pio_3rd_7seg_s1_chipselect),                                 //                                                           .chipselect
+		.PIO_Debug_s1_address                                             (mm_interconnect_0_pio_debug_s1_address),                                       //                                               PIO_Debug_s1.address
+		.PIO_Debug_s1_write                                               (mm_interconnect_0_pio_debug_s1_write),                                         //                                                           .write
+		.PIO_Debug_s1_readdata                                            (mm_interconnect_0_pio_debug_s1_readdata),                                      //                                                           .readdata
+		.PIO_Debug_s1_writedata                                           (mm_interconnect_0_pio_debug_s1_writedata),                                     //                                                           .writedata
+		.PIO_Debug_s1_chipselect                                          (mm_interconnect_0_pio_debug_s1_chipselect),                                    //                                                           .chipselect
+		.PIO_LEDs_Shared_s1_address                                       (mm_interconnect_0_pio_leds_shared_s1_address),                                 //                                         PIO_LEDs_Shared_s1.address
+		.PIO_LEDs_Shared_s1_write                                         (mm_interconnect_0_pio_leds_shared_s1_write),                                   //                                                           .write
+		.PIO_LEDs_Shared_s1_readdata                                      (mm_interconnect_0_pio_leds_shared_s1_readdata),                                //                                                           .readdata
+		.PIO_LEDs_Shared_s1_writedata                                     (mm_interconnect_0_pio_leds_shared_s1_writedata),                               //                                                           .writedata
+		.PIO_LEDs_Shared_s1_chipselect                                    (mm_interconnect_0_pio_leds_shared_s1_chipselect),                              //                                                           .chipselect
+		.PIO_Switches_s1_address                                          (mm_interconnect_0_pio_switches_s1_address),                                    //                                            PIO_Switches_s1.address
+		.PIO_Switches_s1_write                                            (mm_interconnect_0_pio_switches_s1_write),                                      //                                                           .write
+		.PIO_Switches_s1_readdata                                         (mm_interconnect_0_pio_switches_s1_readdata),                                   //                                                           .readdata
+		.PIO_Switches_s1_writedata                                        (mm_interconnect_0_pio_switches_s1_writedata),                                  //                                                           .writedata
+		.PIO_Switches_s1_chipselect                                       (mm_interconnect_0_pio_switches_s1_chipselect),                                 //                                                           .chipselect
+		.SDRAM_Controller_Shared_s1_address                               (mm_interconnect_0_sdram_controller_shared_s1_address),                         //                                 SDRAM_Controller_Shared_s1.address
+		.SDRAM_Controller_Shared_s1_write                                 (mm_interconnect_0_sdram_controller_shared_s1_write),                           //                                                           .write
+		.SDRAM_Controller_Shared_s1_read                                  (mm_interconnect_0_sdram_controller_shared_s1_read),                            //                                                           .read
+		.SDRAM_Controller_Shared_s1_readdata                              (mm_interconnect_0_sdram_controller_shared_s1_readdata),                        //                                                           .readdata
+		.SDRAM_Controller_Shared_s1_writedata                             (mm_interconnect_0_sdram_controller_shared_s1_writedata),                       //                                                           .writedata
+		.SDRAM_Controller_Shared_s1_byteenable                            (mm_interconnect_0_sdram_controller_shared_s1_byteenable),                      //                                                           .byteenable
+		.SDRAM_Controller_Shared_s1_readdatavalid                         (mm_interconnect_0_sdram_controller_shared_s1_readdatavalid),                   //                                                           .readdatavalid
+		.SDRAM_Controller_Shared_s1_waitrequest                           (mm_interconnect_0_sdram_controller_shared_s1_waitrequest),                     //                                                           .waitrequest
+		.SDRAM_Controller_Shared_s1_chipselect                            (mm_interconnect_0_sdram_controller_shared_s1_chipselect),                      //                                                           .chipselect
+		.SysAudio_Audio_Core_avalon_audio_slave_address                   (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_address),             //                     SysAudio_Audio_Core_avalon_audio_slave.address
+		.SysAudio_Audio_Core_avalon_audio_slave_write                     (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_write),               //                                                           .write
+		.SysAudio_Audio_Core_avalon_audio_slave_read                      (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_read),                //                                                           .read
+		.SysAudio_Audio_Core_avalon_audio_slave_readdata                  (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_readdata),            //                                                           .readdata
+		.SysAudio_Audio_Core_avalon_audio_slave_writedata                 (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_writedata),           //                                                           .writedata
+		.SysAudio_Audio_Core_avalon_audio_slave_chipselect                (mm_interconnect_0_sysaudio_audio_core_avalon_audio_slave_chipselect),          //                                                           .chipselect
+		.SysAudio_AV_Config_avalon_av_config_slave_address                (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_address),          //                  SysAudio_AV_Config_avalon_av_config_slave.address
+		.SysAudio_AV_Config_avalon_av_config_slave_write                  (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_write),            //                                                           .write
+		.SysAudio_AV_Config_avalon_av_config_slave_read                   (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_read),             //                                                           .read
+		.SysAudio_AV_Config_avalon_av_config_slave_readdata               (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_readdata),         //                                                           .readdata
+		.SysAudio_AV_Config_avalon_av_config_slave_writedata              (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_writedata),        //                                                           .writedata
+		.SysAudio_AV_Config_avalon_av_config_slave_byteenable             (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_byteenable),       //                                                           .byteenable
+		.SysAudio_AV_Config_avalon_av_config_slave_waitrequest            (mm_interconnect_0_sysaudio_av_config_avalon_av_config_slave_waitrequest),      //                                                           .waitrequest
+		.SysAudio_JTAG_UART_avalon_jtag_slave_address                     (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_address),               //                       SysAudio_JTAG_UART_avalon_jtag_slave.address
+		.SysAudio_JTAG_UART_avalon_jtag_slave_write                       (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_write),                 //                                                           .write
+		.SysAudio_JTAG_UART_avalon_jtag_slave_read                        (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_read),                  //                                                           .read
+		.SysAudio_JTAG_UART_avalon_jtag_slave_readdata                    (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_readdata),              //                                                           .readdata
+		.SysAudio_JTAG_UART_avalon_jtag_slave_writedata                   (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_writedata),             //                                                           .writedata
+		.SysAudio_JTAG_UART_avalon_jtag_slave_waitrequest                 (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_waitrequest),           //                                                           .waitrequest
+		.SysAudio_JTAG_UART_avalon_jtag_slave_chipselect                  (mm_interconnect_0_sysaudio_jtag_uart_avalon_jtag_slave_chipselect),            //                                                           .chipselect
+		.SysAudio_NIOS_II_debug_mem_slave_address                         (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_address),                   //                           SysAudio_NIOS_II_debug_mem_slave.address
+		.SysAudio_NIOS_II_debug_mem_slave_write                           (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_write),                     //                                                           .write
+		.SysAudio_NIOS_II_debug_mem_slave_read                            (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_read),                      //                                                           .read
+		.SysAudio_NIOS_II_debug_mem_slave_readdata                        (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_readdata),                  //                                                           .readdata
+		.SysAudio_NIOS_II_debug_mem_slave_writedata                       (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_writedata),                 //                                                           .writedata
+		.SysAudio_NIOS_II_debug_mem_slave_byteenable                      (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_byteenable),                //                                                           .byteenable
+		.SysAudio_NIOS_II_debug_mem_slave_waitrequest                     (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_waitrequest),               //                                                           .waitrequest
+		.SysAudio_NIOS_II_debug_mem_slave_debugaccess                     (mm_interconnect_0_sysaudio_nios_ii_debug_mem_slave_debugaccess),               //                                                           .debugaccess
+		.SysAudio_Onchip_Memory_s1_address                                (mm_interconnect_0_sysaudio_onchip_memory_s1_address),                          //                                  SysAudio_Onchip_Memory_s1.address
+		.SysAudio_Onchip_Memory_s1_write                                  (mm_interconnect_0_sysaudio_onchip_memory_s1_write),                            //                                                           .write
+		.SysAudio_Onchip_Memory_s1_readdata                               (mm_interconnect_0_sysaudio_onchip_memory_s1_readdata),                         //                                                           .readdata
+		.SysAudio_Onchip_Memory_s1_writedata                              (mm_interconnect_0_sysaudio_onchip_memory_s1_writedata),                        //                                                           .writedata
+		.SysAudio_Onchip_Memory_s1_byteenable                             (mm_interconnect_0_sysaudio_onchip_memory_s1_byteenable),                       //                                                           .byteenable
+		.SysAudio_Onchip_Memory_s1_chipselect                             (mm_interconnect_0_sysaudio_onchip_memory_s1_chipselect),                       //                                                           .chipselect
+		.SysAudio_Onchip_Memory_s1_clken                                  (mm_interconnect_0_sysaudio_onchip_memory_s1_clken),                            //                                                           .clken
+		.SysAudio_Performance_Counter_control_slave_address               (mm_interconnect_0_sysaudio_performance_counter_control_slave_address),         //                 SysAudio_Performance_Counter_control_slave.address
+		.SysAudio_Performance_Counter_control_slave_write                 (mm_interconnect_0_sysaudio_performance_counter_control_slave_write),           //                                                           .write
+		.SysAudio_Performance_Counter_control_slave_readdata              (mm_interconnect_0_sysaudio_performance_counter_control_slave_readdata),        //                                                           .readdata
+		.SysAudio_Performance_Counter_control_slave_writedata             (mm_interconnect_0_sysaudio_performance_counter_control_slave_writedata),       //                                                           .writedata
+		.SysAudio_Performance_Counter_control_slave_begintransfer         (mm_interconnect_0_sysaudio_performance_counter_control_slave_begintransfer),   //                                                           .begintransfer
+		.SysSigProc_HW_accelerator_as_address                             (mm_interconnect_0_syssigproc_hw_accelerator_as_address),                       //                               SysSigProc_HW_accelerator_as.address
+		.SysSigProc_HW_accelerator_as_write                               (mm_interconnect_0_syssigproc_hw_accelerator_as_write),                         //                                                           .write
+		.SysSigProc_HW_accelerator_as_read                                (mm_interconnect_0_syssigproc_hw_accelerator_as_read),                          //                                                           .read
+		.SysSigProc_HW_accelerator_as_readdata                            (mm_interconnect_0_syssigproc_hw_accelerator_as_readdata),                      //                                                           .readdata
+		.SysSigProc_HW_accelerator_as_writedata                           (mm_interconnect_0_syssigproc_hw_accelerator_as_writedata),                     //                                                           .writedata
+		.SysSigProc_JTAG_UART_avalon_jtag_slave_address                   (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_address),             //                     SysSigProc_JTAG_UART_avalon_jtag_slave.address
+		.SysSigProc_JTAG_UART_avalon_jtag_slave_write                     (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_write),               //                                                           .write
+		.SysSigProc_JTAG_UART_avalon_jtag_slave_read                      (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_read),                //                                                           .read
+		.SysSigProc_JTAG_UART_avalon_jtag_slave_readdata                  (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_readdata),            //                                                           .readdata
+		.SysSigProc_JTAG_UART_avalon_jtag_slave_writedata                 (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_writedata),           //                                                           .writedata
+		.SysSigProc_JTAG_UART_avalon_jtag_slave_waitrequest               (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_waitrequest),         //                                                           .waitrequest
+		.SysSigProc_JTAG_UART_avalon_jtag_slave_chipselect                (mm_interconnect_0_syssigproc_jtag_uart_avalon_jtag_slave_chipselect),          //                                                           .chipselect
+		.SysSigProc_NIOS_II_debug_mem_slave_address                       (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_address),                 //                         SysSigProc_NIOS_II_debug_mem_slave.address
+		.SysSigProc_NIOS_II_debug_mem_slave_write                         (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_write),                   //                                                           .write
+		.SysSigProc_NIOS_II_debug_mem_slave_read                          (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_read),                    //                                                           .read
+		.SysSigProc_NIOS_II_debug_mem_slave_readdata                      (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_readdata),                //                                                           .readdata
+		.SysSigProc_NIOS_II_debug_mem_slave_writedata                     (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_writedata),               //                                                           .writedata
+		.SysSigProc_NIOS_II_debug_mem_slave_byteenable                    (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_byteenable),              //                                                           .byteenable
+		.SysSigProc_NIOS_II_debug_mem_slave_waitrequest                   (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_waitrequest),             //                                                           .waitrequest
+		.SysSigProc_NIOS_II_debug_mem_slave_debugaccess                   (mm_interconnect_0_syssigproc_nios_ii_debug_mem_slave_debugaccess),             //                                                           .debugaccess
+		.SysSigProc_Onchip_Memory_s1_address                              (mm_interconnect_0_syssigproc_onchip_memory_s1_address),                        //                                SysSigProc_Onchip_Memory_s1.address
+		.SysSigProc_Onchip_Memory_s1_write                                (mm_interconnect_0_syssigproc_onchip_memory_s1_write),                          //                                                           .write
+		.SysSigProc_Onchip_Memory_s1_readdata                             (mm_interconnect_0_syssigproc_onchip_memory_s1_readdata),                       //                                                           .readdata
+		.SysSigProc_Onchip_Memory_s1_writedata                            (mm_interconnect_0_syssigproc_onchip_memory_s1_writedata),                      //                                                           .writedata
+		.SysSigProc_Onchip_Memory_s1_byteenable                           (mm_interconnect_0_syssigproc_onchip_memory_s1_byteenable),                     //                                                           .byteenable
+		.SysSigProc_Onchip_Memory_s1_chipselect                           (mm_interconnect_0_syssigproc_onchip_memory_s1_chipselect),                     //                                                           .chipselect
+		.SysSigProc_Onchip_Memory_s1_clken                                (mm_interconnect_0_syssigproc_onchip_memory_s1_clken),                          //                                                           .clken
+		.SysSigProc_Performance_Counter_control_slave_address             (mm_interconnect_0_syssigproc_performance_counter_control_slave_address),       //               SysSigProc_Performance_Counter_control_slave.address
+		.SysSigProc_Performance_Counter_control_slave_write               (mm_interconnect_0_syssigproc_performance_counter_control_slave_write),         //                                                           .write
+		.SysSigProc_Performance_Counter_control_slave_readdata            (mm_interconnect_0_syssigproc_performance_counter_control_slave_readdata),      //                                                           .readdata
+		.SysSigProc_Performance_Counter_control_slave_writedata           (mm_interconnect_0_syssigproc_performance_counter_control_slave_writedata),     //                                                           .writedata
+		.SysSigProc_Performance_Counter_control_slave_begintransfer       (mm_interconnect_0_syssigproc_performance_counter_control_slave_begintransfer)  //                                                           .begintransfer
 	);
 
 	soc_system_irq_mapper irq_mapper (
@@ -892,15 +938,15 @@ module soc_system (
 	);
 
 	soc_system_irq_mapper_001 irq_mapper_001 (
-		.clk           (pll_shared_outclk0_clk),         //       clk.clk
-		.reset         (rst_controller_reset_out_reset), // clk_reset.reset
-		.receiver0_irq (irq_mapper_receiver2_irq),       // receiver0.irq
-		.receiver1_irq (irq_mapper_receiver1_irq),       // receiver1.irq
-		.receiver2_irq (irq_mapper_receiver4_irq),       // receiver2.irq
-		.receiver3_irq (irq_mapper_receiver3_irq),       // receiver3.irq
-		.receiver4_irq (irq_mapper_receiver5_irq),       // receiver4.irq
-		.receiver5_irq (irq_mapper_001_receiver5_irq),   // receiver5.irq
-		.sender_irq    (syssigproc_nios_ii_irq_irq)      //    sender.irq
+		.clk           (pll_shared_outclk0_clk),             //       clk.clk
+		.reset         (rst_controller_001_reset_out_reset), // clk_reset.reset
+		.receiver0_irq (irq_mapper_receiver2_irq),           // receiver0.irq
+		.receiver1_irq (irq_mapper_receiver1_irq),           // receiver1.irq
+		.receiver2_irq (irq_mapper_receiver4_irq),           // receiver2.irq
+		.receiver3_irq (irq_mapper_receiver3_irq),           // receiver3.irq
+		.receiver4_irq (irq_mapper_receiver5_irq),           // receiver4.irq
+		.receiver5_irq (irq_mapper_001_receiver5_irq),       // receiver5.irq
+		.sender_irq    (syssigproc_nios_ii_irq_irq)          //    sender.irq
 	);
 
 	altera_irq_clock_crosser #(
@@ -908,14 +954,14 @@ module soc_system (
 	) irq_synchronizer (
 		.receiver_clk   (sysaudio_audio_clock_audio_clk_clk), //       receiver_clk.clk
 		.sender_clk     (pll_shared_outclk0_clk),             //         sender_clk.clk
-		.receiver_reset (rst_controller_005_reset_out_reset), // receiver_clk_reset.reset
+		.receiver_reset (rst_controller_006_reset_out_reset), // receiver_clk_reset.reset
 		.sender_reset   (rst_controller_reset_out_reset),     //   sender_clk_reset.reset
 		.receiver_irq   (irq_synchronizer_receiver_irq),      //           receiver.irq
 		.sender_irq     (irq_mapper_receiver0_irq)            //             sender.irq
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (4),
+		.NUM_RESET_INPUTS          (2),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (1),
@@ -940,16 +986,79 @@ module soc_system (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller (
+		.reset_in0      (~reset_reset_n),                             // reset_in0.reset
+		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset), // reset_in1.reset
+		.clk            (pll_shared_outclk0_clk),                     //       clk.clk
+		.reset_out      (rst_controller_reset_out_reset),             // reset_out.reset
+		.reset_req      (rst_controller_reset_out_reset_req),         //          .reset_req
+		.reset_req_in0  (1'b0),                                       // (terminated)
+		.reset_req_in1  (1'b0),                                       // (terminated)
+		.reset_in2      (1'b0),                                       // (terminated)
+		.reset_req_in2  (1'b0),                                       // (terminated)
+		.reset_in3      (1'b0),                                       // (terminated)
+		.reset_req_in3  (1'b0),                                       // (terminated)
+		.reset_in4      (1'b0),                                       // (terminated)
+		.reset_req_in4  (1'b0),                                       // (terminated)
+		.reset_in5      (1'b0),                                       // (terminated)
+		.reset_req_in5  (1'b0),                                       // (terminated)
+		.reset_in6      (1'b0),                                       // (terminated)
+		.reset_req_in6  (1'b0),                                       // (terminated)
+		.reset_in7      (1'b0),                                       // (terminated)
+		.reset_req_in7  (1'b0),                                       // (terminated)
+		.reset_in8      (1'b0),                                       // (terminated)
+		.reset_req_in8  (1'b0),                                       // (terminated)
+		.reset_in9      (1'b0),                                       // (terminated)
+		.reset_req_in9  (1'b0),                                       // (terminated)
+		.reset_in10     (1'b0),                                       // (terminated)
+		.reset_req_in10 (1'b0),                                       // (terminated)
+		.reset_in11     (1'b0),                                       // (terminated)
+		.reset_req_in11 (1'b0),                                       // (terminated)
+		.reset_in12     (1'b0),                                       // (terminated)
+		.reset_req_in12 (1'b0),                                       // (terminated)
+		.reset_in13     (1'b0),                                       // (terminated)
+		.reset_req_in13 (1'b0),                                       // (terminated)
+		.reset_in14     (1'b0),                                       // (terminated)
+		.reset_req_in14 (1'b0),                                       // (terminated)
+		.reset_in15     (1'b0),                                       // (terminated)
+		.reset_req_in15 (1'b0)                                        // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (2),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (1),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_001 (
 		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
-		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
-		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
-		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
+		.reset_in1      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in1.reset
 		.clk            (pll_shared_outclk0_clk),                       //       clk.clk
-		.reset_out      (rst_controller_reset_out_reset),               // reset_out.reset
-		.reset_req      (rst_controller_reset_out_reset_req),           //          .reset_req
+		.reset_out      (rst_controller_001_reset_out_reset),           // reset_out.reset
+		.reset_req      (rst_controller_001_reset_out_reset_req),       //          .reset_req
 		.reset_req_in0  (1'b0),                                         // (terminated)
 		.reset_req_in1  (1'b0),                                         // (terminated)
+		.reset_in2      (1'b0),                                         // (terminated)
 		.reset_req_in2  (1'b0),                                         // (terminated)
+		.reset_in3      (1'b0),                                         // (terminated)
 		.reset_req_in3  (1'b0),                                         // (terminated)
 		.reset_in4      (1'b0),                                         // (terminated)
 		.reset_req_in4  (1'b0),                                         // (terminated)
@@ -978,71 +1087,8 @@ module soc_system (
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (1),
+		.NUM_RESET_INPUTS          (3),
 		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
-		.SYNC_DEPTH                (2),
-		.RESET_REQUEST_PRESENT     (0),
-		.RESET_REQ_WAIT_TIME       (1),
-		.MIN_RST_ASSERTION_TIME    (3),
-		.RESET_REQ_EARLY_DSRT_TIME (1),
-		.USE_RESET_REQUEST_IN0     (0),
-		.USE_RESET_REQUEST_IN1     (0),
-		.USE_RESET_REQUEST_IN2     (0),
-		.USE_RESET_REQUEST_IN3     (0),
-		.USE_RESET_REQUEST_IN4     (0),
-		.USE_RESET_REQUEST_IN5     (0),
-		.USE_RESET_REQUEST_IN6     (0),
-		.USE_RESET_REQUEST_IN7     (0),
-		.USE_RESET_REQUEST_IN8     (0),
-		.USE_RESET_REQUEST_IN9     (0),
-		.USE_RESET_REQUEST_IN10    (0),
-		.USE_RESET_REQUEST_IN11    (0),
-		.USE_RESET_REQUEST_IN12    (0),
-		.USE_RESET_REQUEST_IN13    (0),
-		.USE_RESET_REQUEST_IN14    (0),
-		.USE_RESET_REQUEST_IN15    (0),
-		.ADAPT_RESET_REQUEST       (0)
-	) rst_controller_001 (
-		.reset_in0      (~reset_reset_n),                     // reset_in0.reset
-		.clk            (pll_shared_outclk0_clk),             //       clk.clk
-		.reset_out      (rst_controller_001_reset_out_reset), // reset_out.reset
-		.reset_req      (),                                   // (terminated)
-		.reset_req_in0  (1'b0),                               // (terminated)
-		.reset_in1      (1'b0),                               // (terminated)
-		.reset_req_in1  (1'b0),                               // (terminated)
-		.reset_in2      (1'b0),                               // (terminated)
-		.reset_req_in2  (1'b0),                               // (terminated)
-		.reset_in3      (1'b0),                               // (terminated)
-		.reset_req_in3  (1'b0),                               // (terminated)
-		.reset_in4      (1'b0),                               // (terminated)
-		.reset_req_in4  (1'b0),                               // (terminated)
-		.reset_in5      (1'b0),                               // (terminated)
-		.reset_req_in5  (1'b0),                               // (terminated)
-		.reset_in6      (1'b0),                               // (terminated)
-		.reset_req_in6  (1'b0),                               // (terminated)
-		.reset_in7      (1'b0),                               // (terminated)
-		.reset_req_in7  (1'b0),                               // (terminated)
-		.reset_in8      (1'b0),                               // (terminated)
-		.reset_req_in8  (1'b0),                               // (terminated)
-		.reset_in9      (1'b0),                               // (terminated)
-		.reset_req_in9  (1'b0),                               // (terminated)
-		.reset_in10     (1'b0),                               // (terminated)
-		.reset_req_in10 (1'b0),                               // (terminated)
-		.reset_in11     (1'b0),                               // (terminated)
-		.reset_req_in11 (1'b0),                               // (terminated)
-		.reset_in12     (1'b0),                               // (terminated)
-		.reset_req_in12 (1'b0),                               // (terminated)
-		.reset_in13     (1'b0),                               // (terminated)
-		.reset_req_in13 (1'b0),                               // (terminated)
-		.reset_in14     (1'b0),                               // (terminated)
-		.reset_req_in14 (1'b0),                               // (terminated)
-		.reset_in15     (1'b0),                               // (terminated)
-		.reset_req_in15 (1'b0)                                // (terminated)
-	);
-
-	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (4),
-		.OUTPUT_RESET_SYNC_EDGES   ("none"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
@@ -1069,13 +1115,13 @@ module soc_system (
 		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
 		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
 		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
-		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
-		.clk            (),                                             //       clk.clk
+		.clk            (pll_shared_outclk0_clk),                       //       clk.clk
 		.reset_out      (rst_controller_002_reset_out_reset),           // reset_out.reset
 		.reset_req      (),                                             // (terminated)
 		.reset_req_in0  (1'b0),                                         // (terminated)
 		.reset_req_in1  (1'b0),                                         // (terminated)
 		.reset_req_in2  (1'b0),                                         // (terminated)
+		.reset_in3      (1'b0),                                         // (terminated)
 		.reset_req_in3  (1'b0),                                         // (terminated)
 		.reset_in4      (1'b0),                                         // (terminated)
 		.reset_req_in4  (1'b0),                                         // (terminated)
@@ -1104,8 +1150,8 @@ module soc_system (
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (4),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.NUM_RESET_INPUTS          (3),
+		.OUTPUT_RESET_SYNC_EDGES   ("none"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
@@ -1132,13 +1178,13 @@ module soc_system (
 		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
 		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
 		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
-		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
-		.clk            (pll_shared_outclk1_clk),                       //       clk.clk
+		.clk            (),                                             //       clk.clk
 		.reset_out      (rst_controller_003_reset_out_reset),           // reset_out.reset
 		.reset_req      (),                                             // (terminated)
 		.reset_req_in0  (1'b0),                                         // (terminated)
 		.reset_req_in1  (1'b0),                                         // (terminated)
 		.reset_req_in2  (1'b0),                                         // (terminated)
+		.reset_in3      (1'b0),                                         // (terminated)
 		.reset_req_in3  (1'b0),                                         // (terminated)
 		.reset_in4      (1'b0),                                         // (terminated)
 		.reset_req_in4  (1'b0),                                         // (terminated)
@@ -1167,8 +1213,8 @@ module soc_system (
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (4),
-		.OUTPUT_RESET_SYNC_EDGES   ("none"),
+		.NUM_RESET_INPUTS          (3),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
@@ -1195,13 +1241,13 @@ module soc_system (
 		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
 		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
 		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
-		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
-		.clk            (),                                             //       clk.clk
+		.clk            (pll_shared_outclk1_clk),                       //       clk.clk
 		.reset_out      (rst_controller_004_reset_out_reset),           // reset_out.reset
 		.reset_req      (),                                             // (terminated)
 		.reset_req_in0  (1'b0),                                         // (terminated)
 		.reset_req_in1  (1'b0),                                         // (terminated)
 		.reset_req_in2  (1'b0),                                         // (terminated)
+		.reset_in3      (1'b0),                                         // (terminated)
 		.reset_req_in3  (1'b0),                                         // (terminated)
 		.reset_in4      (1'b0),                                         // (terminated)
 		.reset_req_in4  (1'b0),                                         // (terminated)
@@ -1230,8 +1276,8 @@ module soc_system (
 	);
 
 	altera_reset_controller #(
-		.NUM_RESET_INPUTS          (4),
-		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.NUM_RESET_INPUTS          (2),
+		.OUTPUT_RESET_SYNC_EDGES   ("none"),
 		.SYNC_DEPTH                (2),
 		.RESET_REQUEST_PRESENT     (0),
 		.RESET_REQ_WAIT_TIME       (1),
@@ -1255,41 +1301,104 @@ module soc_system (
 		.USE_RESET_REQUEST_IN15    (0),
 		.ADAPT_RESET_REQUEST       (0)
 	) rst_controller_005 (
-		.reset_in0      (~reset_reset_n),                               // reset_in0.reset
-		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset),   // reset_in1.reset
-		.reset_in2      (syssigproc_nios_ii_debug_reset_request_reset), // reset_in2.reset
-		.reset_in3      (sysaudio_audio_clock_reset_source_reset),      // reset_in3.reset
-		.clk            (sysaudio_audio_clock_audio_clk_clk),           //       clk.clk
-		.reset_out      (rst_controller_005_reset_out_reset),           // reset_out.reset
-		.reset_req      (),                                             // (terminated)
-		.reset_req_in0  (1'b0),                                         // (terminated)
-		.reset_req_in1  (1'b0),                                         // (terminated)
-		.reset_req_in2  (1'b0),                                         // (terminated)
-		.reset_req_in3  (1'b0),                                         // (terminated)
-		.reset_in4      (1'b0),                                         // (terminated)
-		.reset_req_in4  (1'b0),                                         // (terminated)
-		.reset_in5      (1'b0),                                         // (terminated)
-		.reset_req_in5  (1'b0),                                         // (terminated)
-		.reset_in6      (1'b0),                                         // (terminated)
-		.reset_req_in6  (1'b0),                                         // (terminated)
-		.reset_in7      (1'b0),                                         // (terminated)
-		.reset_req_in7  (1'b0),                                         // (terminated)
-		.reset_in8      (1'b0),                                         // (terminated)
-		.reset_req_in8  (1'b0),                                         // (terminated)
-		.reset_in9      (1'b0),                                         // (terminated)
-		.reset_req_in9  (1'b0),                                         // (terminated)
-		.reset_in10     (1'b0),                                         // (terminated)
-		.reset_req_in10 (1'b0),                                         // (terminated)
-		.reset_in11     (1'b0),                                         // (terminated)
-		.reset_req_in11 (1'b0),                                         // (terminated)
-		.reset_in12     (1'b0),                                         // (terminated)
-		.reset_req_in12 (1'b0),                                         // (terminated)
-		.reset_in13     (1'b0),                                         // (terminated)
-		.reset_req_in13 (1'b0),                                         // (terminated)
-		.reset_in14     (1'b0),                                         // (terminated)
-		.reset_req_in14 (1'b0),                                         // (terminated)
-		.reset_in15     (1'b0),                                         // (terminated)
-		.reset_req_in15 (1'b0)                                          // (terminated)
+		.reset_in0      (~reset_reset_n),                             // reset_in0.reset
+		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset), // reset_in1.reset
+		.clk            (),                                           //       clk.clk
+		.reset_out      (rst_controller_005_reset_out_reset),         // reset_out.reset
+		.reset_req      (),                                           // (terminated)
+		.reset_req_in0  (1'b0),                                       // (terminated)
+		.reset_req_in1  (1'b0),                                       // (terminated)
+		.reset_in2      (1'b0),                                       // (terminated)
+		.reset_req_in2  (1'b0),                                       // (terminated)
+		.reset_in3      (1'b0),                                       // (terminated)
+		.reset_req_in3  (1'b0),                                       // (terminated)
+		.reset_in4      (1'b0),                                       // (terminated)
+		.reset_req_in4  (1'b0),                                       // (terminated)
+		.reset_in5      (1'b0),                                       // (terminated)
+		.reset_req_in5  (1'b0),                                       // (terminated)
+		.reset_in6      (1'b0),                                       // (terminated)
+		.reset_req_in6  (1'b0),                                       // (terminated)
+		.reset_in7      (1'b0),                                       // (terminated)
+		.reset_req_in7  (1'b0),                                       // (terminated)
+		.reset_in8      (1'b0),                                       // (terminated)
+		.reset_req_in8  (1'b0),                                       // (terminated)
+		.reset_in9      (1'b0),                                       // (terminated)
+		.reset_req_in9  (1'b0),                                       // (terminated)
+		.reset_in10     (1'b0),                                       // (terminated)
+		.reset_req_in10 (1'b0),                                       // (terminated)
+		.reset_in11     (1'b0),                                       // (terminated)
+		.reset_req_in11 (1'b0),                                       // (terminated)
+		.reset_in12     (1'b0),                                       // (terminated)
+		.reset_req_in12 (1'b0),                                       // (terminated)
+		.reset_in13     (1'b0),                                       // (terminated)
+		.reset_req_in13 (1'b0),                                       // (terminated)
+		.reset_in14     (1'b0),                                       // (terminated)
+		.reset_req_in14 (1'b0),                                       // (terminated)
+		.reset_in15     (1'b0),                                       // (terminated)
+		.reset_req_in15 (1'b0)                                        // (terminated)
+	);
+
+	altera_reset_controller #(
+		.NUM_RESET_INPUTS          (3),
+		.OUTPUT_RESET_SYNC_EDGES   ("deassert"),
+		.SYNC_DEPTH                (2),
+		.RESET_REQUEST_PRESENT     (0),
+		.RESET_REQ_WAIT_TIME       (1),
+		.MIN_RST_ASSERTION_TIME    (3),
+		.RESET_REQ_EARLY_DSRT_TIME (1),
+		.USE_RESET_REQUEST_IN0     (0),
+		.USE_RESET_REQUEST_IN1     (0),
+		.USE_RESET_REQUEST_IN2     (0),
+		.USE_RESET_REQUEST_IN3     (0),
+		.USE_RESET_REQUEST_IN4     (0),
+		.USE_RESET_REQUEST_IN5     (0),
+		.USE_RESET_REQUEST_IN6     (0),
+		.USE_RESET_REQUEST_IN7     (0),
+		.USE_RESET_REQUEST_IN8     (0),
+		.USE_RESET_REQUEST_IN9     (0),
+		.USE_RESET_REQUEST_IN10    (0),
+		.USE_RESET_REQUEST_IN11    (0),
+		.USE_RESET_REQUEST_IN12    (0),
+		.USE_RESET_REQUEST_IN13    (0),
+		.USE_RESET_REQUEST_IN14    (0),
+		.USE_RESET_REQUEST_IN15    (0),
+		.ADAPT_RESET_REQUEST       (0)
+	) rst_controller_006 (
+		.reset_in0      (~reset_reset_n),                             // reset_in0.reset
+		.reset_in1      (sysaudio_nios_ii_debug_reset_request_reset), // reset_in1.reset
+		.reset_in2      (sysaudio_audio_clock_reset_source_reset),    // reset_in2.reset
+		.clk            (sysaudio_audio_clock_audio_clk_clk),         //       clk.clk
+		.reset_out      (rst_controller_006_reset_out_reset),         // reset_out.reset
+		.reset_req      (),                                           // (terminated)
+		.reset_req_in0  (1'b0),                                       // (terminated)
+		.reset_req_in1  (1'b0),                                       // (terminated)
+		.reset_req_in2  (1'b0),                                       // (terminated)
+		.reset_in3      (1'b0),                                       // (terminated)
+		.reset_req_in3  (1'b0),                                       // (terminated)
+		.reset_in4      (1'b0),                                       // (terminated)
+		.reset_req_in4  (1'b0),                                       // (terminated)
+		.reset_in5      (1'b0),                                       // (terminated)
+		.reset_req_in5  (1'b0),                                       // (terminated)
+		.reset_in6      (1'b0),                                       // (terminated)
+		.reset_req_in6  (1'b0),                                       // (terminated)
+		.reset_in7      (1'b0),                                       // (terminated)
+		.reset_req_in7  (1'b0),                                       // (terminated)
+		.reset_in8      (1'b0),                                       // (terminated)
+		.reset_req_in8  (1'b0),                                       // (terminated)
+		.reset_in9      (1'b0),                                       // (terminated)
+		.reset_req_in9  (1'b0),                                       // (terminated)
+		.reset_in10     (1'b0),                                       // (terminated)
+		.reset_req_in10 (1'b0),                                       // (terminated)
+		.reset_in11     (1'b0),                                       // (terminated)
+		.reset_req_in11 (1'b0),                                       // (terminated)
+		.reset_in12     (1'b0),                                       // (terminated)
+		.reset_req_in12 (1'b0),                                       // (terminated)
+		.reset_in13     (1'b0),                                       // (terminated)
+		.reset_req_in13 (1'b0),                                       // (terminated)
+		.reset_in14     (1'b0),                                       // (terminated)
+		.reset_req_in14 (1'b0),                                       // (terminated)
+		.reset_in15     (1'b0),                                       // (terminated)
+		.reset_req_in15 (1'b0)                                        // (terminated)
 	);
 
 endmodule

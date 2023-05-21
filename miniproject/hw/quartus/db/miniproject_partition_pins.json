@@ -4,46 +4,6 @@
 			"name" : "Top",
 			"pins" : [
 				{
-					"name" : "LEDR[0]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[1]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[2]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[3]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[4]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[5]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[6]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[7]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[8]",
-					"strict" : false
-				},
-				{
-					"name" : "LEDR[9]",
-					"strict" : false
-				},
-				{
 					"name" : "HEX0_N[0]",
 					"strict" : false
 				},
@@ -61,6 +21,98 @@
 				},
 				{
 					"name" : "HEX0_N[4]",
+					"strict" : false
+				},
+				{
+					"name" : "FPGA_I2C_SCLK",
+					"strict" : false
+				},
+				{
+					"name" : "AUD_DACDAT",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[2]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[3]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[4]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[5]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[6]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[7]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[8]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[9]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[10]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[11]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_ADDR[12]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_BA[0]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_BA[1]",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_CAS_N",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_CS_N",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_LDQM",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_RAS_N",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_UDQM",
+					"strict" : false
+				},
+				{
+					"name" : "DRAM_WE_N",
 					"strict" : false
 				},
 				{
@@ -212,179 +264,43 @@
 					"strict" : false
 				},
 				{
-					"name" : "AUD_DACDAT",
+					"name" : "LEDR[0]",
 					"strict" : false
 				},
 				{
-					"name" : "FPGA_I2C_SCLK",
+					"name" : "LEDR[1]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[0]",
+					"name" : "LEDR[2]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[1]",
+					"name" : "LEDR[3]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[2]",
+					"name" : "LEDR[4]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[3]",
+					"name" : "LEDR[5]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[4]",
+					"name" : "LEDR[6]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[5]",
+					"name" : "LEDR[7]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[6]",
+					"name" : "LEDR[8]",
 					"strict" : false
 				},
 				{
-					"name" : "DRAM_ADDR[7]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_ADDR[8]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_ADDR[9]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_ADDR[10]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_ADDR[11]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_ADDR[12]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_BA[0]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_BA[1]",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_CAS_N",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_CS_N",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_LDQM",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_RAS_N",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_UDQM",
-					"strict" : false
-				},
-				{
-					"name" : "DRAM_WE_N",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[0]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[1]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[2]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[3]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[4]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[5]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[6]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[7]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[8]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[9]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[10]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[11]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[12]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[13]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[14]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[15]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[16]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[17]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[18]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[19]",
-					"strict" : false
-				},
-				{
-					"name" : "GPIO_0[20]",
+					"name" : "LEDR[9]",
 					"strict" : false
 				},
 				{
@@ -496,6 +412,10 @@
 					"strict" : false
 				},
 				{
+					"name" : "FPGA_I2C_SDAT",
+					"strict" : false
+				},
+				{
 					"name" : "AUD_ADCLRCK",
 					"strict" : false
 				},
@@ -508,7 +428,87 @@
 					"strict" : false
 				},
 				{
-					"name" : "FPGA_I2C_SDAT",
+					"name" : "GPIO_0[0]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[1]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[2]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[3]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[4]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[5]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[6]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[7]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[8]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[9]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[10]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[11]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[12]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[13]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[14]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[15]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[16]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[17]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[18]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[19]",
+					"strict" : false
+				},
+				{
+					"name" : "GPIO_0[20]",
 					"strict" : false
 				},
 				{

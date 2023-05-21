@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2023.05.15.09:18:15</td>
+    <td class="l">2023.05.21.17:58:38</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -139,6 +139,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_SysAudio_Performance_Counter"><b>SysAudio_Performance_Counter</b>
      </a> altera_avalon_performance_counter 18.1
      <br/>&#160;&#160;
+     <a href="#module_SysSigProc_HW_accelerator"><b>SysSigProc_HW_accelerator</b>
+     </a> HW_accelerator 1.0
+     <br/>&#160;&#160;
      <a href="#module_SysSigProc_JTAG_UART"><b>SysSigProc_JTAG_UART</b>
      </a> altera_avalon_jtag_uart 18.1
      <br/>&#160;&#160;
@@ -161,6 +164,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_SysAudio_NIOS_II"><b>SysAudio_NIOS_II</b>
      </a>
     </td>
+    <td class="mastermodule" colspan="1">
+     <a href="#module_SysSigProc_HW_accelerator"><b>SysSigProc_HW_accelerator</b>
+     </a>
+    </td>
     <td class="mastermodule" colspan="2">
      <a href="#module_SysSigProc_NIOS_II"><b>SysSigProc_NIOS_II</b>
      </a>
@@ -169,6 +176,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <tr>
     <td class="masterl">&#160;data_master</td>
     <td class="masterr">&#160;instruction_master</td>
+    <td class="masterlr">&#160;avalon_master</td>
     <td class="masterl">&#160;data_master</td>
     <td class="masterr">&#160;instruction_master</td>
    </tr>
@@ -181,10 +189,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avmm_msg_sender&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>040810f0</td>
+    <td class="addr"><span style="color:#989898">0x</span>040410f0</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -193,7 +203,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slavem">avmm_msg_receiver&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041090</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041120</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -205,17 +216,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avmm_msg_sender&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041080</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410f0</td>
     <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avmm_msg_receiver&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04081100</td>
+    <td class="addr"><span style="color:#989898">0x</span>04041100</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -229,12 +243,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>040810c0</td>
+    <td class="addr"><span style="color:#989898">0x</span>040410c0</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>040810c0</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410c0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -246,12 +262,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>040810b0</td>
+    <td class="addr"><span style="color:#989898">0x</span>040410b0</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>040810b0</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410b0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -263,12 +281,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>040810a0</td>
+    <td class="addr"><span style="color:#989898">0x</span>040410a0</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>040810a0</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410a0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -280,12 +300,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04081080</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04081080</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041080</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -297,12 +319,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>040810e0</td>
+    <td class="addr"><span style="color:#989898">0x</span>040410e0</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>040810e0</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410e0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -314,12 +338,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>040810d0</td>
+    <td class="addr"><span style="color:#989898">0x</span>040410d0</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>040810d0</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410d0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -331,11 +357,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
     <td class="addr"><span style="color:#989898">0x</span>00000000</td>
     <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>00000000</td>
     <td class="addr"><span style="color:#989898">0x</span>00000000</td>
     <td class="empty"></td>
    </tr>
@@ -348,10 +376,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_av_config_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04081110</td>
+    <td class="addr"><span style="color:#989898">0x</span>04041110</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -365,10 +395,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_audio_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04081120</td>
+    <td class="addr"><span style="color:#989898">0x</span>04041120</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -382,10 +414,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04081130</td>
+    <td class="addr"><span style="color:#989898">0x</span>04041130</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -399,11 +433,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">debug_mem_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04080800</td>
-    <td class="addr"><span style="color:#989898">0x</span>04080800</td>
+    <td class="addr"><span style="color:#989898">0x</span>04040800</td>
+    <td class="addr"><span style="color:#989898">0x</span>04040800</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
    </tr>
@@ -416,11 +452,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04040000</td>
-    <td class="addr"><span style="color:#989898">0x</span>04040000</td>
+    <td class="addr"><span style="color:#989898">0x</span>04020000</td>
+    <td class="addr"><span style="color:#989898">0x</span>04020000</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
    </tr>
@@ -433,12 +471,33 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04081000</td>
+    <td class="addr"><span style="color:#989898">0x</span>04041000</td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_SysSigProc_HW_accelerator"><b>SysSigProc_HW_accelerator</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">as&#160;</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041100</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -450,12 +509,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>040410a0</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041130</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -467,9 +528,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">debug_mem_slave&#160;</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04040800</td>
@@ -484,9 +547,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04020000</td>
@@ -501,9 +566,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04041000</td>
@@ -518,11 +585,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="8">
+      <td class="neighbor" rowspan="6">
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="26">Mailbox_AudioToSigProc</td>
+      <td class="main" rowspan="21">Mailbox_AudioToSigProc</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avmm_msg_receiver</td>
@@ -538,12 +605,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;interrupt_msg_pending</td>
-     </tr>
-     <tr>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;rst_n</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -595,18 +656,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;rst_n</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;rst_n</td>
@@ -663,11 +712,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="8">
+      <td class="neighbor" rowspan="6">
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="26">Mailbox_SigProcToAudio</td>
+      <td class="main" rowspan="21">Mailbox_SigProcToAudio</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avmm_msg_receiver</td>
@@ -683,12 +732,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;interrupt_msg_pending</td>
-     </tr>
-     <tr>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;rst_n</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -740,18 +783,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;rst_n</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;rst_n</td>
@@ -812,7 +843,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">PIO_1st_7seg</td>
+      <td class="main" rowspan="13">PIO_1st_7seg</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -827,19 +858,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -861,18 +886,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1052,7 +1065,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">PIO_2nd_7seg</td>
+      <td class="main" rowspan="13">PIO_2nd_7seg</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1067,19 +1080,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -1101,18 +1108,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1292,7 +1287,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">PIO_3rd_7seg</td>
+      <td class="main" rowspan="13">PIO_3rd_7seg</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1307,19 +1302,13 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -1341,18 +1330,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1528,26 +1505,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
-      </td>
-      <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="11">PIO_Debug</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
+      <td class="neighbor" rowspan="4">
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="10">PIO_Debug</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -1748,7 +1719,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">PIO_LEDs_Shared</td>
+      <td class="main" rowspan="15">PIO_LEDs_Shared</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -1797,18 +1768,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -1988,7 +1947,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="22">PIO_Switches</td>
+      <td class="main" rowspan="19">PIO_Switches</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -2049,18 +2008,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2271,18 +2218,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -2555,6 +2490,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;clk1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">outclk0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_SysSigProc_HW_accelerator">SysSigProc_HW_accelerator</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clock</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -4512,11 +4463,23 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
    <div class="greydiv">
     <table class="connectionboxes">
      <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_SysSigProc_HW_accelerator">SysSigProc_HW_accelerator</a>
+      </td>
+      <td class="from">avalon_master&#160;&#160;</td>
+      <td class="main" rowspan="18">SDRAM_Controller_Shared</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
       <td class="neighbor" rowspan="4">
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">SDRAM_Controller_Shared</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -4565,18 +4528,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -4873,7 +4824,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="16">SysAudio_AV_Config</td>
+      <td class="main" rowspan="10">SysAudio_AV_Config</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_av_config_slave</td>
@@ -4904,30 +4855,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -5044,7 +4971,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_PLL_Shared">PLL_Shared</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="69">SysAudio_Audio_Clock</td>
+      <td class="main" rowspan="12">SysAudio_Audio_Clock</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;ref_clk</td>
@@ -5073,18 +5000,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;ref_reset</td>
      </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;ref_reset</td>
-     </tr>
      <tr>
       <td></td>
       <td></td>
@@ -5107,294 +5022,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_PIO_LEDs_Shared">PIO_LEDs_Shared</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_PIO_Switches">PIO_Switches</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_PLL_Shared">PLL_Shared</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SDRAM_Controller_Shared">SDRAM_Controller_Shared</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_AV_Config">SysAudio_AV_Config</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_JTAG_UART">SysAudio_JTAG_UART</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Performance_Counter">SysAudio_Performance_Counter</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_JTAG_UART">SysSigProc_JTAG_UART</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_Performance_Counter">SysSigProc_Performance_Counter</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_PIO_1st_7seg">PIO_1st_7seg</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_PIO_2nd_7seg">PIO_2nd_7seg</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_PIO_3rd_7seg">PIO_3rd_7seg</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Onchip_Memory">SysAudio_Onchip_Memory</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_Onchip_Memory">SysSigProc_Onchip_Memory</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_Mailbox_AudioToSigProc">Mailbox_AudioToSigProc</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;rst_n</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">reset_source&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_Mailbox_SigProcToAudio">Mailbox_SigProcToAudio</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;rst_n</td>
      </tr>
     </table>
    </div>
@@ -5460,7 +5087,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="17">SysAudio_Audio_Core</td>
+      <td class="main" rowspan="14">SysAudio_Audio_Core</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_audio_slave</td>
@@ -5503,18 +5130,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -5583,7 +5198,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">SysAudio_JTAG_UART</td>
+      <td class="main" rowspan="12">SysAudio_JTAG_UART</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_jtag_slave</td>
@@ -5620,30 +5235,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -5771,7 +5362,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_PLL_Shared">PLL_Shared</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="112">SysAudio_NIOS_II</td>
+      <td class="main" rowspan="89">SysAudio_NIOS_II</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -5784,30 +5375,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -5914,7 +5481,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="8">
+      <td class="neighbor" rowspan="6">
        <a href="#module_Mailbox_SigProcToAudio">Mailbox_SigProcToAudio</a>
       </td>
      </tr>
@@ -5942,16 +5509,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;interrupt_msg_pending</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;rst_n</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -6233,22 +5790,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td></td>
       <td></td>
-      <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_PIO_Debug">PIO_Debug</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
       <td class="from">debug_reset_request&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
        <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
@@ -6274,70 +5815,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_JTAG_UART">SysSigProc_JTAG_UART</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_Performance_Counter">SysSigProc_Performance_Counter</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_Onchip_Memory">SysSigProc_Onchip_Memory</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset1</td>
      </tr>
     </table>
    </div>
@@ -6914,15 +6391,15 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">resetAbsoluteAddr</td>
-        <td class="parametervalue">67371008</td>
+        <td class="parametervalue">67239936</td>
        </tr>
        <tr>
         <td class="parametername">exceptionAbsoluteAddr</td>
-        <td class="parametervalue">67371040</td>
+        <td class="parametervalue">67239968</td>
        </tr>
        <tr>
         <td class="parametername">breakAbsoluteAddr</td>
-        <td class="parametervalue">67635232</td>
+        <td class="parametervalue">67373088</td>
        </tr>
        <tr>
         <td class="parametername">mmu_TLBMissExcAbsAddr</td>
@@ -7030,7 +6507,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">instSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SysAudio_Onchip_Memory.s1' start='0x4040000' end='0x4060000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4080800' end='0x4081000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SysAudio_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">faSlaveMapParam</td>
@@ -7038,7 +6515,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='SysAudio_Onchip_Memory.s1' start='0x4040000' end='0x4060000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4080800' end='0x4081000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='SysAudio_Performance_Counter.control_slave' start='0x4081000' end='0x4081080' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='PIO_Debug.s1' start='0x4081080' end='0x40810A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_3rd_7seg.s1' start='0x40810A0' end='0x40810B0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_2nd_7seg.s1' start='0x40810B0' end='0x40810C0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_1st_7seg.s1' start='0x40810C0' end='0x40810D0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_Switches.s1' start='0x40810D0' end='0x40810E0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_LEDs_Shared.s1' start='0x40810E0' end='0x40810F0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='Mailbox_AudioToSigProc.avmm_msg_sender' start='0x40810F0' end='0x4081100' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='Mailbox_SigProcToAudio.avmm_msg_receiver' start='0x4081100' end='0x4081110' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='SysAudio_AV_Config.avalon_av_config_slave' start='0x4081110' end='0x4081120' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='SysAudio_Audio_Core.avalon_audio_slave' start='0x4081120' end='0x4081130' type='altera_up_avalon_audio.avalon_audio_slave' /&gt;&lt;slave name='SysAudio_JTAG_UART.avalon_jtag_slave' start='0x4081130' end='0x4081138' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='SysAudio_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='SysAudio_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='SysAudio_Performance_Counter.control_slave' start='0x4041000' end='0x4041080' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='PIO_3rd_7seg.s1' start='0x40410A0' end='0x40410B0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_2nd_7seg.s1' start='0x40410B0' end='0x40410C0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_1st_7seg.s1' start='0x40410C0' end='0x40410D0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_Switches.s1' start='0x40410D0' end='0x40410E0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_LEDs_Shared.s1' start='0x40410E0' end='0x40410F0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='Mailbox_AudioToSigProc.avmm_msg_sender' start='0x40410F0' end='0x4041100' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='Mailbox_SigProcToAudio.avmm_msg_receiver' start='0x4041100' end='0x4041110' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='SysAudio_AV_Config.avalon_av_config_slave' start='0x4041110' end='0x4041120' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='SysAudio_Audio_Core.avalon_audio_slave' start='0x4041120' end='0x4041130' type='altera_up_avalon_audio.avalon_audio_slave' /&gt;&lt;slave name='SysAudio_JTAG_UART.avalon_jtag_slave' start='0x4041130' end='0x4041138' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -7151,7 +6628,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">BREAK_ADDR</td>
-        <td class="parametervalue">0x04080820</td>
+        <td class="parametervalue">0x04040820</td>
        </tr>
        <tr>
         <td class="parametername">CPU_ARCH_NIOS2_R1</td>
@@ -7195,7 +6672,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">EXCEPTION_ADDR</td>
-        <td class="parametervalue">0x04040020</td>
+        <td class="parametervalue">0x04020020</td>
        </tr>
        <tr>
         <td class="parametername">FLASH_ACCELERATOR_LINES</td>
@@ -7271,7 +6748,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">RESET_ADDR</td>
-        <td class="parametervalue">0x04040000</td>
+        <td class="parametervalue">0x04020000</td>
        </tr>
       </table>
      </td>
@@ -7290,7 +6767,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">SysAudio_Onchip_Memory</td>
+      <td class="main" rowspan="12">SysAudio_Onchip_Memory</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -7327,30 +6804,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset1</td>
@@ -7594,7 +7047,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="16">SysAudio_Performance_Counter</td>
+      <td class="main" rowspan="10">SysAudio_Performance_Counter</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;control_slave</td>
@@ -7625,30 +7078,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -7696,6 +7125,94 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </tr>
    </table>
   </div>
+  <a name="module_SysSigProc_HW_accelerator"> </a>
+  <div>
+   <hr/>
+   <h2>SysSigProc_HW_accelerator</h2>HW_accelerator v1.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="12">SysSigProc_HW_accelerator</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;as</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_sink</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_PLL_Shared">PLL_Shared</a>
+      </td>
+      <td class="from">outclk0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk_0">clk_0</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_sink</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">avalon_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_SDRAM_Controller_Shared">SDRAM_Controller_Shared</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <a name="module_SysSigProc_JTAG_UART"> </a>
   <div>
    <hr/>
@@ -7708,7 +7225,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">SysSigProc_JTAG_UART</td>
+      <td class="main" rowspan="12">SysSigProc_JTAG_UART</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;avalon_jtag_slave</td>
@@ -7745,30 +7262,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -7896,7 +7389,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_PLL_Shared">PLL_Shared</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="109">SysSigProc_NIOS_II</td>
+      <td class="main" rowspan="81">SysSigProc_NIOS_II</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -7913,29 +7406,31 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <tr>
       <td class="to">&#160;&#160;reset</td>
      </tr>
-     <tr style="height:6px">
+     <tr>
       <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_SysSigProc_HW_accelerator">SysSigProc_HW_accelerator</a>
+      </td>
      </tr>
      <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
-      </td>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;as</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
       <td class="from">debug_reset_request&#160;&#160;</td>
      </tr>
      <tr>
-      <td class="to">&#160;&#160;reset</td>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset_sink</td>
      </tr>
      <tr style="height:6px">
       <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr>
       <td></td>
@@ -7977,7 +7472,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="8">
+      <td class="neighbor" rowspan="6">
        <a href="#module_Mailbox_AudioToSigProc">Mailbox_AudioToSigProc</a>
       </td>
      </tr>
@@ -8005,16 +7500,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;interrupt_msg_pending</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;rst_n</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -8219,7 +7704,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
+      <td class="neighbor" rowspan="2">
        <a href="#module_PIO_1st_7seg">PIO_1st_7seg</a>
       </td>
      </tr>
@@ -8227,68 +7712,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_PIO_2nd_7seg">PIO_2nd_7seg</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">data_master&#160;&#160;</td>
-      <td class="neighbor" rowspan="4">
-       <a href="#module_PIO_3rd_7seg">PIO_3rd_7seg</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;s1</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -8298,6 +7721,38 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">data_master&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
+       <a href="#module_PIO_2nd_7seg">PIO_2nd_7seg</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_PIO_3rd_7seg">PIO_3rd_7seg</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
        <a href="#module_PIO_Debug">PIO_Debug</a>
       </td>
      </tr>
@@ -8305,6 +7760,16 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -8330,22 +7795,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td class="from">debug_reset_request&#160;&#160;</td>
       <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;ref_reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
        <a href="#module_PLL_Shared">PLL_Shared</a>
       </td>
      </tr>
@@ -8353,102 +7802,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_AV_Config">SysAudio_AV_Config</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Core">SysAudio_Audio_Core</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_JTAG_UART">SysAudio_JTAG_UART</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Performance_Counter">SysAudio_Performance_Counter</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Onchip_Memory">SysAudio_Onchip_Memory</a>
-      </td>
-     </tr>
-     <tr>
-      <td></td>
-      <td></td>
-      <td class="to">&#160;&#160;reset1</td>
      </tr>
     </table>
    </div>
@@ -9149,7 +8502,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='SysSigProc_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='SysSigProc_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='SysSigProc_Performance_Counter.control_slave' start='0x4041000' end='0x4041080' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='Mailbox_SigProcToAudio.avmm_msg_sender' start='0x4041080' end='0x4041090' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='Mailbox_AudioToSigProc.avmm_msg_receiver' start='0x4041090' end='0x40410A0' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='SysSigProc_JTAG_UART.avalon_jtag_slave' start='0x40410A0' end='0x40410A8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='PIO_Debug.s1' start='0x4081080' end='0x40810A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_3rd_7seg.s1' start='0x40810A0' end='0x40810B0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_2nd_7seg.s1' start='0x40810B0' end='0x40810C0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_1st_7seg.s1' start='0x40810C0' end='0x40810D0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_Switches.s1' start='0x40810D0' end='0x40810E0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_LEDs_Shared.s1' start='0x40810E0' end='0x40810F0' type='altera_avalon_pio.s1' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='SDRAM_Controller_Shared.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='SysSigProc_Onchip_Memory.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='SysSigProc_NIOS_II.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='SysSigProc_Performance_Counter.control_slave' start='0x4041000' end='0x4041080' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='PIO_Debug.s1' start='0x4041080' end='0x40410A0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_3rd_7seg.s1' start='0x40410A0' end='0x40410B0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_2nd_7seg.s1' start='0x40410B0' end='0x40410C0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_1st_7seg.s1' start='0x40410C0' end='0x40410D0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_Switches.s1' start='0x40410D0' end='0x40410E0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='PIO_LEDs_Shared.s1' start='0x40410E0' end='0x40410F0' type='altera_avalon_pio.s1' /&gt;&lt;slave name='Mailbox_SigProcToAudio.avmm_msg_sender' start='0x40410F0' end='0x4041100' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='SysSigProc_HW_accelerator.as' start='0x4041100' end='0x4041120' type='HW_accelerator.as' /&gt;&lt;slave name='Mailbox_AudioToSigProc.avmm_msg_receiver' start='0x4041120' end='0x4041130' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='SysSigProc_JTAG_UART.avalon_jtag_slave' start='0x4041130' end='0x4041138' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -9401,7 +8754,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="18">SysSigProc_Onchip_Memory</td>
+      <td class="main" rowspan="12">SysSigProc_Onchip_Memory</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>
@@ -9438,30 +8791,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset1</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset1</td>
@@ -9705,7 +9034,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_SysSigProc_NIOS_II">SysSigProc_NIOS_II</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="16">SysSigProc_Performance_Counter</td>
+      <td class="main" rowspan="10">SysSigProc_Performance_Counter</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;control_slave</td>
@@ -9736,30 +9065,6 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk_reset&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_NIOS_II">SysAudio_NIOS_II</a>
-      </td>
-      <td class="from">debug_reset_request&#160;&#160;</td>
-     </tr>
-     <tr>
-      <td class="to">&#160;&#160;reset</td>
-     </tr>
-     <tr style="height:6px">
-      <td></td>
-     </tr>
-     <tr>
-      <td class="neighbor" rowspan="2">
-       <a href="#module_SysAudio_Audio_Clock">SysAudio_Audio_Clock</a>
-      </td>
-      <td class="from">reset_source&#160;&#160;</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
@@ -9857,7 +9162,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="blueBar">
    <tr>
     <td class="l">generation took 0.01 seconds</td>
-    <td class="r">rendering took 0.12 seconds</td>
+    <td class="r">rendering took 0.18 seconds</td>
    </tr>
   </table>
  </body>

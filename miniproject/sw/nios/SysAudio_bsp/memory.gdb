@@ -3,7 +3,7 @@
 # Machine generated for CPU 'SysAudio_NIOS_II' in SOPC Builder design 'soc_system'
 # SOPC Builder design path: C:/RTES/miniproject/hw/quartus/soc_system.sopcinfo
 #
-# Generated: Mon May 15 09:31:43 CEST 2023
+# Generated: Sun May 21 19:03:32 CEST 2023
 
 # DO NOT MODIFY THIS FILE
 #
@@ -50,4 +50,4 @@
 memory 0x0 0x4000000 cache
 
 # SysAudio_Onchip_Memory
-memory 0x4040000 0x4060000 cache
+memory 0x4020000 0x4040000 cache

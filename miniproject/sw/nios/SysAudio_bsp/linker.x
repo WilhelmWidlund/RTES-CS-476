@@ -4,7 +4,7 @@
  * Machine generated for CPU 'SysAudio_NIOS_II' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/miniproject/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Mon May 15 09:31:43 CEST 2023
+ * Generated: Sun May 21 19:03:32 CEST 2023
  */
 
 /*
@@ -51,13 +51,13 @@
 MEMORY
 {
     SDRAM_Controller_Shared : ORIGIN = 0x0, LENGTH = 67108864
-    reset : ORIGIN = 0x4040000, LENGTH = 32
-    SysAudio_Onchip_Memory : ORIGIN = 0x4040020, LENGTH = 131040
+    reset : ORIGIN = 0x4020000, LENGTH = 32
+    SysAudio_Onchip_Memory : ORIGIN = 0x4020020, LENGTH = 131040
 }
 
 /* Define symbols for each memory base-address */
 __alt_mem_SDRAM_Controller_Shared = 0x0;
-__alt_mem_SysAudio_Onchip_Memory = 0x4040000;
+__alt_mem_SysAudio_Onchip_Memory = 0x4020000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",

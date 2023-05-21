@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>May 15, 2023 9:33:24 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1684136004769</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>May 21, 2023 6:09:31 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1684685371223</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\RTES\miniproject\sw\nios\SysSigProc_bsp</BspGeneratedLocation>
-        <BspSettingsFile>.\settings.bsp</BspSettingsFile>
+        <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\RTES\miniproject\hw\quartus\soc_system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>SysSigProc_NIOS_II</Cpu>
@@ -917,58 +917,64 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>Mailbox_SigProcToAudio</slaveDescriptor>
-                <addressRange>0x04041080 - 0x0404108F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>Mailbox_AudioToSigProc</slaveDescriptor>
-                <addressRange>0x04041090 - 0x0404109F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>SysSigProc_JTAG_UART</slaveDescriptor>
-                <addressRange>0x040410A0 - 0x040410A7</addressRange>
-                <addressSpan>8</addressSpan>
-                <attributes>printable</attributes>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>PIO_Debug</slaveDescriptor>
-                <addressRange>0x04081080 - 0x0408109F</addressRange>
+                <addressRange>0x04041080 - 0x0404109F</addressRange>
                 <addressSpan>32</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIO_3rd_7seg</slaveDescriptor>
-                <addressRange>0x040810A0 - 0x040810AF</addressRange>
+                <addressRange>0x040410A0 - 0x040410AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIO_2nd_7seg</slaveDescriptor>
-                <addressRange>0x040810B0 - 0x040810BF</addressRange>
+                <addressRange>0x040410B0 - 0x040410BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIO_1st_7seg</slaveDescriptor>
-                <addressRange>0x040810C0 - 0x040810CF</addressRange>
+                <addressRange>0x040410C0 - 0x040410CF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIO_Switches</slaveDescriptor>
-                <addressRange>0x040810D0 - 0x040810DF</addressRange>
+                <addressRange>0x040410D0 - 0x040410DF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIO_LEDs_Shared</slaveDescriptor>
-                <addressRange>0x040810E0 - 0x040810EF</addressRange>
+                <addressRange>0x040410E0 - 0x040410EF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>Mailbox_SigProcToAudio</slaveDescriptor>
+                <addressRange>0x040410F0 - 0x040410FF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>SysSigProc_HW_accelerator</slaveDescriptor>
+                <addressRange>0x04041100 - 0x0404111F</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>Mailbox_AudioToSigProc</slaveDescriptor>
+                <addressRange>0x04041120 - 0x0404112F</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>SysSigProc_JTAG_UART</slaveDescriptor>
+                <addressRange>0x04041130 - 0x04041137</addressRange>
+                <addressSpan>8</addressSpan>
+                <attributes>printable</attributes>
         </MemoryMap>
         <LinkerSection>
                 <sectionName>.text</sectionName>

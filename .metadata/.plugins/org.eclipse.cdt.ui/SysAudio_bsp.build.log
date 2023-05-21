@@ -1,6 +1,6 @@
-09:31:44 **** Clean-only build of configuration Nios II for project SysAudio_bsp ****
+19:03:33 **** Clean-only build of configuration Nios II for project SysAudio_bsp ****
 make clean 
 [BSP clean complete]
 
-09:31:46 Build Finished (took 1s.404ms)
+19:03:34 Build Finished (took 584ms)
 
