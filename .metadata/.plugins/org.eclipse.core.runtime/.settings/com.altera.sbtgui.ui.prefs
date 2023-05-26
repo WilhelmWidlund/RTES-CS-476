@@ -1,4 +1,4 @@
 eclipse.preferences.version=1
-newSoftwareExampleWizardPage.defaultLocation=C\:\\RTES\\miniproject\\sw\\nios\\application_audio
-newSoftwareExampleWizardPage.sopcinfoFile=C\:\\RTES\\miniproject\\hw\\quartus\\soc_system.sopcinfo
-newSoftwareExampleWizardPage2.newBspLocation=C\:\\RTES\\miniproject\\sw\\nios\\SysAudio_bsp
+newSoftwareExampleWizardPage.defaultLocation=C\:\\RTES\\miniproject_2\\sw\\nios\\application_1
+newSoftwareExampleWizardPage.sopcinfoFile=C\:\\RTES\\miniproject_2\\hw\\quartus\\soc_system.sopcinfo
+newSoftwareExampleWizardPage2.newBspLocation=C\:\\RTES\\miniproject_2\\sw\\nios\\cpu_1_proj_bsp

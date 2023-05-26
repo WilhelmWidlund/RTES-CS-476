@@ -4,7 +4,7 @@
  * Machine generated for CPU 'SysAudio_NIOS_II' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/miniproject/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Sun May 21 19:03:32 CEST 2023
+ * Generated: Fri May 26 16:28:35 CEST 2023
  */
 
 /*

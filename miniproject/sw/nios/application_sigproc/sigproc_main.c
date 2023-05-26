@@ -16,6 +16,14 @@
 #include "altera_avalon_mailbox_simple.h"
 #include <altera_avalon_performance_counter.h>
 
+// REMEMBER TO CHANGE THE CPU ID VALUE IN SYSTEM.H AFTER GENERATING BSP
+
+// To monitor terminal in powershell:
+// nios2-terminal --device 2 --instance 1
+
+// To download code to board, change to .elf file directory and run:
+// nios2-download -g SysSigProc.elf --device 2 --instance 1
+
 // PIO definitions for the interrupt handling on the switches
 #define PIO_IntrSwitch_Data	0
 #define PIO_IntrSwitch_IRQEN	4*2
@@ -99,7 +107,8 @@ void choose_task(int task)
 	if(task == 1)
 	{
 		// First switch (SW0)
-		overall_function(1);
+		//overall_function(1);
+		printf("Interrupt test on CPU %d\n", NIOS2_CPU_ID_VALUE);
 	}
 	else if(task == 2)
 	{
@@ -134,7 +143,16 @@ void setup_switch_interrupts(uint8_t chosen_switches)
 
 void overall_function(int choice)
 {
+	int op_type;
 	receive_mail();
+	if(IORD_32DIRECT(PIO_SWITCHES_BASE, 0)&0x100 == 0)
+	{
+		op_type = 0;
+	}
+	else
+	{
+		op_type = 1;
+	}
 	int total_snippets = mail[1];
 	// 48 kHz sampling frequency => 12k samples per snippet
 	int words_per_snippet = 12000;
@@ -144,16 +162,26 @@ void overall_function(int choice)
 	while(handled_snippets < total_snippets)
 	{
 		receive_mail();
+		// Prepare parameters
+		int *snippet_starting_address = mail[0];
+		int *snippet_storage_address = start_storage_address + handled_snippets*words_per_snippet*4;
+		int snippet_word_count = mail[1];
 		// Turn on LED 9, signifying that signal processing is in progress
 		IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 512);
 		if(choice == 1)
 		{
 			// TODO: call accelerator
 			printf("At call accelerator: handled_snippets = %i\n", handled_snippets);
+
+		}
+		else if(choice == 2)
+		{
+			// Call custom instruction
 		}
 		else
 		{
-			// TODO: call C comparison function
+			// call C comparison function
+			c_comp_function(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
 		}
 		// Turn off LED 9, signifying that signal processing is done
 		IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0);
@@ -161,12 +189,38 @@ void overall_function(int choice)
 	send_mail((alt_u32)start_storage_address, (alt_u32)memory_size);
 }
 
+void c_comp_function(alt_u32 *start_addr, alt_u32 *store_addr, alt_u32 word_count, int op_type)
+{
+	alt_u32 data;
+	while(word_count > 0)
+	{
+		// Load data
+		data = IORD_32DIRECT(start_addr, 0);
+		// Perform operation
+		data = (signed)data;
+		if(op_type == 0)
+		{
+			data = (data >> 1);
+		}
+		else
+		{
+			data = (data << 1);
+		}
+		// Store data
+		IOWR_32DIRECT(store_addr, 0, (alt_u32)data);
+		// Update variables
+		start_addr += 4;
+		store_addr += 4;
+		word_count --;
+	}
+}
+
 // ----------------------- Main function ----------------------------------
 
 int main()
 {
-	// Setup interrupts on the first 2 switches
-	setup_switch_interrupts(0x3);
+	// Setup interrupts on the first 4 switches
+	setup_switch_interrupts(0x7);
 
 	// Wait for switches
 	while(1)

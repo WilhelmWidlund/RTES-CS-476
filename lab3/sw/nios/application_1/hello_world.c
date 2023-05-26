@@ -224,7 +224,7 @@ void choose_task(int task)
 	else if(task == 4)
 	{
 		// Manipulation 3: hardware mailbox
-		send_mail();
+		receive_mail();
 	}
 	else if(task == 8)
 	{

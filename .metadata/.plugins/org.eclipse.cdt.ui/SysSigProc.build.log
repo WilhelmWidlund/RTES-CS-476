@@ -1,33 +1,9 @@
-18:41:26 **** Incremental Build of configuration Nios II for project SysSigProc ****
+18:25:40 **** Incremental Build of configuration Nios II for project SysSigProc ****
 make all 
 Info: Building C:/RTES/miniproject/sw/nios/SysSigProc_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/RTES/miniproject/sw/nios/SysSigProc_bsp/
 [BSP build complete]
-Info: Compiling sigproc_main.c to obj/default/sigproc_main.o
-nios2-elf-gcc -xc -MP -MMD -c -IC:/RTES/miniproject/sw/nios/SysSigProc_bsp//HAL/inc -IC:/RTES/miniproject/sw/nios/SysSigProc_bsp/ -IC:/RTES/miniproject/sw/nios/SysSigProc_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/sigproc_main.o sigproc_main.c
-sigproc_main.c: In function 'receive_mail':
-sigproc_main.c:88:62: warning: passing argument 2 of 'altera_avalon_mailbox_retrieve_poll' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
-  altera_avalon_mailbox_retrieve_poll(mailbox_AudioToSigProc, mail, 0);
-                                                              ^
-In file included from sigproc_main.c:16:0:
-c:\rtes\miniproject\sw\nios\syssigproc_bsp\drivers\inc\altera_avalon_mailbox_simple.h:78:5: note: expected 'alt_u32 * {aka long unsigned int *}' but argument is of type 'volatile alt_u32 * {aka volatile long unsigned int *}'
- int altera_avalon_mailbox_retrieve_poll (altera_avalon_mailbox_dev* dev,alt_u32* msg_ptr, alt_u32 timeout);
-     ^
-sigproc_main.c:89:2: warning: implicit declaration of function 'alt_dcache_flush_all' [-Wimplicit-function-declaration]
-  alt_dcache_flush_all();
-  ^
-sigproc_main.c: In function 'overall_function':
-sigproc_main.c:143:31: warning: initialization makes pointer from integer without a cast [-Wint-conversion]
-  int *start_storage_address = mail[0] + memory_size;
-                               ^
-Info: Linking SysSigProc.elf
-nios2-elf-g++  -T'C:/RTES/miniproject/sw/nios/SysSigProc_bsp//linker.x' -msys-crt0='C:/RTES/miniproject/sw/nios/SysSigProc_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/RTES/miniproject/sw/nios/SysSigProc_bsp/   -Wl,-Map=SysSigProc.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o SysSigProc.elf obj/default/sigproc_main.o -lm -msys-lib=m
-nios2-elf-insert SysSigProc.elf --thread_model hal --cpu_name SysSigProc_NIOS_II --qsys true --simulation_enabled false --stderr_dev SysSigProc_JTAG_UART --stdin_dev SysSigProc_JTAG_UART --stdout_dev SysSigProc_JTAG_UART --sopc_system_name soc_system --quartus_project_dir "c:/RTES/miniproject/hw/quartus" --jdi C:/RTES/miniproject/hw/quartus//output_files/miniproject.jdi --sopcinfo C:/RTES/miniproject/hw/quartus/soc_system.sopcinfo
-Info: (SysSigProc.elf) 72 KBytes program size (code + initialized data).
-Info:                  65527 KBytes free for stack + heap.
-Info: Creating SysSigProc.objdump
-nios2-elf-objdump --disassemble --syms --all-header --source SysSigProc.elf >SysSigProc.objdump
 [SysSigProc build complete]
 
-18:41:29 Build Finished (took 2s.972ms)
+18:25:42 Build Finished (took 1s.501ms)
 

@@ -31,8 +31,7 @@ entity DE1_SoC_top_level is
         AUD_BCLK         : inout std_logic;
         AUD_DACDAT       : out   std_logic;
         AUD_DACLRCK      : inout std_logic;
-		  -- TODO: What is this signal?
-        --AUD_XCK          : out   std_logic;
+        AUD_XCK          : out   std_logic;
 
         -- CLOCK
         CLOCK_50         : in    std_logic;
@@ -58,12 +57,12 @@ entity DE1_SoC_top_level is
         FPGA_I2C_SDAT    : inout std_logic;
 
         -- SEG7
-        HEX0_N           : out   std_logic_vector(6 downto 0);
-        HEX1_N           : out   std_logic_vector(6 downto 0);
-        HEX2_N           : out   std_logic_vector(6 downto 0);
-        HEX3_N           : out   std_logic_vector(6 downto 0);
-        HEX4_N           : out   std_logic_vector(6 downto 0);
-        HEX5_N           : out   std_logic_vector(6 downto 0);
+--        HEX0_N           : out   std_logic_vector(6 downto 0);
+--        HEX1_N           : out   std_logic_vector(6 downto 0);
+--        HEX2_N           : out   std_logic_vector(6 downto 0);
+--        HEX3_N           : out   std_logic_vector(6 downto 0);
+--        HEX4_N           : out   std_logic_vector(6 downto 0);
+--        HEX5_N           : out   std_logic_vector(6 downto 0);
 
         -- IR
 --        IRDA_RXD         : in    std_logic;
@@ -188,9 +187,10 @@ component soc_system is
 			sysaudio_audio_core_external_interface_DACLRCK : in    std_logic                     := 'X';             -- DACLRCK
 			sysaudio_av_config_external_interface_SDAT     : inout std_logic                     := 'X';             -- SDAT
 			sysaudio_av_config_external_interface_SCLK     : out   std_logic;                                        -- SCLK
-			pio_1st_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
-			pio_2nd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
-			pio_3rd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);
+			sysaudio_audio_clock_audio_clk_clk             : out   std_logic;
+			--pio_1st_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
+			--pio_2nd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
+			--pio_3rd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);
 			pio_debug_export                               : out   std_logic_vector(31 downto 0)			-- export
 		);
 	end component soc_system;
@@ -213,38 +213,25 @@ u0 : component soc_system
 			sdram_controller_shared_wire_dqm(1)            => DRAM_UDQM,               --                                       .dqm(1)
 			sdram_controller_shared_wire_dqm(0)            => DRAM_LDQM,               --                                       .dqm(0)
 			sdram_controller_shared_wire_ras_n             => DRAM_RAS_N,             --                                       .ras_n
-			sdram_controller_shared_wire_we_n              => DRAM_WE_N,              --                                       .we_n
-			
-			-- Audio
-			-- TODO: Connected these just by name, seems straightforward enough
-        --AUD_ADCDAT       : in    std_logic;
-        --AUD_ADCLRCK      : inout std_logic;
-        --AUD_BCLK         : inout std_logic;
-        --AUD_DACDAT       : out   std_logic;
-        --AUD_DACLRCK      : inout std_logic;
-        -- TODO: This guy goes where??? Is it like that this guy is not used because of the whole Audio Clock IP thing???
-		  --AUD_XCK          : out   std_logic;
+			sdram_controller_shared_wire_we_n              => DRAM_WE_N,              -- 
 			
 			sysaudio_audio_core_external_interface_ADCDAT  => AUD_ADCDAT,  -- sysaudio_audio_core_external_interface.ADCDAT
 			sysaudio_audio_core_external_interface_ADCLRCK => AUD_ADCLRCK, --                                       .ADCLRCK
 			sysaudio_audio_core_external_interface_BCLK    => AUD_BCLK,    --                                       .BCLK
 			sysaudio_audio_core_external_interface_DACDAT  => AUD_DACDAT,  --                                       .DACDAT
 			sysaudio_audio_core_external_interface_DACLRCK => AUD_DACLRCK, --                                       .DACLRCK
+			sysaudio_audio_clock_audio_clk_clk             => AUD_XCK,              --         sysaudio_audio_clock_audio_clk.clk
 			
-			-- I2C for Audio and Video-In
-			-- TODO: These seem to have similar names, so I made these connections. However I have no idea really...
-        --FPGA_I2C_SCLK    : out   std_logic;
-        --FPGA_I2C_SDAT    : inout std_logic;
-			
+			-- I2C for Audio and Video-In			
 			sysaudio_av_config_external_interface_SDAT     => FPGA_I2C_SDAT,     --  sysaudio_av_config_external_interface.SDAT
 			sysaudio_av_config_external_interface_SCLK     => FPGA_I2C_SCLK,     --                                       .SCLK
 			
-			pio_1st_7seg_external_connection_export(13 downto 7)        => HEX5_N,        --       pio_1st_7seg_external_connection.export
-			pio_1st_7seg_external_connection_export(6 downto 0)        => HEX4_N,
-			pio_2nd_7seg_external_connection_export(13 downto 7)        => HEX3_N,        --       pio_2nd_7seg_external_connection.export
-			pio_2nd_7seg_external_connection_export(6 downto 0)        => HEX2_N,
-			pio_3rd_7seg_external_connection_export(13 downto 7)        => HEX1_N,        --       pio_3rd_7seg_external_connection.export
-			pio_3rd_7seg_external_connection_export(6 downto 0)        => HEX0_N,
+			--pio_1st_7seg_external_connection_export(13 downto 7)        => HEX5_N,        --       pio_1st_7seg_external_connection.export
+			--pio_1st_7seg_external_connection_export(6 downto 0)        => HEX4_N,
+			--pio_2nd_7seg_external_connection_export(13 downto 7)        => HEX3_N,        --       pio_2nd_7seg_external_connection.export
+			--pio_2nd_7seg_external_connection_export(6 downto 0)        => HEX2_N,
+			--pio_3rd_7seg_external_connection_export(13 downto 7)        => HEX1_N,        --       pio_3rd_7seg_external_connection.export
+			--pio_3rd_7seg_external_connection_export(6 downto 0)        => HEX0_N,
 			pio_debug_export                               => GPIO_0(31 downto 0)
 		);
 		

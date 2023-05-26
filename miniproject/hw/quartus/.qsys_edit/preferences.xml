@@ -5,11 +5,11 @@
   <columns>
    <connections preferredWidth="319" />
    <irq preferredWidth="47" />
-   <name preferredWidth="350" />
+   <name preferredWidth="496" />
    <description preferredWidth="362" />
-   <export preferredWidth="661" />
+   <export preferredWidth="326" />
   </columns>
  </systemtable>
- <library expandedCategories="Project,Library" />
+ <library expandedCategories="Library,Project" />
  <window width="2736" height="1744" x="0" y="0" />
 </preferences>

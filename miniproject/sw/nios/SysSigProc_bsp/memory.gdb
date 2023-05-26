@@ -3,7 +3,7 @@
 # Machine generated for CPU 'SysSigProc_NIOS_II' in SOPC Builder design 'soc_system'
 # SOPC Builder design path: C:/RTES/miniproject/hw/quartus/soc_system.sopcinfo
 #
-# Generated: Mon May 15 09:33:25 CEST 2023
+# Generated: Mon May 22 12:26:42 CEST 2023
 
 # DO NOT MODIFY THIS FILE
 #
@@ -50,4 +50,4 @@
 memory 0x0 0x4000000 cache
 
 # SysSigProc_Onchip_Memory
-memory 0x4020000 0x4040000 cache
+memory 0x4040000 0x406a800 cache

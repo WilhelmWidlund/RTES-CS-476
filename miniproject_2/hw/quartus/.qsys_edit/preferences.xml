@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<preferences>
+ <debug showDebugMenu="0" />
+ <systemtable filter="All Interfaces">
+  <columns>
+   <connections preferredWidth="303" />
+   <irq preferredWidth="47" />
+   <name preferredWidth="334" />
+   <description preferredWidth="380" />
+   <baseaddress preferredWidth="227" />
+  </columns>
+ </systemtable>
+ <library
+   expandedCategories="Library/Interface Protocols,Library,Library/Interface Protocols/Audio &amp; Video,Library/University Program/Clock,Library/University Program,Project" />
+ <window width="2762" height="1770" x="-13" y="-13" />
+</preferences>

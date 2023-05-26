@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_1' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/lab3/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Sat May 06 16:46:16 CEST 2023
+ * Generated: Mon May 22 11:22:00 CEST 2023
  */
 
 /*
@@ -107,7 +107,7 @@
 #define NIOS2_CPU_ARCH_NIOS2_R1
 #define NIOS2_CPU_FREQ 50000000u
 #define NIOS2_CPU_ID_SIZE 1
-#define NIOS2_CPU_ID_VALUE 0x00000001
+#define NIOS2_CPU_ID_VALUE 0x00000000
 #define NIOS2_CPU_IMPLEMENTATION "fast"
 #define NIOS2_DATA_ADDR_WIDTH 0x1b
 #define NIOS2_DCACHE_BYPASS_MASK 0x80000000

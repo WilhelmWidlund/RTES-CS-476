@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>May 21, 2023 7:03:53 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1684688633103</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>May 26, 2023 6:25:20 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1685118320344</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\RTES\miniproject\sw\nios\SysAudio_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\RTES\miniproject\hw\quartus\soc_system.sopcinfo</SopcDesignFile>
@@ -146,7 +146,7 @@
                 <SettingName>hal.linker.exception_stack_memory_region_name</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>SDRAM_Controller_Shared</Value>
+                <Value>SysAudio_Onchip_Memory</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Name of the existing memory region that will be divided up to create the 'exception_stack' memory region. The selected region name will be adjusted automatically when the BSP is generated to create the 'exception_stack' memory region.</Description>
@@ -182,7 +182,7 @@
                 <SettingName>hal.linker.interrupt_stack_memory_region_name</SettingName>
                 <Identifier>none</Identifier>
                 <Type>UnquotedString</Type>
-                <Value>SDRAM_Controller_Shared</Value>
+                <Value>SysAudio_Onchip_Memory</Value>
                 <DefaultValue>none</DefaultValue>
                 <DestinationFile>none</DestinationFile>
                 <Description>Name of the existing memory region that will be divided up to create the 'interrupt_stack' memory region. The selected region name will be adjusted automatically when the BSP is generated to create the 'interrupt_stack' memory region.</Description>
@@ -906,73 +906,55 @@
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>SysAudio_Onchip_Memory</slaveDescriptor>
-                <addressRange>0x04020000 - 0x0403FFFF</addressRange>
-                <addressSpan>131072</addressSpan>
+                <addressRange>0x04040000 - 0x0406A7FF</addressRange>
+                <addressSpan>174080</addressSpan>
                 <attributes>memory</attributes>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>SysAudio_Performance_Counter</slaveDescriptor>
-                <addressRange>0x04041000 - 0x0404107F</addressRange>
+                <addressRange>0x04081000 - 0x0408107F</addressRange>
                 <addressSpan>128</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>PIO_3rd_7seg</slaveDescriptor>
-                <addressRange>0x040410A0 - 0x040410AF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>PIO_2nd_7seg</slaveDescriptor>
-                <addressRange>0x040410B0 - 0x040410BF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>PIO_1st_7seg</slaveDescriptor>
-                <addressRange>0x040410C0 - 0x040410CF</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
                 <slaveDescriptor>PIO_Switches</slaveDescriptor>
-                <addressRange>0x040410D0 - 0x040410DF</addressRange>
+                <addressRange>0x04081080 - 0x0408108F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>PIO_LEDs_Shared</slaveDescriptor>
-                <addressRange>0x040410E0 - 0x040410EF</addressRange>
+                <addressRange>0x04081090 - 0x0408109F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>Mailbox_AudioToSigProc</slaveDescriptor>
-                <addressRange>0x040410F0 - 0x040410FF</addressRange>
+                <addressRange>0x040810A0 - 0x040810AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>Mailbox_SigProcToAudio</slaveDescriptor>
-                <addressRange>0x04041100 - 0x0404110F</addressRange>
+                <addressRange>0x040810B0 - 0x040810BF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>SysAudio_AV_Config</slaveDescriptor>
-                <addressRange>0x04041110 - 0x0404111F</addressRange>
+                <addressRange>0x040810C0 - 0x040810CF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>SysAudio_Audio_Core</slaveDescriptor>
-                <addressRange>0x04041120 - 0x0404112F</addressRange>
+                <addressRange>0x040810D0 - 0x040810DF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>SysAudio_JTAG_UART</slaveDescriptor>
-                <addressRange>0x04041130 - 0x04041137</addressRange>
+                <addressRange>0x040810E0 - 0x040810E7</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>
@@ -982,22 +964,22 @@
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.rodata</sectionName>
-                <regionName>SDRAM_Controller_Shared</regionName>
+                <regionName>SysAudio_Onchip_Memory</regionName>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.rwdata</sectionName>
-                <regionName>SDRAM_Controller_Shared</regionName>
+                <regionName>SysAudio_Onchip_Memory</regionName>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.bss</sectionName>
-                <regionName>SDRAM_Controller_Shared</regionName>
+                <regionName>SysAudio_Onchip_Memory</regionName>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.heap</sectionName>
-                <regionName>SDRAM_Controller_Shared</regionName>
+                <regionName>SysAudio_Onchip_Memory</regionName>
         </LinkerSection>
         <LinkerSection>
                 <sectionName>.stack</sectionName>
-                <regionName>SDRAM_Controller_Shared</regionName>
+                <regionName>SysAudio_Onchip_Memory</regionName>
         </LinkerSection>
 </sch:Settings>

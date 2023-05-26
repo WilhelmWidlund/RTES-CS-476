@@ -3,9 +3,6 @@
 			clk_clk                                        : in    std_logic                     := 'X';             -- clk
 			in_switches_export                             : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- export
 			out_led_export                                 : out   std_logic_vector(9 downto 0);                     -- export
-			pio_1st_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
-			pio_2nd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
-			pio_3rd_7seg_external_connection_export        : out   std_logic_vector(13 downto 0);                    -- export
 			pio_debug_export                               : out   std_logic_vector(31 downto 0);                    -- export
 			pll_shared_outclk2_clk                         : out   std_logic;                                        -- clk
 			reset_reset_n                                  : in    std_logic                     := 'X';             -- reset_n
@@ -18,6 +15,7 @@
 			sdram_controller_shared_wire_dqm               : out   std_logic_vector(1 downto 0);                     -- dqm
 			sdram_controller_shared_wire_ras_n             : out   std_logic;                                        -- ras_n
 			sdram_controller_shared_wire_we_n              : out   std_logic;                                        -- we_n
+			sysaudio_audio_clock_audio_clk_clk             : out   std_logic;                                        -- clk
 			sysaudio_audio_core_external_interface_ADCDAT  : in    std_logic                     := 'X';             -- ADCDAT
 			sysaudio_audio_core_external_interface_ADCLRCK : in    std_logic                     := 'X';             -- ADCLRCK
 			sysaudio_audio_core_external_interface_BCLK    : in    std_logic                     := 'X';             -- BCLK
@@ -33,9 +31,6 @@
 			clk_clk                                        => CONNECTED_TO_clk_clk,                                        --                                    clk.clk
 			in_switches_export                             => CONNECTED_TO_in_switches_export,                             --                            in_switches.export
 			out_led_export                                 => CONNECTED_TO_out_led_export,                                 --                                out_led.export
-			pio_1st_7seg_external_connection_export        => CONNECTED_TO_pio_1st_7seg_external_connection_export,        --       pio_1st_7seg_external_connection.export
-			pio_2nd_7seg_external_connection_export        => CONNECTED_TO_pio_2nd_7seg_external_connection_export,        --       pio_2nd_7seg_external_connection.export
-			pio_3rd_7seg_external_connection_export        => CONNECTED_TO_pio_3rd_7seg_external_connection_export,        --       pio_3rd_7seg_external_connection.export
 			pio_debug_export                               => CONNECTED_TO_pio_debug_export,                               --                              pio_debug.export
 			pll_shared_outclk2_clk                         => CONNECTED_TO_pll_shared_outclk2_clk,                         --                     pll_shared_outclk2.clk
 			reset_reset_n                                  => CONNECTED_TO_reset_reset_n,                                  --                                  reset.reset_n
@@ -48,6 +43,7 @@
 			sdram_controller_shared_wire_dqm               => CONNECTED_TO_sdram_controller_shared_wire_dqm,               --                                       .dqm
 			sdram_controller_shared_wire_ras_n             => CONNECTED_TO_sdram_controller_shared_wire_ras_n,             --                                       .ras_n
 			sdram_controller_shared_wire_we_n              => CONNECTED_TO_sdram_controller_shared_wire_we_n,              --                                       .we_n
+			sysaudio_audio_clock_audio_clk_clk             => CONNECTED_TO_sysaudio_audio_clock_audio_clk_clk,             --         sysaudio_audio_clock_audio_clk.clk
 			sysaudio_audio_core_external_interface_ADCDAT  => CONNECTED_TO_sysaudio_audio_core_external_interface_ADCDAT,  -- sysaudio_audio_core_external_interface.ADCDAT
 			sysaudio_audio_core_external_interface_ADCLRCK => CONNECTED_TO_sysaudio_audio_core_external_interface_ADCLRCK, --                                       .ADCLRCK
 			sysaudio_audio_core_external_interface_BCLK    => CONNECTED_TO_sysaudio_audio_core_external_interface_BCLK,    --                                       .BCLK

@@ -2,9 +2,6 @@
 		.clk_clk                                        (<connected-to-clk_clk>),                                        //                                    clk.clk
 		.in_switches_export                             (<connected-to-in_switches_export>),                             //                            in_switches.export
 		.out_led_export                                 (<connected-to-out_led_export>),                                 //                                out_led.export
-		.pio_1st_7seg_external_connection_export        (<connected-to-pio_1st_7seg_external_connection_export>),        //       pio_1st_7seg_external_connection.export
-		.pio_2nd_7seg_external_connection_export        (<connected-to-pio_2nd_7seg_external_connection_export>),        //       pio_2nd_7seg_external_connection.export
-		.pio_3rd_7seg_external_connection_export        (<connected-to-pio_3rd_7seg_external_connection_export>),        //       pio_3rd_7seg_external_connection.export
 		.pio_debug_export                               (<connected-to-pio_debug_export>),                               //                              pio_debug.export
 		.pll_shared_outclk2_clk                         (<connected-to-pll_shared_outclk2_clk>),                         //                     pll_shared_outclk2.clk
 		.reset_reset_n                                  (<connected-to-reset_reset_n>),                                  //                                  reset.reset_n
@@ -17,6 +14,7 @@
 		.sdram_controller_shared_wire_dqm               (<connected-to-sdram_controller_shared_wire_dqm>),               //                                       .dqm
 		.sdram_controller_shared_wire_ras_n             (<connected-to-sdram_controller_shared_wire_ras_n>),             //                                       .ras_n
 		.sdram_controller_shared_wire_we_n              (<connected-to-sdram_controller_shared_wire_we_n>),              //                                       .we_n
+		.sysaudio_audio_clock_audio_clk_clk             (<connected-to-sysaudio_audio_clock_audio_clk_clk>),             //         sysaudio_audio_clock_audio_clk.clk
 		.sysaudio_audio_core_external_interface_ADCDAT  (<connected-to-sysaudio_audio_core_external_interface_ADCDAT>),  // sysaudio_audio_core_external_interface.ADCDAT
 		.sysaudio_audio_core_external_interface_ADCLRCK (<connected-to-sysaudio_audio_core_external_interface_ADCLRCK>), //                                       .ADCLRCK
 		.sysaudio_audio_core_external_interface_BCLK    (<connected-to-sysaudio_audio_core_external_interface_BCLK>),    //                                       .BCLK

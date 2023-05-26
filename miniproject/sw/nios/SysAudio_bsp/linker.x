@@ -4,7 +4,7 @@
  * Machine generated for CPU 'SysAudio_NIOS_II' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/miniproject/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Sun May 21 19:03:32 CEST 2023
+ * Generated: Fri May 26 15:18:41 CEST 2023
  */
 
 /*
@@ -51,13 +51,13 @@
 MEMORY
 {
     SDRAM_Controller_Shared : ORIGIN = 0x0, LENGTH = 67108864
-    reset : ORIGIN = 0x4020000, LENGTH = 32
-    SysAudio_Onchip_Memory : ORIGIN = 0x4020020, LENGTH = 131040
+    reset : ORIGIN = 0x4040000, LENGTH = 32
+    SysAudio_Onchip_Memory : ORIGIN = 0x4040020, LENGTH = 174048
 }
 
 /* Define symbols for each memory base-address */
 __alt_mem_SDRAM_Controller_Shared = 0x0;
-__alt_mem_SysAudio_Onchip_Memory = 0x4020000;
+__alt_mem_SysAudio_Onchip_Memory = 0x4040000;
 
 OUTPUT_FORMAT( "elf32-littlenios2",
                "elf32-littlenios2",
@@ -218,7 +218,7 @@ SECTIONS
      *
      */
 
-    .rodata : AT ( LOADADDR (.text) + SIZEOF (.text) )
+    .rodata LOADADDR (.text) + SIZEOF (.text) : AT ( LOADADDR (.text) + SIZEOF (.text) )
     {
         PROVIDE (__ram_rodata_start = ABSOLUTE(.));
         . = ALIGN(4);
@@ -226,7 +226,7 @@ SECTIONS
         *(.rodata1)
         . = ALIGN(4);
         PROVIDE (__ram_rodata_end = ABSOLUTE(.));
-    } > SDRAM_Controller_Shared
+    } > SysAudio_Onchip_Memory
 
     PROVIDE (__flash_rodata_start = LOADADDR(.rodata));
 
@@ -235,9 +235,13 @@ SECTIONS
      * This section's LMA is set to the .text region.
      * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
      *
+     * .rwdata region equals the .text region, and is set to be loaded into .text region.
+     * This requires two copies of .rwdata in the .text region. One read writable at VMA.
+     * and one read-only at LMA. crt0 will copy from LMA to VMA on reset
+     *
      */
 
-    .rwdata : AT ( LOADADDR (.rodata) + SIZEOF (.rodata) )
+    .rwdata LOADADDR (.rodata) + SIZEOF (.rodata) : AT ( LOADADDR (.rodata) + SIZEOF (.rodata)+ SIZEOF (.rwdata) )
     {
         PROVIDE (__ram_rwdata_start = ABSOLUTE(.));
         . = ALIGN(4);
@@ -256,11 +260,18 @@ SECTIONS
         _edata = ABSOLUTE(.);
         PROVIDE (edata = ABSOLUTE(.));
         PROVIDE (__ram_rwdata_end = ABSOLUTE(.));
-    } > SDRAM_Controller_Shared
+    } > SysAudio_Onchip_Memory
 
     PROVIDE (__flash_rwdata_start = LOADADDR(.rwdata));
 
-    .bss :
+    /*
+     *
+     * This section's LMA is set to the .text region.
+     * crt0 will copy to this section's specified mapped region virtual memory address (VMA)
+     *
+     */
+
+    .bss LOADADDR (.rwdata) + SIZEOF (.rwdata) : AT ( LOADADDR (.rwdata) + SIZEOF (.rwdata) )
     {
         __bss_start = ABSOLUTE(.);
         PROVIDE (__sbss_start = ABSOLUTE(.));
@@ -280,7 +291,7 @@ SECTIONS
 
         . = ALIGN(4);
         __bss_end = ABSOLUTE(.);
-    } > SDRAM_Controller_Shared
+    } > SysAudio_Onchip_Memory
 
     /*
      *
@@ -305,15 +316,12 @@ SECTIONS
      *
      */
 
-    .SDRAM_Controller_Shared : AT ( LOADADDR (.rwdata) + SIZEOF (.rwdata) )
+    .SDRAM_Controller_Shared : AT ( LOADADDR (.bss) + SIZEOF (.bss) )
     {
         PROVIDE (_alt_partition_SDRAM_Controller_Shared_start = ABSOLUTE(.));
         *(.SDRAM_Controller_Shared .SDRAM_Controller_Shared. SDRAM_Controller_Shared.*)
         . = ALIGN(4);
         PROVIDE (_alt_partition_SDRAM_Controller_Shared_end = ABSOLUTE(.));
-        _end = ABSOLUTE(.);
-        end = ABSOLUTE(.);
-        __alt_stack_base = ABSOLUTE(.);
     } > SDRAM_Controller_Shared
 
     PROVIDE (_alt_partition_SDRAM_Controller_Shared_load_addr = LOADADDR(.SDRAM_Controller_Shared));
@@ -331,6 +339,9 @@ SECTIONS
         *(.SysAudio_Onchip_Memory .SysAudio_Onchip_Memory. SysAudio_Onchip_Memory.*)
         . = ALIGN(4);
         PROVIDE (_alt_partition_SysAudio_Onchip_Memory_end = ABSOLUTE(.));
+        _end = ABSOLUTE(.);
+        end = ABSOLUTE(.);
+        __alt_stack_base = ABSOLUTE(.);
     } > SysAudio_Onchip_Memory
 
     PROVIDE (_alt_partition_SysAudio_Onchip_Memory_load_addr = LOADADDR(.SysAudio_Onchip_Memory));
@@ -382,7 +393,7 @@ SECTIONS
 /*
  * Don't override this, override the __alt_stack_* symbols instead.
  */
-__alt_data_end = 0x4000000;
+__alt_data_end = 0x406a800;
 
 /*
  * The next two symbols define the location of the default stack.  You can
@@ -398,4 +409,4 @@ PROVIDE( __alt_stack_limit   = __alt_stack_base );
  * Override this symbol to put the heap in a different memory.
  */
 PROVIDE( __alt_heap_start    = end );
-PROVIDE( __alt_heap_limit    = 0x4000000 );
+PROVIDE( __alt_heap_limit    = 0x406a800 );

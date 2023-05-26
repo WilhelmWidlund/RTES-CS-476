@@ -16,6 +16,15 @@
 #include "altera_avalon_mailbox_simple.h"
 #include <altera_avalon_performance_counter.h>
 #include "altera_up_avalon_audio.h"
+
+// REMEMBER TO CHANGE "LEGACY" TO "ENHANCED" for #define ALT_<X>_INTERRUPT_API_PRESENT IN SYSTEM.H AFTER GENERATING BSP
+
+// To monitor terminal in powershell:
+// nios2-terminal --device 2 --instance 0
+
+// To download code to board, change to .elf file directory and run:
+// nios2-download -g SysAudio.elf --device 2 --instance 0
+
 // PIO definitions for the interrupt handling on the switches
 #define PIO_IntrSwitch_Data	0
 #define PIO_IntrSwitch_IRQEN	4*2
@@ -190,7 +199,8 @@ void choose_task(int task)
 	if(task == 1)
 	{
 		// First switch (SW0) Record audio for a second
-		record_process(1);
+		//record_process(1);
+		printf("Interrupt test on CPU %d\n", NIOS2_CPU_ID_VALUE);
 	}
 	else if(task == 2)
 	{
@@ -221,7 +231,8 @@ void setup_switch_interrupts(uint8_t chosen_switches)
 {
 	// Setup interrupts on the chosen switches
 	IOWR_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQEN, chosen_switches);
-	alt_ic_isr_register(PIO_SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID, PIO_SWITCHES_IRQ, isr_switches, NULL, NULL);
+	// alt_ic_isr_register(PIO_SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID, PIO_SWITCHES_IRQ, isr_switches, NULL, NULL);
+	alt_irq_register(PIO_SWITCHES_IRQ, NULL, isr_switches);
 	return;
 }
 
@@ -231,8 +242,8 @@ void setup_switch_interrupts(uint8_t chosen_switches)
 int main()
 {
 	setup_audio(audio_dev);
-	// Setup interrupts on the first 2 switches
-	setup_switch_interrupts(0x3);
+	// Setup interrupts on the first 4 switches
+	setup_switch_interrupts(0x7);
 
 	// Wait for switches
 	while(1)

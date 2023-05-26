@@ -1,9 +1,38 @@
-17:11:40 **** Incremental Build of configuration Nios II for project cpu_1_project ****
+11:23:20 **** Incremental Build of configuration Nios II for project cpu_1_project ****
 make all 
 Info: Building C:/RTES/lab3/sw/nios/cpu_1_project_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/RTES/lab3/sw/nios/cpu_1_project_bsp/
 [BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/RTES/lab3/sw/nios/cpu_1_project_bsp//HAL/inc -IC:/RTES/lab3/sw/nios/cpu_1_project_bsp/ -IC:/RTES/lab3/sw/nios/cpu_1_project_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
+In file included from hello_world.c:7:0:
+hello_world.c: In function 'pptest':
+C:/RTES/lab3/sw/nios/cpu_1_project_bsp/system.h:345:36: warning: passing argument 1 of 'perf_print_formatted_report' makes pointer from integer without a cast [-Wint-conversion]
+ #define PERFORMANCE_COUNTER_1_BASE 0x4041000
+                                    ^
+hello_world.c:103:30: note: in expansion of macro 'PERFORMANCE_COUNTER_1_BASE'
+  perf_print_formatted_report(PERFORMANCE_COUNTER_1_BASE, alt_get_cpu_freq(), 3, "Startup", "Iterations", "Sleep");
+                              ^
+In file included from hello_world.c:14:0:
+c:\rtes\lab3\sw\nios\cpu_1_project_bsp\drivers\inc\altera_avalon_performance_counter.h:229:5: note: expected 'void *' but argument is of type 'int'
+ int perf_print_formatted_report (void* perf_base, 
+     ^
+hello_world.c: In function 'receive_mail':
+hello_world.c:199:2: warning: implicit declaration of function 'alt_dcache_flush_all' [-Wimplicit-function-declaration]
+  alt_dcache_flush_all();
+  ^
+hello_world.c: In function 'main':
+hello_world.c:248:2: warning: implicit declaration of function 'alt_ic_isr_register' [-Wimplicit-function-declaration]
+  alt_ic_isr_register(PIO_2_IRQ_INTERRUPT_CONTROLLER_ID, PIO_2_IRQ, isr_buttons, NULL, NULL);
+  ^
+Info: Linking cpu_1_project.elf
+nios2-elf-g++  -T'C:/RTES/lab3/sw/nios/cpu_1_project_bsp//linker.x' -msys-crt0='C:/RTES/lab3/sw/nios/cpu_1_project_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/RTES/lab3/sw/nios/cpu_1_project_bsp/   -Wl,-Map=cpu_1_project.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o cpu_1_project.elf obj/default/hello_world.o -lm -msys-lib=m
+nios2-elf-insert cpu_1_project.elf --thread_model hal --cpu_name cpu_1 --qsys true --simulation_enabled false --stderr_dev jtag_uart_1 --stdin_dev jtag_uart_1 --stdout_dev jtag_uart_1 --sopc_system_name soc_system --quartus_project_dir "c:/RTES/lab3/hw/quartus" --jdi C:/RTES/lab3/hw/quartus//output_files/lab3_MultiProcessors.jdi --sopcinfo C:/RTES/lab3/hw/quartus/soc_system.sopcinfo
+Info: (cpu_1_project.elf) 76 KBytes program size (code + initialized data).
+Info:                     44 KBytes free for stack + heap.
+Info: Creating cpu_1_project.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source cpu_1_project.elf >cpu_1_project.objdump
 [cpu_1_project build complete]
 
-17:11:42 Build Finished (took 1s.403ms)
+11:23:23 Build Finished (took 3s.155ms)
 
