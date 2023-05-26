@@ -8,4 +8,4 @@ cd ../application_1
 nios2-download -g cpu_1_proj.elf --device 2 --instance 1
 echo 'Process on cpu 1 (SigProc) started'
 
-gnome-terminal -e echo 'TEST'
+run cmd.exe /k echo 'TEST'

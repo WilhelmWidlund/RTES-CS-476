@@ -72,7 +72,7 @@ void send_callback(void* report, int status)
 void send_mail(alt_u32 start_addr, alt_u32 storage_length)
 {
 	// Load mailbox
-	altera_avalon_mailbox_dev* mailbox_AudioToSigProc = altera_avalon_mailbox_open("/dev/Mailbox_simple_0", send_callback, NULL);
+	altera_avalon_mailbox_dev* mailbox_AudioToSigProc = altera_avalon_mailbox_open("/dev/Mailbox_AudioToSigProc", send_callback, NULL);
 	// Create mail "envelope"
 	alt_u32 mail[2] = {start_addr, storage_length};
 	// Send message
@@ -96,13 +96,13 @@ void receive_callback(void* message)
 void receive_mail()
 {
 	// Open mailbox
-	altera_avalon_mailbox_dev* mailbox_SigProcToAudio = altera_avalon_mailbox_open("/dev/Mailbox_simple_1", NULL, receive_callback);
+	altera_avalon_mailbox_dev* mailbox_SigProcToAudio = altera_avalon_mailbox_open("/dev/Mailbox_SigProcToAudio", NULL, receive_callback);
 	// Wait for mail confirming the processing is complete
 	altera_avalon_mailbox_retrieve_poll(mailbox_SigProcToAudio, mail, 0);
 	alt_dcache_flush_all();
 	// Raise flag, enabling playback of processed audio
 	audio_ready_flag = 1;
-	//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0x2);
+	IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0x2);
 }
 
 // -------------------- Audio functions ---------------------------------------------------
@@ -110,7 +110,7 @@ void receive_mail()
 void setup_audio(alt_up_audio_dev * audio_dev)
 {
 	// open the Audio port
-	audio_dev = alt_up_audio_open_dev ("/dev/audio_0");
+	audio_dev = alt_up_audio_open_dev ("/dev/SysAudio_Audio_Core");
 	if ( audio_dev == NULL)
 	alt_printf ("Error: could not open audio device \n");
 	else
@@ -127,10 +127,10 @@ void record_process(int seconds)
 	// 48 kHz sampling frequency => 12k samples per snippet
 	int words_per_snippet = 12000;
 	alt_u32 mail[2];
-	unsigned int *start_address = SDRAM_CONTROLLER_2_BASE;
+	unsigned int *start_address = SDRAM_CONTROLLER_SHARED_BASE;
 	send_mail(start_address, snippets);
 	// Turn on LED 0, signifying that recording is in progress
-	//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0x1);
+	IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0x1);
 	while(snippet_counter < snippets)
 	{
 		// Record
@@ -140,7 +140,7 @@ void record_process(int seconds)
 		snippet_counter = snippet_counter + 1;
 	}
 	// Turn off LED 0, signifying that recording is done
-	//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0x0);
+	IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0x0);
 }
 
 void record_audio_snippet(int *start_addr_ptr, int record_words)
@@ -178,14 +178,12 @@ void test_audio()
 {
 	/* used for audio record/playback */
 	unsigned int l_buf;
-	printf("Going into test_audio");
 	/* read and echo audio data */
 	while(1)
 	{
 		int fifospace = alt_up_audio_read_fifo_avail (audio_dev, ALT_UP_AUDIO_LEFT);
 		if ( fifospace > 0 ) // check if data is available
 		{
-			printf("Doing shit");
 			// read audio buffer
 			alt_up_audio_read_fifo (audio_dev, &(l_buf), 1, ALT_UP_AUDIO_LEFT);
 			// write audio buffer
@@ -222,17 +220,17 @@ void choose_task(int task)
 void isr_switches(void* context)
 {
 	// Read interrupt source
-	uint8_t pinvals = IORD_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQFLAG);
+	uint8_t pinvals = IORD_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQFLAG);
 	// Save choice
 	choice = (int)pinvals;
 	// Clear the interrupt flag
-	IOWR_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQFLAG, pinvals);
+	IOWR_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQFLAG, pinvals);
 }
 
 void setup_switch_interrupts(uint8_t chosen_switches)
 {
 	// Setup interrupts on the chosen switches
-	IOWR_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQEN, chosen_switches);
+	IOWR_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQEN, chosen_switches);
 	alt_irq_register(PIO_2_IRQ, NULL, isr_switches);
 	return;
 }

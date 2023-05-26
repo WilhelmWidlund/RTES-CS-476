@@ -113,7 +113,6 @@ void choose_task(int task)
 	else if(task == 2)
 	{
 		// Second switch (SW1)
-
 	}
 	else if(task == 4)
 	{
@@ -125,18 +124,18 @@ void choose_task(int task)
 void isr_switches(void* context)
 {
 	// Read interrupt source
-	uint8_t pinvals = IORD_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQFLAG);
+	uint8_t pinvals = IORD_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQFLAG);
 	// Save choice
 	choice = (int)pinvals;
 	// Clear the interrupt flag
-	IOWR_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQFLAG, pinvals);
+	IOWR_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQFLAG, pinvals);
 }
 
 void setup_switch_interrupts(uint8_t chosen_switches)
 {
 	// Setup interrupts on the chosen switches
-	IOWR_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQEN, chosen_switches);
-	alt_ic_isr_register(PIO_2_IRQ_INTERRUPT_CONTROLLER_ID, PIO_2_IRQ, isr_switches, NULL, NULL);
+	IOWR_8DIRECT(PIO_SWITCHES_BASE, PIO_IntrSwitch_IRQEN, chosen_switches);
+	alt_ic_isr_register(PIO_SWITCHES_IRQ_INTERRUPT_CONTROLLER_ID, PIO_SWITCHES_IRQ, isr_switches, NULL, NULL);
 	return;
 }
 
@@ -146,7 +145,7 @@ void overall_function(int choice)
 {
 	int op_type;
 	receive_mail();
-	if(IORD_32DIRECT(PIO_2_BASE, 0)&0x100 == 0)
+	if(IORD_32DIRECT(PIO_SWITCHES_BASE, 0)&0x100 == 0)
 	{
 		op_type = 0;
 	}
@@ -168,7 +167,7 @@ void overall_function(int choice)
 		int *snippet_storage_address = start_storage_address + handled_snippets*words_per_snippet*4;
 		int snippet_word_count = mail[1];
 		// Turn on LED 9, signifying that signal processing is in progress
-		//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 512);
+		IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 512);
 		if(choice == 1)
 		{
 			// TODO: call accelerator
@@ -185,7 +184,7 @@ void overall_function(int choice)
 			c_comp_function(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
 		}
 		// Turn off LED 9, signifying that signal processing is done
-		//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0);
+		IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0);
 	}
 	send_mail((alt_u32)start_storage_address, (alt_u32)memory_size);
 }

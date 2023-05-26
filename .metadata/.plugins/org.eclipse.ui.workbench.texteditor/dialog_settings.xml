@@ -2,20 +2,20 @@
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
 		<item value="false" key="isRegEx"/>
-		<item value="NIOS2_CPU_ID_VALUE" key="selection"/>
+		<item value="ALT_UP_AUDIO_LEFT" key="selection"/>
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="true" key="wrap"/>
 		<item value="false" key="wholeword"/>
 		<list key="findhistory">
-			<item value="NIOS2_CPU_ID_VALUE"/>
-			<item value="ALT_ENHANCED"/>
-			<item value="ALT_ENHANCED_INTERRUPT_API_PRESENT"/>
-			<item value="alt_ic_isr_register"/>
-			<item value="audio_dev"/>
-			<item value="start_address"/>
-			<item value="audio_ready_flag"/>
-			<item value="TimerSnapLow"/>
+			<item value="ALT_UP_AUDIO_LEFT"/>
+			<item value="could"/>
+			<item value="AUDIO"/>
+			<item value="ALT_UP"/>
+			<item value="PIO_2"/>
+			<item value="PIO_"/>
+			<item value="PIO_S"/>
+			<item value="PIO_SWITCHES_IRQ"/>
 		</list>
 		<list key="replacehistory">
 		</list>
