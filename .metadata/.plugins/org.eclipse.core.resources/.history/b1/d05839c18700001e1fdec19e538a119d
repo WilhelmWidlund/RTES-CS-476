@@ -139,8 +139,6 @@ void record_process(int seconds)
 		send_mail(start_address + snippet_counter*words_per_snippet*4, words_per_snippet);
 		snippet_counter = snippet_counter + 1;
 	}
-	// Wait for the Signal Processing subsystem to finish it's task
-	receive_mail();
 	// Turn off LED 0, signifying that recording is done
 	//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0x0);
 }

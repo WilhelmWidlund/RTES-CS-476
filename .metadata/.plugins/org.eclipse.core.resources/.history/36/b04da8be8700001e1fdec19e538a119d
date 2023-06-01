@@ -209,13 +209,7 @@ void HW_Accelerator_wait_for_ready()
 void overall_function(int choice, int run_profiling)
 {
 	int op_type;
-	// Receive initial mail, containing starting address and amount of snippets
 	receive_mail();
-	if(run_profiling == 1)
-		{
-			// Start profiling for the current choice
-			PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
-		}
 	// Check if the volume shift switch is set to up or down
 	if((IORD_32DIRECT(PIO_2_BASE, 0) & 0x100) == 0)
 	{
@@ -231,6 +225,11 @@ void overall_function(int choice, int run_profiling)
 	int handled_snippets = 0;
 	int memory_size = total_snippets*words_per_snippet*4;
 	int *start_storage_address = mail[0] + memory_size;
+	if(run_profiling == 1)
+	{
+		// Start profiling for the current choice
+		PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
+	}
 	while(handled_snippets < total_snippets)
 	{
 		receive_mail();
