@@ -2,8 +2,8 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>May 26, 2023 6:26:41 PM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1685118401352</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 1, 2023 11:12:44 AM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1685610764486</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\RTES\miniproject_2\sw\nios\cpu_0_proj_bsp</BspGeneratedLocation>
         <BspSettingsFile>settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\RTES\miniproject_2\hw\quartus\soc_system.sopcinfo</SopcDesignFile>
@@ -917,43 +917,43 @@
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
+                <slaveDescriptor>pio_2</slaveDescriptor>
                 <addressRange>0x04041040 - 0x0404104F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>audio_0</slaveDescriptor>
+                <slaveDescriptor>mailbox_simple_0</slaveDescriptor>
                 <addressRange>0x04041050 - 0x0404105F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>pio_2</slaveDescriptor>
+                <slaveDescriptor>mailbox_simple_1</slaveDescriptor>
                 <addressRange>0x04041060 - 0x0404106F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>mailbox_simple_0</slaveDescriptor>
+                <slaveDescriptor>parallel_port_2</slaveDescriptor>
                 <addressRange>0x04041070 - 0x0404107F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>mailbox_simple_1</slaveDescriptor>
+                <slaveDescriptor>parallel_port_0</slaveDescriptor>
                 <addressRange>0x04041080 - 0x0404108F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>parallel_port_2</slaveDescriptor>
+                <slaveDescriptor>audio_and_video_config_0</slaveDescriptor>
                 <addressRange>0x04041090 - 0x0404109F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
-                <slaveDescriptor>parallel_port_0</slaveDescriptor>
+                <slaveDescriptor>audio_0</slaveDescriptor>
                 <addressRange>0x040410A0 - 0x040410AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>

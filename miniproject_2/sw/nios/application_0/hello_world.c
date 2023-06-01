@@ -185,11 +185,13 @@ void test_audio()
 		int fifospace = alt_up_audio_read_fifo_avail (audio_dev, ALT_UP_AUDIO_LEFT);
 		if ( fifospace > 0 ) // check if data is available
 		{
-			printf("Doing shit");
+			printf("Accessing audio device... \n");
 			// read audio buffer
 			alt_up_audio_read_fifo (audio_dev, &(l_buf), 1, ALT_UP_AUDIO_LEFT);
+			printf("Read the following: %f \n", l_buf);
 			// write audio buffer
 			alt_up_audio_write_fifo (audio_dev, &(l_buf), 1, ALT_UP_AUDIO_LEFT);
+			printf("Wrote the following: %f \n", l_buf);
 		}
 	}
 }
@@ -201,8 +203,8 @@ void choose_task(int task)
 	if(task == 1)
 	{
 		// First switch (SW0) Record audio for a second
-		//record_process(1);
-		printf("Interrupt test on CPU %d\n", NIOS2_CPU_ID_VALUE);
+		record_process(1);
+		//printf("Interrupt test on CPU %d\n", NIOS2_CPU_ID_VALUE);
 	}
 	else if(task == 2)
 	{
@@ -216,6 +218,12 @@ void choose_task(int task)
 	{
 		// Third switch (SW2) Test audio by immediately playing back what is recorded
 		test_audio();
+	}
+	else if(task == 8)
+	{
+		// Fourth switch: run with profiling
+		// TODO: start it here... just record once as usual
+		record_process(1);
 	}
 }
 

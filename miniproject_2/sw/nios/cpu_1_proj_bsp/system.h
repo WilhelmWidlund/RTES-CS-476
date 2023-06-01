@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_1' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/miniproject_2/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Fri May 26 18:26:29 CEST 2023
+ * Generated: Thu Jun 01 11:12:33 CEST 2023
  */
 
 /*
@@ -66,7 +66,7 @@
 #define ALT_CPU_CPU_ARCH_NIOS2_R1
 #define ALT_CPU_CPU_FREQ 50000000u
 #define ALT_CPU_CPU_ID_SIZE 1
-#define ALT_CPU_CPU_ID_VALUE 0x00000001
+#define ALT_CPU_CPU_ID_VALUE 0x00000000
 #define ALT_CPU_CPU_IMPLEMENTATION "fast"
 #define ALT_CPU_DATA_ADDR_WIDTH 0x1b
 #define ALT_CPU_DCACHE_BYPASS_MASK 0x80000000
@@ -158,7 +158,22 @@
 #define __ALTERA_AVALON_PIO
 #define __ALTERA_NIOS2_GEN2
 #define __ALTERA_UP_AVALON_PARALLEL_PORT
+#define __HW_ACCELERATOR
 #define __SIGPROCOPERATION
+
+
+/*
+ * HW_Accelerator_0 configuration
+ *
+ */
+
+#define ALT_MODULE_CLASS_HW_Accelerator_0 HW_Accelerator
+#define HW_ACCELERATOR_0_BASE 0x4041080
+#define HW_ACCELERATOR_0_IRQ -1
+#define HW_ACCELERATOR_0_IRQ_INTERRUPT_CONTROLLER_ID -1
+#define HW_ACCELERATOR_0_NAME "/dev/HW_Accelerator_0"
+#define HW_ACCELERATOR_0_SPAN 32
+#define HW_ACCELERATOR_0_TYPE "HW_Accelerator"
 
 
 /*
@@ -177,19 +192,19 @@
 #define ALT_NUM_INTERNAL_INTERRUPT_CONTROLLERS 1
 #define ALT_NUM_INTERRUPT_CONTROLLERS 1
 #define ALT_STDERR "/dev/jtag_uart_1"
-#define ALT_STDERR_BASE 0x4041080
+#define ALT_STDERR_BASE 0x40410b0
 #define ALT_STDERR_DEV jtag_uart_1
 #define ALT_STDERR_IS_JTAG_UART
 #define ALT_STDERR_PRESENT
 #define ALT_STDERR_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDIN "/dev/jtag_uart_1"
-#define ALT_STDIN_BASE 0x4041080
+#define ALT_STDIN_BASE 0x40410b0
 #define ALT_STDIN_DEV jtag_uart_1
 #define ALT_STDIN_IS_JTAG_UART
 #define ALT_STDIN_PRESENT
 #define ALT_STDIN_TYPE "altera_avalon_jtag_uart"
 #define ALT_STDOUT "/dev/jtag_uart_1"
-#define ALT_STDOUT_BASE 0x4041080
+#define ALT_STDOUT_BASE 0x40410b0
 #define ALT_STDOUT_DEV jtag_uart_1
 #define ALT_STDOUT_IS_JTAG_UART
 #define ALT_STDOUT_PRESENT
@@ -214,7 +229,7 @@
  */
 
 #define ALT_MODULE_CLASS_jtag_uart_1 altera_avalon_jtag_uart
-#define JTAG_UART_1_BASE 0x4041080
+#define JTAG_UART_1_BASE 0x40410b0
 #define JTAG_UART_1_IRQ 2
 #define JTAG_UART_1_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define JTAG_UART_1_NAME "/dev/jtag_uart_1"
@@ -232,7 +247,7 @@
  */
 
 #define ALT_MODULE_CLASS_mailbox_simple_0 altera_avalon_mailbox_simple
-#define MAILBOX_SIMPLE_0_BASE 0x4041050
+#define MAILBOX_SIMPLE_0_BASE 0x4041060
 #define MAILBOX_SIMPLE_0_IRQ 0
 #define MAILBOX_SIMPLE_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define MAILBOX_SIMPLE_0_NAME "/dev/mailbox_simple_0"
@@ -246,7 +261,7 @@
  */
 
 #define ALT_MODULE_CLASS_mailbox_simple_1 altera_avalon_mailbox_simple
-#define MAILBOX_SIMPLE_1_BASE 0x4041040
+#define MAILBOX_SIMPLE_1_BASE 0x4041050
 #define MAILBOX_SIMPLE_1_IRQ -1
 #define MAILBOX_SIMPLE_1_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define MAILBOX_SIMPLE_1_NAME "/dev/mailbox_simple_1"
@@ -289,7 +304,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_1 altera_up_avalon_parallel_port
-#define PARALLEL_PORT_1_BASE 0x4041070
+#define PARALLEL_PORT_1_BASE 0x40410a0
 #define PARALLEL_PORT_1_IRQ -1
 #define PARALLEL_PORT_1_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_1_NAME "/dev/parallel_port_1"
@@ -303,7 +318,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_2 altera_up_avalon_parallel_port
-#define PARALLEL_PORT_2_BASE 0x4041090
+#define PARALLEL_PORT_2_BASE 0x4041070
 #define PARALLEL_PORT_2_IRQ -1
 #define PARALLEL_PORT_2_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_2_NAME "/dev/parallel_port_2"
@@ -332,7 +347,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_2 altera_avalon_pio
-#define PIO_2_BASE 0x4041060
+#define PIO_2_BASE 0x4041040
 #define PIO_2_BIT_CLEARING_EDGE_REGISTER 1
 #define PIO_2_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_2_CAPTURE 1

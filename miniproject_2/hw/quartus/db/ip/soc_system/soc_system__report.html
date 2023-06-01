@@ -67,7 +67,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   </table>
   <table class="blueBar">
    <tr>
-    <td class="l">2023.05.26.18:16:03</td>
+    <td class="l">2023.06.01.11:02:52</td>
     <td class="r">Datasheet</td>
    </tr>
   </table>
@@ -93,6 +93,9 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      <a href="#module_cpu_1"><b>cpu_1</b>
      </a> Nios II 18.1
      <br/>All Components
+     <br/>&#160;&#160;
+     <a href="#module_HW_Accelerator_0"><b>HW_Accelerator_0</b>
+     </a> HW_Accelerator 1.0
      <br/>&#160;&#160;
      <a href="#module_audio_0"><b>audio_0</b>
      </a> altera_up_avalon_audio 18.0
@@ -151,6 +154,10 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
   <table class="mmap">
    <tr>
     <td class="empty" rowspan="2"></td>
+    <td class="mastermodule" colspan="1">
+     <a href="#module_HW_Accelerator_0"><b>HW_Accelerator_0</b>
+     </a>
+    </td>
     <td class="mastermodule" colspan="2">
      <a href="#module_cpu_0"><b>cpu_0</b>
      </a>
@@ -161,10 +168,30 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     </td>
    </tr>
    <tr>
+    <td class="masterlr">&#160;avalon_master</td>
     <td class="masterl">&#160;data_master</td>
     <td class="masterr">&#160;instruction_master</td>
     <td class="masterl">&#160;data_master</td>
     <td class="masterr">&#160;instruction_master</td>
+   </tr>
+   <tr>
+    <td class="slavemodule">&#160;
+     <a href="#module_HW_Accelerator_0"><b>HW_Accelerator_0</b>
+     </a>
+    </td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+   </tr>
+   <tr>
+    <td class="slaveb">as&#160;</td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041080</td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavemodule">&#160;
@@ -175,10 +202,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_audio_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04041050</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410a0</td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -192,10 +221,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_av_config_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04041040</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041090</td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -209,9 +240,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">debug_mem_slave&#160;</td>
+    <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04040800</td>
     <td class="addr"><span style="color:#989898">0x</span>04040800</td>
     <td class="empty"></td>
@@ -226,9 +259,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">debug_mem_slave&#160;</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04040800</td>
@@ -243,9 +278,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
+    <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>040410b0</td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -260,12 +297,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_jtag_slave&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041080</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410b0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -277,10 +316,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avmm_msg_sender&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04041070</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041050</td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -289,7 +330,8 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="slavem">avmm_msg_receiver&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041050</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041060</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -301,17 +343,20 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avmm_msg_sender&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041040</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041050</td>
     <td class="empty"></td>
    </tr>
    <tr>
     <td class="slavem">avmm_msg_receiver&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04041080</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041060</td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -325,9 +370,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
+    <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04020000</td>
     <td class="addr"><span style="color:#989898">0x</span>04020000</td>
     <td class="empty"></td>
@@ -342,9 +389,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04020000</td>
@@ -359,10 +408,12 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_parallel_port_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>040410a0</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041080</td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -376,12 +427,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_parallel_port_slave&#160;</td>
     <td class="empty"></td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041070</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>040410a0</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -393,12 +446,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">avalon_parallel_port_slave&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04041090</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041090</td>
+    <td class="addr"><span style="color:#989898">0x</span>04041070</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041070</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -410,9 +465,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
+    <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04041000</td>
     <td class="empty"></td>
     <td class="empty"></td>
@@ -427,9 +484,11 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">control_slave&#160;</td>
+    <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>04041000</td>
@@ -444,12 +503,14 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
-    <td class="addr"><span style="color:#989898">0x</span>04041060</td>
     <td class="empty"></td>
-    <td class="addr"><span style="color:#989898">0x</span>04041060</td>
+    <td class="addr"><span style="color:#989898">0x</span>04041040</td>
+    <td class="empty"></td>
+    <td class="addr"><span style="color:#989898">0x</span>04041040</td>
     <td class="empty"></td>
    </tr>
    <tr>
@@ -461,15 +522,105 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <td class="empty"></td>
     <td class="empty"></td>
     <td class="empty"></td>
+    <td class="empty"></td>
    </tr>
    <tr>
     <td class="slaveb">s1&#160;</td>
+    <td class="addr"><span style="color:#989898">0x</span>00000000</td>
     <td class="addr"><span style="color:#989898">0x</span>00000000</td>
     <td class="empty"></td>
     <td class="addr"><span style="color:#989898">0x</span>00000000</td>
     <td class="empty"></td>
    </tr>
   </table>
+  <a name="module_HW_Accelerator_0"> </a>
+  <div>
+   <hr/>
+   <h2>HW_Accelerator_0</h2>HW_Accelerator v1.0
+   <br/>
+   <div class="greydiv">
+    <table class="connectionboxes">
+     <tr>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_cpu_1">cpu_1</a>
+      </td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="main" rowspan="12">HW_Accelerator_0</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;as</td>
+     </tr>
+     <tr>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_sink</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_pll_2">pll_2</a>
+      </td>
+      <td class="from">outclk0&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;clock</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_clk_0">clk_0</a>
+      </td>
+      <td class="from">clk_reset&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;reset_sink</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">avalon_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_sdram_controller_2">sdram_controller_2</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+    </table>
+   </div>
+   <br/>
+   <br/>
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Parameters</h2>
+      <table>
+       <tr>
+        <td class="parametername">deviceFamily</td>
+        <td class="parametervalue">UNKNOWN</td>
+       </tr>
+       <tr>
+        <td class="parametername">generateLegacySim</td>
+        <td class="parametervalue">false</td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>&#160;&#160;
+   <table class="flowbox">
+    <tr>
+     <td class="parametersbox">
+      <h2>Software Assignments</h2>(none)</td>
+    </tr>
+   </table>
+  </div>
   <a name="module_SigProcOperation_0"> </a>
   <div>
    <hr/>
@@ -1944,7 +2095,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='sdram_controller_2.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='onchip_memory2_0.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='cpu_0.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='performance_counter_0.control_slave' start='0x4041000' end='0x4041040' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x4041040' end='0x4041050' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='audio_0.avalon_audio_slave' start='0x4041050' end='0x4041060' type='altera_up_avalon_audio.avalon_audio_slave' /&gt;&lt;slave name='pio_2.s1' start='0x4041060' end='0x4041070' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mailbox_simple_0.avmm_msg_sender' start='0x4041070' end='0x4041080' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='mailbox_simple_1.avmm_msg_receiver' start='0x4041080' end='0x4041090' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='parallel_port_2.avalon_parallel_port_slave' start='0x4041090' end='0x40410A0' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;slave name='parallel_port_0.avalon_parallel_port_slave' start='0x40410A0' end='0x40410B0' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0x40410B0' end='0x40410B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='sdram_controller_2.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='onchip_memory2_0.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='cpu_0.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='performance_counter_0.control_slave' start='0x4041000' end='0x4041040' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='pio_2.s1' start='0x4041040' end='0x4041050' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mailbox_simple_0.avmm_msg_sender' start='0x4041050' end='0x4041060' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='mailbox_simple_1.avmm_msg_receiver' start='0x4041060' end='0x4041070' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='parallel_port_2.avalon_parallel_port_slave' start='0x4041070' end='0x4041080' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;slave name='parallel_port_0.avalon_parallel_port_slave' start='0x4041080' end='0x4041090' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;slave name='audio_and_video_config_0.avalon_av_config_slave' start='0x4041090' end='0x40410A0' type='altera_up_avalon_audio_and_video_config.avalon_av_config_slave' /&gt;&lt;slave name='audio_0.avalon_audio_slave' start='0x40410A0' end='0x40410B0' type='altera_up_avalon_audio.avalon_audio_slave' /&gt;&lt;slave name='jtag_uart_0.avalon_jtag_slave' start='0x40410B0' end='0x40410B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -2196,7 +2347,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_pll_2">pll_2</a>
       </td>
       <td class="from">outclk0&#160;&#160;</td>
-      <td class="main" rowspan="52">cpu_1</td>
+      <td class="main" rowspan="57">cpu_1</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;clk</td>
@@ -2212,6 +2363,32 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
      </tr>
      <tr>
       <td class="to">&#160;&#160;reset</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">data_master&#160;&#160;</td>
+      <td class="neighbor" rowspan="4">
+       <a href="#module_HW_Accelerator_0">HW_Accelerator_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;as</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">debug_reset_request&#160;&#160;</td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;reset_sink</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
      </tr>
      <tr>
       <td></td>
@@ -3159,7 +3336,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        </tr>
        <tr>
         <td class="parametername">dataSlaveMapParam</td>
-        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='sdram_controller_2.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='onchip_memory_1.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='cpu_1.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='performance_counter_1.control_slave' start='0x4041000' end='0x4041040' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='mailbox_simple_1.avmm_msg_sender' start='0x4041040' end='0x4041050' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='mailbox_simple_0.avmm_msg_receiver' start='0x4041050' end='0x4041060' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='pio_2.s1' start='0x4041060' end='0x4041070' type='altera_avalon_pio.s1' /&gt;&lt;slave name='parallel_port_1.avalon_parallel_port_slave' start='0x4041070' end='0x4041080' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;slave name='jtag_uart_1.avalon_jtag_slave' start='0x4041080' end='0x4041088' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;slave name='parallel_port_2.avalon_parallel_port_slave' start='0x4041090' end='0x40410A0' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;/address-map&gt;</td>
+        <td class="parametervalue">&lt;address-map&gt;&lt;slave name='sdram_controller_2.s1' start='0x0' end='0x4000000' type='altera_avalon_new_sdram_controller.s1' /&gt;&lt;slave name='onchip_memory_1.s1' start='0x4020000' end='0x4040000' type='altera_avalon_onchip_memory2.s1' /&gt;&lt;slave name='cpu_1.debug_mem_slave' start='0x4040800' end='0x4041000' type='altera_nios2_gen2.debug_mem_slave' /&gt;&lt;slave name='performance_counter_1.control_slave' start='0x4041000' end='0x4041040' type='altera_avalon_performance_counter.control_slave' /&gt;&lt;slave name='pio_2.s1' start='0x4041040' end='0x4041050' type='altera_avalon_pio.s1' /&gt;&lt;slave name='mailbox_simple_1.avmm_msg_sender' start='0x4041050' end='0x4041060' type='altera_avalon_mailbox_simple.avmm_msg_sender' /&gt;&lt;slave name='mailbox_simple_0.avmm_msg_receiver' start='0x4041060' end='0x4041070' type='altera_avalon_mailbox_simple.avmm_msg_receiver' /&gt;&lt;slave name='parallel_port_2.avalon_parallel_port_slave' start='0x4041070' end='0x4041080' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;slave name='HW_Accelerator_0.as' start='0x4041080' end='0x40410A0' type='HW_Accelerator.as' /&gt;&lt;slave name='parallel_port_1.avalon_parallel_port_slave' start='0x40410A0' end='0x40410B0' type='altera_up_avalon_parallel_port.avalon_parallel_port_slave' /&gt;&lt;slave name='jtag_uart_1.avalon_jtag_slave' start='0x40410B0' end='0x40410B8' type='altera_avalon_jtag_uart.avalon_jtag_slave' /&gt;&lt;/address-map&gt;</td>
        </tr>
        <tr>
         <td class="parametername">tightlyCoupledDataMaster0MapParam</td>
@@ -5348,7 +5525,7 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
        <a href="#module_clk_0">clk_0</a>
       </td>
       <td class="from">clk&#160;&#160;</td>
-      <td class="main" rowspan="57">pll_2</td>
+      <td class="main" rowspan="60">pll_2</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;refclk</td>
@@ -5611,6 +5788,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
       <td></td>
       <td></td>
       <td class="to">&#160;&#160;clk1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="from">outclk0&#160;&#160;</td>
+      <td class="neighbor" rowspan="2">
+       <a href="#module_HW_Accelerator_0">HW_Accelerator_0</a>
+      </td>
+     </tr>
+     <tr>
+      <td></td>
+      <td></td>
+      <td class="to">&#160;&#160;clock</td>
      </tr>
      <tr style="height:6px">
       <td></td>
@@ -7569,10 +7762,22 @@ div.greydiv { vertical-align:top ; text-align:center ; background:#eeeeee ; bord
     <table class="connectionboxes">
      <tr>
       <td class="neighbor" rowspan="2">
+       <a href="#module_HW_Accelerator_0">HW_Accelerator_0</a>
+      </td>
+      <td class="from">avalon_master&#160;&#160;</td>
+      <td class="main" rowspan="14">sdram_controller_2</td>
+     </tr>
+     <tr>
+      <td class="to">&#160;&#160;s1</td>
+     </tr>
+     <tr style="height:6px">
+      <td></td>
+     </tr>
+     <tr>
+      <td class="neighbor" rowspan="2">
        <a href="#module_cpu_0">cpu_0</a>
       </td>
       <td class="from">data_master&#160;&#160;</td>
-      <td class="main" rowspan="11">sdram_controller_2</td>
      </tr>
      <tr>
       <td class="to">&#160;&#160;s1</td>

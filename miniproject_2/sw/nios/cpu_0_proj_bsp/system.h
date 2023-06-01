@@ -4,7 +4,7 @@
  * Machine generated for CPU 'cpu_0' in SOPC Builder design 'soc_system'
  * SOPC Builder design path: C:/RTES/miniproject_2/hw/quartus/soc_system.sopcinfo
  *
- * Generated: Fri May 26 18:26:41 CEST 2023
+ * Generated: Thu Jun 01 11:12:44 CEST 2023
  */
 
 /*
@@ -195,7 +195,7 @@
  */
 
 #define ALT_MODULE_CLASS_audio_0 altera_up_avalon_audio
-#define AUDIO_0_BASE 0x4041050
+#define AUDIO_0_BASE 0x40410a0
 #define AUDIO_0_IRQ 2
 #define AUDIO_0_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define AUDIO_0_NAME "/dev/audio_0"
@@ -209,7 +209,7 @@
  */
 
 #define ALT_MODULE_CLASS_audio_and_video_config_0 altera_up_avalon_audio_and_video_config
-#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x4041040
+#define AUDIO_AND_VIDEO_CONFIG_0_BASE 0x4041090
 #define AUDIO_AND_VIDEO_CONFIG_0_IRQ -1
 #define AUDIO_AND_VIDEO_CONFIG_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define AUDIO_AND_VIDEO_CONFIG_0_NAME "/dev/audio_and_video_config_0"
@@ -252,7 +252,7 @@
  */
 
 #define ALT_MODULE_CLASS_mailbox_simple_0 altera_avalon_mailbox_simple
-#define MAILBOX_SIMPLE_0_BASE 0x4041070
+#define MAILBOX_SIMPLE_0_BASE 0x4041050
 #define MAILBOX_SIMPLE_0_IRQ -1
 #define MAILBOX_SIMPLE_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define MAILBOX_SIMPLE_0_NAME "/dev/mailbox_simple_0"
@@ -266,7 +266,7 @@
  */
 
 #define ALT_MODULE_CLASS_mailbox_simple_1 altera_avalon_mailbox_simple
-#define MAILBOX_SIMPLE_1_BASE 0x4041080
+#define MAILBOX_SIMPLE_1_BASE 0x4041060
 #define MAILBOX_SIMPLE_1_IRQ 1
 #define MAILBOX_SIMPLE_1_IRQ_INTERRUPT_CONTROLLER_ID 0
 #define MAILBOX_SIMPLE_1_NAME "/dev/mailbox_simple_1"
@@ -309,7 +309,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_0 altera_up_avalon_parallel_port
-#define PARALLEL_PORT_0_BASE 0x40410a0
+#define PARALLEL_PORT_0_BASE 0x4041080
 #define PARALLEL_PORT_0_IRQ -1
 #define PARALLEL_PORT_0_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_0_NAME "/dev/parallel_port_0"
@@ -323,7 +323,7 @@
  */
 
 #define ALT_MODULE_CLASS_parallel_port_2 altera_up_avalon_parallel_port
-#define PARALLEL_PORT_2_BASE 0x4041090
+#define PARALLEL_PORT_2_BASE 0x4041070
 #define PARALLEL_PORT_2_IRQ -1
 #define PARALLEL_PORT_2_IRQ_INTERRUPT_CONTROLLER_ID -1
 #define PARALLEL_PORT_2_NAME "/dev/parallel_port_2"
@@ -352,7 +352,7 @@
  */
 
 #define ALT_MODULE_CLASS_pio_2 altera_avalon_pio
-#define PIO_2_BASE 0x4041060
+#define PIO_2_BASE 0x4041040
 #define PIO_2_BIT_CLEARING_EDGE_REGISTER 1
 #define PIO_2_BIT_MODIFYING_OUTPUT_REGISTER 0
 #define PIO_2_CAPTURE 1
