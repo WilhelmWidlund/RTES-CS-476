@@ -15,7 +15,9 @@ obj/default/hello_world.o: hello_world.c \
  c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\hal\inc\priv\alt_no_error.h \
  c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\hal\inc\priv\alt_file.h \
  c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_avalon_performance_counter.h \
- c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_up_avalon_audio.h
+ c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_up_avalon_audio.h \
+ c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_up_avalon_audio_and_video_config.h \
+ c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_up_avalon_audio_and_video_config_regs.h
 
 C:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp/system.h:
 
@@ -50,3 +52,7 @@ c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\hal\inc\priv\alt_file.h:
 c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_avalon_performance_counter.h:
 
 c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_up_avalon_audio.h:
+
+c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_up_avalon_audio_and_video_config.h:
+
+c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_up_avalon_audio_and_video_config_regs.h:

@@ -1,9 +1,46 @@
-18:59:34 **** Incremental Build of configuration Nios II for project cpu_0_proj ****
+20:00:17 **** Incremental Build of configuration Nios II for project cpu_0_proj ****
 make all 
 Info: Building C:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp/
 C:/intelFPGA_lite/18.1/nios2eds/bin/gnu/H-x86_64-mingw32/bin/make --no-print-directory -C C:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp/
 [BSP build complete]
+Info: Compiling hello_world.c to obj/default/hello_world.o
+nios2-elf-gcc -xc -MP -MMD -c -IC:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp//HAL/inc -IC:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp/ -IC:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp//drivers/inc  -pipe -D__hal__ -DALT_NO_INSTRUCTION_EMULATION -DALT_SINGLE_THREADED    -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o obj/default/hello_world.o hello_world.c
+hello_world.c: In function 'send_callback':
+hello_world.c:86:3: warning: implicit declaration of function 'alt_printf' [-Wimplicit-function-declaration]
+   alt_printf("Sending completed, contents are %x and %x \n", mail_send[0], mail_send[1]);
+   ^
+hello_world.c: In function 'receive_mail':
+hello_world.c:125:62: warning: passing argument 2 of 'altera_avalon_mailbox_retrieve_poll' discards 'volatile' qualifier from pointer target type [-Wdiscarded-qualifiers]
+  altera_avalon_mailbox_retrieve_poll(mailbox_SigProcToAudio, mail_receive, 0);
+                                                              ^
+In file included from hello_world.c:17:0:
+c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\drivers\inc\altera_avalon_mailbox_simple.h:78:5: note: expected 'alt_u32 * {aka long unsigned int *}' but argument is of type 'volatile alt_u32 * {aka volatile long unsigned int *}'
+ int altera_avalon_mailbox_retrieve_poll (altera_avalon_mailbox_dev* dev,alt_u32* msg_ptr, alt_u32 timeout);
+     ^
+hello_world.c:126:2: warning: implicit declaration of function 'alt_dcache_flush_all' [-Wimplicit-function-declaration]
+  alt_dcache_flush_all();
+  ^
+hello_world.c: In function 'play_audio':
+hello_world.c:271:6: warning: unused variable 'dumbtest' [-Wunused-variable]
+  int dumbtest = 1;
+      ^
+hello_world.c: In function 'setup_switch_interrupts':
+hello_world.c:465:36: warning: passing argument 3 of 'alt_irq_register' from incompatible pointer type [-Wincompatible-pointer-types]
+  alt_irq_register(PIO_2_IRQ, NULL, isr_switches);
+                                    ^
+In file included from c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\hal\inc\sys\alt_irq.h:218:0,
+                 from hello_world.c:16:
+c:\rtes\miniproject_2\sw\nios\cpu_0_proj_bsp\hal\inc\priv\alt_legacy_irq.h:61:12: note: expected 'alt_isr_func {aka void (*)(void *, long unsigned int)}' but argument is of type 'void (*)(void *)'
+ extern int alt_irq_register (alt_u32 id, 
+            ^
+Info: Linking cpu_0_proj.elf
+nios2-elf-g++  -T'C:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp//linker.x' -msys-crt0='C:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp//obj/HAL/src/crt0.o' -msys-lib=hal_bsp -LC:/RTES/miniproject_2/sw/nios/cpu_0_proj_bsp/   -Wl,-Map=cpu_0_proj.map   -O0 -g -Wall   -mno-hw-div -mhw-mul -mno-hw-mulx -mgpopt=global  -o cpu_0_proj.elf obj/default/hello_world.o -lm -msys-lib=m
+nios2-elf-insert cpu_0_proj.elf --thread_model hal --cpu_name cpu_0 --qsys true --simulation_enabled false --stderr_dev jtag_uart_0 --stdin_dev jtag_uart_0 --stdout_dev jtag_uart_0 --sopc_system_name soc_system --quartus_project_dir "c:/RTES/miniproject_2/hw/quartus" --jdi C:/RTES/miniproject_2/hw/quartus//output_files/lab3_MultiProcessors.jdi --sopcinfo C:/RTES/miniproject_2/hw/quartus/soc_system.sopcinfo
+Info: (cpu_0_proj.elf) 37 KBytes program size (code + initialized data).
+Info:                  83 KBytes free for stack + heap.
+Info: Creating cpu_0_proj.objdump
+nios2-elf-objdump --disassemble --syms --all-header --source cpu_0_proj.elf >cpu_0_proj.objdump
 [cpu_0_proj build complete]
 
-18:59:36 Build Finished (took 1s.392ms)
+20:00:21 Build Finished (took 4s.269ms)
 
