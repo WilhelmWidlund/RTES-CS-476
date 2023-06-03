@@ -3,7 +3,7 @@
  * nios2-terminal --device 2 --instance 1
 
  * To download code to board
- * nios2-download -g SysSigProc.elf --device 2 --instance 1
+ * nios2-download -g cpu_1_proj.elf --device 2 --instance 1
  */
 
 #include <stdio.h>
@@ -15,14 +15,6 @@
 #include <sys/alt_irq.h>
 #include "altera_avalon_mailbox_simple.h"
 #include <altera_avalon_performance_counter.h>
-
-// REMEMBER TO CHANGE THE CPU ID VALUE IN SYSTEM.H AFTER GENERATING BSP
-
-// To monitor terminal in powershell:
-// nios2-terminal --device 2 --instance 1
-
-// To download code to board, change to .elf file directory and run:
-// nios2-download -g SysSigProc.elf --device 2 --instance 1
 
 // PIO definitions for the interrupt handling on the switches
 #define PIO_IntrSwitch_Data	0

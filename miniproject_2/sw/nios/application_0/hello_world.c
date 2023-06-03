@@ -3,7 +3,7 @@
  * nios2-terminal --device 2 --instance 0
 
  * To download code to board
- * nios2-download -g SysAudio.elf --device 2 --instance 0
+ * nios2-download -g cpu_0_proj.elf --device 2 --instance 0
  */
 
 #include <stdio.h>
@@ -18,14 +18,6 @@
 #include <altera_avalon_performance_counter.h>
 #include "altera_up_avalon_audio.h"
 #include "altera_up_avalon_audio_and_video_config.h"
-
-// REMEMBER TO CHANGE "LEGACY" TO "ENHANCED" for #define ALT_<X>_INTERRUPT_API_PRESENT IN SYSTEM.H AFTER GENERATING BSP
-
-// To monitor terminal in powershell:
-// nios2-terminal --device 2 --instance 0
-
-// To download code to board, change to .elf file directory and run:
-// nios2-download -g SysAudio.elf --device 2 --instance 0
 
 // PIO definitions for the interrupt handling on the switches
 #define PIO_IntrSwitch_Data	0
