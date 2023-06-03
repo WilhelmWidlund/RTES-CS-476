@@ -23,7 +23,10 @@ port (
 	AS_read 			: in std_logic;
 	AS_readdata 	: out std_logic_vector (31 downto 0);
 	AS_write 		: in std_logic;
-	AS_writedata 	: in std_logic_vector (31 downto 0)
+	AS_writedata 	: in std_logic_vector (31 downto 0);
+	
+	-- Debugging interface
+	HW_Debug			:	out std_logic_vector (7 downto 0)
 );
 end HW_accelerator;
 
@@ -56,6 +59,53 @@ signal iInData					: std_logic_vector(31 downto 0);
 signal iOutData				: std_logic_vector(31 downto 0);
 
 begin
+
+-- Debug process
+-- Drives HW_Debug
+Debug_Proc: process(Clk, nReset)
+begin
+	if rising_edge(Clk) then
+		-- Always show as much as possible of iWordsLeftCount on pins 7 downto 6
+		HW_Debug(7 downto 6) <= std_logic_vector(iWordsLeftCount(1 downto 0));
+		-- Always show Working_Reg on pin 5
+		HW_Debug(5) <= Working_Reg;
+		-- Always show VolumeMode_Reg on pin 4
+		HW_Debug(4) <= VolumeMode_Reg;
+		-- Always show Start_Reg on pin 3
+		HW_Debug(3) <= Start_Reg;
+		-- Show the current state on pins 2 downto 0
+		case State is
+			when Idle =>
+				HW_Debug(2) <= '0';
+				HW_Debug(1) <= '0';
+				HW_Debug(0) <= '1';
+			when Setup =>
+				HW_Debug(2) <= '0';
+				HW_Debug(1) <= '1';
+				HW_Debug(0) <= '0';
+			when Init_Read =>
+				HW_Debug(2) <= '0';
+				HW_Debug(1) <= '1';
+				HW_Debug(0) <= '1';
+			when Finish_Read =>
+				HW_Debug(2) <= '1';
+				HW_Debug(1) <= '0';
+				HW_Debug(0) <= '0';
+			when Operation =>
+				HW_Debug(2) <= '1';
+				HW_Debug(1) <= '0';
+				HW_Debug(0) <= '1';
+			when Init_Write =>
+				HW_Debug(2) <= '1';
+				HW_Debug(1) <= '1';
+				HW_Debug(0) <= '0';
+			when Finish_Write =>
+				HW_Debug(2) <= '1';
+				HW_Debug(1) <= '1';
+				HW_Debug(0) <= '1';
+		end case;
+	end if;
+end process Debug_Proc;
 
 -- Avalon slave write process
 -- Drives the AS registers

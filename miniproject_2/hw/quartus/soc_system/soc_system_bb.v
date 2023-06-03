@@ -9,6 +9,7 @@ module soc_system (
 	audio_and_video_config_0_external_interface_SCLK,
 	audio_pll_0_audio_clk_clk,
 	clk_clk,
+	hw_debug_readdata,
 	pio_2_export,
 	pll_2_outclk2_clk,
 	pp0_out_export,
@@ -34,6 +35,7 @@ module soc_system (
 	output		audio_and_video_config_0_external_interface_SCLK;
 	output		audio_pll_0_audio_clk_clk;
 	input		clk_clk;
+	output	[7:0]	hw_debug_readdata;
 	input	[7:0]	pio_2_export;
 	output		pll_2_outclk2_clk;
 	output	[7:0]	pp0_out_export;

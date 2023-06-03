@@ -153,12 +153,12 @@ module soc_system_mm_interconnect_0 (
 		output wire [31:0] parallel_port_2_avalon_parallel_port_slave_writedata,        //                                                  .writedata
 		output wire [3:0]  parallel_port_2_avalon_parallel_port_slave_byteenable,       //                                                  .byteenable
 		output wire        parallel_port_2_avalon_parallel_port_slave_chipselect,       //                                                  .chipselect
-		output wire [3:0]  performance_counter_0_control_slave_address,                 //               performance_counter_0_control_slave.address
+		output wire [4:0]  performance_counter_0_control_slave_address,                 //               performance_counter_0_control_slave.address
 		output wire        performance_counter_0_control_slave_write,                   //                                                  .write
 		input  wire [31:0] performance_counter_0_control_slave_readdata,                //                                                  .readdata
 		output wire [31:0] performance_counter_0_control_slave_writedata,               //                                                  .writedata
 		output wire        performance_counter_0_control_slave_begintransfer,           //                                                  .begintransfer
-		output wire [3:0]  performance_counter_1_control_slave_address,                 //               performance_counter_1_control_slave.address
+		output wire [4:0]  performance_counter_1_control_slave_address,                 //               performance_counter_1_control_slave.address
 		output wire        performance_counter_1_control_slave_write,                   //                                                  .write
 		input  wire [31:0] performance_counter_1_control_slave_readdata,                //                                                  .readdata
 		output wire [31:0] performance_counter_1_control_slave_writedata,               //                                                  .writedata
@@ -2410,7 +2410,7 @@ module soc_system_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (4),
+		.AV_ADDRESS_W                   (5),
 		.AV_DATA_W                      (32),
 		.UAV_DATA_W                     (32),
 		.AV_BURSTCOUNT_W                (1),
@@ -3050,7 +3050,7 @@ module soc_system_mm_interconnect_0 (
 	);
 
 	altera_merlin_slave_translator #(
-		.AV_ADDRESS_W                   (4),
+		.AV_ADDRESS_W                   (5),
 		.AV_DATA_W                      (32),
 		.UAV_DATA_W                     (32),
 		.AV_BURSTCOUNT_W                (1),

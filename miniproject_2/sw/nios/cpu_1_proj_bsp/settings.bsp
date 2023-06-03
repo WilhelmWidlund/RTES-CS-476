@@ -2,10 +2,10 @@
 <sch:Settings xmlns:sch="http://www.altera.com/embeddedsw/bsp/schema">
         <BspType>hal</BspType>
         <BspVersion>default</BspVersion>
-        <BspGeneratedTimeStamp>Jun 2, 2023 9:56:51 AM</BspGeneratedTimeStamp>
-        <BspGeneratedUnixTimeStamp>1685692611504</BspGeneratedUnixTimeStamp>
+        <BspGeneratedTimeStamp>Jun 3, 2023 3:12:13 PM</BspGeneratedTimeStamp>
+        <BspGeneratedUnixTimeStamp>1685797933135</BspGeneratedUnixTimeStamp>
         <BspGeneratedLocation>C:\RTES\miniproject_2\sw\nios\cpu_1_proj_bsp</BspGeneratedLocation>
-        <BspSettingsFile>settings.bsp</BspSettingsFile>
+        <BspSettingsFile>C:\RTES\miniproject_2\sw\nios\cpu_1_proj_bsp\settings.bsp</BspSettingsFile>
         <SopcDesignFile>C:\RTES\miniproject_2\hw\quartus\soc_system.sopcinfo</SopcDesignFile>
         <JdiFile>default</JdiFile>
         <Cpu>cpu_1</Cpu>
@@ -912,49 +912,49 @@
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>performance_counter_1</slaveDescriptor>
-                <addressRange>0x04041000 - 0x0404103F</addressRange>
-                <addressSpan>64</addressSpan>
+                <addressRange>0x04041000 - 0x0404107F</addressRange>
+                <addressSpan>128</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>pio_2</slaveDescriptor>
-                <addressRange>0x04041040 - 0x0404104F</addressRange>
+                <addressRange>0x04041080 - 0x0404108F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>mailbox_simple_1</slaveDescriptor>
-                <addressRange>0x04041050 - 0x0404105F</addressRange>
+                <addressRange>0x04041090 - 0x0404109F</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
                 <slaveDescriptor>mailbox_simple_0</slaveDescriptor>
-                <addressRange>0x04041060 - 0x0404106F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>parallel_port_2</slaveDescriptor>
-                <addressRange>0x04041070 - 0x0404107F</addressRange>
-                <addressSpan>16</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>HW_Accelerator_0</slaveDescriptor>
-                <addressRange>0x04041080 - 0x0404109F</addressRange>
-                <addressSpan>32</addressSpan>
-                <attributes/>
-        </MemoryMap>
-        <MemoryMap>
-                <slaveDescriptor>parallel_port_1</slaveDescriptor>
                 <addressRange>0x040410A0 - 0x040410AF</addressRange>
                 <addressSpan>16</addressSpan>
                 <attributes/>
         </MemoryMap>
         <MemoryMap>
+                <slaveDescriptor>parallel_port_2</slaveDescriptor>
+                <addressRange>0x040410B0 - 0x040410BF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>HW_Accelerator_0</slaveDescriptor>
+                <addressRange>0x040410C0 - 0x040410DF</addressRange>
+                <addressSpan>32</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
+                <slaveDescriptor>parallel_port_1</slaveDescriptor>
+                <addressRange>0x040410E0 - 0x040410EF</addressRange>
+                <addressSpan>16</addressSpan>
+                <attributes/>
+        </MemoryMap>
+        <MemoryMap>
                 <slaveDescriptor>jtag_uart_1</slaveDescriptor>
-                <addressRange>0x040410B0 - 0x040410B7</addressRange>
+                <addressRange>0x040410F0 - 0x040410F7</addressRange>
                 <addressSpan>8</addressSpan>
                 <attributes>printable</attributes>
         </MemoryMap>

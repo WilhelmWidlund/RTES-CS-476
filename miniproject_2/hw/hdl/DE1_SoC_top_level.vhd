@@ -101,11 +101,11 @@ entity DE1_SoC_top_level is
 --        VGA_VS           : out   std_logic;
 
         -- GPIO_0
-        GPIO_0           : inout std_logic_vector(35 downto 0)
+        -- GPIO_0           : inout std_logic_vector(35 downto 0)
 
         -- GPIO_1
         --
---		  GPIO_1           : inout std_logic_vector(35 downto 0);
+		  GPIO_1           : inout std_logic_vector(35 downto 0)
 
         -- HPS
 --        HPS_CONV_USB_N   : inout std_logic;
@@ -190,7 +190,9 @@ component soc_system is
 			pp2_out_export                : out std_logic_vector(7 downto 0)  := (others => 'X'); -- export
 			pp1_out_export                : out   std_logic_vector(7 downto 0);                     -- export
 			pp0_out_export                : out   std_logic_vector(7 downto 0);                      -- export
-			pio_2_export                  : in    std_logic_vector(7 downto 0) := (others => 'X') -- export
+			pio_2_export                  : in    std_logic_vector(7 downto 0) := (others => 'X');-- export
+			
+			hw_debug_readdata                                : out   std_logic_vector(7 downto 0)                     -- readdata
 		);
 	end component soc_system;
 
@@ -224,6 +226,8 @@ u0 : component soc_system
 			pp1_out_export(7 downto 3)                => open,
 			pp0_out_export(2 downto 0)                => LEDR(2 downto 0),                 --                 pp0_out.export
 			pp0_out_export(7 downto 3)                => open,
-			pio_2_export(7 downto 0)                  => SW(7 downto 0)                   --                   pio_2.export
+			pio_2_export(7 downto 0)                  => SW(7 downto 0),                   --                   pio_2.export
+		
+			hw_debug_readdata                                => GPIO_1(7 downto 0)
 		);
 end;

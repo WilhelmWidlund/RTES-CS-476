@@ -53,19 +53,19 @@ void receive_callback(void* message);
 void receive_mail();
 // Interrupt and task choice functions
 void choose_task(int task);
-void isr_switches(void* context);
-void setup_switch_interrupts(uint8_t chosen_switches);
-// Main function for running the subsystem task
-void overall_function(int choice, int run_profiling);
-// Comparison functions
-void c_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type);
-void custom_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type);
 // HW Accelerator functions
 void HW_Accelerator_start(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type);
 void HW_Accelerator_wait_for_ready();
+// Comparison methods
+void c_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type);
+void custom_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type);
+// Main function for running the subsystem task
+void signal_processing_function(int choice, int run_profiling);
+// ------------------- End of function declarations ---------------------------
+
 // ----------------- Function definitions -------------------------------------
 
-// ----------------- Mailbox functions ----------------------------------------
+// Mailbox functions
 
 void send_callback(void* report, int status)
 {
@@ -106,94 +106,77 @@ void receive_callback(void* message)
 
 void receive_mail()
 {
-	//alt_printf("-------------- receive_mail ------------- \n");
 	// Load mailbox
 	altera_avalon_mailbox_dev* mailbox_AudioToSigProc = altera_avalon_mailbox_open("/dev/mailbox_simple_0", NULL, NULL);
 	altera_avalon_mailbox_retrieve_poll(mailbox_AudioToSigProc, mail_receive, 0);
 	alt_dcache_flush_all();
 }
 
-
-
-// ----------------- Interrupt and task choosing functions -------------------------
-
+// Interrupt and task choosing functions
 
 void choose_task(int task)
 {
-	//alt_printf("--------------- choose_task ---------------------- \n");
 	if(task == 1)
 	{
-		alt_printf("Performing signal processing on the recording... \n");
+		alt_printf("Task 1: Performing signal processing on the recording... \n");
 		// First switch (SW0)
-		overall_function(1, 0);
-		//printf("Interrupt test on CPU %d\n", NIOS2_CPU_ID_VALUE);
+		signal_processing_function(1, 0);
 	}
 	else if(task == 2)
 	{
-		alt_printf("Playing... \n");
+		alt_printf("Task 2: Playing... \n");
 		// Second switch (SW1)
 		// Play audio, so do nothing here...
-		//alt_printf("This subsystem has nothing to do for this task... \n");
 	}
 	else if(task == 4)
 	{
-		alt_printf("Running profiling... \n");
+		alt_printf("Task 3: Profiling... \n");
 		// Third switch (SW2): run with profiling
 		// Start overall performance counter
 		PERF_RESET(PERFORMANCE_COUNTER_1_BASE);
 		PERF_START_MEASURING(PERFORMANCE_COUNTER_1_BASE);
-		alt_printf("Running on HW accelerator \n");
+		alt_printf("Running on HW accelerator... \n");
 		// Run on HW accelerator with profiling
-		overall_function(1, 1);
-		alt_printf("Running on custom instruction \n");
+		signal_processing_function(1, 1);
+		alt_printf("Running on custom instruction... \n");
 		// Run on custom instruction with profiling
-		overall_function(2, 1);
-		alt_printf("Running on c code implementation \n");
+		signal_processing_function(2, 1);
+		alt_printf("Running on c code implementation... \n");
 		// Run on c code implementation with profiling
-		overall_function(3, 1);
-		alt_printf("All profiling runs finished \n");
+		signal_processing_function(3, 1);
+		alt_printf("All profiling runs are finished. \n");
 		// Stop overall performance counter and print results
 		PERF_STOP_MEASURING(PERFORMANCE_COUNTER_1_BASE);
-		perf_print_formatted_report(PERFORMANCE_COUNTER_1_BASE, alt_get_cpu_freq(), 3, "Accelerator", "Custom instr.", "C code");
+		perf_print_formatted_report(PERFORMANCE_COUNTER_1_BASE, alt_get_cpu_freq(), 4, "Accelerator", "Custom instr.", "C code", "Waiting for #1");
 	}
 	else if(task == 8)
 	{
-		alt_printf("Testing audio... \n");
+		alt_printf("Task 4: Verifying processed audio... \n");
 		// Fourth switch:
 		// Audio test, so do nothing here
-		//alt_printf("This subsystem has nothing to do for this task... \n");
+	}
+	else if(task == 16)
+	{
+		alt_printf("Task 5: Checking audio device status... \n");
+		// Audio check, so do nothing here
+	}
+	else if(task == 32)
+	{
+		alt_printf("Task 6: Reset Audio Core... \n");
+		// Audio component reset, so do nothing here
+	}
+	else if(task == 64)
+	{
+		alt_printf("Task 7: Reset Audio and Video Config device... \n");
+		// Audio component reset, so do nothing here
 	}
 	alt_printf("Task complete. Ready for new task. \n\n", task);
 }
 
-void isr_switches(void* context)
-{
-	//alt_printf("----------------- isr_switches ---------------------- \n");
-	// Read interrupt source
-	uint8_t pinvals = IORD_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQFLAG);
-	// Save choice
-	choice = (int)pinvals;
-	// Wait for mail from audio subsystem
-	//alt_printf("Waiting for flag mail... \n");
-	receive_mail();
-	//alt_printf("Flag mail received, choice in mail = %x, own choice = %x \n", mail_receive[0], choice);
-	// Clear the interrupt flag
-	IOWR_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQFLAG, pinvals);
-}
-
-void setup_switch_interrupts(uint8_t chosen_switches)
-{
-	// Setup interrupts on the chosen switches
-	IOWR_8DIRECT(PIO_2_BASE, PIO_IntrSwitch_IRQEN, chosen_switches);
-	alt_ic_isr_register(PIO_2_IRQ_INTERRUPT_CONTROLLER_ID, PIO_2_IRQ, isr_switches, NULL, NULL);
-	return;
-}
-
-// --------------------- Hardware accelerator functions -----------------------
+// Hardware accelerator functions
 
 void HW_Accelerator_start(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type)
 {
-	//alt_printf("--------------- HW_Accelerator_start ----------------------- \n");
 	// Wait for accelerator to be available
 	HW_Accelerator_wait_for_ready();
 	//alt_printf("Sending arguments to accelerator \n");
@@ -206,20 +189,18 @@ void HW_Accelerator_start(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_c
 	// Send volume mode
 	IOWR_32DIRECT(HW_ACCELERATOR_0_BASE, HW_ACC_VOLUMEMODE, (alt_u32)op_type);
 	// Run Hardware accelerator
-	IOWR_32DIRECT(HW_ACCELERATOR_0_BASE, HW_ACC_WORDCOUNT, 0x1);
+	IOWR_32DIRECT(HW_ACCELERATOR_0_BASE, HW_ACC_START, 0x1);
 	//alt_printf("Accelerator has been started \n");
 }
 
 void HW_Accelerator_wait_for_ready()
 {
-	//alt_printf("------------------ HW_Accelerator_wait_for_ready -------------- \n");
 	// Check if the accelerator is already working, and wait until it's done
 	int working = 0;
 	alt_u32 status;
 	status = IORD_32DIRECT(HW_ACCELERATOR_0_BASE, HW_ACC_STATUS);
 	// Shift out the 'VolumeMode' bit, leaving only zeros and the 'Working' bit
 	working = (int)(status >> 1);
-	//alt_printf("Waiting for accelerator to be ready... \n");
 	while(working != 0)
 	{
 		// Wait for the accelerator to be available
@@ -227,117 +208,12 @@ void HW_Accelerator_wait_for_ready()
 		// Shift out the 'VolumeMode' bit, leaving only zeros and the 'Working' bit
 		working = (int)(status >> 1);
 	}
-	//alt_printf("Accelerator is ready \n");
 }
 
-// --------------------- Overall subsystem function ----------------------------------------
-void overall_function(int choice, int run_profiling)
-{
-	alt_printf("------------- overall_function ---------------------------- \n");
-	int op_type;
-	// Receive initial mail, containing starting address and amount of snippets
-	receive_mail();
-	int total_snippets = mail_receive[1];
-	alt_printf("Total snippets are %x \n", total_snippets);
-	// 48 kHz sampling frequency => 12k samples per snippet
-	int words_per_snippet = 12000;
-	int handled_snippets = 0;
-	int memory_size = total_snippets*words_per_snippet*4;
-	//alt_printf("memory size is %x \n", memory_size);
-	int start_storage_address = mail_receive[0] + memory_size;
-	// Check if the volume shift switch is set to up or down
-	if((IORD_32DIRECT(PIO_2_BASE, 0) & 0x80) == 0)
-	{
-		op_type = 0;
-		alt_printf("Op type 0 chosen \n");
-	}
-	else
-	{
-		alt_printf("Op type 1 chosen \n");
-		op_type = 1;
-	}
-	while(handled_snippets < total_snippets)
-	{
-		receive_mail();
-		alt_printf("Loop mail received \n");
-		// Prepare parameters
-		int snippet_starting_address = mail_receive[0];
-		int snippet_storage_address = start_storage_address + handled_snippets*words_per_snippet*4;
-		int snippet_word_count = mail_receive[1];
-		//alt_printf("Snippet word count is %x \n", snippet_word_count);
-		// Turn on LED 9, signifying that signal processing is in progress
-		//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 512);
-		if(choice == 1)
-		{
-			//alt_printf("At call accelerator: handled_snippets = %x \n", handled_snippets);
-			if(run_profiling == 1)
-			{
-				// Start profiling for the current choice
-				PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
-			}
-			HW_Accelerator_start(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
-			if(run_profiling == 1)
-			{
-				// Wait for the accelerator to finish
-				HW_Accelerator_wait_for_ready();
-				// Stop profiling for the current choice
-				PERF_END(PERFORMANCE_COUNTER_1_BASE, choice);
-			}
-			handled_snippets = handled_snippets + 1;
-		}
-		else if(choice == 2)
-		{
-			//alt_printf("At call custom instruction: handled_snippets = %x \n", handled_snippets);
-			// call comparison function for custom instruction
-			if(run_profiling == 1)
-			{
-				// Start profiling for the current choice
-				PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
-			}
-			custom_function(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
-			if(run_profiling == 1)
-			{
-				// Stop profiling for the current choice
-				PERF_END(PERFORMANCE_COUNTER_1_BASE, choice);
-			}
-			handled_snippets = handled_snippets + 1;
-		}
-		else if(choice == 3)
-		{
-			//alt_printf("At call c comp function: handled_snippets = %x \n", handled_snippets);
-			// call comparison function for C code implementation
-			if(run_profiling == 1)
-			{
-				// Start profiling for the current choice
-				PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
-			}
-			c_function(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
-			if(run_profiling == 1)
-			{
-				// Stop profiling for the current choice
-				PERF_END(PERFORMANCE_COUNTER_1_BASE, choice);
-			}
-			handled_snippets = handled_snippets + 1;
-		}
-		// Turn off LED 9, signifying that signal processing is done
-		//IOWR_32DIRECT(PIO_LEDS_SHARED_BASE, 0, 0);
-	}
-	alt_printf("All snippets handled. Sending mail with start_storage_address = %x and memory_size = %x \n", start_storage_address, memory_size);
-	send_mail(start_storage_address, memory_size);
-	//send_mail((alt_u32)start_storage_address, (alt_u32)memory_size);
-	alt_printf("Mail sent, done on this side. \n");
-	if(run_profiling == 1)
-	{
-		// Stop profiling for the current choice
-		PERF_END(PERFORMANCE_COUNTER_1_BASE, choice);
-	}
-}
-
-// ------------------ Comparison methods for profiling purposes ----------------------------------
+// Comparison methods
 
 void c_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type)
 {
-	//alt_printf("------------- c_function ------------------ \n");
 	alt_u32 data = 0;
 	if(op_type == 0)
 	{
@@ -379,7 +255,6 @@ void c_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int 
 
 void custom_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count, int op_type)
 {
-	//alt_printf("------------- custom_function ------------------ \n");
 	alt_u32 data = 0;
 	while(word_count > 0)
 	{
@@ -398,25 +273,142 @@ void custom_function(alt_u32 start_addr, alt_u32 store_addr, alt_u32 word_count,
 	}
 }
 
+// --------------------- Overall subsystem function ----------------------------------------
+void signal_processing_function(int choice, int run_profiling)
+{
+	int op_type;
+	// Receive initial mail, containing starting address and amount of snippets
+	if(run_profiling == 1)
+	{
+		// Start profiling for the time spent in waiting for the other subsystem
+		PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, 4);
+	}
+	receive_mail();
+	if(run_profiling == 1)
+	{
+		// Stop profiling for the time spent in waiting for the other subsystem
+		PERF_END(PERFORMANCE_COUNTER_1_BASE, 4);
+	}
+	int total_snippets = mail_receive[1];
+	if(run_profiling != 1)
+	{
+		alt_printf("Initial mail received: Total snippets are %x \n", total_snippets);
+	}
+	// 48 kHz sampling frequency => 12k samples per snippet
+	int words_per_snippet = 12000;
+	int handled_snippets = 0;
+	int memory_size = total_snippets*words_per_snippet*4;
+	int start_storage_address = mail_receive[0] + memory_size;
+	// Check if the volume shift switch is set to up or down
+	if((IORD_32DIRECT(PIO_2_BASE, 0) & 0x80) == 0)
+	{
+		op_type = 0;
+		if(run_profiling != 1)
+		{
+			alt_printf("Operation type: Right shift chosen \n");
+		}
+	}
+	else
+	{
+		op_type = 1;
+		if(run_profiling != 1)
+		{
+			alt_printf("Operation type: Left shift chosen \n");
+		}
+	}
+	while(handled_snippets < total_snippets)
+	{
+		// Wait for mail, signifying that a snippet has been recorded and is ready to process
+		if(run_profiling == 1)
+		{
+			// Start profiling for the time spent in waiting for the other subsystem
+			PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, 4);
+		}
+		receive_mail();
+		if(run_profiling == 1)
+		{
+			// Stop profiling for the time spent in waiting for the other subsystem
+			PERF_END(PERFORMANCE_COUNTER_1_BASE, 4);
+		}
+		if(run_profiling != 1)
+		{
+			alt_printf("Mail received: Snippet ready for processing \n");
+		}
+		// Prepare parameters
+		int snippet_starting_address = mail_receive[0];
+		int snippet_storage_address = start_storage_address + handled_snippets*words_per_snippet*4;
+		int snippet_word_count = mail_receive[1];
+		if(choice == 1)
+		{
+			if(run_profiling == 1)
+			{
+				// Start profiling for the current choice
+				PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
+			}
+			HW_Accelerator_start(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
+			if(run_profiling == 1)
+			{
+				// Wait for the accelerator to finish
+				HW_Accelerator_wait_for_ready();
+				// Stop profiling for the current choice
+				PERF_END(PERFORMANCE_COUNTER_1_BASE, choice);
+			}
+			handled_snippets = handled_snippets + 1;
+		}
+		else if(choice == 2)
+		{
+			// call comparison function for custom instruction
+			if(run_profiling == 1)
+			{
+				// Start profiling for the current choice
+				PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
+			}
+			custom_function(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
+			if(run_profiling == 1)
+			{
+				// Stop profiling for the current choice
+				PERF_END(PERFORMANCE_COUNTER_1_BASE, choice);
+			}
+			handled_snippets = handled_snippets + 1;
+		}
+		else if(choice == 3)
+		{
+			// call comparison function for C code implementation
+			if(run_profiling == 1)
+			{
+				// Start profiling for the current choice
+				PERF_BEGIN(PERFORMANCE_COUNTER_1_BASE, choice);
+			}
+			c_function(snippet_starting_address, snippet_storage_address, snippet_word_count, op_type);
+			if(run_profiling == 1)
+			{
+				// Stop profiling for the current choice
+				PERF_END(PERFORMANCE_COUNTER_1_BASE, choice);
+			}
+			handled_snippets = handled_snippets + 1;
+		}
+	}
+	if(run_profiling != 1)
+	{
+		alt_printf("All snippets handled. \nSending confirmation mail with start_storage_address = %x and memory_size = %x \n", start_storage_address, memory_size);
+	}
+	send_mail(start_storage_address, memory_size);
+}
+
+
+
 // ----------------------- Main function ----------------------------------
 
 int main()
 {
-	// Setup interrupts on the first 4 switches
-	//setup_switch_interrupts(0xf);
 	alt_printf("\n \n \n \n ---------- main --------------- \n");
 
-	// Wait for switches
+	// Wait for mail from the Audio subsystem, with task info
 	while(1)
 	{
 		// Use mailbox to start tasks on this subsystem
-		//alt_printf("Waiting for choice mail... \n");
 		receive_mail();
-		//alt_printf("Choice mail received, choice in mail = %x \n", mail_receive[0], choice);
 		choice = (int)mail_receive[0];
-
-		// Poll choice once every millisecond
-		//usleep(1000);
 		if(choice != 0)
 		{
 			choose_task(choice);

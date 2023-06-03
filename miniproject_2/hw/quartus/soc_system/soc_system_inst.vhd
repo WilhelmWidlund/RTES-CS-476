@@ -9,6 +9,7 @@
 			audio_and_video_config_0_external_interface_SCLK : out   std_logic;                                        -- SCLK
 			audio_pll_0_audio_clk_clk                        : out   std_logic;                                        -- clk
 			clk_clk                                          : in    std_logic                     := 'X';             -- clk
+			hw_debug_readdata                                : out   std_logic_vector(7 downto 0);                     -- readdata
 			pio_2_export                                     : in    std_logic_vector(7 downto 0)  := (others => 'X'); -- export
 			pll_2_outclk2_clk                                : out   std_logic;                                        -- clk
 			pp0_out_export                                   : out   std_logic_vector(7 downto 0);                     -- export
@@ -38,6 +39,7 @@
 			audio_and_video_config_0_external_interface_SCLK => CONNECTED_TO_audio_and_video_config_0_external_interface_SCLK, --                                            .SCLK
 			audio_pll_0_audio_clk_clk                        => CONNECTED_TO_audio_pll_0_audio_clk_clk,                        --                       audio_pll_0_audio_clk.clk
 			clk_clk                                          => CONNECTED_TO_clk_clk,                                          --                                         clk.clk
+			hw_debug_readdata                                => CONNECTED_TO_hw_debug_readdata,                                --                                    hw_debug.readdata
 			pio_2_export                                     => CONNECTED_TO_pio_2_export,                                     --                                       pio_2.export
 			pll_2_outclk2_clk                                => CONNECTED_TO_pll_2_outclk2_clk,                                --                               pll_2_outclk2.clk
 			pp0_out_export                                   => CONNECTED_TO_pp0_out_export,                                   --                                     pp0_out.export

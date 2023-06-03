@@ -13,6 +13,7 @@ module soc_system (
 		output wire        audio_and_video_config_0_external_interface_SCLK, //                                            .SCLK
 		output wire        audio_pll_0_audio_clk_clk,                        //                       audio_pll_0_audio_clk.clk
 		input  wire        clk_clk,                                          //                                         clk.clk
+		output wire [7:0]  hw_debug_readdata,                                //                                    hw_debug.readdata
 		input  wire [7:0]  pio_2_export,                                     //                                       pio_2.export
 		output wire        pll_2_outclk2_clk,                                //                               pll_2_outclk2.clk
 		output wire [7:0]  pp0_out_export,                                   //                                     pp0_out.export
@@ -153,7 +154,7 @@ module soc_system (
 	wire         mm_interconnect_0_mailbox_simple_1_avmm_msg_sender_write;                      // mm_interconnect_0:mailbox_simple_1_avmm_msg_sender_write -> mailbox_simple_1:avmm_snd_write
 	wire  [31:0] mm_interconnect_0_mailbox_simple_1_avmm_msg_sender_writedata;                  // mm_interconnect_0:mailbox_simple_1_avmm_msg_sender_writedata -> mailbox_simple_1:avmm_snd_writedata
 	wire  [31:0] mm_interconnect_0_performance_counter_1_control_slave_readdata;                // performance_counter_1:readdata -> mm_interconnect_0:performance_counter_1_control_slave_readdata
-	wire   [3:0] mm_interconnect_0_performance_counter_1_control_slave_address;                 // mm_interconnect_0:performance_counter_1_control_slave_address -> performance_counter_1:address
+	wire   [4:0] mm_interconnect_0_performance_counter_1_control_slave_address;                 // mm_interconnect_0:performance_counter_1_control_slave_address -> performance_counter_1:address
 	wire         mm_interconnect_0_performance_counter_1_control_slave_begintransfer;           // mm_interconnect_0:performance_counter_1_control_slave_begintransfer -> performance_counter_1:begintransfer
 	wire         mm_interconnect_0_performance_counter_1_control_slave_write;                   // mm_interconnect_0:performance_counter_1_control_slave_write -> performance_counter_1:write
 	wire  [31:0] mm_interconnect_0_performance_counter_1_control_slave_writedata;               // mm_interconnect_0:performance_counter_1_control_slave_writedata -> performance_counter_1:writedata
@@ -216,7 +217,7 @@ module soc_system (
 	wire         mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_write;                      // mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_write -> mailbox_simple_0:avmm_snd_write
 	wire  [31:0] mm_interconnect_0_mailbox_simple_0_avmm_msg_sender_writedata;                  // mm_interconnect_0:mailbox_simple_0_avmm_msg_sender_writedata -> mailbox_simple_0:avmm_snd_writedata
 	wire  [31:0] mm_interconnect_0_performance_counter_0_control_slave_readdata;                // performance_counter_0:readdata -> mm_interconnect_0:performance_counter_0_control_slave_readdata
-	wire   [3:0] mm_interconnect_0_performance_counter_0_control_slave_address;                 // mm_interconnect_0:performance_counter_0_control_slave_address -> performance_counter_0:address
+	wire   [4:0] mm_interconnect_0_performance_counter_0_control_slave_address;                 // mm_interconnect_0:performance_counter_0_control_slave_address -> performance_counter_0:address
 	wire         mm_interconnect_0_performance_counter_0_control_slave_begintransfer;           // mm_interconnect_0:performance_counter_0_control_slave_begintransfer -> performance_counter_0:begintransfer
 	wire         mm_interconnect_0_performance_counter_0_control_slave_write;                   // mm_interconnect_0:performance_counter_0_control_slave_write -> performance_counter_0:write
 	wire  [31:0] mm_interconnect_0_performance_counter_0_control_slave_writedata;               // mm_interconnect_0:performance_counter_0_control_slave_writedata -> performance_counter_0:writedata
@@ -267,7 +268,8 @@ module soc_system (
 		.AM_writedata   (hw_accelerator_0_avalon_master_writedata),        //              .writedata
 		.AM_read        (hw_accelerator_0_avalon_master_read),             //              .read
 		.AM_readdata    (hw_accelerator_0_avalon_master_readdata),         //              .readdata
-		.AM_waitrequest (hw_accelerator_0_avalon_master_waitrequest)       //              .waitrequest
+		.AM_waitrequest (hw_accelerator_0_avalon_master_waitrequest),      //              .waitrequest
+		.HW_Debug       (hw_debug_readdata)                                //   conduit_end.readdata
 	);
 
 	SigProcOperation sigprocoperation_0 (
