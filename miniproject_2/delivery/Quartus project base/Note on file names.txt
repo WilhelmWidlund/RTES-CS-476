@@ -1,0 +1,3 @@
+The files are named as for lab3 because we had an error when trying to load the files to the DE1-SOC board. Eventually
+we fixed this error by simply copying our working lab 3 multiprocessor project as a base, and changing it to the needs
+of the miniproject. Therefore, the old name remains.

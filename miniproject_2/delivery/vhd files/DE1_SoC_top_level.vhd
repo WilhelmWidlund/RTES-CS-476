@@ -26,12 +26,12 @@ entity DE1_SoC_top_level is
 --        ADC_SCLK         : out   std_logic;
 --
 --        -- Audio
---        AUD_ADCDAT       : in    std_logic;
---        AUD_ADCLRCK      : inout std_logic;
---        AUD_BCLK         : inout std_logic;
---        AUD_DACDAT       : out   std_logic;
---        AUD_DACLRCK      : inout std_logic;
---        AUD_XCK          : out   std_logic;
+        AUD_ADCDAT       : in    std_logic;
+        AUD_ADCLRCK      : inout std_logic;
+        AUD_BCLK         : inout std_logic;
+        AUD_DACDAT       : out   std_logic;
+        AUD_DACLRCK      : inout std_logic;
+        AUD_XCK          : out   std_logic;
 
         -- CLOCK
         CLOCK_50         : in    std_logic;
@@ -53,8 +53,8 @@ entity DE1_SoC_top_level is
         DRAM_WE_N        : out   std_logic;
 
         -- I2C for Audio and Video-In
---        FPGA_I2C_SCLK    : out   std_logic;
---        FPGA_I2C_SDAT    : inout std_logic;
+        FPGA_I2C_SCLK    : out   std_logic;
+        FPGA_I2C_SDAT    : inout std_logic;
 
         -- SEG7
 --        HEX0_N           : out   std_logic_vector(6 downto 0);
@@ -101,11 +101,11 @@ entity DE1_SoC_top_level is
 --        VGA_VS           : out   std_logic;
 
         -- GPIO_0
-        GPIO_0           : inout std_logic_vector(35 downto 0)
+        -- GPIO_0           : inout std_logic_vector(35 downto 0)
 
         -- GPIO_1
         --
---		  GPIO_1           : inout std_logic_vector(35 downto 0);
+		  GPIO_1           : inout std_logic_vector(35 downto 0)
 
         -- HPS
 --        HPS_CONV_USB_N   : inout std_logic;
@@ -179,10 +179,20 @@ component soc_system is
 			sdram_controller_2_wire_dqm   : out   std_logic_vector(3 downto 0);                     -- dqm
 			sdram_controller_2_wire_ras_n : out   std_logic;                                        -- ras_n
 			sdram_controller_2_wire_we_n  : out   std_logic;                                        -- we_n
+			audio_0_external_interface_ADCDAT                : in    std_logic                     := 'X';             -- ADCDAT
+			audio_0_external_interface_ADCLRCK               : in    std_logic                     := 'X';             -- ADCLRCK
+			audio_0_external_interface_BCLK                  : in    std_logic                     := 'X';             -- BCLK
+			audio_0_external_interface_DACDAT                : out   std_logic;                                        -- DACDAT
+			audio_0_external_interface_DACLRCK               : in    std_logic                     := 'X';             -- DACLRCK
+			audio_and_video_config_0_external_interface_SDAT : inout std_logic                     := 'X';             -- SDAT
+			audio_and_video_config_0_external_interface_SCLK : out   std_logic;                                        -- SCLK
+			audio_pll_0_audio_clk_clk                        : out   std_logic; 
 			pp2_out_export                : out std_logic_vector(7 downto 0)  := (others => 'X'); -- export
 			pp1_out_export                : out   std_logic_vector(7 downto 0);                     -- export
 			pp0_out_export                : out   std_logic_vector(7 downto 0);                      -- export
-			pio_2_export                  : in    std_logic_vector(7 downto 0) := (others => 'X') -- export
+			pio_2_export                  : in    std_logic_vector(7 downto 0) := (others => 'X');-- export
+			
+			hw_debug_readdata                                : out   std_logic_vector(7 downto 0)                     -- readdata
 		);
 	end component soc_system;
 
@@ -202,12 +212,22 @@ u0 : component soc_system
 			sdram_controller_2_wire_dqm(0)   => DRAM_LDQM,   --                        .dqm(0)
 			sdram_controller_2_wire_ras_n => DRAM_RAS_N, --                        .ras_n
 			sdram_controller_2_wire_we_n  => DRAM_WE_N,  --                        .we_n
+			audio_0_external_interface_ADCDAT                => AUD_ADCDAT,                --                  audio_0_external_interface.ADCDAT
+			audio_0_external_interface_ADCLRCK               => AUD_ADCLRCK,               --                                            .ADCLRCK
+			audio_0_external_interface_BCLK                  => AUD_BCLK,                  --                                            .BCLK
+			audio_0_external_interface_DACDAT                => AUD_DACDAT,                --                                            .DACDAT
+			audio_0_external_interface_DACLRCK               => AUD_DACLRCK,               --                                            .DACLRCK
+			audio_and_video_config_0_external_interface_SDAT => FPGA_I2C_SDAT, -- audio_and_video_config_0_external_interface.SDAT
+			audio_and_video_config_0_external_interface_SCLK => FPGA_I2C_SCLK, --                                            .SCLK
+			audio_pll_0_audio_clk_clk                        => AUD_XCK,
 			pp2_out_export(3 downto 0)                => LEDR(9 downto 6),                --                 pp2_out.export
 			pp2_out_export(7 downto 4)                => open,
 			pp1_out_export(2 downto 0)                => LEDR(5 downto 3),                --                 pp1_out.export
 			pp1_out_export(7 downto 3)                => open,
 			pp0_out_export(2 downto 0)                => LEDR(2 downto 0),                 --                 pp0_out.export
 			pp0_out_export(7 downto 3)                => open,
-			pio_2_export(7 downto 0)                  => SW(7 downto 0)                   --                   pio_2.export
+			pio_2_export(7 downto 0)                  => SW(7 downto 0),                   --                   pio_2.export
+		
+			hw_debug_readdata                                => GPIO_1(7 downto 0)
 		);
 end;
